@@ -19,7 +19,7 @@ export default function About() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-primary text-primary-foreground">
+      <section className="pt-56 pb-16 bg-primary text-primary-foreground">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <span className="text-secondary font-medium text-sm tracking-widest uppercase">Our Story</span>
           <h1 className="font-heading text-5xl md:text-6xl font-bold mt-3 mb-4">GNL Digital Group</h1>
