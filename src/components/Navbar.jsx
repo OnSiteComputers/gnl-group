@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Phone, Menu, X } from 'lucide-react';
+import { Phone, Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const PHONE = '(704) 594-5826';
@@ -12,15 +12,34 @@ const NAV_LINKS = [
   { label: 'About', to: '/about' },
   { label: 'Services', to: '/#services' },
   { label: 'Reviews', to: '/#reviews' },
-  { label: 'For Small Business', to: '/small-business' },
   { label: 'Contact', to: '/contact' },
+];
+
+const WHO_WE_HELP = [
+  { label: 'Law Firms', to: '/who-we-help/law-firms' },
+  { label: 'Medical & Healthcare', to: '/who-we-help/medical' },
+  { label: 'Restaurants', to: '/who-we-help/restaurants' },
+  { label: 'Professional Services', to: '/who-we-help/professional' },
+  { label: 'Home Services', to: '/who-we-help/home-services' },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
   const location = useLocation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -77,6 +96,29 @@ export default function Navbar() {
                 {l.label}
               </Link>
             ))}
+            {/* Who We Help Dropdown */}
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setDropdownOpen(p => !p)}
+                className="flex items-center gap-1 text-sm font-medium text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+              >
+                Who We Help <ChevronDown size={14} className={`transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {dropdownOpen && (
+                <div className="absolute top-full left-0 mt-2 w-52 bg-white rounded-md shadow-lg border border-border overflow-hidden z-50">
+                  {WHO_WE_HELP.map(item => (
+                    <Link
+                      key={item.label}
+                      to={item.to}
+                      onClick={() => { setDropdownOpen(false); window.scrollTo({ top: 0 }); }}
+                      className="block px-4 py-3 text-sm text-foreground hover:bg-secondary/10 hover:text-secondary transition-colors border-b border-border/40 last:border-0"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
@@ -112,6 +154,19 @@ export default function Navbar() {
               {l.label}
             </Link>
           ))}
+          <div className="w-full text-center">
+            <p className="text-secondary font-heading text-lg font-bold mb-3">Who We Help</p>
+            {WHO_WE_HELP.map(item => (
+              <Link
+                key={item.label}
+                to={item.to}
+                onClick={() => { setOpen(false); window.scrollTo({ top: 0 }); }}
+                className="block text-primary-foreground/80 font-body text-xl py-2 hover:text-secondary transition-colors"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
           <a href={PHONE_HREF} className="text-secondary font-semibold text-xl mt-4">
             Call Now: {PHONE}
           </a>

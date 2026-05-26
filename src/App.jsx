@@ -9,6 +9,11 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import SmallBusiness from './pages/SmallBusiness';
+import WhoWeHelpLawFirms from './pages/WhoWeHelpLawFirms';
+import WhoWeHelpMedical from './pages/WhoWeHelpMedical';
+import WhoWeHelpRestaurants from './pages/WhoWeHelpRestaurants';
+import WhoWeHelpProfessional from './pages/WhoWeHelpProfessional';
+import WhoWeHelpHomeServices from './pages/WhoWeHelpHomeServices';
 import Home2 from './pages/Home2';
 import About2 from './pages/About2';
 import Contact2 from './pages/Contact2';
@@ -43,6 +48,11 @@ const AuthenticatedApp = () => {
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/small-business" element={<SmallBusiness />} />
+      <Route path="/who-we-help/law-firms" element={<WhoWeHelpLawFirms />} />
+      <Route path="/who-we-help/medical" element={<WhoWeHelpMedical />} />
+      <Route path="/who-we-help/restaurants" element={<WhoWeHelpRestaurants />} />
+      <Route path="/who-we-help/professional" element={<WhoWeHelpProfessional />} />
+      <Route path="/who-we-help/home-services" element={<WhoWeHelpHomeServices />} />
       <Route path="/home2" element={<Home2 />} />
       <Route path="/about2" element={<About2 />} />
       <Route path="/contact2" element={<Contact2 />} />
