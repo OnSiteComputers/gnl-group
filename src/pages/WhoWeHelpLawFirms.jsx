@@ -21,7 +21,7 @@ export default function WhoWeHelpLawFirms() {
         { title: 'Website Design', desc: 'Attorney websites built for credibility, speed, and mobile performance.' },
         { title: 'Review Management', desc: 'Systematic approach to growing your Google review count and responding professionally.' },
         { title: 'Content Marketing', desc: 'Legal blog posts and landing pages that rank and establish your authority.' },
-        { title: 'Google Ads', desc: 'High-intent PPC campaigns targeting clients actively searching for legal help.' },
+        { title: 'All-In-One Web Package', desc: 'Complete website rebuild, domain registration, and hosting with ongoing management—one simple monthly fee.' },
         { title: 'Analytics & Reporting', desc: "Monthly reports showing exactly where your leads come from and what's working." },
       ]}
       cta="Ready to Grow Your Practice?"
