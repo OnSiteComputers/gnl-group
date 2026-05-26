@@ -36,7 +36,7 @@ export default function Reviews() {
         </motion.div>
 
         <div className="grid grid-cols-3 gap-6 text-center mb-12">
-          {[['177', '5-Star Reviews'], ['16+', 'Years in Business'], ['5.0', 'Average Rating']].map(([num, label]) => (
+          {[['177', '5-Star Reviews'], ['25+', 'Years in Business'], ['5.0', 'Average Rating']].map(([num, label]) => (
             <div key={label} className="border border-border p-6">
               <div className="font-heading font-bold text-3xl text-primary">{num}</div>
               <div className="text-muted-foreground text-sm mt-1">{label}</div>
