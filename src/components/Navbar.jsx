@@ -94,8 +94,9 @@ export default function Navbar() {
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-primary shadow-lg`}>
         <div className="max-w-7xl mx-auto px-4 h-48 flex items-center justify-between">
-          <Link to="/" className="flex items-center">
+          <Link to="/" className="flex flex-col items-center">
             <img src={LOGO_URL} alt="GNL Digital Group" className="h-24 w-auto" />
+            <span className="text-secondary font-heading text-sm tracking-widest uppercase mt-1">Helping Local Businesses Dominate Search Results</span>
           </Link>
 
           {/* Desktop nav */}
