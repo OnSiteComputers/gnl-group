@@ -24,17 +24,25 @@ PART B: In GoDaddy DNS Settings
 1. Log into GoDaddy → My Products
 2. Find your domain → Click "DNS" or "Manage DNS"
 
-3. ADD these two DNS records:
+3. ADD this DNS record:
 
    Type        | Host | Value                    | TTL
    ------------|------|--------------------------|------
-   A           | @    | 216.24.57.1              | 600
    CNAME       | www  | base44.onrender.com      | 600
 
 4. DELETE any existing:
    - A records pointing to other IP addresses
    - AAAA (IPv6) records
    - Conflicting CNAME records (like parking pages)
+
+5. SET UP DOMAIN FORWARDING (for root domain without www):
+   - In DNS Management, scroll to "Forwarding" section
+   - Click "Add Forwarding"
+   - Forward to: https://www.gnldigitalgroup.com
+   - Forward type: Forward only (NOT masked)
+   - Save
+
+This ensures both gnldigitalgroup.com and www.gnldigitalgroup.com work.
 
 PART C: Back in Base44
 ----------------------------------------------------------------
