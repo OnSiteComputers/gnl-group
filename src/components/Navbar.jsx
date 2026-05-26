@@ -75,7 +75,7 @@ export default function Navbar() {
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-primary shadow-lg' : 'bg-primary/95'}`}>
-        <div className="max-w-7xl mx-auto px-4 h-32 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 h-48 flex items-center justify-between">
           <Link to="/" className="flex items-center">
             <img src={LOGO_URL} alt="GNL Digital Group" className="h-10 w-auto" />
           </Link>
