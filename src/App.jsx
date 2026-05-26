@@ -6,6 +6,12 @@ import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import Home from './pages/Home';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import SmallBusiness from './pages/SmallBusiness';
+import Home2 from './pages/Home2';
+import About2 from './pages/About2';
+import Contact2 from './pages/Contact2';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -34,6 +40,12 @@ const AuthenticatedApp = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/small-business" element={<SmallBusiness />} />
+      <Route path="/home2" element={<Home2 />} />
+      <Route path="/about2" element={<About2 />} />
+      <Route path="/contact2" element={<Contact2 />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
