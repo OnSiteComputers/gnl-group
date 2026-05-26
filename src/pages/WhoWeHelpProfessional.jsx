@@ -22,7 +22,7 @@ export default function WhoWeHelpProfessional() {
         { title: 'Review Management', desc: 'Build credibility with a consistent stream of positive client reviews.' },
         { title: 'Content Strategy', desc: 'Blog posts and service pages that establish your expertise and drive organic traffic.' },
         { title: 'Google Business Profile', desc: 'Optimized local listings that drive calls and inquiries directly to you.' },
-        { title: 'Analytics & Reporting', desc: "Monthly reporting on what's working and where your best leads are coming from." },
+        { title: 'All-In-One Web Package', desc: 'Complete website rebuild, domain registration, and hosting with ongoing management—one simple monthly fee.' },
       ]}
       cta="Ready to Grow Your Client Base?"
     />

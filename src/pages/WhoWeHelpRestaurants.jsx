@@ -22,7 +22,7 @@ export default function WhoWeHelpRestaurants() {
         { title: 'Review Management', desc: 'Build a stellar online reputation that keeps customers coming back.' },
         { title: 'Website Design', desc: 'Beautiful, fast restaurant websites that showcase your food and make ordering easy.' },
         { title: 'Social Media Presence', desc: 'Consistent, appetizing content that builds your following and drives visits.' },
-        { title: 'Analytics & Reporting', desc: 'See exactly how your digital marketing is driving foot traffic and orders.' },
+        { title: 'All-In-One Web Package', desc: 'Complete website rebuild, domain registration, and hosting with ongoing management—one simple monthly fee.' },
       ]}
       cta="Ready to Fill More Tables?"
     />

@@ -22,7 +22,7 @@ export default function WhoWeHelpHomeServices() {
         { title: 'Review Management', desc: 'Build and maintain a stellar reputation that sets you apart from the competition.' },
         { title: 'Website Design', desc: 'Fast, professional websites with clear calls-to-action that convert visitors to callers.' },
         { title: 'Google Ads', desc: 'Pay-per-click campaigns targeting homeowners with urgent service needs.' },
-        { title: 'Analytics & Reporting', desc: 'Know exactly how many calls and leads your marketing is generating every month.' },
+        { title: 'All-In-One Web Package', desc: 'Complete website rebuild, domain registration, and hosting with ongoing management—one simple monthly fee.' },
       ]}
       cta="Ready to Keep Your Schedule Full?"
     />

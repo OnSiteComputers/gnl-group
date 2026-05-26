@@ -22,7 +22,7 @@ export default function WhoWeHelpMedical() {
         { title: 'Review Management', desc: 'Build a 5-star reputation that sets you apart from competing practices.' },
         { title: 'Google Business Profile', desc: 'Fully optimized profiles that drive calls, directions, and appointment requests.' },
         { title: 'Content & Blogging', desc: 'Patient education content that ranks and builds credibility for your specialty.' },
-        { title: 'Analytics & Reporting', desc: 'Clear monthly reporting on rankings, traffic, and new patient inquiries.' },
+        { title: 'All-In-One Web Package', desc: 'Complete website rebuild, domain registration, and hosting with ongoing management—one simple monthly fee.' },
       ]}
       cta="Ready to Attract More Patients?"
     />
