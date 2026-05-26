@@ -44,7 +44,7 @@ export default function Hero({ heroImage }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Digital Marketing for Charlotte Businesses
+          Helping Local Businesses Dominate Search Results
         </motion.p>
 
         <motion.p
