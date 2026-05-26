@@ -82,7 +82,7 @@ export default function Navbar() {
         scrollToSection(id);
       } else {
         navigate(basePath);
-        scrollToSection(id);
+        setTimeout(() => scrollToSection(id), 100);
       }
     } else {
       navigate(to);
