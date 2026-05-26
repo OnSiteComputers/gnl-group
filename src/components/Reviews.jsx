@@ -17,7 +17,7 @@ export default function Reviews() {
           viewport={{ once: true }}
         >
           <span className="text-secondary font-medium text-sm tracking-widest uppercase">The Verdict</span>
-          <h2 className="font-heading text-4xl font-bold mt-3 text-primary">170+ Five-Star Reviews</h2>
+          <h2 className="font-heading text-4xl font-bold mt-3 text-primary">177 Five-Star Reviews</h2>
           <p className="text-muted-foreground mt-3">
             Over 16 years, we've built an unmatched record of client trust. Don't take our word for it — read what our clients say.
           </p>
@@ -36,7 +36,7 @@ export default function Reviews() {
         </motion.div>
 
         <div className="grid grid-cols-3 gap-6 text-center mb-12">
-          {[['170+', '5-Star Reviews'], ['16+', 'Years in Business'], ['5.0', 'Average Rating']].map(([num, label]) => (
+          {[['177', '5-Star Reviews'], ['16+', 'Years in Business'], ['5.0', 'Average Rating']].map(([num, label]) => (
             <div key={label} className="border border-border p-6">
               <div className="font-heading font-bold text-3xl text-primary">{num}</div>
               <div className="text-muted-foreground text-sm mt-1">{label}</div>
@@ -44,10 +44,9 @@ export default function Reviews() {
           ))}
         </div>
 
-        {/* Google Reviews embed placeholder */}
-        <div className="border border-dashed border-border rounded p-8 text-center text-muted-foreground text-sm mb-10">
-          Google Reviews widget will be embedded here<br />
-          <span className="text-xs">(Elfsight embed code)</span>
+        {/* Elfsight Google Reviews Widget */}
+        <div className="mb-10 elfsight-reviews-container">
+          <div class="elfsight-app-f007186e-c528-4a57-9e16-f74cf7c7f3d7" data-elfsight-app-lazy></div>
         </div>
 
         {/* CTA Buttons */}
