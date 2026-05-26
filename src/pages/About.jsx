@@ -42,7 +42,7 @@ export default function About() {
                 Greg mentioned he'd just redesigned his own website. The attorney replied that he'd been paying a company called Scorpion to manage his website and SEO. Then the lawyer asked Greg, "What do you know about SEO?"
               </p>
               <p>
-                Greg's response was simple: "I've been in business for 16+ years and have 170+ 5-star Google reviews. What does that tell you?"
+                Greg's response was simple: "I've been in business for 25+ years and have 170+ 5-star Google reviews. What does that tell you?"
               </p>
               <p>
                 After taking a look at what the attorney was getting, Greg realized the agency wasn't delivering results. That moment sparked something: <strong className="text-primary">local businesses were being underserved</strong> by big marketing agencies.
