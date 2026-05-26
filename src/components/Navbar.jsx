@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Phone, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -20,6 +20,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -27,15 +28,27 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const handleNav = (to) => {
+  const scrollToSection = (id) => {
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
+
+  const handleNav = (e, to) => {
+    e.preventDefault();
     setOpen(false);
     if (to.includes('#')) {
-      const id = to.split('#')[1];
-      setTimeout(() => {
-        const el = document.getElementById(id);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
+      const [path, id] = to.split('#');
+      const basePath = path || '/';
+      if (location.pathname === basePath) {
+        scrollToSection(id);
+      } else {
+        navigate(basePath);
+        scrollToSection(id);
+      }
     } else {
+      navigate(to);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
@@ -54,7 +67,7 @@ export default function Navbar() {
               <Link
                 key={l.label}
                 to={l.to}
-                onClick={() => handleNav(l.to)}
+                onClick={(e) => handleNav(e, l.to)}
                 className={`text-sm font-medium transition-colors ${
                   location.pathname === l.to
                     ? 'text-secondary'
@@ -93,7 +106,7 @@ export default function Navbar() {
             <Link
               key={l.label}
               to={l.to}
-              onClick={() => setOpen(false)}
+              onClick={(e) => handleNav(e, l.to)}
               className="text-primary-foreground font-heading text-3xl hover:text-secondary transition-colors"
             >
               {l.label}
