@@ -16,7 +16,7 @@ export default function Reviews() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <span className="text-secondary font-medium text-sm tracking-widest uppercase">The Verdict</span>
+          <span className="text-secondary font-bold text-base tracking-widest uppercase">The Verdict</span>
           <h2 className="font-heading text-4xl font-bold mt-3 text-primary">177 Five-Star Reviews</h2>
           <p className="text-muted-foreground mt-3">
             Over 16 years, we've built an unmatched record of client trust. Don't take our word for it — read what our clients say.
