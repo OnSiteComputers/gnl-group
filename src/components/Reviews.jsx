@@ -7,7 +7,7 @@ const LEAVE_REVIEW_URL = 'https://g.page/r/review';
 
 export default function Reviews() {
   return (
-    <section className="py-24 bg-card">
+    <section id="reviews" className="py-24 bg-card">
       <div className="max-w-4xl mx-auto px-6">
         {/* Header */}
         <motion.div

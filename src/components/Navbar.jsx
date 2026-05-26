@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { label: 'Home', to: '/' },
   { label: 'About', to: '/about' },
   { label: 'Services', to: '/#services' },
+  { label: 'Reviews', to: '/#reviews' },
   { label: 'For Small Business', to: '/small-business' },
   { label: 'Contact', to: '/contact' },
 ];
