@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Phone, Mail } from 'lucide-react';
 
-const LOGO_URL = 'https://media.base44.com/images/public/6a152f2d01c96ed4b2ab605a/c97c06916_Logo.png';
+const LOGO_URL = 'https://media.base44.com/images/public/6a15c006a4679719cfa0af7a/d7701e964_Logo.png';
 
 export default function Footer() {
   return (
