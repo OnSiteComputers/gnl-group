@@ -11,11 +11,11 @@ import Footer from '../components/Footer';
 import LocalSection from '../components/LocalSection';
 import MobileCtaBar from '../components/MobileCtaBar';
 
-const PRACTICE_AREAS = ['Personal Injury', 'Criminal Defense', 'Family Law', 'Immigration', 'Estate Planning', 'Business Law', 'Real Estate', 'Employment Law', 'Other'];
-const SERVICES_INTEREST = ['Legal SEO Strategy', 'Local Map Pack', 'Content Authority', 'Reputation Management', 'Performance Analytics', 'Website Optimization', 'All-In-One Web Package', 'Other'];
+const INDUSTRIES = ['Law Firm', 'Medical / Healthcare', 'Real Estate', 'Home Services', 'Restaurant / Food', 'Retail', 'Financial Services', 'Auto / Automotive', 'Beauty / Wellness', 'Construction', 'Other'];
+const SERVICES_INTEREST = ['Local SEO Strategy', 'Local Map Pack', 'Content Authority', 'Reputation Management', 'Performance Analytics', 'Website Optimization', 'All-In-One Web Package', 'Other'];
 
 export default function Contact() {
-  const [form, setForm] = useState({ firm_name: '', contact_name: '', email: '', phone: '', practice_area: '', service_interest: '', growth_goal: '' });
+  const [form, setForm] = useState({ firm_name: '', contact_name: '', email: '', phone: '', industry: '', service_interest: '', growth_goal: '' });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -30,7 +30,7 @@ export default function Contact() {
         contact_name: form.contact_name,
         email: form.email,
         phone: form.phone,
-        practice_area: form.practice_area,
+        practice_area: form.industry,
         growth_goal: form.growth_goal,
         status: 'new'
       });
@@ -55,7 +55,7 @@ export default function Contact() {
               Let's Build Your<br />Digital Authority
             </h1>
             <p className="text-primary-foreground/70 leading-relaxed mb-10">
-              Schedule a complimentary strategy session. We'll analyze your firm's current digital presence and outline a roadmap to dominate search results in your practice area.
+              Schedule a complimentary strategy session. We'll analyze your business's current digital presence and outline a roadmap to dominate search results in your market.
             </p>
             <div className="space-y-4">
               <a href="tel:+17045945826" className="flex items-start gap-3 group">
@@ -131,10 +131,10 @@ export default function Contact() {
                 <Input value={form.phone} onChange={e => setForm({...form, phone: e.target.value})} placeholder="(704) 555-1234" className="rounded-sm" />
               </div>
               <div>
-                <label className="text-xs font-semibold text-primary uppercase tracking-wider mb-1 block">Practice Area *</label>
-                <Select onValueChange={v => setForm({...form, practice_area: v})} required>
-                  <SelectTrigger className="rounded-sm"><SelectValue placeholder="Select practice area" /></SelectTrigger>
-                  <SelectContent>{PRACTICE_AREAS.map(a => <SelectItem key={a} value={a}>{a}</SelectItem>)}</SelectContent>
+                <label className="text-xs font-semibold text-primary uppercase tracking-wider mb-1 block">Industry *</label>
+                <Select onValueChange={v => setForm({...form, industry: v})} required>
+                  <SelectTrigger className="rounded-sm"><SelectValue placeholder="Select your industry" /></SelectTrigger>
+                  <SelectContent>{INDUSTRIES.map(a => <SelectItem key={a} value={a}>{a}</SelectItem>)}</SelectContent>
                 </Select>
               </div>
               <div>

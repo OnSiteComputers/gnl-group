@@ -5,23 +5,23 @@ import { ChevronDown } from 'lucide-react';
 const FAQS = [
   {
     q: "How long does it take to see results from SEO?",
-    a: "Most law firms start seeing measurable improvements in rankings and traffic within 3–6 months. However, competitive practice areas like personal injury may take 6–12 months to reach top positions. We provide monthly reports so you can track progress every step of the way."
+    a: "Most businesses start seeing measurable improvements in rankings and traffic within 3–6 months. For more competitive markets or industries, it may take 6–12 months to reach top positions. We provide monthly reports so you can track progress every step of the way."
   },
   {
-    q: "Do you work with law firms outside of Charlotte?",
+    q: "Do you work with businesses outside of Charlotte?",
     a: "Our primary focus is the Charlotte metro area — including Concord, Kannapolis, Huntersville, and surrounding communities. This local specialization means we deeply understand your market and competitors. Reach out and we can discuss your specific location."
   },
   {
-    q: "What makes GNL Digital Group different from other SEO agencies?",
-    a: "We specialize exclusively in law firms, which means we understand legal marketing rules, your audience's search behavior, and what it takes to rank in highly competitive legal niches. We combine 25+ years of technology expertise with a hyper-local focus on the Charlotte market."
+    q: "What makes GNL Digital Group different from other agencies?",
+    a: "We specialize in local businesses, which means we understand what it takes to rank in competitive local markets. We combine 25+ years of technology expertise with a hyper-local focus on the Charlotte area — no cookie-cutter strategies, no runaround."
   },
   {
-    q: "How much does legal SEO cost?",
-    a: "Pricing depends on the competitiveness of your practice area, your goals, and the scope of work. We offer a free strategy session to assess your needs and provide a custom proposal. There are no one-size-fits-all packages — everything is tailored to your firm."
+    q: "How much does digital marketing cost?",
+    a: "Pricing depends on the competitiveness of your industry, your goals, and the scope of work. We offer a free strategy session to assess your needs and provide a custom proposal. There are no one-size-fits-all packages — everything is tailored to your business."
   },
   {
     q: "Will I be locked into a long-term contract?",
-    a: "We believe in earning your business every month. While SEO is a long-term investment and results compound over time, we don't believe in trapping clients in contracts. We'll discuss flexible options that make sense for your firm."
+    a: "We believe in earning your business every month. While SEO is a long-term investment and results compound over time, we don't believe in trapping clients in contracts. We'll discuss flexible options that make sense for your business."
   },
   {
     q: "What does the free strategy session include?",

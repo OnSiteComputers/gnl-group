@@ -24,7 +24,7 @@ export default function About() {
           <span className="text-secondary font-medium text-sm tracking-widest uppercase">Our Story</span>
           <h1 className="font-heading text-5xl md:text-6xl font-bold mt-3 mb-4">GNL Digital Group</h1>
           <p className="text-primary-foreground/70 text-xl font-heading italic">
-            Greg &amp; Linda — Helping Charlotte-Area Law Firms Dominate Search Results
+            Greg &amp; Linda — Helping Charlotte-Area Businesses Dominate Search Results
           </p>
         </div>
       </section>
@@ -45,16 +45,16 @@ export default function About() {
                 Greg's response was simple: "I've been in business for 16+ years and have 170+ 5-star Google reviews. What does that tell you?"
               </p>
               <p>
-                After taking a look at what the attorney was getting, Greg realized the agency wasn't delivering results. That moment sparked something: <strong className="text-primary">law firms were being underserved</strong> by big marketing agencies.
+                After taking a look at what the attorney was getting, Greg realized the agency wasn't delivering results. That moment sparked something: <strong className="text-primary">local businesses were being underserved</strong> by big marketing agencies.
               </p>
               <p>
-                GNL Digital Group was born from that conversation. Greg and Linda decided to offer what those agencies don't: <strong className="text-primary">personalized service, real expertise, and honest pricing</strong> — right here in Charlotte.
+                GNL Digital Group was born from that conversation. Greg and Linda decided to offer what those agencies don't: <strong className="text-primary">personalized service, real expertise, and honest pricing</strong> — right here in the Charlotte area.
               </p>
             </div>
 
             <div className="mt-10 grid md:grid-cols-3 gap-6">
               {[
-                { title: "Specialized Focus", desc: "We focus exclusively on law firms because that's where we can make the biggest impact." },
+                { title: "Specialized Focus", desc: "We focus on local businesses in the Charlotte area because that's where we can make the biggest impact." },
                 { title: "Local Partnership", desc: "We're not a faceless agency. We're your neighbors in Concord, invested in your success." },
                 { title: "Honest Pricing", desc: "Just real results at fair prices." },
               ].map((item) => (
@@ -73,7 +73,7 @@ export default function About() {
         <div className="max-w-5xl mx-auto px-6">
           <motion.div className="text-center mb-12" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="font-heading text-4xl font-bold text-primary">Meet Greg &amp; Linda</h2>
-            <p className="text-muted-foreground mt-3">25+ years of technology expertise, now focused on helping Charlotte-area law firms grow.</p>
+            <p className="text-muted-foreground mt-3">25+ years of technology expertise, now focused on helping Charlotte-area businesses grow.</p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -132,8 +132,8 @@ export default function About() {
       {/* CTA */}
       <section className="py-20 bg-primary text-primary-foreground text-center">
         <div className="max-w-3xl mx-auto px-6">
-          <h2 className="font-heading text-4xl font-bold mb-4">Ready to Grow Your Firm?</h2>
-          <p className="text-primary-foreground/70 mb-8">Let's talk about how we can help your law firm dominate search results in your practice area.</p>
+          <h2 className="font-heading text-4xl font-bold mb-4">Ready to Grow Your Business?</h2>
+          <p className="text-primary-foreground/70 mb-8">Let's talk about how we can help your business dominate search results in your local market.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" variant="secondary" className="rounded-sm font-bold text-primary">
               <Link to="/contact">Schedule Free Strategy Session</Link>

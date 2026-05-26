@@ -2,12 +2,12 @@ import { Search, TrendingUp, MapPin, FileText, BarChart3, Globe, Package } from 
 import { motion } from 'framer-motion';
 
 const SERVICES = [
-  { icon: Search, title: 'Legal SEO Strategy', desc: 'Dominate search results for high-value practice areas in Charlotte and surrounding counties.' },
+  { icon: Search, title: 'Local SEO Strategy', desc: 'Dominate search results for high-value keywords in Charlotte and surrounding counties.' },
   { icon: MapPin, title: 'Local Map Pack', desc: 'Claim the top 3 positions in Google Maps where 46% of all searches have local intent.' },
-  { icon: FileText, title: 'Content Authority', desc: 'Attorney-grade content that builds topical authority and converts visitors into consultations.' },
+  { icon: FileText, title: 'Content Authority', desc: 'Expert-level content that builds topical authority and converts visitors into paying customers.' },
   { icon: TrendingUp, title: 'Reputation Management', desc: 'Leverage your reviews and build a 5-star digital presence that instills immediate trust.' },
-  { icon: BarChart3, title: 'Performance Analytics', desc: 'Transparent monthly reporting showing exactly how your investment drives new client inquiries.' },
-  { icon: Globe, title: 'Website Optimization', desc: 'Fast, mobile-first websites built to convert legal traffic into signed retainer agreements.' },
+  { icon: BarChart3, title: 'Performance Analytics', desc: 'Transparent monthly reporting showing exactly how your investment drives new customer inquiries.' },
+  { icon: Globe, title: 'Website Optimization', desc: 'Fast, mobile-first websites built to convert local traffic into real business results.' },
   { icon: Package, title: 'All-In-One Web Package', desc: 'Complete website rebuild, domain registration, and hosting with ongoing management—one simple monthly fee.' },
 ];
 
@@ -24,10 +24,10 @@ export default function Services({ servicesImage }) {
         >
           <span className="text-secondary font-medium text-sm tracking-widest uppercase">Our Expertise</span>
           <h2 className="font-heading text-4xl md:text-5xl font-bold mt-3 text-primary">
-            Built for Legal Dominance
+            Built for Local Dominance
           </h2>
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-            We don't do generic SEO. Every strategy is engineered specifically for law firms competing in the Charlotte metropolitan area.
+            We don't do generic SEO. Every strategy is engineered specifically for businesses competing in the Charlotte metropolitan area.
           </p>
         </motion.div>
 

@@ -17,7 +17,7 @@ export default function ContactCTA() {
             Ready to Dominate Search Results?
           </h2>
           <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto mb-10">
-            Schedule your free strategy session today. We'll analyze your firm's online presence and map out a path to the top.
+            Schedule your free strategy session today. We'll analyze your business's online presence and map out a path to the top.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" variant="secondary" className="rounded-sm font-bold tracking-wide text-primary px-8">

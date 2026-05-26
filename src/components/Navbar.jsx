@@ -10,7 +10,7 @@ const LOGO_URL = 'https://media.base44.com/images/public/6a152f2d01c96ed4b2ab605
 const NAV_LINKS = [
   { label: 'Home', to: '/' },
   { label: 'About', to: '/about' },
-  { label: 'For Lawyers', to: '/' },
+  { label: 'Services', to: '/#services' },
   { label: 'For Small Business', to: '/small-business' },
   { label: 'Contact', to: '/contact' },
 ];

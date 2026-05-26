@@ -35,7 +35,7 @@ export default function Hero({ heroImage }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
         >
-          Dominate the Docket
+          Dominate Your Market
         </motion.h1>
 
         <motion.p
@@ -44,7 +44,7 @@ export default function Hero({ heroImage }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          SEO Engineered for Charlotte's Elite Law Firms
+          Digital Marketing for Charlotte Businesses
         </motion.p>
 
         <motion.p
@@ -53,7 +53,7 @@ export default function Hero({ heroImage }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          25+ years of proven expertise. Real results. We build the digital authority that brings clients to your firm.
+          25+ years of proven expertise. Real results. We build the digital authority that brings customers to your business.
         </motion.p>
 
         <motion.div
