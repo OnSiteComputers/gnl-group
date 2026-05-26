@@ -15,7 +15,7 @@ export default function Hero({ heroImage }) {
             className="w-full h-full object-cover opacity-20"
           />
         )}
-        <div className="absolute inset-0 bg-primary" style={{ opacity: heroImage ? 0.85 : 1 }} />
+        <div className="absolute inset-0 bg-primary" />
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center text-primary-foreground py-24">
