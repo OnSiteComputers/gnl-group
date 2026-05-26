@@ -48,10 +48,13 @@ export default function Navbar() {
   }, []);
 
   const scrollToSection = (id) => {
-    setTimeout(() => {
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }, 100);
+    const el = document.getElementById(id);
+    if (el) {
+      const offset = 192; // navbar height
+      const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - offset;
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    }
   };
 
   const handleNav = (e, to) => {
