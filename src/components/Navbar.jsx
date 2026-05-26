@@ -29,7 +29,15 @@ export default function Navbar() {
 
   const handleNav = (to) => {
     setOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (to.includes('#')) {
+      const id = to.split('#')[1];
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (
