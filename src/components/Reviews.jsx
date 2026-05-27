@@ -51,12 +51,12 @@ export default function Reviews() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button asChild variant="default" className="rounded-sm gap-2">
+          <Button asChild variant="secondary" className="rounded-sm gap-2">
             <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noopener noreferrer">
               <ExternalLink size={15} /> READ ALL REVIEWS
             </a>
           </Button>
-          <Button asChild variant="secondary" className="rounded-sm gap-2">
+          <Button asChild variant="default" className="rounded-sm gap-2">
             <a href={LEAVE_REVIEW_URL} target="_blank" rel="noopener noreferrer">
               <Star size={15} /> LEAVE A REVIEW
             </a>
