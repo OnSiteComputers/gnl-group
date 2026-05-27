@@ -46,7 +46,7 @@ export default function Reviews() {
 
         {/* Elfsight Google Reviews Widget */}
         <div className="mb-10 elfsight-reviews-container">
-          <div class="elfsight-app-f007186e-c528-4a57-9e16-f74cf7c7f3d7" data-elfsight-app-lazy></div>
+          <div class="elfsight-app-989581b6-5532-43fa-8f5f-66c819c1d351" data-elfsight-app-lazy></div>
         </div>
 
         {/* CTA Buttons */}
