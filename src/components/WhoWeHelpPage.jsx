@@ -16,7 +16,7 @@ export default function WhoWeHelpPage({ icon: Icon, headline, subheadline, intro
 
       {/* Hero */}
       <section className="bg-primary text-primary-foreground pt-52 pb-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-7xl mx-auto text-center">
          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
            <div className="flex items-center justify-center gap-4 mb-4">
              {Icon && <Icon className="text-secondary shrink-0" size={52} strokeWidth={1.5} />}
@@ -29,14 +29,14 @@ export default function WhoWeHelpPage({ icon: Icon, headline, subheadline, intro
 
       {/* Intro */}
       <section className="py-16 px-6 bg-background">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <motion.p initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className={`text-foreground/80 text-lg leading-relaxed text-${introAlign}`}>{intro}</motion.p>
         </div>
       </section>
 
       {/* Benefits */}
       <section className="py-16 px-6 bg-muted/10">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <h2 className="font-heading text-3xl font-bold text-center text-foreground mb-12">Why <span className="text-secondary">GNL Digital</span> Works for You</h2>
           <div className="grid md:grid-cols-2 gap-6">
             {benefits.map((b, i) => (
@@ -55,7 +55,7 @@ export default function WhoWeHelpPage({ icon: Icon, headline, subheadline, intro
 
       {/* Services */}
       <section className="py-16 px-6 bg-background">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <h2 className="font-heading text-3xl font-bold text-center text-foreground mb-12">Our Services for You</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {services.map((s, i) => (
@@ -71,7 +71,7 @@ export default function WhoWeHelpPage({ icon: Icon, headline, subheadline, intro
 
       {/* CTA */}
       <section className="py-20 px-6 bg-secondary/10 text-center">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mx-auto">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-7xl mx-auto">
           <h2 className="font-heading text-3xl font-bold text-foreground mb-4">{cta}</h2>
           <p className="text-muted-foreground mb-8">No contracts. No fluff. Just results from a team that knows your industry.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

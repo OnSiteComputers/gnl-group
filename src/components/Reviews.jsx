@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 export default function Reviews() {
   return (
     <section id="reviews" className="py-24 bg-card">
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <motion.div
           className="text-center mb-12"
