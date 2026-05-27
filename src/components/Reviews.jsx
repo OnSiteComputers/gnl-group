@@ -1,9 +1,8 @@
-import { Star, ExternalLink } from 'lucide-react';
+import { Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 
-const GOOGLE_REVIEWS_URL = 'https://www.google.com/maps/place/Onsite+Computer+Service/@35.3938,-80.6399,17z';
-const LEAVE_REVIEW_URL = 'https://g.page/r/review';
+
 
 export default function Reviews() {
   return (
@@ -49,19 +48,7 @@ export default function Reviews() {
           <div class="elfsight-app-989581b6-5532-43fa-8f5f-66c819c1d351" data-elfsight-app-lazy></div>
         </div>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button asChild variant="default" className="rounded-sm gap-2">
-            <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noopener noreferrer">
-              <ExternalLink size={15} /> READ ALL REVIEWS
-            </a>
-          </Button>
-          <Button asChild variant="default" className="rounded-sm gap-2">
-            <a href={LEAVE_REVIEW_URL} target="_blank" rel="noopener noreferrer">
-              <Star size={15} /> LEAVE A REVIEW
-            </a>
-          </Button>
-        </div>
+
       </div>
     </section>
   );
