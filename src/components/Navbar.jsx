@@ -145,7 +145,7 @@ export default function Navbar() {
               <Phone size={15} />
               {PHONE}
             </a>
-            <Button asChild size="sm" variant="secondary" className="rounded-sm font-semibold text-primary">
+            <Button asChild size="sm" variant="secondary" className="font-semibold text-primary">
               <Link to="/contact">Free Strategy Session</Link>
             </Button>
           </div>

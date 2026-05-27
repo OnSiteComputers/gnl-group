@@ -62,10 +62,10 @@ export default function Hero({ heroImage }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <Button asChild size="lg" variant="secondary" className="rounded-sm font-bold tracking-wide text-primary px-8">
+          <Button asChild size="lg" variant="secondary" className="font-bold tracking-wide text-primary px-8">
             <Link to="/contact">REQUEST STRATEGY SESSION</Link>
           </Button>
-          <Button asChild size="lg" variant="outline" className="rounded-sm font-bold tracking-wide border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10 px-8">
+          <Button asChild size="lg" variant="outline" className="font-bold tracking-wide border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10 px-8">
             <a href="tel:+17045945826">
               <Phone size={16} className="mr-2" />
               (704) 594-5826

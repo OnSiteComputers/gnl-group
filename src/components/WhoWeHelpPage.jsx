@@ -75,10 +75,10 @@ export default function WhoWeHelpPage({ icon: Icon, headline, subheadline, intro
           <h2 className="font-heading text-3xl font-bold text-foreground mb-4">{cta}</h2>
           <p className="text-muted-foreground mb-8">No contracts. No fluff. Just results from a team that knows your industry.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="rounded-sm font-semibold">
+            <Button asChild size="lg" className="font-semibold">
               <Link to="/contact">Get a Free Strategy Session <ArrowRight size={16} /></Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="rounded-sm font-semibold">
+            <Button asChild size="lg" variant="outline" className="font-semibold">
               <a href={PHONE_HREF}><Phone size={16} /> {PHONE}</a>
             </Button>
           </div>

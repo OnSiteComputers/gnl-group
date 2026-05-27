@@ -152,7 +152,7 @@ export default function Contact() {
                 <label className="text-xs font-semibold text-primary uppercase tracking-wider mb-1 block">Growth Goal</label>
                 <Textarea value={form.growth_goal} onChange={e => setForm({...form, growth_goal: e.target.value})} placeholder="Tell us about your growth goals..." className="rounded-sm resize-none" rows={3} />
               </div>
-              <Button type="submit" disabled={loading} className="w-full rounded-sm font-bold tracking-wide">
+              <Button type="submit" disabled={loading} className="w-full font-bold tracking-wide">
                 {loading ? 'Submitting...' : 'REQUEST FREE STRATEGY SESSION'}
               </Button>
             </motion.form>
