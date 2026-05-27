@@ -56,7 +56,7 @@ export default function Reviews() {
               <ExternalLink size={15} /> READ ALL REVIEWS
             </a>
           </Button>
-          <Button asChild variant="outline" className="rounded-sm gap-2">
+          <Button asChild variant="secondary" className="rounded-sm gap-2">
             <a href={LEAVE_REVIEW_URL} target="_blank" rel="noopener noreferrer">
               <Star size={15} /> LEAVE A REVIEW
             </a>
