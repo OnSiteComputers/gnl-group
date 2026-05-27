@@ -25,6 +25,7 @@ export default function WhoWeHelpLawFirms() {
         { title: 'Analytics & Reporting', desc: "Monthly reports showing exactly where your leads come from and what's working." },
       ]}
       cta="Ready to Grow Your Practice?"
+      introAlign="left"
     />
   );
 }

@@ -9,7 +9,7 @@ import MobileCtaBar from './MobileCtaBar';
 const PHONE_HREF = 'tel:+17045945826';
 const PHONE = '(704) 594-5826';
 
-export default function WhoWeHelpPage({ icon: Icon, headline, subheadline, intro, benefits, services, cta }) {
+export default function WhoWeHelpPage({ icon: Icon, headline, subheadline, intro, benefits, services, cta, introAlign = 'center' }) {
   return (
     <div className="min-h-screen font-body">
       <Navbar />
@@ -30,7 +30,7 @@ export default function WhoWeHelpPage({ icon: Icon, headline, subheadline, intro
       {/* Intro */}
       <section className="py-16 px-6 bg-background">
         <div className="max-w-3xl mx-auto">
-          <motion.p initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-foreground/80 text-lg leading-relaxed text-left">{intro}</motion.p>
+          <motion.p initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className={`text-foreground/80 text-lg leading-relaxed text-${introAlign}`}>{intro}</motion.p>
         </div>
       </section>
 
