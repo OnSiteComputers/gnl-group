@@ -135,10 +135,10 @@ export default function About() {
           <h2 className="font-heading text-4xl font-bold mb-4">Ready to Grow Your Business?</h2>
           <p className="text-primary-foreground/70 mb-8">Let's talk about how we can help your business dominate search results in your local market.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" variant="secondary" className="rounded-sm font-bold text-primary">
+            <Button asChild size="lg" variant="secondary" className="font-bold text-primary">
               <Link to="/contact">Schedule Free Strategy Session</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="rounded-sm font-bold border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10">
+            <Button asChild size="lg" variant="outline" className="font-bold border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10">
               <a href="tel:+17045945826"><Phone size={16} className="mr-2" />(704) 594-5826</a>
             </Button>
           </div>
