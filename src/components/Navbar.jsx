@@ -106,7 +106,7 @@ export default function Navbar() {
                 key={l.label}
                 to={l.to}
                 onClick={(e) => handleNav(e, l.to)}
-                className={`text-sm font-medium transition-colors ${
+                className={`text-base font-medium transition-colors ${
                   location.pathname === l.to
                     ? 'text-secondary'
                     : 'text-primary-foreground/80 hover:text-primary-foreground'
@@ -119,7 +119,7 @@ export default function Navbar() {
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setDropdownOpen(p => !p)}
-                className="flex items-center gap-1 text-sm font-medium text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                className="flex items-center gap-1 text-base font-medium text-primary-foreground/80 hover:text-primary-foreground transition-colors"
               >
                 Who We Help <ChevronDown size={14} className={`transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
               </button>
@@ -130,7 +130,7 @@ export default function Navbar() {
                       key={item.label}
                       to={item.to}
                       onClick={() => { setDropdownOpen(false); window.scrollTo({ top: 0 }); }}
-                      className="block px-4 py-3 text-sm text-foreground hover:bg-secondary/10 hover:text-secondary transition-colors border-b border-border/40 last:border-0"
+                      className="block px-4 py-3 text-base text-foreground hover:bg-secondary/10 hover:text-secondary transition-colors border-b border-border/40 last:border-0"
                     >
                       {item.label}
                     </Link>
@@ -141,7 +141,7 @@ export default function Navbar() {
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
-            <a href={PHONE_HREF} className="flex items-center gap-2 text-primary-foreground/90 hover:text-primary-foreground text-sm font-medium transition-colors">
+            <a href={PHONE_HREF} className="flex items-center gap-2 text-primary-foreground/90 hover:text-primary-foreground text-base font-medium transition-colors">
               <Phone size={15} />
               {PHONE}
             </a>
