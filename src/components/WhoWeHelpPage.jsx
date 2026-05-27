@@ -17,11 +17,13 @@ export default function WhoWeHelpPage({ icon: Icon, headline, subheadline, intro
       {/* Hero */}
       <section className="bg-primary text-primary-foreground pt-32 pb-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            {Icon && <Icon className="mx-auto mb-6 text-secondary" size={52} strokeWidth={1.5} />}
-            <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4">{headline}</h1>
-            <p className="text-primary-foreground/70 text-lg md:text-xl max-w-2xl mx-auto">{subheadline}</p>
-          </motion.div>
+         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+           <div className="flex items-center justify-center gap-4 mb-4">
+             {Icon && <Icon className="text-secondary shrink-0" size={52} strokeWidth={1.5} />}
+             <h1 className="font-heading text-4xl md:text-5xl font-bold">{headline}</h1>
+           </div>
+           <p className="text-primary-foreground/70 text-lg md:text-xl max-w-2xl mx-auto">{subheadline}</p>
+         </motion.div>
         </div>
       </section>
 
