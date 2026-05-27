@@ -25,6 +25,7 @@ export default function WhoWeHelpHomeServices() {
         { title: 'All-In-One Web Package', desc: 'Complete website rebuild, domain registration, and hosting with ongoing management—one simple monthly fee.' },
       ]}
       cta="Ready to Keep Your Schedule Full?"
+      introAlign="left"
     />
   );
 }

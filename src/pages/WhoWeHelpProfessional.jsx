@@ -25,6 +25,7 @@ export default function WhoWeHelpProfessional() {
         { title: 'All-In-One Web Package', desc: 'Complete website rebuild, domain registration, and hosting with ongoing management—one simple monthly fee.' },
       ]}
       cta="Ready to Grow Your Client Base?"
+      introAlign="left"
     />
   );
 }
