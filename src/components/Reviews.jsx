@@ -43,6 +43,16 @@ export default function Reviews() {
           ))}
         </div>
 
+        {/* Section Title */}
+        <motion.h3
+          className="font-heading text-3xl font-bold text-center text-primary mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          What Our Customers Say
+        </motion.h3>
+
         {/* Elfsight Google Reviews Widget */}
         <div className="mb-10 elfsight-reviews-container">
           <div class="elfsight-app-989581b6-5532-43fa-8f5f-66c819c1d351" data-elfsight-app-lazy></div>
