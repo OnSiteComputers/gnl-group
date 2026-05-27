@@ -141,10 +141,12 @@ export default function Navbar() {
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
-            <a href={PHONE_HREF} className="flex items-center gap-2 text-primary-foreground/90 hover:text-primary-foreground text-base font-medium transition-colors">
-              <Phone size={15} />
-              {PHONE}
-            </a>
+            <Button asChild size="sm" variant="outline" className="font-semibold border-secondary text-secondary hover:bg-secondary/10 hover:text-secondary">
+              <a href={PHONE_HREF}>
+                <Phone size={15} />
+                {PHONE}
+              </a>
+            </Button>
             <Button asChild size="sm" variant="secondary" className="font-semibold text-primary">
               <Link to="/contact">Free Strategy Session</Link>
             </Button>
