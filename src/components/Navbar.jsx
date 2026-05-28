@@ -28,6 +28,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [mobileWhoWeHelpOpen, setMobileWhoWeHelpOpen] = useState(false);
   const dropdownRef = useRef(null);
   const location = useLocation();
   const navigate = useNavigate();
@@ -176,17 +177,26 @@ export default function Navbar() {
             </Link>
           ))}
           <div className="w-full text-center">
-            <p className="text-secondary font-heading text-sm font-bold mb-3">Who We Help</p>
-            {WHO_WE_HELP.map(item => (
-              <Link
-                key={item.label}
-                to={item.to}
-                onClick={() => { setOpen(false); window.scrollTo({ top: 0 }); }}
-                className="block text-primary-foreground/80 font-body text-base py-2 hover:text-secondary transition-colors"
-              >
-                {item.label}
-              </Link>
-            ))}
+            <button
+              onClick={() => setMobileWhoWeHelpOpen(!mobileWhoWeHelpOpen)}
+              className="text-secondary font-heading text-sm font-bold py-2 hover:text-secondary/80 transition-colors"
+            >
+              Who We Help {mobileWhoWeHelpOpen ? '▼' : '▶'}
+            </button>
+            {mobileWhoWeHelpOpen && (
+              <div className="space-y-2">
+                {WHO_WE_HELP.map(item => (
+                  <Link
+                    key={item.label}
+                    to={item.to}
+                    onClick={() => { setOpen(false); setMobileWhoWeHelpOpen(false); window.scrollTo({ top: 0 }); }}
+                    className="block text-primary-foreground/80 font-body text-base py-2 hover:text-secondary transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
           <a href={PHONE_HREF} className="text-secondary font-semibold text-lg mt-4">
             Call Now: {PHONE}
