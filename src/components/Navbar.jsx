@@ -170,25 +170,25 @@ export default function Navbar() {
               key={l.label}
               to={l.to}
               onClick={(e) => handleNav(e, l.to)}
-              className="text-primary-foreground font-heading text-3xl hover:text-secondary transition-colors"
+              className="text-primary-foreground font-heading text-lg hover:text-secondary transition-colors"
             >
               {l.label}
             </Link>
           ))}
           <div className="w-full text-center">
-            <p className="text-secondary font-heading text-lg font-bold mb-3">Who We Help</p>
+            <p className="text-secondary font-heading text-sm font-bold mb-3">Who We Help</p>
             {WHO_WE_HELP.map(item => (
               <Link
                 key={item.label}
                 to={item.to}
                 onClick={() => { setOpen(false); window.scrollTo({ top: 0 }); }}
-                className="block text-primary-foreground/80 font-body text-xl py-2 hover:text-secondary transition-colors"
+                className="block text-primary-foreground/80 font-body text-base py-2 hover:text-secondary transition-colors"
               >
                 {item.label}
               </Link>
             ))}
           </div>
-          <a href={PHONE_HREF} className="text-secondary font-semibold text-xl mt-4">
+          <a href={PHONE_HREF} className="text-secondary font-semibold text-lg mt-4">
             Call Now: {PHONE}
           </a>
         </div>
