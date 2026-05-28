@@ -50,7 +50,7 @@ export default function Contact() {
     <div className="min-h-screen font-body pb-16 lg:pb-0">
       <Navbar />
 
-      <section className="pt-40 min-h-screen grid lg:grid-cols-2">
+      <section className="pt-36 min-h-screen grid lg:grid-cols-2">
         {/* Left — Info */}
         <div className="bg-primary text-primary-foreground flex flex-col justify-center px-8 lg:px-16 py-20">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
@@ -120,37 +120,37 @@ export default function Contact() {
 
               <div>
                 <label className="text-xs font-semibold text-primary uppercase tracking-wider mb-1 block">Firm Name *</label>
-                <Input value={form.firm_name} onChange={e => setForm({...form, firm_name: e.target.value})} placeholder="Smith & Associates" required className="rounded-sm" />
+                <Input value={form.firm_name} onChange={e => setForm({...form, firm_name: e.target.value})} placeholder="Smith & Associates" required className="rounded-lg" />
               </div>
               <div>
                 <label className="text-xs font-semibold text-primary uppercase tracking-wider mb-1 block">Your Name *</label>
-                <Input value={form.contact_name} onChange={e => setForm({...form, contact_name: e.target.value})} placeholder="John Smith" required className="rounded-sm" />
+                <Input value={form.contact_name} onChange={e => setForm({...form, contact_name: e.target.value})} placeholder="John Smith" required className="rounded-lg" />
               </div>
               <div>
                 <label className="text-xs font-semibold text-primary uppercase tracking-wider mb-1 block">Email *</label>
-                <Input type="email" value={form.email} onChange={e => setForm({...form, email: e.target.value})} placeholder="john@lawfirm.com" required className="rounded-sm" />
+                <Input type="email" value={form.email} onChange={e => setForm({...form, email: e.target.value})} placeholder="john@lawfirm.com" required className="rounded-lg" />
               </div>
               <div>
                 <label className="text-xs font-semibold text-primary uppercase tracking-wider mb-1 block">Phone</label>
-                <Input value={form.phone} onChange={e => setForm({...form, phone: e.target.value})} placeholder="(704) 555-1234" className="rounded-sm" />
+                <Input value={form.phone} onChange={e => setForm({...form, phone: e.target.value})} placeholder="(704) 555-1234" className="rounded-lg" />
               </div>
               <div>
                 <label className="text-xs font-semibold text-primary uppercase tracking-wider mb-1 block">Industry *</label>
                 <Select onValueChange={v => setForm({...form, industry: v})} required>
-                  <SelectTrigger className="rounded-sm"><SelectValue placeholder="Select your industry" /></SelectTrigger>
+                  <SelectTrigger className="rounded-lg"><SelectValue placeholder="Select your industry" /></SelectTrigger>
                   <SelectContent>{INDUSTRIES.map(a => <SelectItem key={a} value={a}>{a}</SelectItem>)}</SelectContent>
                 </Select>
               </div>
               <div>
                 <label className="text-xs font-semibold text-primary uppercase tracking-wider mb-1 block">Service Interest</label>
                 <Select onValueChange={v => setForm({...form, service_interest: v})}>
-                  <SelectTrigger className="rounded-sm"><SelectValue placeholder="Select service" /></SelectTrigger>
+                  <SelectTrigger className="rounded-lg"><SelectValue placeholder="Select service" /></SelectTrigger>
                   <SelectContent>{SERVICES_INTEREST.map(s => <SelectItem key={s} value={s}>{s}</SelectItem>)}</SelectContent>
                 </Select>
               </div>
               <div>
                 <label className="text-xs font-semibold text-primary uppercase tracking-wider mb-1 block">Growth Goal</label>
-                <Textarea value={form.growth_goal} onChange={e => setForm({...form, growth_goal: e.target.value})} placeholder="Tell us about your growth goals..." className="rounded-sm resize-none" rows={3} />
+                <Textarea value={form.growth_goal} onChange={e => setForm({...form, growth_goal: e.target.value})} placeholder="Tell us about your growth goals..." className="rounded-lg resize-none" rows={3} />
               </div>
               <Button type="submit" disabled={loading} className="w-full font-bold tracking-wide">
                 {loading ? 'Submitting...' : 'REQUEST FREE STRATEGY SESSION'}

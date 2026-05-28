@@ -19,7 +19,7 @@ export default function About() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-56 pb-16 bg-primary text-primary-foreground">
+      <section className="pt-40 pb-16 bg-primary text-primary-foreground">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <span className="text-secondary font-bold text-lg tracking-widest uppercase">Our Story</span>
           <h1 className="font-heading text-5xl md:text-6xl font-bold mt-3 mb-4">GNL Digital Group</h1>
@@ -77,7 +77,7 @@ export default function About() {
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="border border-border p-8">
+            <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="border border-border p-8 rounded-xl">
               <div className="w-16 h-16 bg-primary flex items-center justify-center mb-4">
                 <span className="font-heading font-bold text-3xl text-primary-foreground">G</span>
               </div>
@@ -90,7 +90,7 @@ export default function About() {
               </div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="border border-border p-8">
+            <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="border border-border p-8 rounded-xl">
               <div className="w-16 h-16 bg-secondary flex items-center justify-center mb-4">
                 <span className="font-heading font-bold text-3xl text-primary">L</span>
               </div>
@@ -115,7 +115,7 @@ export default function About() {
           </motion.div>
           <div className="grid md:grid-cols-2 gap-6">
             {VALUES.map((item, idx) => (
-              <motion.div key={item.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }} className="flex gap-4 p-6 border border-border">
+              <motion.div key={item.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }} className="flex gap-4 p-6 border border-border rounded-xl">
                 <div className="w-10 h-10 bg-primary flex items-center justify-center flex-shrink-0">
                   <item.icon size={18} className="text-primary-foreground" />
                 </div>

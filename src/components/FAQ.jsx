@@ -40,7 +40,7 @@ export default function FAQ() {
           <h2 className="font-heading text-4xl font-bold mt-3 text-primary">Frequently Asked Questions</h2>
         </div>
 
-        <div className="border border-border divide-y divide-border">
+        <div className="border border-border divide-y divide-border rounded-xl overflow-hidden">
           {FAQS.map((faq, i) => (
             <div key={i}>
               <button

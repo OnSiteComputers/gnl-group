@@ -36,7 +36,7 @@ export default function Reviews() {
 
         <div className="grid grid-cols-2 gap-6 text-center mb-12">
           {[['177', '5-Star Reviews'], ['25+', 'Years in Business']].map(([num, label]) => (
-            <div key={label} className="border border-border p-6">
+            <div key={label} className="border border-border p-6 rounded-xl">
               <div className="font-heading font-bold text-3xl text-primary">{num}</div>
               <div className="text-muted-foreground text-sm mt-1">{label}</div>
             </div>

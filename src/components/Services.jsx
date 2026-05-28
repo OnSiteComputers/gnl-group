@@ -40,7 +40,7 @@ export default function Services({ servicesImage }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="p-6 border border-border bg-card hover:border-secondary/50 hover:shadow-md transition-all duration-300"
+              className="p-6 border border-border bg-card hover:border-secondary/50 hover:shadow-md transition-all duration-300 rounded-xl"
             >
               <div className="w-10 h-10 bg-primary flex items-center justify-center mb-4">
                 <s.icon size={20} className="text-primary-foreground" />
@@ -58,7 +58,7 @@ export default function Services({ servicesImage }) {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="p-8 bg-primary text-primary-foreground flex flex-col md:flex-row items-start md:items-center gap-6"
+            className="p-8 bg-primary text-primary-foreground flex flex-col md:flex-row items-start md:items-center gap-6 rounded-xl"
           >
             <div className="w-12 h-12 bg-secondary flex items-center justify-center flex-shrink-0">
               <s.icon size={24} className="text-primary" />

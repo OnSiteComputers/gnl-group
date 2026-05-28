@@ -34,7 +34,7 @@ export default function Testimonials() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="border border-primary-foreground/20 p-8 relative"
+            className="border border-primary-foreground/20 p-8 relative rounded-xl"
           >
             <Quote size={32} className="text-secondary mb-6" />
             <p className="font-heading text-xl italic text-primary-foreground/90 leading-relaxed mb-8">
