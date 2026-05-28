@@ -96,8 +96,9 @@ export default function Navbar() {
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-primary shadow-lg`}>
         <div className="max-w-7xl mx-auto px-4 h-48 flex items-center justify-between">
-          <Link to="/" className="flex items-center">
+          <Link to="/" className="flex items-center gap-4">
             <img src={LOGO_URL} alt="GNL Digital Group" className="h-24 w-auto" />
+            <span className="hidden sm:block text-primary-foreground text-lg font-heading font-semibold italic tracking-wide">Local Dominance. Real Results.</span>
           </Link>
 
           {/* Desktop nav */}
