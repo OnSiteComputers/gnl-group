@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Phone, Award, Users, Target } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import MobileCtaBar from '../components/MobileCtaBar';
+
 
 const VALUES = [
   { icon: Award, title: "Proven Expertise", desc: "25+ years in technology, 16 years serving the same community. We're not going anywhere." },
@@ -146,7 +146,7 @@ export default function About() {
       </section>
 
       <Footer />
-      <MobileCtaBar />
+
     </div>
   );
 }

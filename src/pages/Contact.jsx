@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import LocalSection from '../components/LocalSection';
-import MobileCtaBar from '../components/MobileCtaBar';
+
 
 const INDUSTRIES = ['Law Firm', 'Medical / Healthcare', 'Real Estate', 'Home Services', 'Restaurant / Food', 'Retail', 'Financial Services', 'Auto / Automotive', 'Beauty / Wellness', 'Construction', 'Other'];
 const SERVICES_INTEREST = ['Local SEO Strategy', 'Local Map Pack', 'Content Authority', 'Reputation Management', 'Performance Analytics', 'Website Optimization', 'All-In-One Web Package', 'Other'];
@@ -162,7 +162,7 @@ export default function Contact() {
 
       <LocalSection />
       <Footer />
-      <MobileCtaBar />
+
     </div>
   );
 }
