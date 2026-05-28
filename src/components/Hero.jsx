@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export default function Hero({ heroImage }) {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32">
+    <section className="relative min-h-[70vh] md:min-h-screen flex items-center justify-center overflow-hidden pt-32">
       {/* Background */}
       <div className="absolute inset-0">
         {heroImage && (
@@ -18,7 +18,7 @@ export default function Hero({ heroImage }) {
         <div className="absolute inset-0 bg-primary" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center text-primary-foreground py-24">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center text-primary-foreground py-10 md:py-24">
         {/* Legacy badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
