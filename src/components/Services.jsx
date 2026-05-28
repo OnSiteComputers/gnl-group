@@ -13,11 +13,11 @@ const SERVICES = [
 
 export default function Services({ servicesImage }) {
   return (
-    <section id="services" className="py-16 bg-background">
+    <section id="services" className="py-12 bg-background">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
