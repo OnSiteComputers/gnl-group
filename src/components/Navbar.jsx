@@ -95,10 +95,10 @@ export default function Navbar() {
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-primary shadow-lg`}>
-        <div className="max-w-7xl mx-auto px-4 h-48 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-4">
-            <img src={LOGO_URL} alt="GNL Digital Group" className="h-24 w-auto" />
-            <span className="hidden sm:block text-primary-foreground text-lg font-heading font-semibold italic tracking-wide">Local Dominance. Real Results.</span>
+        <div className="max-w-7xl mx-auto px-4 h-36 flex items-center justify-between">
+          <Link to="/" className="flex items-center gap-3">
+            <img src={LOGO_URL} alt="GNL Digital Group" className="h-16 w-auto" />
+            <span className="block text-primary-foreground text-xs sm:text-base font-heading font-semibold italic tracking-wide leading-tight">Local Dominance.<br className="sm:hidden" /> Real Results.</span>
           </Link>
 
           {/* Desktop nav */}
