@@ -13,7 +13,7 @@ const SERVICES = [
 
 export default function Services({ servicesImage }) {
   return (
-    <section id="services" className="py-24 bg-background">
+    <section id="services" className="py-16 bg-background">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <motion.div

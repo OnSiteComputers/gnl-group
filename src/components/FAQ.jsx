@@ -33,7 +33,7 @@ export default function FAQ() {
   const [open, setOpen] = useState(null);
 
   return (
-    <section id="faq" className="py-24 bg-background">
+    <section id="faq" className="py-16 bg-background">
       <div className="max-w-3xl mx-auto px-6">
         <div className="text-center mb-12">
           <span className="text-secondary font-bold text-base tracking-widest uppercase">Common Questions</span>
