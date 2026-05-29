@@ -1,9 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const LOGO_URL = 'https://media.base44.com/files/public/6a15c006a4679719cfa0af7a/7a61157c2_mobile.html';
-// NOTE: Logo is embedded as base64 in the HTML file. We use an iframe trick or the GitHub raw URL.
-// The actual logo PNG is embedded in mobile.html — user should upload logo.png to replace this.
-const OCS_LOGO = null; // Replace with URL when logo is uploaded
+const LOGO_URL = 'https://media.base44.com/images/public/6a15c006a4679719cfa0af7a/e15967dc9_download.png';
 
 const NAV_LINKS = [
   { label: 'Home', id: 'top' },
@@ -51,20 +48,12 @@ export default function OnsiteNavbar({ scrollTo }) {
             onClick={() => handleNav('top')}
             style={{ display: 'flex', alignItems: 'center', gap: 14, background: 'none', border: 'none', cursor: 'pointer', padding: 0, textDecoration: 'none' }}
           >
-            {/* Logo placeholder — replace src with actual logo URL */}
-            <div style={{
-              width: 80, height: 64,
-              background: 'linear-gradient(135deg, #002868 60%, #e8521a)',
-              borderRadius: 8,
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            {/* Logo */}
+            <img src={LOGO_URL} alt="On-Site Computer Service" style={{
+              height: 64, width: 'auto', maxWidth: 120,
+              objectFit: 'contain',
               flexShrink: 0,
-            }}>
-              <span style={{
-                fontFamily: "'Oswald', sans-serif",
-                fontWeight: 700, fontSize: 22, color: '#fff',
-                letterSpacing: 1,
-              }}>OCS</span>
-            </div>
+            }} />
             <div style={{ textAlign: 'left' }}>
               <div style={{
                 fontFamily: "'Oswald', sans-serif",
