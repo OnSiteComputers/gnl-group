@@ -52,7 +52,7 @@ export default function Contact() {
 
       <section className="pt-24 min-h-screen grid lg:grid-cols-2">
         {/* Left — Info */}
-        <div className="bg-primary text-primary-foreground flex flex-col justify-center px-8 lg:px-16 py-20">
+        <div className="bg-primary text-primary-foreground flex flex-col justify-start px-8 lg:px-16 py-12">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
             <span className="text-secondary font-bold text-sm tracking-widest uppercase">Consultation Portal</span>
             <h1 className="font-heading text-4xl md:text-5xl font-bold mt-3 mb-4 leading-tight">
@@ -94,7 +94,7 @@ export default function Contact() {
         </div>
 
         {/* Right — Form */}
-        <div className="bg-background flex flex-col justify-center px-8 lg:px-16 py-20">
+        <div className="bg-background flex flex-col justify-start px-8 lg:px-16 py-12">
           {submitted ? (
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}

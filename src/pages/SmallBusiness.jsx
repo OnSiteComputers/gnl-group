@@ -29,7 +29,7 @@ export default function SmallBusiness() {
           <img src={HERO_BG} alt="Small business" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-primary/85" />
         </div>
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center text-primary-foreground py-20">
+        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center text-primary-foreground pb-20">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <span className="text-secondary font-medium text-sm tracking-widest uppercase">Grow Your Business Online</span>
             <h1 className="font-heading text-5xl md:text-6xl font-bold mt-3 mb-4 leading-tight">
