@@ -57,16 +57,24 @@ export default function Footer() {
         
         {/* Prominent Onsite Computer Service CTA */}
         <div className="bg-secondary/10 rounded-lg p-6 text-center border border-secondary/30">
-          <h3 className="font-heading font-bold text-lg text-secondary mb-2">For All Your Computer Repair Needs</h3>
-          <p className="text-primary-foreground/70 text-sm mb-4">Professional onsite computer service in Charlotte</p>
-          <a
-            href="https://www.onsitecomputerservice.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-secondary text-primary font-semibold px-6 py-3 rounded-lg hover:bg-secondary/90 transition-colors"
-          >
-            Contact Onsite Computer Service <ExternalLink size={16} />
-          </a>
+          <h3 className="font-heading font-bold text-lg text-secondary mb-2">Professional On-Site Computer Service</h3>
+          <p className="text-primary-foreground/70 text-sm mb-6">Visit our store or call us for expert computer repair</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="https://www.onsitecomputerservice.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-secondary text-primary font-semibold px-6 py-3 rounded-lg hover:bg-secondary/90 transition-colors"
+            >
+              Visit Our Store <ExternalLink size={16} />
+            </a>
+            <a
+              href="tel:+17045945826"
+              className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground font-semibold px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors border-2 border-primary-foreground/20"
+            >
+              <Phone size={16} /> Call Us
+            </a>
+          </div>
         </div>
         
         <div className="border-t border-primary-foreground/10 pt-6 text-center text-primary-foreground/40 text-sm">
