@@ -19,20 +19,20 @@ export default function Footer() {
           </div>
           
           {/* Hamburger Menu for Navigation */}
-          <div>
+          <div className="relative">
             <h4 className="font-heading font-bold text-secondary mb-4 tracking-widest text-sm uppercase">Navigation</h4>
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors mb-2"
+              className="flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors"
             >
               {menuOpen ? <X size={18} /> : <Menu size={18} />}
               <span className="text-sm">Menu</span>
             </button>
             {menuOpen && (
-              <ul className="space-y-2 pl-4 border-l-2 border-primary-foreground/20">
+              <ul className="absolute bottom-full left-0 mb-2 space-y-2 pl-4 border-l-2 border-primary-foreground/20 bg-primary/95 backdrop-blur-sm rounded-md p-3 shadow-lg">
                 {[['Home', '/'], ['About', '/about'], ['For Small Business', '/small-business'], ['Contact', '/contact']].map(([label, to]) => (
                   <li key={label}>
-                    <Link to={to} className="text-primary-foreground/70 hover:text-primary-foreground text-sm transition-colors">
+                    <Link to={to} className="text-primary-foreground/70 hover:text-primary-foreground text-sm transition-colors whitespace-nowrap">
                       {label}
                     </Link>
                   </li>
