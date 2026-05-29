@@ -100,7 +100,7 @@ export default function Navbar() {
           </Link>
 
           {/* Centered tagline - all screen sizes */}
-          <span className="absolute left-1/2 -translate-x-1/2 text-primary-foreground text-sm sm:text-lg lg:text-xl font-heading font-semibold italic tracking-wide text-center leading-tight">
+          <span className="absolute left-1/2 -translate-x-1/2 text-primary-foreground text-lg sm:text-xl lg:text-2xl font-heading font-bold italic tracking-wide text-center leading-tight">
             <span className="block">Local Dominance.</span>
             <span className="block">Real Results.</span>
           </span>
