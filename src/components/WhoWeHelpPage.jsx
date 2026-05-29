@@ -15,13 +15,13 @@ export default function WhoWeHelpPage({ icon: Icon, headline, subheadline, intro
       <Navbar />
 
       {/* Hero */}
-      <section className="bg-primary text-primary-foreground pt-24 pb-12 px-6 text-center">
+      <section className="bg-primary text-primary-foreground pt-32 pb-16 px-6 text-center">
         <div className="max-w-7xl mx-auto text-center">
          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
-             {Icon && <Icon className="text-secondary shrink-0" size={72} strokeWidth={1.5} />}
-             <h1 className="font-heading text-2xl md:text-4xl font-bold text-center sm:text-left">{headline}</h1>
+           <div className="flex justify-center mb-6">
+             {Icon && <Icon className="text-secondary shrink-0" size={60} strokeWidth={1.5} />}
            </div>
+           <h1 className="font-heading text-2xl md:text-4xl font-bold text-center mb-4">{headline}</h1>
            <p className="text-primary-foreground/70 text-lg md:text-xl max-w-2xl mx-auto">{subheadline}</p>
          </motion.div>
         </div>
