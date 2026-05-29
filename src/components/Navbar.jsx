@@ -13,7 +13,6 @@ const NAV_LINKS = [
   { label: 'Services', to: '/#services' },
   { label: 'FAQ', to: '/#faq' },
   { label: 'Reviews', to: '/#reviews' },
-  { label: 'Contact', to: '/contact' },
 ];
 
 const WHO_WE_HELP = [
@@ -137,6 +136,17 @@ export default function Navbar() {
                 </div>
               )}
             </div>
+            <Link
+              to="/contact"
+              onClick={(e) => handleNav(e, '/contact')}
+              className={`text-base font-medium transition-colors ${
+                location.pathname === '/contact'
+                  ? 'text-secondary'
+                  : 'text-primary-foreground/80 hover:text-primary-foreground'
+              }`}
+            >
+              Contact
+            </Link>
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
