@@ -15,6 +15,7 @@ import WhoWeHelpRestaurants from './pages/WhoWeHelpRestaurants';
 import WhoWeHelpProfessional from './pages/WhoWeHelpProfessional';
 import WhoWeHelpHomeServices from './pages/WhoWeHelpHomeServices';
 import Home2 from './pages/Home2';
+import OnsiteHome from './pages/OnsiteHome';
 import About2 from './pages/About2';
 import Contact2 from './pages/Contact2';
 
@@ -54,6 +55,7 @@ const AuthenticatedApp = () => {
       <Route path="/who-we-help/professional" element={<WhoWeHelpProfessional />} />
       <Route path="/who-we-help/home-services" element={<WhoWeHelpHomeServices />} />
       <Route path="/home2" element={<Home2 />} />
+      <Route path="/onsite-computer-service" element={<OnsiteHome />} />
       <Route path="/about2" element={<About2 />} />
       <Route path="/contact2" element={<Contact2 />} />
       <Route path="*" element={<PageNotFound />} />
