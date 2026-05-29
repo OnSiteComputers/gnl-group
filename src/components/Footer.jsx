@@ -167,10 +167,10 @@ export default function Footer() {
                   </li>
                 </ul>
                 <div className="flex flex-col gap-2 pt-3 border-t border-primary-foreground/10">
-                  <Button asChild size="sm" variant="outline" className="font-semibold border-secondary text-secondary hover:bg-secondary/10 w-full justify-start">
+                  <Button asChild size="sm" variant="outline" className="font-semibold border-secondary text-secondary hover:bg-secondary/10 w-full justify-center">
                     <a href={PHONE_HREF}><Phone size={15} /> {PHONE}</a>
                   </Button>
-                  <Button asChild size="sm" variant="secondary" className="font-semibold text-primary w-full justify-start">
+                  <Button asChild size="sm" variant="secondary" className="font-semibold text-primary w-full justify-center">
                     <Link to="/contact" onClick={() => setMenuOpen(false)}>Free Strategy Session</Link>
                   </Button>
                 </div>
