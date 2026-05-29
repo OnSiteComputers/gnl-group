@@ -50,7 +50,7 @@ export default function Contact() {
     <div className="min-h-screen font-body pb-16 lg:pb-0">
       <Navbar />
 
-      <section className="pt-36 min-h-screen grid lg:grid-cols-2">
+      <section className="pt-24 min-h-screen grid lg:grid-cols-2">
         {/* Left — Info */}
         <div className="bg-primary text-primary-foreground flex flex-col justify-center px-8 lg:px-16 py-20">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
