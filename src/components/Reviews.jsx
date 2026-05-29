@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 export default function Reviews() {
   return (
-    <section id="reviews" className="py-12 bg-card">
+    <section id="reviews" className="pt-6 pb-12 md:py-12 bg-card">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <motion.div

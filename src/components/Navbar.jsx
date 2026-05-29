@@ -51,7 +51,7 @@ export default function Navbar() {
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
     if (el) {
-      const offset = 192; // navbar height
+      const offset = 104; // navbar height + small breathing room
       const targetPosition = el.getBoundingClientRect().top + window.pageYOffset - offset;
       const startPosition = window.pageYOffset;
       const distance = targetPosition - startPosition;
