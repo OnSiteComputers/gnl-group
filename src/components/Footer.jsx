@@ -17,7 +17,7 @@ export default function Footer() {
           <div>
             <h4 className="font-heading font-bold text-secondary mb-4 tracking-widest text-sm uppercase">Navigation</h4>
             <ul className="space-y-2">
-              {[['Home', '/'], ['About', '/about'], ['For Small Business', '/small-business'], ['Contact', '/contact']].map(([label, to]) => (
+              {[['Home', '/'], ['About', '/about'], ['For Small Business', '/small-business'], ['Onsite Computer Service', '/onsite-computer-service'], ['Contact', '/contact']].map(([label, to]) => (
                 <li key={label}>
                   <Link to={to} className="text-primary-foreground/70 hover:text-primary-foreground text-sm transition-colors">
                     {label}
