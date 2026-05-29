@@ -13,7 +13,7 @@ const TESTIMONIALS = [
 
 export default function Testimonials() {
   return (
-    <section className="py-12 bg-primary text-primary-foreground">
+    <section id="testimonials" className="py-12 bg-primary text-primary-foreground">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           className="text-center mb-12"
