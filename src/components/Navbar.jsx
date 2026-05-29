@@ -94,15 +94,17 @@ export default function Navbar() {
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-primary shadow-lg`}>
-        <div className="max-w-7xl mx-auto px-4 h-24 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-3">
+        <div className="max-w-7xl mx-auto px-4 h-24 flex items-center justify-between relative">
+          <Link to="/" className="flex items-center gap-3 shrink-0">
             <img src={LOGO_URL} alt="GNL Digital Group" className="h-16 w-auto" />
-            <span className="block text-primary-foreground text-sm sm:text-lg font-heading font-semibold italic tracking-wide leading-tight text-center">Local Dominance.<br className="sm:hidden" /> Real Results.</span>
           </Link>
+
+          {/* Centered tagline — desktop only */}
+          <span className="hidden lg:block text-primary-foreground text-lg xl:text-xl font-heading font-semibold italic tracking-wide leading-tight text-center absolute left-1/2 -translate-x-1/2">Local Dominance.<br /> Real Results.</span>
 
           {/* Hamburger — mobile only */}
           <button
-            className="lg:hidden text-primary-foreground p-2"
+            className="lg:hidden text-primary-foreground p-2 shrink-0"
             onClick={() => { setMobileOpen(p => !p); setMobileWhoOpen(false); }}
             aria-label="Toggle menu"
           >
