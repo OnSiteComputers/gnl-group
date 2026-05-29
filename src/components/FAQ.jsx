@@ -36,7 +36,7 @@ export default function FAQ() {
     <section id="faq" className="pt-6 pb-12 md:py-12 bg-background">
       <div className="max-w-3xl mx-auto px-6">
         <div className="text-center mb-6 md:mb-12">
-          <span className="text-secondary font-bold text-base tracking-widest uppercase">Common Questions</span>
+          <span className="text-secondary font-bold text-lg tracking-widest uppercase">Common Questions</span>
           <h2 className="font-heading text-4xl font-bold mt-3 text-primary">Frequently Asked Questions</h2>
         </div>
 

@@ -22,7 +22,7 @@ export default function Services({ servicesImage }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <span className="text-secondary font-bold text-base tracking-widest uppercase">Our Expertise</span>
+          <span className="text-secondary font-bold text-lg tracking-widest uppercase">Our Expertise</span>
           <h2 className="font-heading text-5xl md:text-6xl font-bold mt-3 text-primary">
             Built for Local Dominance
           </h2>

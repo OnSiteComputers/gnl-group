@@ -31,7 +31,7 @@ export default function SmallBusiness() {
         </div>
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center text-primary-foreground pb-20">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <span className="text-secondary font-medium text-sm tracking-widest uppercase">Grow Your Business Online</span>
+            <span className="text-secondary font-bold text-lg tracking-widest uppercase">Grow Your Business Online</span>
             <h1 className="font-heading text-5xl md:text-6xl font-bold mt-3 mb-4 leading-tight">
               SEO &amp; Digital Marketing
               <br />for Small Businesses
@@ -55,7 +55,7 @@ export default function SmallBusiness() {
       <section className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div className="text-center mb-16" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <span className="text-secondary font-medium text-sm tracking-widest uppercase">What We Offer</span>
+            <span className="text-secondary font-bold text-lg tracking-widest uppercase">What We Offer</span>
             <h2 className="font-heading text-4xl font-bold mt-3 text-primary">Everything You Need to Grow Online</h2>
             <p className="text-muted-foreground mt-3 max-w-2xl mx-auto">Comprehensive digital marketing services tailored for small businesses. No jargon, no hidden fees, just results.</p>
           </motion.div>

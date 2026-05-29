@@ -37,7 +37,8 @@ export default function WhoWeHelpPage({ icon: Icon, headline, subheadline, intro
       {/* Benefits */}
       <section className="py-16 px-6 bg-muted/10">
         <div className="max-w-7xl mx-auto">
-          <h2 className="font-heading text-3xl font-bold text-center text-foreground mb-12">Why <span className="text-secondary">GNL Digital</span> Works for You</h2>
+          <span className="text-secondary font-bold text-lg tracking-widest uppercase block mb-3">Why GNL Digital Works for You</span>
+          <h2 className="font-heading text-3xl font-bold text-center text-foreground">Why <span className="text-secondary">GNL Digital</span> Works for You</h2>
           <div className="grid md:grid-cols-2 gap-6">
             {benefits.map((b, i) => (
               <motion.div key={i} initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
@@ -56,7 +57,8 @@ export default function WhoWeHelpPage({ icon: Icon, headline, subheadline, intro
       {/* Services */}
       <section className="py-16 px-6 bg-background">
         <div className="max-w-7xl mx-auto">
-          <h2 className="font-heading text-3xl font-bold text-center text-foreground mb-12">Our Services for You</h2>
+          <span className="text-secondary font-bold text-lg tracking-widest uppercase block mb-3">Our Services for You</span>
+          <h2 className="font-heading text-3xl font-bold text-center text-foreground">Our Services for You</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {services.map((s, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}

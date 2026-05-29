@@ -12,7 +12,7 @@ export default function ContactCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <span className="text-secondary font-medium text-sm tracking-widest uppercase">Get Started</span>
+          <span className="text-secondary font-bold text-lg tracking-widest uppercase">Get Started</span>
           <h2 className="font-heading text-4xl md:text-5xl font-bold mt-3 mb-4">
             Ready to Dominate Search Results?
           </h2>
