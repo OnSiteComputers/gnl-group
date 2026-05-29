@@ -26,9 +26,7 @@ const WHO_WE_HELP = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [mobileWhoWeHelpOpen, setMobileWhoWeHelpOpen] = useState(false);
   const dropdownRef = useRef(null);
   const location = useLocation();
   const navigate = useNavigate();
@@ -76,7 +74,6 @@ export default function Navbar() {
 
   const handleNav = (e, to) => {
     e.preventDefault();
-    setOpen(false);
     if (to.includes('#')) {
       const [path, id] = to.split('#');
       const basePath = path || '/';
@@ -95,14 +92,14 @@ export default function Navbar() {
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-primary shadow-lg`}>
-        <div className="max-w-7xl mx-auto px-4 h-36 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 h-24 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3">
             <img src={LOGO_URL} alt="GNL Digital Group" className="h-16 w-auto" />
             <span className="block text-primary-foreground text-xs sm:text-base font-heading font-semibold italic tracking-wide leading-tight">Local Dominance.<br className="sm:hidden" /> Real Results.</span>
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden lg:flex items-center gap-6">
+          <div className="flex items-center gap-6">
             {NAV_LINKS.map(l => (
               <Link
                 key={l.label}
@@ -154,56 +151,8 @@ export default function Navbar() {
             </Button>
           </div>
 
-          {/* Mobile hamburger */}
-          <button className="lg:hidden text-primary-foreground" onClick={() => setOpen(true)}>
-            <Menu size={24} />
-          </button>
         </div>
       </nav>
-
-      {/* Mobile overlay menu */}
-      {open && (
-        <div className="fixed inset-0 z-[100] bg-primary flex flex-col items-center justify-center gap-8">
-          <button onClick={() => setOpen(false)} className="absolute top-6 right-6 text-primary-foreground">
-            <X size={28} />
-          </button>
-          {NAV_LINKS.map(l => (
-            <Link
-              key={l.label}
-              to={l.to}
-              onClick={(e) => handleNav(e, l.to)}
-              className="text-primary-foreground font-heading text-lg hover:text-secondary transition-colors"
-            >
-              {l.label}
-            </Link>
-          ))}
-          <div className="w-full text-center">
-            <button
-              onClick={() => setMobileWhoWeHelpOpen(!mobileWhoWeHelpOpen)}
-              className="text-secondary font-heading text-sm font-bold py-2 hover:text-secondary/80 transition-colors"
-            >
-              Who We Help {mobileWhoWeHelpOpen ? '▼' : '▶'}
-            </button>
-            {mobileWhoWeHelpOpen && (
-              <div className="space-y-2">
-                {WHO_WE_HELP.map(item => (
-                  <Link
-                    key={item.label}
-                    to={item.to}
-                    onClick={() => { setOpen(false); setMobileWhoWeHelpOpen(false); window.scrollTo({ top: 0 }); }}
-                    className="block text-primary-foreground/80 font-body text-base py-2 hover:text-secondary transition-colors"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-          <a href={PHONE_HREF} className="text-secondary font-semibold text-lg mt-4">
-            Call Now: {PHONE}
-          </a>
-        </div>
-      )}
     </>
   );
 }
