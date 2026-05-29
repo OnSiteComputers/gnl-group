@@ -97,10 +97,11 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 h-24 flex items-center justify-between relative">
           <Link to="/" className="flex items-center gap-3 shrink-0">
             <img src={LOGO_URL} alt="GNL Digital Group" className="h-16 w-auto" />
+            <span className="block sm:hidden text-primary-foreground text-base font-heading font-semibold italic tracking-wide leading-tight">Local Dominance.<br /> Real Results.</span>
           </Link>
 
-          {/* Centered tagline — desktop only */}
-          <span className="hidden lg:block text-primary-foreground text-lg xl:text-xl font-heading font-semibold italic tracking-wide leading-tight text-center absolute left-1/2 -translate-x-1/2">Local Dominance.<br /> Real Results.</span>
+          {/* Centered tagline — tablet and desktop */}
+          <span className="hidden sm:block text-primary-foreground text-lg xl:text-xl font-heading font-semibold italic tracking-wide leading-tight text-center absolute left-1/2 -translate-x-1/2">Local Dominance.<br /> Real Results.</span>
 
           {/* Hamburger — mobile only */}
           <button
