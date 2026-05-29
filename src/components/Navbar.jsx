@@ -94,14 +94,16 @@ export default function Navbar() {
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-primary shadow-lg`}>
-        <div className="max-w-7xl mx-auto px-4 h-24 flex items-center justify-between relative">
+        <div className="max-w-7xl mx-auto px-4 h-24 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3 shrink-0">
             <img src={LOGO_URL} alt="GNL Digital Group" className="h-16 w-auto" />
-            <span className="block sm:hidden text-primary-foreground text-base font-heading font-semibold italic tracking-wide leading-tight">Local Dominance.<br /> Real Results.</span>
           </Link>
 
-          {/* Centered tagline — tablet and desktop */}
-          <span className="hidden sm:block text-primary-foreground text-lg xl:text-xl font-heading font-semibold italic tracking-wide leading-tight text-center absolute left-1/2 -translate-x-1/2">Local Dominance.<br /> Real Results.</span>
+          {/* Centered tagline */}
+          <span className="hidden sm:block text-primary-foreground text-lg xl:text-xl font-heading font-semibold italic tracking-wide text-center flex-1 mx-4">
+            <span className="block">Local Dominance.</span>
+            <span className="block">Real Results.</span>
+          </span>
 
           {/* Hamburger — mobile only */}
           <button
