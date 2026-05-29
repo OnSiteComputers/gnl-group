@@ -31,10 +31,10 @@ export default function About() {
 
       {/* The Story Section */}
       <section className="py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-6 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="font-heading text-3xl font-bold text-primary mb-6">How GNL Started</h2>
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="space-y-4 text-muted-foreground leading-relaxed text-center max-w-3xl mx-auto">
               <p>
                 It all happened on a Saturday morning in a mall parking lot. Greg was delivering an iMac back to a lawyer customer — someone who'd been trusting On-Site Computer Service for years.
               </p>
@@ -52,7 +52,7 @@ export default function About() {
               </p>
             </div>
 
-            <div className="mt-10 grid md:grid-cols-3 gap-6">
+            <div className="mt-10 grid md:grid-cols-3 gap-6 text-left">
               {[
                 { title: "Specialized Focus", desc: "We focus on local businesses in the Charlotte area because that's where we can make the biggest impact." },
                 { title: "Local Partnership", desc: "We're not a faceless agency. We're your neighbors in Concord, invested in your success." },
