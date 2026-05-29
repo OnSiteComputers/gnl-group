@@ -18,7 +18,7 @@ export default function Hero({ heroImage }) {
         <div className="absolute inset-0 bg-primary" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center text-primary-foreground py-10 md:py-24">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center text-primary-foreground pb-10 md:pb-24">
         {/* Legacy badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
