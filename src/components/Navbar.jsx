@@ -27,6 +27,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileWhoOpen, setMobileWhoOpen] = useState(false);
   const dropdownRef = useRef(null);
   const location = useLocation();
   const navigate = useNavigate();
@@ -101,7 +102,7 @@ export default function Navbar() {
           {/* Hamburger — mobile only */}
           <button
             className="lg:hidden text-primary-foreground p-2"
-            onClick={() => setMobileOpen(p => !p)}
+            onClick={() => { setMobileOpen(p => !p); setMobileWhoOpen(false); }}
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
@@ -190,19 +191,27 @@ export default function Navbar() {
             ))}
             {/* Who We Help */}
             <div className="py-3 border-b border-primary-foreground/10">
-              <p className="text-base font-medium text-primary-foreground/80 mb-2">Who We Help</p>
-              <div className="pl-3 space-y-1">
-                {WHO_WE_HELP.map(item => (
-                  <Link
-                    key={item.label}
-                    to={item.to}
-                    onClick={() => { setMobileOpen(false); window.scrollTo({ top: 0 }); }}
-                    className="block py-2 text-sm text-primary-foreground/70 hover:text-primary-foreground"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
+              <button
+                onClick={() => setMobileWhoOpen(p => !p)}
+                className="flex items-center justify-between w-full text-base font-medium text-primary-foreground/80 hover:text-primary-foreground"
+              >
+                Who We Help
+                <ChevronDown size={16} className={`transition-transform ${mobileWhoOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {mobileWhoOpen && (
+                <div className="pl-3 mt-2 space-y-1">
+                  {WHO_WE_HELP.map(item => (
+                    <Link
+                      key={item.label}
+                      to={item.to}
+                      onClick={() => { setMobileOpen(false); setMobileWhoOpen(false); window.scrollTo({ top: 0 }); }}
+                      className="block py-2 text-sm text-primary-foreground/70 hover:text-primary-foreground"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
             <Link
               to="/contact"
