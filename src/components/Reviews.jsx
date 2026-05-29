@@ -10,7 +10,7 @@ export default function Reviews() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-6 md:mb-10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -24,7 +24,7 @@ export default function Reviews() {
 
         {/* Stats */}
         <motion.div
-          className="flex justify-center gap-2 mb-10"
+          className="flex justify-center gap-2 mb-6 md:mb-10"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -34,7 +34,7 @@ export default function Reviews() {
           ))}
         </motion.div>
 
-        <div className="grid grid-cols-2 gap-6 text-center mb-12">
+        <div className="grid grid-cols-2 gap-6 text-center mb-8 md:mb-12">
           {[['177', '5-Star Reviews'], ['25+', 'Years in Business']].map(([num, label]) => (
             <div key={label} className="border border-border p-6 rounded-xl">
               <div className="font-heading font-bold text-3xl text-primary">{num}</div>
@@ -45,7 +45,7 @@ export default function Reviews() {
 
         {/* Section Title */}
         <motion.h3
-          className="font-heading text-3xl font-bold text-center text-primary mb-8"
+          className="font-heading text-3xl font-bold text-center text-primary mb-4 md:mb-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -55,7 +55,7 @@ export default function Reviews() {
 
         {/* Elfsight Google Reviews Widget */}
         <div className="mb-10 elfsight-reviews-container">
-          <div class="elfsight-app-989581b6-5532-43fa-8f5f-66c819c1d351" data-elfsight-app-lazy></div>
+          <div className="elfsight-app-989581b6-5532-43fa-8f5f-66c819c1d351" data-elfsight-app-lazy></div>
         </div>
 
 
