@@ -26,6 +26,7 @@ const WHO_WE_HELP = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const dropdownRef = useRef(null);
   const location = useLocation();
   const navigate = useNavigate();
@@ -97,8 +98,17 @@ export default function Navbar() {
             <span className="block text-primary-foreground text-xs sm:text-base font-heading font-semibold italic tracking-wide leading-tight">Local Dominance.<br className="sm:hidden" /> Real Results.</span>
           </Link>
 
+          {/* Hamburger — mobile only */}
+          <button
+            className="lg:hidden text-primary-foreground p-2"
+            onClick={() => setMobileOpen(p => !p)}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+
           {/* Desktop nav */}
-          <div className="flex items-center gap-6">
+          <div className="hidden lg:flex items-center gap-6">
             {NAV_LINKS.map(l => (
               <Link
                 key={l.label}
@@ -163,6 +173,55 @@ export default function Navbar() {
 
         </div>
       </nav>
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div className="lg:hidden fixed top-24 left-0 right-0 z-40 bg-primary shadow-xl border-t border-primary-foreground/10">
+          <div className="flex flex-col px-6 py-4 space-y-1">
+            {NAV_LINKS.map(l => (
+              <Link
+                key={l.label}
+                to={l.to}
+                onClick={(e) => { handleNav(e, l.to); setMobileOpen(false); }}
+                className="py-3 text-base font-medium text-primary-foreground/80 hover:text-primary-foreground border-b border-primary-foreground/10 last:border-0"
+              >
+                {l.label}
+              </Link>
+            ))}
+            {/* Who We Help */}
+            <div className="py-3 border-b border-primary-foreground/10">
+              <p className="text-base font-medium text-primary-foreground/80 mb-2">Who We Help</p>
+              <div className="pl-3 space-y-1">
+                {WHO_WE_HELP.map(item => (
+                  <Link
+                    key={item.label}
+                    to={item.to}
+                    onClick={() => { setMobileOpen(false); window.scrollTo({ top: 0 }); }}
+                    className="block py-2 text-sm text-primary-foreground/70 hover:text-primary-foreground"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+            <Link
+              to="/contact"
+              onClick={(e) => { handleNav(e, '/contact'); setMobileOpen(false); }}
+              className="py-3 text-base font-medium text-primary-foreground/80 hover:text-primary-foreground border-b border-primary-foreground/10"
+            >
+              Contact
+            </Link>
+            <div className="pt-4 flex flex-col gap-3">
+              <Button asChild size="sm" variant="outline" className="font-semibold border-secondary text-secondary hover:bg-secondary/10 w-full">
+                <a href={PHONE_HREF}><Phone size={15} />{PHONE}</a>
+              </Button>
+              <Button asChild size="sm" variant="secondary" className="font-semibold text-primary w-full">
+                <Link to="/contact" onClick={() => setMobileOpen(false)}>Free Strategy Session</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
