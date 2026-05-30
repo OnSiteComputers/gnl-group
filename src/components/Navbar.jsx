@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 
 const PHONE = '(704) 594-5826';
 const PHONE_HREF = 'tel:+17045945826';
-const LOGO_URL = 'https://media.base44.com/images/public/6a1a83ae581f8c993077c1a3/82281ed4d_GNL-Logo.png';
+const LOGO_URL = 'https://media.base44.com/images/public/6a1a83ae581f8c993077c1a3/ba1c63261_Logo-no-backgroundwithtagline.png';
 
 const NAV_LINKS = [
   { label: 'Home', to: '/' },
@@ -98,10 +98,7 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Center: Tagline */}
-          <div className="flex items-center justify-center text-center text-primary-foreground font-heading font-bold italic tracking-wide" style={{ fontSize: 'clamp(1.1rem, 2vw, 1.6rem)' }}>
-            Local Dominance. Real Results.
-          </div>
+
 
           {/* Right: Phone + CTA stacked */}
           <div className="flex flex-col items-center justify-center gap-2 h-full">
@@ -123,7 +120,7 @@ export default function Navbar() {
             <Link to="/">
               <img src={LOGO_URL} alt="GNL Digital Group" style={{ height: '2.5rem', width: 'auto' }} />
             </Link>
-            <p className="text-primary-foreground/80 text-xs italic font-heading font-semibold">Local Dominance. Real Results.</p>
+
           </div>
           <div className="flex items-center gap-2">
             <a href={PHONE_HREF} className="flex items-center gap-1 text-secondary font-semibold text-sm border border-secondary rounded px-2 py-1 hover:bg-secondary/10 transition-colors">

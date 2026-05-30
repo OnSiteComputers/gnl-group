@@ -3,7 +3,7 @@ import { Phone, Mail, Menu, X, ExternalLink, ChevronDown } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 
-const LOGO_URL = 'https://media.base44.com/images/public/6a15c006a4679719cfa0af7a/ae8ba42c7_Logo.png';
+const LOGO_URL = 'https://media.base44.com/images/public/6a1a83ae581f8c993077c1a3/ba1c63261_Logo-no-backgroundwithtagline.png';
 
 const NAV_LINKS = [
   { label: 'Home', to: '/' },
