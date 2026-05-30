@@ -22,6 +22,7 @@ const WHO_WE_HELP = [
   { label: 'Restaurants', to: '/who-we-help/restaurants' },
   { label: 'Professional Services', to: '/who-we-help/professional' },
   { label: 'Home Services', to: '/who-we-help/home-services' },
+  { label: 'Realtors', to: '/who-we-help/realtors' },
 ];
 
 export default function Navbar() {
