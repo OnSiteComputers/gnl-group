@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 
 const PHONE = '(704) 594-5826';
 const PHONE_HREF = 'tel:+17045945826';
-const LOGO_URL = 'https://media.base44.com/images/public/6a1a83ae581f8c993077c1a3/262364531_GNL-Logo.png';
+const LOGO_URL = 'https://media.base44.com/images/public/6a1a83ae581f8c993077c1a3/82281ed4d_GNL-Logo.png';
 
 const NAV_LINKS = [
   { label: 'Home', to: '/' },
@@ -91,7 +91,7 @@ export default function Navbar() {
         {/* ROW 1 — 3 columns: Logo | Tagline | Buttons (desktop only) */}
         <div className="max-w-7xl mx-auto px-4 h-28 hidden md:grid grid-cols-3 items-center">
           {/* Left: Logo */}
-          <div className="flex items-center">
+          <div className="flex items-center justify-center">
             <Link to="/">
               <img src={LOGO_URL} alt="GNL Digital Group" style={{ height: 'clamp(6rem, 10vw, 9rem)', width: 'auto' }} />
             </Link>
@@ -103,7 +103,7 @@ export default function Navbar() {
           </div>
 
           {/* Right: Phone + CTA stacked */}
-          <div className="flex flex-col items-center gap-2 justify-self-end">
+          <div className="flex flex-col items-center gap-2">
             <Button asChild size="sm" variant="outline" className="font-semibold border-secondary text-secondary hover:bg-secondary/10 hover:text-secondary w-fit">
               <a href={PHONE_HREF}>
                 <Phone size={15} className="mr-1" />
