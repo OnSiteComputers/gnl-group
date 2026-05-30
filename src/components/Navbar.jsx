@@ -1,5 +1,5 @@
-import { useState, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Phone, Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -22,111 +22,174 @@ const WHO_WE_HELP = [
   { label: 'Restaurants', to: '/who-we-help/restaurants' },
   { label: 'Professional Services', to: '/who-we-help/professional' },
   { label: 'Home Services', to: '/who-we-help/home-services' },
-  { label: 'Realtors', to: '/who-we-help/realtors' },
 ];
 
 export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileWhoOpen, setMobileWhoOpen] = useState(false);
   const dropdownRef = useRef(null);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const scrollToSection = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      const offset = 104; // navbar height + small breathing room
+      const targetPosition = el.getBoundingClientRect().top + window.pageYOffset - offset;
+      const startPosition = window.pageYOffset;
+      const distance = targetPosition - startPosition;
+      const duration = 1200; // slower scroll (1.2 seconds)
+      let start = null;
+
+      const animation = (currentTime) => {
+        if (start === null) start = currentTime;
+        const timeElapsed = currentTime - start;
+        const progress = Math.min(timeElapsed / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+        window.scrollTo(0, startPosition + distance * ease);
+        if (timeElapsed < duration) {
+          requestAnimationFrame(animation);
+        }
+      };
+
+      requestAnimationFrame(animation);
+    }
+  };
+
+  const handleNav = (e, to) => {
+    e.preventDefault();
+    if (to.includes('#')) {
+      const [path, id] = to.split('#');
+      const basePath = path || '/';
+      if (location.pathname === basePath) {
+        scrollToSection(id);
+      } else {
+        navigate(basePath);
+        setTimeout(() => scrollToSection(id), 100);
+      }
+    } else {
+      navigate(to);
+      setTimeout(() => window.scrollTo({ top: 0, behavior: 'auto' }), 50);
+    }
+  };
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0f1e] shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-8">
-          {/* Logo */}
-          <Link to="/" className="flex items-center shrink-0">
-            <img src={LOGO_URL} alt="GNL Digital Group" className="h-14 w-auto" />
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-primary shadow-lg`}>
+        <div className="max-w-7xl mx-auto px-4 h-24 flex items-center">
+          <Link to="/" className="flex items-center gap-3 shrink-0">
+            <img src={LOGO_URL} alt="GNL Digital Group" className="h-16 w-auto" />
           </Link>
 
-          {/* Logo + Nav Row */}
-          <div className="flex items-center justify-between md:justify-start md:flex-1 md:gap-8">
-            <Link to="/" className="flex items-center shrink-0">
-              <img src={LOGO_URL} alt="GNL Digital Group" className="h-14 w-auto" />
-            </Link>
+          {/* Centered tagline - all screen sizes */}
+          <span className="flex-1 text-center text-primary-foreground text-lg sm:text-xl lg:text-2xl font-heading font-bold italic tracking-wide leading-tight">
+            <span className="block">Local Dominance.</span>
+            <span className="block">Real Results.</span>
+          </span>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8 flex-1">
-              {NAV_LINKS.map(l => (
-                <Link
-                  key={l.label}
-                  to={l.to}
-                  className={`text-sm font-medium whitespace-nowrap transition-colors ${
-                    location.pathname === l.to
-                      ? 'text-secondary'
-                      : 'text-primary-foreground/80 hover:text-primary-foreground'
-                  }`}
-                >
-                  {l.label}
-                </Link>
-              ))}
-              {/* Who We Help Dropdown */}
-              <div className="relative" ref={dropdownRef}>
-                <button
-                  onClick={() => setDropdownOpen(p => !p)}
-                  className="flex items-center gap-1 text-sm font-medium whitespace-nowrap text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                >
-                  Who We Help <ChevronDown size={14} className={`transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
-                </button>
-                {dropdownOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-52 bg-white rounded-md shadow-lg border border-border overflow-hidden z-50">
-                    {WHO_WE_HELP.map(item => (
-                      <Link
-                        key={item.label}
-                        to={item.to}
-                        onClick={() => { setDropdownOpen(false); window.scrollTo({ top: 0 }); }}
-                        className="block px-4 py-3 text-sm text-foreground hover:bg-secondary/10 hover:text-secondary transition-colors border-b border-border/40 last:border-0"
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
+          {/* Hamburger — mobile only */}
+          <button
+            className="lg:hidden text-primary-foreground p-2 shrink-0"
+            onClick={() => { setMobileOpen(p => !p); setMobileWhoOpen(false); }}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+
+          {/* Desktop nav */}
+          <div className="hidden lg:flex items-center gap-6">
+            {NAV_LINKS.map(l => (
               <Link
-                to="/contact"
-                className={`text-sm font-medium whitespace-nowrap transition-colors ${
-                  location.pathname === '/contact'
+                key={l.label}
+                to={l.to}
+                onClick={(e) => handleNav(e, l.to)}
+                className={`text-base font-medium transition-colors ${
+                  location.pathname === l.to
                     ? 'text-secondary'
                     : 'text-primary-foreground/80 hover:text-primary-foreground'
                 }`}
               >
-                Contact
+                {l.label}
               </Link>
+            ))}
+            {/* Who We Help Dropdown */}
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setDropdownOpen(p => !p)}
+                className="flex items-center gap-1 text-base font-medium text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+              >
+                Who We Help <ChevronDown size={14} className={`transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {dropdownOpen && (
+                <div className="absolute top-full left-0 mt-2 w-52 bg-white rounded-md shadow-lg border border-border overflow-hidden z-50">
+                  {WHO_WE_HELP.map(item => (
+                    <Link
+                      key={item.label}
+                      to={item.to}
+                      onClick={() => { setDropdownOpen(false); window.scrollTo({ top: 0 }); }}
+                      className="block px-4 py-3 text-base text-foreground hover:bg-secondary/10 hover:text-secondary transition-colors border-b border-border/40 last:border-0"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden text-primary-foreground"
+            <Link
+              to="/contact"
+              onClick={(e) => handleNav(e, '/contact')}
+              className={`text-base font-medium transition-colors ${
+                location.pathname === '/contact'
+                  ? 'text-secondary'
+                  : 'text-primary-foreground/80 hover:text-primary-foreground'
+              }`}
             >
-              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+              Contact
+            </Link>
           </div>
 
-          {/* Bottom Row - Centered CTA Buttons */}
-          <div className="hidden md:flex items-center gap-3 justify-center w-full md:w-auto">
-              <Button asChild size="sm" variant="outline" className="font-semibold border-secondary text-secondary hover:bg-secondary/10 hover:text-secondary">
-                <a href={PHONE_HREF}><Phone size={15} />{PHONE}</a>
-              </Button>
-              <Button asChild size="sm" variant="secondary" className="font-semibold text-primary">
-                <Link to="/contact">Free Strategy Session</Link>
-              </Button>
+          <div className="hidden lg:flex items-center gap-3">
+            <Button asChild size="sm" variant="outline" className="font-semibold border-secondary text-secondary hover:bg-secondary/10 hover:text-secondary">
+              <a href={PHONE_HREF}>
+                <Phone size={15} />
+                {PHONE}
+              </a>
+            </Button>
+            <Button asChild size="sm" variant="secondary" className="font-semibold text-primary">
+              <Link to="/contact">Free Strategy Session</Link>
+            </Button>
           </div>
+
         </div>
       </nav>
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden fixed top-16 left-0 right-0 z-40 bg-primary shadow-xl border-t border-primary-foreground/10">
+        <div className="lg:hidden fixed top-24 left-0 right-0 z-40 bg-primary shadow-xl border-t border-primary-foreground/10">
           <div className="flex flex-col px-6 py-4 space-y-1">
             {NAV_LINKS.map(l => (
               <Link
                 key={l.label}
                 to={l.to}
-                onClick={() => setMobileOpen(false)}
+                onClick={(e) => { handleNav(e, l.to); setMobileOpen(false); }}
                 className="py-3 text-base font-medium text-primary-foreground/80 hover:text-primary-foreground border-b border-primary-foreground/10 last:border-0"
               >
                 {l.label}
@@ -158,7 +221,7 @@ export default function Navbar() {
             </div>
             <Link
               to="/contact"
-              onClick={() => setMobileOpen(false)}
+              onClick={(e) => { handleNav(e, '/contact'); setMobileOpen(false); }}
               className="py-3 text-base font-medium text-primary-foreground/80 hover:text-primary-foreground border-b border-primary-foreground/10"
             >
               Contact

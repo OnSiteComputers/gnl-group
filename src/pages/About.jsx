@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import { Phone, Award, Users, Target } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import MobileCtaBar from '../components/MobileCtaBar';
 
 
 const VALUES = [
@@ -147,7 +146,7 @@ export default function About() {
       </section>
 
       <Footer />
-      <MobileCtaBar />
+
     </div>
   );
 }

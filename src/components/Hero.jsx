@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export default function Hero({ heroImage }) {
   return (
-    <section className="relative min-h-[70vh] md:min-h-screen flex items-start justify-center overflow-hidden pt-36">
+    <section className="relative min-h-[70vh] md:min-h-screen flex items-start justify-center overflow-hidden pt-24">
       {/* Background */}
       <div className="absolute inset-0">
         {heroImage && (
@@ -29,7 +29,14 @@ export default function Hero({ heroImage }) {
           25+ Years of Excellence
         </motion.div>
 
-
+        <motion.h1
+          className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+        >
+          Dominate Your Market
+        </motion.h1>
 
         <motion.p
           className="text-secondary font-heading text-xl md:text-2xl italic mb-4"
