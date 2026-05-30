@@ -110,8 +110,8 @@ export default function Navbar() {
           {/* Right: Nav links and buttons */}
           <div className="flex items-center gap-4 shrink-0">
 
-          {/* Desktop nav links */}
-          <div className="hidden lg:flex items-center gap-5 shrink-0">
+          {/* Nav links */}
+          <div className="flex items-center gap-5 shrink-0">
             {NAV_LINKS.map(l => (
               <Link
                 key={l.label}
@@ -162,8 +162,8 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Desktop CTA buttons */}
-          <div className="hidden lg:flex items-center gap-3">
+          {/* CTA buttons */}
+          <div className="flex items-center gap-3">
             <Button asChild size="sm" variant="outline" className="font-semibold border-secondary text-secondary hover:bg-secondary/10 hover:text-secondary">
               <a href={PHONE_HREF}><Phone size={15} />{PHONE}</a>
             </Button>
