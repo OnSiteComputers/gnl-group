@@ -95,23 +95,20 @@ export default function Navbar() {
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-primary shadow-lg`}>
-        <div className="max-w-7xl mx-auto px-4 h-28 flex items-center gap-4">
+        <div className="max-w-7xl mx-auto px-4 h-28 flex items-center">
 
           {/* Left: Logo */}
           <Link to="/" className="flex items-center shrink-0">
             <img src={LOGO_URL} alt="GNL Digital Group" className="h-24 w-auto" />
           </Link>
 
-          <div className="flex-1" />
+          {/* Center: Tagline (hidden on mobile) */}
+          <div className="hidden lg:flex flex-1 justify-center">
+            <span className="text-primary-foreground font-heading font-bold text-lg tracking-wide">Dominate Your Market</span>
+          </div>
 
-          {/* Hamburger — mobile only */}
-          <button
-            className="lg:hidden text-primary-foreground p-2 shrink-0"
-            onClick={() => { setMobileOpen(p => !p); setMobileWhoOpen(false); }}
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Right: Nav links and buttons */}
+          <div className="flex items-center gap-4 shrink-0">
 
           {/* Desktop nav links */}
           <div className="hidden lg:flex items-center gap-5 shrink-0">
@@ -166,13 +163,14 @@ export default function Navbar() {
           </div>
 
           {/* Desktop CTA buttons */}
-          <div className="hidden lg:flex items-center gap-3 shrink-0">
+          <div className="hidden lg:flex items-center gap-3">
             <Button asChild size="sm" variant="outline" className="font-semibold border-secondary text-secondary hover:bg-secondary/10 hover:text-secondary">
               <a href={PHONE_HREF}><Phone size={15} />{PHONE}</a>
             </Button>
             <Button asChild size="sm" variant="secondary" className="font-semibold text-primary">
               <Link to="/contact">Free Strategy Session</Link>
             </Button>
+          </div>
           </div>
 
         </div>
