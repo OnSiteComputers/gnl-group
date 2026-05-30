@@ -95,12 +95,12 @@ export default function Navbar() {
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-primary shadow-lg`}>
-        <div className="max-w-7xl mx-auto px-4 h-24 grid grid-cols-3 items-center">
+        <div className="max-w-7xl mx-auto px-4 h-24 grid items-center" style={{gridTemplateColumns: 'auto 1fr auto'}}>
 
           {/* Left: Logo */}
           <div className="flex items-center">
             <Link to="/" className="flex items-center shrink-0">
-              <img src={LOGO_URL} alt="GNL Digital Group" className="h-16 w-auto" />
+              <img src={LOGO_URL} alt="GNL Digital Group" className="h-20 w-auto" />
             </Link>
           </div>
 
@@ -125,7 +125,7 @@ export default function Navbar() {
             </button>
 
             {/* Desktop nav links */}
-            <div className="hidden lg:flex items-center gap-4">
+            <div className="hidden lg:flex items-center gap-4 whitespace-nowrap">
               {NAV_LINKS.map(l => (
                 <Link
                   key={l.label}
@@ -146,7 +146,7 @@ export default function Navbar() {
                   onClick={() => setDropdownOpen(p => !p)}
                   className="flex items-center gap-1 text-sm font-medium text-primary-foreground/80 hover:text-primary-foreground transition-colors"
                 >
-                  Who We Help <ChevronDown size={14} className={`transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
+                  <span className="whitespace-nowrap">Who We Help</span> <ChevronDown size={14} className={`transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
                 {dropdownOpen && (
                   <div className="absolute top-full left-0 mt-2 w-52 bg-white rounded-md shadow-lg border border-border overflow-hidden z-50">
