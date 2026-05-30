@@ -118,7 +118,7 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Row 1: Logo + Phone + Hamburger */}
-        <div className="md:hidden max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
+        <div className="md:hidden max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
           <div className="flex flex-col items-start gap-0.5">
             <Link to="/">
               <img src={LOGO_URL} alt="GNL Digital Group" style={{ height: '2.5rem', width: 'auto' }} />
