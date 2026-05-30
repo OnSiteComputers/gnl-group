@@ -89,25 +89,48 @@ export default function Navbar() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-primary shadow-lg">
         {/* Top: Tagline */}
         <div className="border-b border-primary-foreground/10 py-3">
-          <div className="max-w-7xl mx-auto px-4 text-center text-primary-foreground font-heading font-bold italic tracking-wide" style={{ fontSize: 'clamp(0.95rem, 2vw, 1.35rem)' }}>
+          <div className="max-w-7xl mx-auto px-4 text-center text-primary-foreground font-heading font-bold italic tracking-wide" style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.4rem)' }}>
             <span className="block leading-tight">Local Dominance. Real Results.</span>
           </div>
         </div>
 
-        {/* Bottom: Logo, Nav, Buttons */}
-        <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+        {/* Middle: Logo + Stacked Buttons */}
+        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3 shrink-0">
             <img src={LOGO_URL} alt="GNL Digital Group" style={{ height: 'clamp(2rem, 4vw, 3.5rem)', width: 'auto' }} />
           </Link>
 
-          {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-6" style={{ fontSize: 'clamp(0.75rem, 1.2vw, 1rem)' }}>
+          {/* Hamburger — true mobile only */}
+          <button
+            className="md:hidden text-primary-foreground p-2 shrink-0"
+            onClick={() => { setMobileOpen(p => !p); setMobileWhoOpen(false); }}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+
+          <div className="hidden md:flex flex-col gap-2">
+            <Button asChild size="sm" variant="outline" className="font-semibold border-secondary text-secondary hover:bg-secondary/10 hover:text-secondary w-full">
+              <a href={PHONE_HREF}>
+                <Phone size={15} className="mr-1" />
+                {PHONE}
+              </a>
+            </Button>
+            <Button asChild size="sm" variant="secondary" className="font-semibold text-primary w-full">
+              <Link to="/contact">Free Strategy Session</Link>
+            </Button>
+          </div>
+        </div>
+
+        {/* Bottom Nav Row */}
+        <div className="hidden md:block border-t border-primary-foreground/10">
+          <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-5 h-10" style={{ fontSize: 'clamp(0.7rem, 1.1vw, 0.9rem)' }}>
             {NAV_LINKS.map(l => (
               <Link
                 key={l.label}
                 to={l.to}
                 onClick={(e) => handleNav(e, l.to)}
-                className={`text-base font-medium transition-colors ${
+                className={`font-medium whitespace-nowrap transition-colors ${
                   location.pathname === l.to
                     ? 'text-secondary'
                     : 'text-primary-foreground/80 hover:text-primary-foreground'
@@ -120,9 +143,9 @@ export default function Navbar() {
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setDropdownOpen(p => !p)}
-                className="flex items-center gap-1 text-base font-medium text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                className="flex items-center gap-1 font-medium text-primary-foreground/80 hover:text-primary-foreground transition-colors whitespace-nowrap"
               >
-                Who We Help <ChevronDown size={14} className={`transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
+                Who We Help <ChevronDown size={12} className={`transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
               </button>
               {dropdownOpen && (
                 <div className="absolute top-full left-0 mt-2 w-52 bg-white rounded-md shadow-lg border border-border overflow-hidden z-50">
@@ -142,7 +165,7 @@ export default function Navbar() {
             <Link
               to="/contact"
               onClick={(e) => handleNav(e, '/contact')}
-              className={`text-base font-medium transition-colors ${
+              className={`font-medium whitespace-nowrap transition-colors ${
                 location.pathname === '/contact'
                   ? 'text-secondary'
                   : 'text-primary-foreground/80 hover:text-primary-foreground'
@@ -151,33 +174,12 @@ export default function Navbar() {
               Contact
             </Link>
           </div>
-
-          {/* Hamburger — true mobile only */}
-          <button
-            className="md:hidden text-primary-foreground p-2 shrink-0"
-            onClick={() => { setMobileOpen(p => !p); setMobileWhoOpen(false); }}
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-
-          <div className="hidden md:flex items-center gap-3">
-            <Button asChild size="sm" variant="outline" className="font-semibold border-secondary text-secondary hover:bg-secondary/10 hover:text-secondary">
-              <a href={PHONE_HREF}>
-                <Phone size={15} />
-                {PHONE}
-              </a>
-            </Button>
-            <Button asChild size="sm" variant="secondary" className="font-semibold text-primary">
-              <Link to="/contact">Free Strategy Session</Link>
-            </Button>
-          </div>
         </div>
       </nav>
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden fixed top-40 left-0 right-0 z-40 bg-primary shadow-xl border-t border-primary-foreground/10">
+        <div className="md:hidden fixed top-[9.5rem] left-0 right-0 z-40 bg-primary shadow-xl border-t border-primary-foreground/10">
           <div className="flex flex-col px-6 py-4 space-y-1">
             {NAV_LINKS.map(l => (
               <Link

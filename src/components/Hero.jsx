@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export default function Hero({ heroImage }) {
   return (
-    <section className="relative min-h-[70vh] md:min-h-screen flex items-start justify-center overflow-hidden pt-24">
+    <section className="relative min-h-[70vh] md:min-h-screen flex items-start justify-center overflow-hidden pt-40 md:pt-44">
       {/* Background */}
       <div className="absolute inset-0">
         {heroImage && (
