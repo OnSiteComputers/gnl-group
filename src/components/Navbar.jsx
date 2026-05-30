@@ -131,7 +131,7 @@ export default function Navbar() {
         </div>
 
         {/* ROW 2 — Nav links centered (desktop only) */}
-        <div className="hidden md:block border-t border-primary-foreground/10">
+        <div className="hidden md:block">
           <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-6 h-11" style={{ fontSize: 'clamp(0.88rem, 1.45vw, 1.1rem)' }}>
             {NAV_LINKS.map(l => (
               <Link
