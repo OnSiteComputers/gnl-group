@@ -90,7 +90,7 @@ export default function Navbar() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-primary shadow-lg">
 
         {/* ROW 1 — 3 columns: Logo | Tagline | Buttons (desktop only) */}
-        <div className="max-w-7xl mx-auto px-4 h-28 hidden md:grid grid-cols-3 items-center">
+        <div className="max-w-7xl mx-auto px-4 h-36 hidden md:grid grid-cols-3 items-center">
           {/* Left: Logo */}
           <div className="flex items-center justify-center h-full">
             <Link to="/">
