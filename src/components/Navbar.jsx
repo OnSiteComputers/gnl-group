@@ -25,7 +25,6 @@ const WHO_WE_HELP = [
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileWhoOpen, setMobileWhoOpen] = useState(false);
@@ -43,27 +42,21 @@ export default function Navbar() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
     if (el) {
-      const offset = 104; // navbar height + small breathing room
+      const offset = 120; // adjusted for two-row header
       const targetPosition = el.getBoundingClientRect().top + window.pageYOffset - offset;
       const startPosition = window.pageYOffset;
       const distance = targetPosition - startPosition;
-      const duration = 1200; // slower scroll (1.2 seconds)
+      const duration = 1200;
       let start = null;
 
       const animation = (currentTime) => {
         if (start === null) start = currentTime;
         const timeElapsed = currentTime - start;
         const progress = Math.min(timeElapsed / duration, 1);
-        const ease = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+        const ease = 1 - Math.pow(1 - progress, 3);
         window.scrollTo(0, startPosition + distance * ease);
         if (timeElapsed < duration) {
           requestAnimationFrame(animation);
@@ -93,26 +86,19 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-primary shadow-lg`}>
-        <div className="max-w-7xl mx-auto px-4 h-24 flex items-center">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-primary shadow-lg">
+        {/* Top: Tagline */}
+        <div className="border-b border-primary-foreground/10 py-3">
+          <div className="max-w-7xl mx-auto px-4 text-center text-primary-foreground font-heading font-bold italic tracking-wide" style={{ fontSize: 'clamp(0.95rem, 2vw, 1.35rem)' }}>
+            <span className="block leading-tight">Local Dominance. Real Results.</span>
+          </div>
+        </div>
+
+        {/* Bottom: Logo, Nav, Buttons */}
+        <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3 shrink-0">
-            <img src={LOGO_URL} alt="GNL Digital Group" style={{ height: 'clamp(2.5rem, 5vw, 4rem)', width: 'auto' }} />
+            <img src={LOGO_URL} alt="GNL Digital Group" style={{ height: 'clamp(2rem, 4vw, 3.5rem)', width: 'auto' }} />
           </Link>
-
-          {/* Centered tagline - fluid scaling */}
-          <span className="flex-1 text-center text-primary-foreground font-heading font-bold italic tracking-wide leading-tight" style={{ fontSize: 'clamp(1rem, 2.2vw, 1.5rem)' }}>
-            <span className="block">Local Dominance.</span>
-            <span className="block">Real Results.</span>
-          </span>
-
-          {/* Hamburger — true mobile only */}
-          <button
-            className="md:hidden text-primary-foreground p-2 shrink-0"
-            onClick={() => { setMobileOpen(p => !p); setMobileWhoOpen(false); }}
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-6" style={{ fontSize: 'clamp(0.75rem, 1.2vw, 1rem)' }}>
@@ -166,6 +152,15 @@ export default function Navbar() {
             </Link>
           </div>
 
+          {/* Hamburger — true mobile only */}
+          <button
+            className="md:hidden text-primary-foreground p-2 shrink-0"
+            onClick={() => { setMobileOpen(p => !p); setMobileWhoOpen(false); }}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+
           <div className="hidden md:flex items-center gap-3">
             <Button asChild size="sm" variant="outline" className="font-semibold border-secondary text-secondary hover:bg-secondary/10 hover:text-secondary">
               <a href={PHONE_HREF}>
@@ -177,13 +172,12 @@ export default function Navbar() {
               <Link to="/contact">Free Strategy Session</Link>
             </Button>
           </div>
-
         </div>
       </nav>
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden fixed top-24 left-0 right-0 z-40 bg-primary shadow-xl border-t border-primary-foreground/10">
+        <div className="md:hidden fixed top-40 left-0 right-0 z-40 bg-primary shadow-xl border-t border-primary-foreground/10">
           <div className="flex flex-col px-6 py-4 space-y-1">
             {NAV_LINKS.map(l => (
               <Link
