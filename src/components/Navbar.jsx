@@ -117,18 +117,23 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Row 1: Logo + Hamburger */}
+        {/* Mobile Row 1: Logo + Phone + Hamburger */}
         <div className="md:hidden max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
           <Link to="/">
             <img src={LOGO_URL} alt="GNL Digital Group" style={{ height: '2.5rem', width: 'auto' }} />
           </Link>
-          <button
-            className="text-primary-foreground p-2"
-            onClick={() => { setMobileOpen(p => !p); setMobileWhoOpen(false); }}
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="flex items-center gap-2">
+            <a href={PHONE_HREF} className="flex items-center gap-1 text-secondary font-semibold text-sm border border-secondary rounded px-2 py-1 hover:bg-secondary/10 transition-colors">
+              <Phone size={13} /> <span className="hidden xs:inline">{PHONE}</span><span className="xs:hidden">Call</span>
+            </a>
+            <button
+              className="text-primary-foreground p-2"
+              onClick={() => { setMobileOpen(p => !p); setMobileWhoOpen(false); }}
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* ROW 2 — Nav links centered (desktop only) */}
