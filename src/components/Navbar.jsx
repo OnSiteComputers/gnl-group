@@ -118,7 +118,7 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Row 1: Logo + Phone + Hamburger */}
-        <div className="md:hidden max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+        <div className="md:hidden max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
           <div className="flex flex-col items-start gap-0.5">
             <Link to="/">
               <img src={LOGO_URL} alt="GNL Digital Group" style={{ height: '2.5rem', width: 'auto' }} />
@@ -196,7 +196,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden fixed top-16 left-0 right-0 z-40 bg-primary shadow-xl border-t border-primary-foreground/10">
+      <div className="md:hidden fixed top-20 left-0 right-0 z-40 bg-primary shadow-xl border-t border-primary-foreground/10">
           <div className="flex flex-col px-6 py-4 space-y-1">
             {NAV_LINKS.map(l => (
               <Link
