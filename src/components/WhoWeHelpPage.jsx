@@ -4,6 +4,7 @@ import { CheckCircle, Phone, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import MobileCtaBar from './MobileCtaBar';
 
 
 const PHONE_HREF = 'tel:+17045945826';
@@ -88,7 +89,7 @@ export default function WhoWeHelpPage({ icon: Icon, headline, subheadline, intro
       </section>
 
       <Footer />
-
+      <MobileCtaBar />
     </div>
   );
 }
