@@ -42,7 +42,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8 flex-1 mx-8">
+          <div className="hidden md:flex items-center gap-8 flex-1 mx-8">
             {NAV_LINKS.map(l => (
               <Link
                 key={l.label}
@@ -92,7 +92,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop CTA Buttons */}
-          <div className="hidden lg:flex items-center gap-3 shrink-0">
+          <div className="hidden md:flex items-center gap-3 shrink-0">
             <Button asChild size="sm" variant="outline" className="font-semibold border-secondary text-secondary hover:bg-secondary/10 hover:text-secondary">
               <a href={PHONE_HREF}><Phone size={15} />{PHONE}</a>
             </Button>
@@ -104,7 +104,7 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden text-primary-foreground"
+            className="md:hidden text-primary-foreground"
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -113,7 +113,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="lg:hidden fixed top-16 left-0 right-0 z-40 bg-primary shadow-xl border-t border-primary-foreground/10">
+        <div className="md:hidden fixed top-16 left-0 right-0 z-40 bg-primary shadow-xl border-t border-primary-foreground/10">
           <div className="flex flex-col px-6 py-4 space-y-1">
             {NAV_LINKS.map(l => (
               <Link
