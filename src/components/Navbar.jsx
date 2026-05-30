@@ -94,7 +94,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-primary shadow-lg`}>
+      <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-primary shadow-lg">
         <div className="max-w-7xl mx-auto px-4 h-28 flex items-center">
 
           {/* Left: Logo */}
