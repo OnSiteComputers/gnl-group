@@ -35,79 +35,86 @@ export default function Navbar() {
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0f1e] shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-8">
           {/* Logo */}
           <Link to="/" className="flex items-center shrink-0">
             <img src={LOGO_URL} alt="GNL Digital Group" className="h-14 w-auto" />
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8 flex-1 mx-8">
-            {NAV_LINKS.map(l => (
+          {/* Logo + Nav Row */}
+          <div className="flex items-center justify-between md:justify-start md:flex-1 md:gap-8">
+            <Link to="/" className="flex items-center shrink-0">
+              <img src={LOGO_URL} alt="GNL Digital Group" className="h-14 w-auto" />
+            </Link>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-8 flex-1">
+              {NAV_LINKS.map(l => (
+                <Link
+                  key={l.label}
+                  to={l.to}
+                  className={`text-sm font-medium whitespace-nowrap transition-colors ${
+                    location.pathname === l.to
+                      ? 'text-secondary'
+                      : 'text-primary-foreground/80 hover:text-primary-foreground'
+                  }`}
+                >
+                  {l.label}
+                </Link>
+              ))}
+              {/* Who We Help Dropdown */}
+              <div className="relative" ref={dropdownRef}>
+                <button
+                  onClick={() => setDropdownOpen(p => !p)}
+                  className="flex items-center gap-1 text-sm font-medium whitespace-nowrap text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                >
+                  Who We Help <ChevronDown size={14} className={`transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {dropdownOpen && (
+                  <div className="absolute top-full left-0 mt-2 w-52 bg-white rounded-md shadow-lg border border-border overflow-hidden z-50">
+                    {WHO_WE_HELP.map(item => (
+                      <Link
+                        key={item.label}
+                        to={item.to}
+                        onClick={() => { setDropdownOpen(false); window.scrollTo({ top: 0 }); }}
+                        className="block px-4 py-3 text-sm text-foreground hover:bg-secondary/10 hover:text-secondary transition-colors border-b border-border/40 last:border-0"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
               <Link
-                key={l.label}
-                to={l.to}
+                to="/contact"
                 className={`text-sm font-medium whitespace-nowrap transition-colors ${
-                  location.pathname === l.to
+                  location.pathname === '/contact'
                     ? 'text-secondary'
                     : 'text-primary-foreground/80 hover:text-primary-foreground'
                 }`}
               >
-                {l.label}
+                Contact
               </Link>
-            ))}
-            {/* Who We Help Dropdown */}
-            <div className="relative" ref={dropdownRef}>
-              <button
-                onClick={() => setDropdownOpen(p => !p)}
-                className="flex items-center gap-1 text-sm font-medium whitespace-nowrap text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-              >
-                Who We Help <ChevronDown size={14} className={`transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
-              </button>
-              {dropdownOpen && (
-                <div className="absolute top-full left-0 mt-2 w-52 bg-white rounded-md shadow-lg border border-border overflow-hidden z-50">
-                  {WHO_WE_HELP.map(item => (
-                    <Link
-                      key={item.label}
-                      to={item.to}
-                      onClick={() => { setDropdownOpen(false); window.scrollTo({ top: 0 }); }}
-                      className="block px-4 py-3 text-sm text-foreground hover:bg-secondary/10 hover:text-secondary transition-colors border-b border-border/40 last:border-0"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
             </div>
-            <Link
-              to="/contact"
-              className={`text-sm font-medium whitespace-nowrap transition-colors ${
-                location.pathname === '/contact'
-                  ? 'text-secondary'
-                  : 'text-primary-foreground/80 hover:text-primary-foreground'
-              }`}
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="md:hidden text-primary-foreground"
             >
-              Contact
-            </Link>
+              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
 
-          {/* Desktop CTA Buttons */}
-          <div className="hidden md:flex items-center gap-3 shrink-0">
-            <Button asChild size="sm" variant="outline" className="font-semibold border-secondary text-secondary hover:bg-secondary/10 hover:text-secondary">
-              <a href={PHONE_HREF}><Phone size={15} />{PHONE}</a>
-            </Button>
-            <Button asChild size="sm" variant="secondary" className="font-semibold text-primary">
-              <Link to="/contact">Free Strategy Session</Link>
-            </Button>
+          {/* Bottom Row - Centered CTA Buttons */}
+          <div className="hidden md:flex items-center gap-3 justify-center w-full md:w-auto">
+              <Button asChild size="sm" variant="outline" className="font-semibold border-secondary text-secondary hover:bg-secondary/10 hover:text-secondary">
+                <a href={PHONE_HREF}><Phone size={15} />{PHONE}</a>
+              </Button>
+              <Button asChild size="sm" variant="secondary" className="font-semibold text-primary">
+                <Link to="/contact">Free Strategy Session</Link>
+              </Button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden text-primary-foreground"
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
         </div>
       </nav>
 
