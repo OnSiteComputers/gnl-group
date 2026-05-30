@@ -4,7 +4,6 @@ import Services from '../components/Services';
 import Testimonials from '../components/Testimonials';
 import Reviews from '../components/Reviews';
 import FAQ from '../components/FAQ';
-import ContactCTA from '../components/ContactCTA';
 import Footer from '../components/Footer';
 import MobileCtaBar from '../components/MobileCtaBar';
 
@@ -21,7 +20,6 @@ export default function Home() {
       <Testimonials />
       <Reviews />
       <FAQ />
-      <ContactCTA />
       <Footer />
       <MobileCtaBar />
     </div>

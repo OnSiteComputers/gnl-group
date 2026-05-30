@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useState, useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Phone, Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -31,76 +31,67 @@ export default function Navbar() {
   const [mobileWhoOpen, setMobileWhoOpen] = useState(false);
   const dropdownRef = useRef(null);
   const location = useLocation();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        setDropdownOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  const scrollToSection = (id) => {
-    const el = document.getElementById(id);
-    if (el) {
-      const offset = 146; // Updated for two-row navbar
-      const targetPosition = el.getBoundingClientRect().top + window.pageYOffset - offset;
-      const startPosition = window.pageYOffset;
-      const distance = targetPosition - startPosition;
-      const duration = 1200;
-      let start = null;
-
-      const animation = (currentTime) => {
-        if (start === null) start = currentTime;
-        const timeElapsed = currentTime - start;
-        const progress = Math.min(timeElapsed / duration, 1);
-        const ease = 1 - Math.pow(1 - progress, 3);
-        window.scrollTo(0, startPosition + distance * ease);
-        if (timeElapsed < duration) {
-          requestAnimationFrame(animation);
-        }
-      };
-
-      requestAnimationFrame(animation);
-    }
-  };
-
-  const handleNav = (e, to) => {
-    e.preventDefault();
-    if (to.includes('#')) {
-      const [path, id] = to.split('#');
-      const basePath = path || '/';
-      if (location.pathname === basePath) {
-        scrollToSection(id);
-      } else {
-        navigate(basePath);
-        setTimeout(() => scrollToSection(id), 100);
-      }
-    } else {
-      navigate(to);
-      setTimeout(() => window.scrollTo({ top: 0, behavior: 'auto' }), 50);
-    }
-  };
 
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0f1e] shadow-lg">
-        {/* Row 1: Logo, Tagline, CTA Buttons */}
-        <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
-          {/* Left: Logo */}
+        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+          {/* Logo */}
           <Link to="/" className="flex items-center shrink-0">
-            <img src={LOGO_URL} alt="GNL Digital Group" className="h-16 w-auto" />
+            <img src={LOGO_URL} alt="GNL Digital Group" className="h-14 w-auto" />
           </Link>
 
-          {/* Center: Tagline */}
-          <div className="flex-1 text-center">
-            <span className="text-primary-foreground font-heading font-bold text-xl tracking-wide">Local Dominance. Real Results.</span>
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-8 flex-1 mx-8">
+            {NAV_LINKS.map(l => (
+              <Link
+                key={l.label}
+                to={l.to}
+                className={`text-sm font-medium whitespace-nowrap transition-colors ${
+                  location.pathname === l.to
+                    ? 'text-secondary'
+                    : 'text-primary-foreground/80 hover:text-primary-foreground'
+                }`}
+              >
+                {l.label}
+              </Link>
+            ))}
+            {/* Who We Help Dropdown */}
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setDropdownOpen(p => !p)}
+                className="flex items-center gap-1 text-sm font-medium whitespace-nowrap text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+              >
+                Who We Help <ChevronDown size={14} className={`transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {dropdownOpen && (
+                <div className="absolute top-full left-0 mt-2 w-52 bg-white rounded-md shadow-lg border border-border overflow-hidden z-50">
+                  {WHO_WE_HELP.map(item => (
+                    <Link
+                      key={item.label}
+                      to={item.to}
+                      onClick={() => { setDropdownOpen(false); window.scrollTo({ top: 0 }); }}
+                      className="block px-4 py-3 text-sm text-foreground hover:bg-secondary/10 hover:text-secondary transition-colors border-b border-border/40 last:border-0"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+            <Link
+              to="/contact"
+              className={`text-sm font-medium whitespace-nowrap transition-colors ${
+                location.pathname === '/contact'
+                  ? 'text-secondary'
+                  : 'text-primary-foreground/80 hover:text-primary-foreground'
+              }`}
+            >
+              Contact
+            </Link>
           </div>
 
-          {/* Right: CTA Buttons */}
+          {/* Desktop CTA Buttons */}
           <div className="hidden lg:flex items-center gap-3 shrink-0">
             <Button asChild size="sm" variant="outline" className="font-semibold border-secondary text-secondary hover:bg-secondary/10 hover:text-secondary">
               <a href={PHONE_HREF}><Phone size={15} />{PHONE}</a>
@@ -113,74 +104,22 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden text-primary-foreground ml-4"
+            className="lg:hidden text-primary-foreground"
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
-        </div>
-
-        {/* Row 2: Navigation Links (Desktop only) */}
-        <div className="hidden lg:flex max-w-7xl mx-auto px-4 h-14 items-center justify-center gap-8 border-t border-primary-foreground/10">
-          {NAV_LINKS.map(l => (
-            <Link
-              key={l.label}
-              to={l.to}
-              onClick={(e) => handleNav(e, l.to)}
-              className={`text-sm font-medium whitespace-nowrap transition-colors ${
-                location.pathname === l.to
-                  ? 'text-secondary'
-                  : 'text-primary-foreground/80 hover:text-primary-foreground'
-              }`}
-            >
-              {l.label}
-            </Link>
-          ))}
-          {/* Who We Help Dropdown */}
-          <div className="relative" ref={dropdownRef}>
-            <button
-              onClick={() => setDropdownOpen(p => !p)}
-              className="flex items-center gap-1 text-sm font-medium whitespace-nowrap text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-            >
-              Who We Help <ChevronDown size={14} className={`transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
-            </button>
-            {dropdownOpen && (
-              <div className="absolute top-full left-0 mt-2 w-52 bg-white rounded-md shadow-lg border border-border overflow-hidden z-50">
-                {WHO_WE_HELP.map(item => (
-                  <Link
-                    key={item.label}
-                    to={item.to}
-                    onClick={() => { setDropdownOpen(false); window.scrollTo({ top: 0 }); }}
-                    className="block px-4 py-3 text-sm text-foreground hover:bg-secondary/10 hover:text-secondary transition-colors border-b border-border/40 last:border-0"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-          <Link
-            to="/contact"
-            onClick={(e) => handleNav(e, '/contact')}
-            className={`text-sm font-medium whitespace-nowrap transition-colors ${
-              location.pathname === '/contact'
-                ? 'text-secondary'
-                : 'text-primary-foreground/80 hover:text-primary-foreground'
-            }`}
-          >
-            Contact
-          </Link>
         </div>
       </nav>
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="lg:hidden fixed top-20 left-0 right-0 z-40 bg-primary shadow-xl border-t border-primary-foreground/10">
+        <div className="lg:hidden fixed top-16 left-0 right-0 z-40 bg-primary shadow-xl border-t border-primary-foreground/10">
           <div className="flex flex-col px-6 py-4 space-y-1">
             {NAV_LINKS.map(l => (
               <Link
                 key={l.label}
                 to={l.to}
-                onClick={(e) => { handleNav(e, l.to); setMobileOpen(false); }}
+                onClick={() => setMobileOpen(false)}
                 className="py-3 text-base font-medium text-primary-foreground/80 hover:text-primary-foreground border-b border-primary-foreground/10 last:border-0"
               >
                 {l.label}
@@ -212,7 +151,7 @@ export default function Navbar() {
             </div>
             <Link
               to="/contact"
-              onClick={(e) => { handleNav(e, '/contact'); setMobileOpen(false); }}
+              onClick={() => setMobileOpen(false)}
               className="py-3 text-base font-medium text-primary-foreground/80 hover:text-primary-foreground border-b border-primary-foreground/10"
             >
               Contact
