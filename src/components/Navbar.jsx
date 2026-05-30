@@ -99,14 +99,14 @@ export default function Navbar() {
 
           {/* Left: Logo */}
           <Link to="/" className="flex items-center shrink-0">
-            <img src={LOGO_URL} alt="GNL Digital Group" className="h-16 w-auto" />
+            <img src={LOGO_URL} alt="GNL Digital Group" className="h-20 w-auto" />
           </Link>
 
           {/* Center: Tagline — truly centered */}
-          <span className="flex-1 text-center text-primary-foreground text-xl lg:text-2xl font-heading font-bold italic tracking-wide leading-tight">
+          <div className="flex-1 text-center text-primary-foreground text-xl lg:text-2xl font-heading font-bold italic tracking-wide leading-tight">
             <span className="block">Local Dominance.</span>
             <span className="block">Real Results.</span>
-          </span>
+          </div>
 
           {/* Hamburger — mobile only */}
           <button
