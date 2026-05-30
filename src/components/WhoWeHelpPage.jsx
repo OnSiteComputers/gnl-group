@@ -15,7 +15,7 @@ export default function WhoWeHelpPage({ icon: Icon, headline, subheadline, intro
       <Navbar />
 
       {/* Hero */}
-      <section className="bg-primary text-primary-foreground pt-52 pb-12 px-6 text-center">
+      <section className="bg-primary text-primary-foreground pt-20 md:pt-52 pb-12 px-6 text-center">
         <div className="max-w-7xl mx-auto text-center">
          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-4">

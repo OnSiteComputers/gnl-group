@@ -188,7 +188,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden fixed top-[9.5rem] left-0 right-0 z-40 bg-primary shadow-xl border-t border-primary-foreground/10">
+        <div className="md:hidden fixed top-16 left-0 right-0 z-40 bg-primary shadow-xl border-t border-primary-foreground/10">
           <div className="flex flex-col px-6 py-4 space-y-1">
             {NAV_LINKS.map(l => (
               <Link
