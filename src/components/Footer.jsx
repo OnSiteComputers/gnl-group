@@ -194,23 +194,25 @@ export default function Footer() {
         </div>
         
         {/* Prominent Onsite Computer Service CTA */}
-        <div className="bg-secondary/10 rounded-lg p-6 text-center border border-secondary/30">
-          <h3 className="font-heading font-bold text-lg text-secondary mb-2">Professional On-Site Computer Service</h3>
-          <p className="text-primary-foreground/70 text-sm mb-6">Visit our store or call us for expert computer repair</p>
+        <div className="bg-gradient-to-r from-secondary/20 to-secondary/10 rounded-xl p-8 text-center border border-secondary/30 shadow-lg">
+          <h3 className="font-heading font-bold text-xl text-secondary mb-3">Need Computer Repair?</h3>
+          <p className="text-primary-foreground/80 text-base mb-6 max-w-2xl mx-auto">
+            Visit our sister company, <span className="font-semibold text-secondary">On-Site Computer Service</span> — Charlotte's trusted computer repair experts with 170+ 5-star Google reviews
+          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="https://www.onsitecomputerservice.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-secondary text-primary font-semibold px-6 py-3 rounded-lg hover:bg-secondary/90 transition-colors"
+              className="inline-flex items-center justify-center gap-2 bg-secondary text-primary font-bold px-8 py-3.5 rounded-lg hover:bg-secondary/90 transition-all hover:scale-105 shadow-md"
             >
-              Visit Our Store <ExternalLink size={16} />
+              Visit Our Store <ExternalLink size={18} />
             </a>
             <a
               href="tel:+17045945826"
-              className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground font-semibold px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors border-2 border-primary-foreground/20"
+              className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-3.5 rounded-lg hover:bg-primary/90 transition-colors border-2 border-primary-foreground/30"
             >
-              <Phone size={16} /> Call Us
+              <Phone size={18} /> Call (704) 594-5826
             </a>
           </div>
         </div>
