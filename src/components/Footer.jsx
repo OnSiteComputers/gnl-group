@@ -23,8 +23,8 @@ const WHO_WE_HELP = [
   { label: 'Realtors', to: '/who-we-help/realtors' },
 ];
 
-const PHONE = '(704) 594-5826';
-const PHONE_HREF = 'tel:+17045945826';
+const PHONE = '980-236-0810';
+const PHONE_HREF = 'tel:+19802360810';
 
 export default function Footer() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -199,7 +199,7 @@ export default function Footer() {
           <p className="text-primary-foreground/70 text-sm mb-6">Visit our store or call us for expert computer repair</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://www.onsitecomputerservice.com"
+              href="https://www.onsitecomputerservice.net"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-secondary text-primary font-semibold px-6 py-3 rounded-lg hover:bg-secondary/90 transition-colors"
