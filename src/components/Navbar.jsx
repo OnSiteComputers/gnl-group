@@ -102,8 +102,8 @@ export default function Navbar() {
             <img src={LOGO_URL} alt="GNL Digital Group" className="h-24 w-auto" />
           </Link>
 
-          {/* Center: Tagline (hidden on mobile) */}
-          <div className="hidden lg:flex flex-1 justify-center">
+          {/* Center: Tagline */}
+          <div className="flex flex-1 justify-center">
             <span className="text-primary-foreground font-heading font-bold text-lg tracking-wide">Local Dominance. Real Results.</span>
           </div>
 
