@@ -96,18 +96,18 @@ export default function Navbar() {
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-primary shadow-lg`}>
         <div className="max-w-7xl mx-auto px-4 h-24 flex items-center">
           <Link to="/" className="flex items-center gap-3 shrink-0">
-            <img src={LOGO_URL} alt="GNL Digital Group" className="h-16 w-auto" />
+            <img src={LOGO_URL} alt="GNL Digital Group" style={{ height: 'clamp(2.5rem, 5vw, 4rem)', width: 'auto' }} />
           </Link>
 
-          {/* Centered tagline - all screen sizes */}
-          <span className="flex-1 text-center text-primary-foreground text-lg sm:text-xl lg:text-2xl font-heading font-bold italic tracking-wide leading-tight">
+          {/* Centered tagline - fluid scaling */}
+          <span className="flex-1 text-center text-primary-foreground font-heading font-bold italic tracking-wide leading-tight" style={{ fontSize: 'clamp(1rem, 2.2vw, 1.5rem)' }}>
             <span className="block">Local Dominance.</span>
             <span className="block">Real Results.</span>
           </span>
 
-          {/* Hamburger — mobile only */}
+          {/* Hamburger — true mobile only */}
           <button
-            className="lg:hidden text-primary-foreground p-2 shrink-0"
+            className="md:hidden text-primary-foreground p-2 shrink-0"
             onClick={() => { setMobileOpen(p => !p); setMobileWhoOpen(false); }}
             aria-label="Toggle menu"
           >
@@ -115,7 +115,7 @@ export default function Navbar() {
           </button>
 
           {/* Desktop nav */}
-          <div className="hidden lg:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-6" style={{ fontSize: 'clamp(0.75rem, 1.2vw, 1rem)' }}>
             {NAV_LINKS.map(l => (
               <Link
                 key={l.label}
@@ -166,7 +166,7 @@ export default function Navbar() {
             </Link>
           </div>
 
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-3">
             <Button asChild size="sm" variant="outline" className="font-semibold border-secondary text-secondary hover:bg-secondary/10 hover:text-secondary">
               <a href={PHONE_HREF}>
                 <Phone size={15} />
@@ -183,7 +183,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="lg:hidden fixed top-24 left-0 right-0 z-40 bg-primary shadow-xl border-t border-primary-foreground/10">
+        <div className="md:hidden fixed top-24 left-0 right-0 z-40 bg-primary shadow-xl border-t border-primary-foreground/10">
           <div className="flex flex-col px-6 py-4 space-y-1">
             {NAV_LINKS.map(l => (
               <Link
