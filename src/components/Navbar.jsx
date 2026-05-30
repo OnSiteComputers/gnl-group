@@ -91,7 +91,7 @@ export default function Navbar() {
         {/* ROW 1 — 3 columns: Logo | Tagline | Buttons (desktop only) */}
         <div className="max-w-7xl mx-auto px-4 h-28 hidden md:grid grid-cols-3 items-center">
           {/* Left: Logo */}
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center h-full">
             <Link to="/">
               <img src={LOGO_URL} alt="GNL Digital Group" style={{ height: 'clamp(6rem, 10vw, 9rem)', width: 'auto' }} />
             </Link>
