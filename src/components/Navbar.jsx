@@ -103,7 +103,7 @@ export default function Navbar() {
           </div>
 
           {/* Right: Phone + CTA stacked */}
-          <div className="flex flex-col items-center gap-2">
+          <div className="flex flex-col items-center justify-center gap-2 h-full">
             <Button asChild size="sm" variant="outline" className="font-semibold border-secondary text-secondary hover:bg-secondary/10 hover:text-secondary w-fit">
               <a href={PHONE_HREF}>
                 <Phone size={15} className="mr-1" />
