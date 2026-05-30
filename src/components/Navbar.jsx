@@ -26,7 +26,6 @@ const WHO_WE_HELP = [
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileWhoOpen, setMobileWhoOpen] = useState(false);
@@ -44,27 +43,21 @@ export default function Navbar() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
     if (el) {
-      const offset = 104; // navbar height + small breathing room
+      const offset = 146; // Updated for two-row navbar
       const targetPosition = el.getBoundingClientRect().top + window.pageYOffset - offset;
       const startPosition = window.pageYOffset;
       const distance = targetPosition - startPosition;
-      const duration = 1200; // slower scroll (1.2 seconds)
+      const duration = 1200;
       let start = null;
 
       const animation = (currentTime) => {
         if (start === null) start = currentTime;
         const timeElapsed = currentTime - start;
         const progress = Math.min(timeElapsed / duration, 1);
-        const ease = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+        const ease = 1 - Math.pow(1 - progress, 3);
         window.scrollTo(0, startPosition + distance * ease);
         if (timeElapsed < duration) {
           requestAnimationFrame(animation);
@@ -94,76 +87,21 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-primary shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 h-28 flex items-center">
-
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-primary shadow-lg">
+        {/* Row 1: Logo, Tagline, CTA Buttons */}
+        <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
           {/* Left: Logo */}
           <Link to="/" className="flex items-center shrink-0">
-            <img src={LOGO_URL} alt="GNL Digital Group" className="h-24 w-auto" />
+            <img src={LOGO_URL} alt="GNL Digital Group" className="h-16 w-auto" />
           </Link>
 
           {/* Center: Tagline */}
-          <div className="flex flex-1 justify-center">
-            <span className="text-primary-foreground font-heading font-bold text-lg tracking-wide">Local Dominance. Real Results.</span>
+          <div className="flex-1 text-center">
+            <span className="text-primary-foreground font-heading font-bold text-xl tracking-wide">Local Dominance. Real Results.</span>
           </div>
 
-          {/* Right: Nav links and buttons */}
-          <div className="flex items-center gap-4 shrink-0">
-
-          {/* Nav links */}
-          <div className="flex items-center gap-5 shrink-0">
-            {NAV_LINKS.map(l => (
-              <Link
-                key={l.label}
-                to={l.to}
-                onClick={(e) => handleNav(e, l.to)}
-                className={`text-sm font-medium whitespace-nowrap transition-colors ${
-                  location.pathname === l.to
-                    ? 'text-secondary'
-                    : 'text-primary-foreground/80 hover:text-primary-foreground'
-                }`}
-              >
-                {l.label}
-              </Link>
-            ))}
-            {/* Who We Help Dropdown */}
-            <div className="relative" ref={dropdownRef}>
-              <button
-                onClick={() => setDropdownOpen(p => !p)}
-                className="flex items-center gap-1 text-sm font-medium whitespace-nowrap text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-              >
-                Who We Help <ChevronDown size={14} className={`transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
-              </button>
-              {dropdownOpen && (
-                <div className="absolute top-full left-0 mt-2 w-52 bg-white rounded-md shadow-lg border border-border overflow-hidden z-50">
-                  {WHO_WE_HELP.map(item => (
-                    <Link
-                      key={item.label}
-                      to={item.to}
-                      onClick={() => { setDropdownOpen(false); window.scrollTo({ top: 0 }); }}
-                      className="block px-4 py-3 text-sm text-foreground hover:bg-secondary/10 hover:text-secondary transition-colors border-b border-border/40 last:border-0"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-            <Link
-              to="/contact"
-              onClick={(e) => handleNav(e, '/contact')}
-              className={`text-sm font-medium whitespace-nowrap transition-colors ${
-                location.pathname === '/contact'
-                  ? 'text-secondary'
-                  : 'text-primary-foreground/80 hover:text-primary-foreground'
-              }`}
-            >
-              Contact
-            </Link>
-          </div>
-
-          {/* CTA buttons */}
-          <div className="flex items-center gap-3">
+          {/* Right: CTA Buttons */}
+          <div className="hidden lg:flex items-center gap-3 shrink-0">
             <Button asChild size="sm" variant="outline" className="font-semibold border-secondary text-secondary hover:bg-secondary/10 hover:text-secondary">
               <a href={PHONE_HREF}><Phone size={15} />{PHONE}</a>
             </Button>
@@ -171,14 +109,72 @@ export default function Navbar() {
               <Link to="/contact">Free Strategy Session</Link>
             </Button>
           </div>
-          </div>
 
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="lg:hidden text-primary-foreground ml-4"
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+
+        {/* Row 2: Navigation Links (Desktop only) */}
+        <div className="hidden lg:flex max-w-7xl mx-auto px-4 h-14 items-center justify-center gap-8 border-t border-primary-foreground/10">
+          {NAV_LINKS.map(l => (
+            <Link
+              key={l.label}
+              to={l.to}
+              onClick={(e) => handleNav(e, l.to)}
+              className={`text-sm font-medium whitespace-nowrap transition-colors ${
+                location.pathname === l.to
+                  ? 'text-secondary'
+                  : 'text-primary-foreground/80 hover:text-primary-foreground'
+              }`}
+            >
+              {l.label}
+            </Link>
+          ))}
+          {/* Who We Help Dropdown */}
+          <div className="relative" ref={dropdownRef}>
+            <button
+              onClick={() => setDropdownOpen(p => !p)}
+              className="flex items-center gap-1 text-sm font-medium whitespace-nowrap text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+            >
+              Who We Help <ChevronDown size={14} className={`transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
+            </button>
+            {dropdownOpen && (
+              <div className="absolute top-full left-0 mt-2 w-52 bg-white rounded-md shadow-lg border border-border overflow-hidden z-50">
+                {WHO_WE_HELP.map(item => (
+                  <Link
+                    key={item.label}
+                    to={item.to}
+                    onClick={() => { setDropdownOpen(false); window.scrollTo({ top: 0 }); }}
+                    className="block px-4 py-3 text-sm text-foreground hover:bg-secondary/10 hover:text-secondary transition-colors border-b border-border/40 last:border-0"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+          <Link
+            to="/contact"
+            onClick={(e) => handleNav(e, '/contact')}
+            className={`text-sm font-medium whitespace-nowrap transition-colors ${
+              location.pathname === '/contact'
+                ? 'text-secondary'
+                : 'text-primary-foreground/80 hover:text-primary-foreground'
+            }`}
+          >
+            Contact
+          </Link>
         </div>
       </nav>
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="lg:hidden fixed top-24 left-0 right-0 z-40 bg-primary shadow-xl border-t border-primary-foreground/10">
+        <div className="lg:hidden fixed top-20 left-0 right-0 z-40 bg-primary shadow-xl border-t border-primary-foreground/10">
           <div className="flex flex-col px-6 py-4 space-y-1">
             {NAV_LINKS.map(l => (
               <Link
