@@ -29,14 +29,7 @@ export default function Hero({ heroImage }) {
           25+ Years of Excellence
         </motion.div>
 
-        <motion.h1
-          className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-        >
-          Local Dominance. Real Results.
-        </motion.h1>
+
 
         <motion.p
           className="text-secondary font-heading text-xl md:text-2xl italic mb-4"
