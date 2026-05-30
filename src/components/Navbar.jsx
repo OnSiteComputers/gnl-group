@@ -95,18 +95,20 @@ export default function Navbar() {
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-primary shadow-lg`}>
-        <div className="max-w-7xl mx-auto px-4 h-24 flex items-center gap-4">
+        <div className="max-w-7xl mx-auto px-4 h-24 flex items-center gap-4 relative">
 
           {/* Left: Logo */}
           <Link to="/" className="flex items-center shrink-0">
             <img src={LOGO_URL} alt="GNL Digital Group" className="h-20 w-auto" />
           </Link>
 
-          {/* Center: Tagline — truly centered */}
-          <div className="flex-1 text-center text-primary-foreground text-xl lg:text-2xl font-heading font-bold italic tracking-wide leading-tight">
-            <span className="block">Local Dominance.</span>
-            <span className="block">Real Results.</span>
+          {/* Center: Tagline — truly centered via absolute */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <span className="text-primary-foreground text-2xl lg:text-3xl font-heading font-bold italic tracking-wide whitespace-nowrap">
+              Dominate Your Market
+            </span>
           </div>
+          <div className="flex-1" />
 
           {/* Hamburger — mobile only */}
           <button
