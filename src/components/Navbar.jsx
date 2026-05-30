@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 
 const PHONE = '(704) 594-5826';
 const PHONE_HREF = 'tel:+17045945826';
-const LOGO_URL = 'https://media.base44.com/images/public/6a15c006a4679719cfa0af7a/ae8ba42c7_Logo.png';
+const LOGO_URL = 'https://media.base44.com/images/public/6a1a83ae581f8c993077c1a3/acc8e7634_GNL-Logo.png';
 
 const NAV_LINKS = [
   { label: 'Home', to: '/' },
@@ -89,16 +89,16 @@ export default function Navbar() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-primary shadow-lg">
 
         {/* ROW 1 — 3 columns: Logo | Tagline | Buttons (desktop only) */}
-        <div className="max-w-7xl mx-auto px-4 h-20 hidden md:grid grid-cols-3 items-center">
+        <div className="max-w-7xl mx-auto px-4 h-28 hidden md:grid grid-cols-3 items-center">
           {/* Left: Logo */}
           <div className="flex items-center">
             <Link to="/">
-              <img src={LOGO_URL} alt="GNL Digital Group" style={{ height: 'clamp(2.5rem, 5vw, 4.375rem)', width: 'auto' }} />
+              <img src={LOGO_URL} alt="GNL Digital Group" style={{ height: 'clamp(6rem, 10vw, 9rem)', width: 'auto' }} />
             </Link>
           </div>
 
           {/* Center: Tagline */}
-          <div className="flex items-center justify-center text-center text-primary-foreground font-heading font-bold italic tracking-wide" style={{ fontSize: 'clamp(1.1rem, 2.2vw, 1.7rem)' }}>
+          <div className="flex items-center justify-center text-center text-primary-foreground font-heading font-bold italic tracking-wide" style={{ fontSize: 'clamp(0.9rem, 1.5vw, 1.25rem)' }}>
             Local Dominance. Real Results.
           </div>
 
@@ -132,7 +132,7 @@ export default function Navbar() {
 
         {/* ROW 2 — Nav links centered (desktop only) */}
         <div className="hidden md:block border-t border-primary-foreground/10">
-          <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-6 h-10" style={{ fontSize: 'clamp(0.8rem, 1.3vw, 1rem)' }}>
+          <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-6 h-11" style={{ fontSize: 'clamp(0.88rem, 1.45vw, 1.1rem)' }}>
             {NAV_LINKS.map(l => (
               <Link
                 key={l.label}
