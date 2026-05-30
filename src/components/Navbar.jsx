@@ -95,11 +95,11 @@ export default function Navbar() {
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-primary shadow-lg`}>
-        <div className="max-w-7xl mx-auto px-4 h-24 flex items-center gap-4">
+        <div className="max-w-7xl mx-auto px-4 h-28 flex items-center gap-4">
 
           {/* Left: Logo */}
           <Link to="/" className="flex items-center shrink-0">
-            <img src={LOGO_URL} alt="GNL Digital Group" className="h-20 w-auto" />
+            <img src={LOGO_URL} alt="GNL Digital Group" className="h-24 w-auto" />
           </Link>
 
           <div className="flex-1" />
