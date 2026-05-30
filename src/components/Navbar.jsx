@@ -98,7 +98,7 @@ export default function Navbar() {
           </div>
 
           {/* Center: Tagline */}
-          <div className="flex items-center justify-center text-center text-primary-foreground font-heading font-bold italic tracking-wide" style={{ fontSize: 'clamp(0.9rem, 1.5vw, 1.25rem)' }}>
+          <div className="flex items-center justify-center text-center text-primary-foreground font-heading font-bold italic tracking-wide" style={{ fontSize: 'clamp(1.1rem, 2vw, 1.6rem)' }}>
             Local Dominance. Real Results.
           </div>
 
