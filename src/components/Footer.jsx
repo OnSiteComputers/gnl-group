@@ -204,7 +204,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-secondary text-primary font-semibold px-6 py-3 rounded-lg hover:bg-secondary/90 transition-colors"
             >
-              Visit Our Store <ExternalLink size={16} />
+              View Our Website <ExternalLink size={16} />
             </a>
             <a
               href="tel:+17045945826"
