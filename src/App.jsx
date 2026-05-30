@@ -14,6 +14,7 @@ import WhoWeHelpMedical from './pages/WhoWeHelpMedical';
 import WhoWeHelpRestaurants from './pages/WhoWeHelpRestaurants';
 import WhoWeHelpProfessional from './pages/WhoWeHelpProfessional';
 import WhoWeHelpHomeServices from './pages/WhoWeHelpHomeServices';
+import WhoWeHelpRealtors from './pages/WhoWeHelpRealtors';
 import Home2 from './pages/Home2';
 import OnsiteHome from './pages/OnsiteHome';
 import About2 from './pages/About2';
@@ -54,6 +55,7 @@ const AuthenticatedApp = () => {
       <Route path="/who-we-help/restaurants" element={<WhoWeHelpRestaurants />} />
       <Route path="/who-we-help/professional" element={<WhoWeHelpProfessional />} />
       <Route path="/who-we-help/home-services" element={<WhoWeHelpHomeServices />} />
+      <Route path="/who-we-help/realtors" element={<WhoWeHelpRealtors />} />
       <Route path="/home2" element={<Home2 />} />
       <Route path="/onsite-computer-service" element={<OnsiteHome />} />
       <Route path="/about2" element={<About2 />} />
