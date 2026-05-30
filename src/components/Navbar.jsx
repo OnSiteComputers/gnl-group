@@ -104,7 +104,7 @@ export default function Navbar() {
 
           {/* Center: Tagline (hidden on mobile) */}
           <div className="hidden lg:flex flex-1 justify-center">
-            <span className="text-primary-foreground font-heading font-bold text-lg tracking-wide">Dominate Your Market</span>
+            <span className="text-primary-foreground font-heading font-bold text-lg tracking-wide">Local Dominance. Real Results.</span>
           </div>
 
           {/* Right: Nav links and buttons */}
