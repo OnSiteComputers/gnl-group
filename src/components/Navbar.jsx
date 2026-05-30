@@ -87,7 +87,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-primary shadow-lg">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0f1e] shadow-lg">
         {/* Row 1: Logo, Tagline, CTA Buttons */}
         <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
           {/* Left: Logo */}
