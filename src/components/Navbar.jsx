@@ -87,44 +87,52 @@ export default function Navbar() {
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-primary shadow-lg">
-        {/* Top: Tagline */}
-        <div className="border-b border-primary-foreground/10 py-3">
-          <div className="max-w-7xl mx-auto px-4 text-center text-primary-foreground font-heading font-bold italic tracking-wide" style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.4rem)' }}>
-            <span className="block leading-tight">Local Dominance. Real Results.</span>
+
+        {/* ROW 1 — 3 columns: Logo | Tagline | Buttons (desktop only) */}
+        <div className="max-w-7xl mx-auto px-4 h-20 hidden md:grid grid-cols-3 items-center">
+          {/* Left: Logo */}
+          <div className="flex items-center">
+            <Link to="/">
+              <img src={LOGO_URL} alt="GNL Digital Group" style={{ height: 'clamp(2.5rem, 5vw, 4.375rem)', width: 'auto' }} />
+            </Link>
           </div>
-        </div>
 
-        {/* Middle: Logo + Stacked Buttons */}
-        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-3 shrink-0">
-            <img src={LOGO_URL} alt="GNL Digital Group" style={{ height: 'clamp(2rem, 4vw, 3.5rem)', width: 'auto' }} />
-          </Link>
+          {/* Center: Tagline */}
+          <div className="flex items-center justify-center text-center text-primary-foreground font-heading font-bold italic tracking-wide" style={{ fontSize: 'clamp(1.1rem, 2.2vw, 1.7rem)' }}>
+            Local Dominance. Real Results.
+          </div>
 
-          {/* Hamburger — true mobile only */}
-          <button
-            className="md:hidden text-primary-foreground p-2 shrink-0"
-            onClick={() => { setMobileOpen(p => !p); setMobileWhoOpen(false); }}
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-
-          <div className="hidden md:flex flex-col gap-2">
-            <Button asChild size="sm" variant="outline" className="font-semibold border-secondary text-secondary hover:bg-secondary/10 hover:text-secondary w-full">
+          {/* Right: Phone + CTA stacked */}
+          <div className="flex flex-col items-end gap-2">
+            <Button asChild size="sm" variant="outline" className="font-semibold border-secondary text-secondary hover:bg-secondary/10 hover:text-secondary w-fit">
               <a href={PHONE_HREF}>
                 <Phone size={15} className="mr-1" />
                 {PHONE}
               </a>
             </Button>
-            <Button asChild size="sm" variant="secondary" className="font-semibold text-primary w-full">
+            <Button asChild size="sm" variant="secondary" className="font-semibold text-primary w-fit">
               <Link to="/contact">Free Strategy Session</Link>
             </Button>
           </div>
         </div>
 
-        {/* Bottom Nav Row */}
+        {/* Mobile Row 1: Logo + Hamburger */}
+        <div className="md:hidden max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+          <Link to="/">
+            <img src={LOGO_URL} alt="GNL Digital Group" style={{ height: '2.5rem', width: 'auto' }} />
+          </Link>
+          <button
+            className="text-primary-foreground p-2"
+            onClick={() => { setMobileOpen(p => !p); setMobileWhoOpen(false); }}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+
+        {/* ROW 2 — Nav links centered (desktop only) */}
         <div className="hidden md:block border-t border-primary-foreground/10">
-          <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-5 h-10" style={{ fontSize: 'clamp(0.7rem, 1.1vw, 0.9rem)' }}>
+          <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-6 h-10" style={{ fontSize: 'clamp(0.8rem, 1.3vw, 1rem)' }}>
             {NAV_LINKS.map(l => (
               <Link
                 key={l.label}
@@ -154,7 +162,7 @@ export default function Navbar() {
                       key={item.label}
                       to={item.to}
                       onClick={() => { setDropdownOpen(false); window.scrollTo({ top: 0 }); }}
-                      className="block px-4 py-3 text-base text-foreground hover:bg-secondary/10 hover:text-secondary transition-colors border-b border-border/40 last:border-0"
+                      className="block px-4 py-3 text-sm text-foreground hover:bg-secondary/10 hover:text-secondary transition-colors border-b border-border/40 last:border-0"
                     >
                       {item.label}
                     </Link>
