@@ -39,7 +39,7 @@ export default function About() {
                 It all happened on a Saturday morning in a mall parking lot. Greg was delivering an iMac back to a lawyer customer — someone who'd been trusting On-Site Computer Service for years.
               </p>
               <p>
-                Greg mentioned he'd just redesigned his own website. The attorney replied that he'd been paying a company called Scorpion to manage his website and SEO. Then the lawyer asked Greg, "What do you know about SEO?"
+                Greg mentioned he'd just redesigned his own website. The attorney replied that he'd been paying a big marketing agency to manage his website and SEO — and wasn't happy with the results. Then the lawyer asked Greg, "What do you know about SEO?"
               </p>
               <p>
                 Greg's response was simple: "I've been in business for 25+ years and have 170+ 5-star Google reviews. What does that tell you?"
