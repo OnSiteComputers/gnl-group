@@ -118,19 +118,19 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Row 1: Logo + Phone + Hamburger */}
-        <div className="md:hidden max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
-          <div className="flex flex-col items-start gap-0.5">
+        <div className="md:hidden max-w-7xl mx-auto px-4 h-20 flex items-center justify-between overflow-hidden">
+          <div className="flex flex-col items-start gap-0.5 flex-shrink-0 min-w-0">
             <Link to="/">
               <img src={LOGO_URL} alt="GNL Digital Group" style={{ height: '2.5rem', width: 'auto' }} />
             </Link>
             <p className="text-primary-foreground/80 text-xs italic font-heading font-semibold">Local Dominance. Real Results.</p>
           </div>
-          <div className="flex items-center gap-2">
-            <a href={PHONE_HREF} className="flex items-center gap-1 text-secondary font-semibold text-sm border border-secondary rounded px-2 py-1 hover:bg-secondary/10 transition-colors">
-              <Phone size={13} /> <span className="hidden xs:inline">{PHONE}</span><span className="xs:hidden">Call</span>
+          <div className="flex items-center gap-2 flex-shrink-0">
+            <a href={PHONE_HREF} className="flex items-center gap-1 text-secondary font-semibold text-sm border border-secondary rounded px-2 py-1 hover:bg-secondary/10 transition-colors whitespace-nowrap">
+              <Phone size={13} /> <span>Call</span>
             </a>
             <button
-              className="text-primary-foreground p-2"
+              className="text-primary-foreground p-2 flex-shrink-0"
               onClick={() => { setMobileOpen(p => !p); setMobileWhoOpen(false); }}
               aria-label="Toggle menu"
             >
