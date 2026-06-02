@@ -33,7 +33,7 @@ const practiceAreas = [
 const stats = [
   { num: '42', label: 'Years of Experience' },
   { num: '1,000s', label: 'Families Helped' },
-  { num: 'Direct', label: 'Access to James' },
+  { num: 'Personal', label: 'Attention to Your Case' },
   { num: 'Local', label: 'Charlotte & the Carolinas' },
 ];
 
@@ -233,7 +233,7 @@ export default function WarrenDemo() {
           <FadeIn>
             <div style={{fontFamily:"'Nunito',sans-serif",fontSize:11,letterSpacing:'4px',textTransform:'uppercase',color:c.gold,fontWeight:700,marginBottom:16}}>Our Firm</div>
             <h2 style={{fontFamily:"'Lora',serif",fontSize:'clamp(28px,4vw,44px)',fontWeight:700,color:c.navy,lineHeight:1.15,marginBottom:24}}>
-              You Meet Directly<br/>with <em style={{color:c.gold}}>James.</em>
+              Experience You Can <br/>Count On<em style={{color:c.gold}}>.</em>
             </h2>
             <div style={{width:48,height:3,background:c.gold,borderRadius:2,marginBottom:28}}/>
             <p style={{fontFamily:"'Nunito',sans-serif",fontWeight:400,fontSize:16,color:c.muted,lineHeight:1.9,marginBottom:20}}>
@@ -250,7 +250,7 @@ export default function WarrenDemo() {
                 {label:'Founded',value:'1984'},
                 {label:'Location',value:'Charlotte, NC'},
                 {label:'Practice Focus',value:'Family Law'},
-                {label:'Approach',value:'Direct — you work with James'},
+                {label:'Approach',value:'Personal attention on every case'},
                 {label:'Initial Consultation',value:'Free'},
               ].map((item,i)=>(
                 <div key={item.label} style={{display:'flex',justifyContent:'space-between',alignItems:'center',padding:'16px 0',borderBottom:i<4?`1px solid ${c.border}`:'none'}}>
