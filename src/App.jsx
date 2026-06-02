@@ -23,6 +23,7 @@ import WhoWeHelpProfessional from './pages/WhoWeHelpProfessional';
 import WhoWeHelpHomeServices from './pages/WhoWeHelpHomeServices';
 import WhoWeHelpRealtors from './pages/WhoWeHelpRealtors';
 import OnsiteHome from './pages/OnsiteHome';
+import WarrenProposal from './pages/WarrenProposal';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -63,6 +64,7 @@ const AuthenticatedApp = () => {
       <Route path="/who-we-help/home-services" element={<WhoWeHelpHomeServices />} />
       <Route path="/who-we-help/realtors" element={<WhoWeHelpRealtors />} />
       <Route path="/onsite-computer-service" element={<OnsiteHome />} />
+      <Route path="/warren" element={<WarrenProposal />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
     </>
