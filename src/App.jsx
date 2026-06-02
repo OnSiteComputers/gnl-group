@@ -1,16 +1,30 @@
 import { Toaster } from "@/components/ui/toaster"
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+}
 import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
-import ScrollToTop from './components/ScrollToTop';
-// Add page imports here
-import OnSite from './pages/OnSite';
-import RemoteSupport from './pages/RemoteSupport';
-import LogoConcepts from './pages/LogoConcepts';
-import GNL from './pages/GNL';
+import Home from './pages/Home';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import SmallBusiness from './pages/SmallBusiness';
+import WhoWeHelpLawFirms from './pages/WhoWeHelpLawFirms';
+import WhoWeHelpMedical from './pages/WhoWeHelpMedical';
+import WhoWeHelpRestaurants from './pages/WhoWeHelpRestaurants';
+import WhoWeHelpProfessional from './pages/WhoWeHelpProfessional';
+import WhoWeHelpHomeServices from './pages/WhoWeHelpHomeServices';
+import WhoWeHelpRealtors from './pages/WhoWeHelpRealtors';
+import OnsiteHome from './pages/OnsiteHome';
+import WarrenProposal from './pages/WarrenProposal';
+import WarrenDemo from './pages/WarrenDemo';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -37,14 +51,25 @@ const AuthenticatedApp = () => {
 
   // Render the main app
   return (
+    <>
+    <ScrollToTop />
     <Routes>
-      {/* Add your page Route elements here */}
-      <Route path="/" element={<OnSite />} />
-      <Route path="/remote-support" element={<RemoteSupport />} />
-      <Route path="/gnl" element={<GNL />} />
-      <Route path="/logo-concepts" element={<LogoConcepts />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/small-business" element={<SmallBusiness />} />
+      <Route path="/who-we-help/law-firms" element={<WhoWeHelpLawFirms />} />
+      <Route path="/who-we-help/medical" element={<WhoWeHelpMedical />} />
+      <Route path="/who-we-help/restaurants" element={<WhoWeHelpRestaurants />} />
+      <Route path="/who-we-help/professional" element={<WhoWeHelpProfessional />} />
+      <Route path="/who-we-help/home-services" element={<WhoWeHelpHomeServices />} />
+      <Route path="/who-we-help/realtors" element={<WhoWeHelpRealtors />} />
+      <Route path="/onsite-computer-service" element={<OnsiteHome />} />
+      <Route path="/warren" element={<WarrenProposal />} />
+      <Route path="/warren-demo" element={<WarrenDemo />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
+    </>
   );
 };
 
@@ -55,7 +80,6 @@ function App() {
     <AuthProvider>
       <QueryClientProvider client={queryClientInstance}>
         <Router>
-          <ScrollToTop />
           <AuthenticatedApp />
         </Router>
         <Toaster />
