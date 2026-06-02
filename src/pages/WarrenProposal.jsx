@@ -122,24 +122,15 @@ export default function WarrenProposal() {
         </div>
       </section>
 
-      {/* PRICING */}
+      {/* NEXT STEP */}
       <section style={{ background: 'rgba(255,255,255,.03)', borderTop: '1px solid rgba(255,255,255,.07)', borderBottom: '1px solid rgba(255,255,255,.07)', padding: '80px 24px' }}>
         <div style={{ maxWidth: 700, margin: '0 auto', textAlign: 'center' }}>
-          <div style={{ fontSize: 11, letterSpacing: '4px', textTransform: 'uppercase', color: '#b8965a', marginBottom: 14 }}>Investment</div>
-          <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 600, color: '#fff', margin: '0 0 40px' }}>Simple, Transparent Pricing</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 32 }}>
-            <div style={{ background: 'rgba(184,150,86,.1)', border: '1px solid rgba(184,150,86,.35)', borderRadius: 8, padding: '32px 24px' }}>
-              <div style={{ fontSize: 11, letterSpacing: '3px', textTransform: 'uppercase', color: '#b8965a', marginBottom: 12 }}>Month One</div>
-              <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 48, fontWeight: 700, color: '#fff', lineHeight: 1 }}>$5,000</div>
-              <div style={{ fontSize: 14, color: '#8a99aa', marginTop: 12, lineHeight: 1.5 }}>Full site build, email setup, GBP optimization, and all initial setup work</div>
-            </div>
-            <div style={{ background: 'rgba(255,255,255,.04)', border: '1px solid rgba(255,255,255,.1)', borderRadius: 8, padding: '32px 24px' }}>
-              <div style={{ fontSize: 11, letterSpacing: '3px', textTransform: 'uppercase', color: '#b8965a', marginBottom: 12 }}>Monthly After</div>
-              <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 48, fontWeight: 700, color: '#fff', lineHeight: 1 }}>$3,500</div>
-              <div style={{ fontSize: 14, color: '#8a99aa', marginTop: 12, lineHeight: 1.5 }}>Ongoing SEO, reviews management, updates, and monthly reporting</div>
-            </div>
-          </div>
-          <p style={{ fontSize: 15, color: '#7a8898', fontStyle: 'italic' }}>Month-to-month. No long-term contracts. No lock-in. You can cancel with 30 days notice.</p>
+          <div style={{ fontSize: 11, letterSpacing: '4px', textTransform: 'uppercase', color: '#b8965a', marginBottom: 14 }}>Next Step</div>
+          <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 600, color: '#fff', margin: '0 0 20px' }}>Review the Agreement</h2>
+          <p style={{ fontSize: 17, color: '#8a99aa', lineHeight: 1.7, marginBottom: 32 }}>
+            You already have a copy of the agreement Greg left with you. Look it over at your convenience — no pressure, no deadline. Any questions at all, call or email Greg directly.
+          </p>
+          <p style={{ fontSize: 15, color: '#5a6878', fontStyle: 'italic' }}>Month-to-month. No long-term contracts. No lock-in.</p>
         </div>
       </section>
 
@@ -150,9 +141,14 @@ export default function WarrenProposal() {
         <p style={{ fontSize: 17, color: '#8a99aa', lineHeight: 1.7, marginBottom: 32 }}>
           On-Site Computer Service — Greg's own 26-year-old repair business — was rebuilt from scratch and ranked #1 on Google. That's the site Greg showed you in the parking lot. That's what we do for our clients.
         </p>
-        <a href="https://onsitecomputerservice.net" target="_blank" rel="noopener noreferrer" className="btn" style={{ background: 'rgba(184,150,86,.15)', border: '1px solid rgba(184,150,86,.4)', color: '#b8965a', padding: '14px 28px', borderRadius: 4, fontWeight: 700, fontSize: 14, textDecoration: 'none', display: 'inline-block', letterSpacing: '.5px' }}>
-          View On-Site Computer Service →
-        </a>
+        <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <a href="/warren-demo" target="_blank" rel="noopener noreferrer" className="btn" style={{ background: '#b8965a', color: '#0d1b2e', padding: '14px 28px', borderRadius: 4, fontWeight: 700, fontSize: 14, textDecoration: 'none', display: 'inline-block', letterSpacing: '.5px' }}>
+            👁 See Your Demo Site →
+          </a>
+          <a href="https://onsitecomputerservice.net" target="_blank" rel="noopener noreferrer" className="btn" style={{ background: 'rgba(184,150,86,.15)', border: '1px solid rgba(184,150,86,.4)', color: '#b8965a', padding: '14px 28px', borderRadius: 4, fontWeight: 700, fontSize: 14, textDecoration: 'none', display: 'inline-block', letterSpacing: '.5px' }}>
+            View On-Site Computer Service →
+          </a>
+        </div>
       </section>
 
       {/* CTA */}
