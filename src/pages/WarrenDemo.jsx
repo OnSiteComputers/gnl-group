@@ -1,262 +1,927 @@
-import React from "react";
+import React from 'react';
 import {
   Phone,
   Mail,
   Menu,
-  ChevronRight,
   Users,
   Baby,
   Home,
   FileText,
   ShieldCheck,
   Handshake,
-  UserRoundCheck,
   Star,
-} from "lucide-react";
+  ChevronRight
+} from 'lucide-react';
 
-const PHONE = "704-741-1763";
-const EMAIL = "james@warrenfamilylaw.net";
-const PHONE_DISPLAY = `(704) ${PHONE.slice(4)}`;
+const PHONE = '704-741-1763';
+const PHONE_HREF = 'tel:+17047411763';
+const EMAIL = 'james@warrenfamilylaw.net';
+const EMAIL_HREF = `mailto:${EMAIL}`;
+
+// Put James.Warren.jpg in your Base44 / public directory.
+// Public assets are referenced from the site root like this:
+const JAMES_PHOTO = '/James.Warren.jpg';
 
 const services = [
   {
-    title: "Divorce & Separation",
-    text: "Guiding you through difficult times with clarity and compassion.",
     icon: Users,
+    title: 'Divorce & Separation',
+    text: 'Compassionate representation to help you move forward.'
   },
   {
-    title: "Child Custody & Support",
-    text: "Protecting what matters most—your children and parental rights.",
     icon: Baby,
+    title: 'Child Custody & Support',
+    text: 'Protecting your children and your parental rights.'
   },
   {
-    title: "Alimony & Property Division",
-    text: "Fair and equitable solutions for your financial future.",
     icon: Home,
+    title: 'Alimony & Property Division',
+    text: 'Fair and equitable solutions for your future.'
   },
   {
-    title: "Prenuptial & Postnuptial Agreements",
-    text: "Plan today for tomorrow.",
     icon: FileText,
-  },
+    title: 'Prenuptial & Postnuptial Agreements',
+    text: 'Plan today for tomorrow.'
+  }
 ];
-
-function Logo() {
-  return (
-    <a href="#home" className="flex items-center gap-3 text-white">
-      <span className="grid h-12 w-12 place-items-center border border-white/80 font-serif text-4xl leading-none">
-        W
-      </span>
-      <span className="font-serif uppercase leading-[0.9] tracking-[0.18em]">
-        <span className="block text-3xl md:text-4xl">Warren</span>
-        <span className="block text-xl md:text-2xl">Family Law</span>
-      </span>
-    </a>
-  );
-}
-
-function Button({ href, children, variant = "gold" }) {
-  const base =
-    "inline-flex items-center justify-center gap-2 rounded-sm px-6 py-3 text-sm font-bold uppercase tracking-wide transition hover:-translate-y-0.5";
-  const styles =
-    variant === "gold"
-      ? "bg-[#c98b24] text-white shadow-lg shadow-black/20 hover:bg-[#d99b34]"
-      : "border border-white/80 bg-transparent text-white hover:bg-white hover:text-[#071a31]";
-
-  return (
-    <a href={href} className={`${base} ${styles}`}>
-      {children}
-    </a>
-  );
-}
 
 export default function WarrenDemo() {
   return (
-    <main className="min-h-screen bg-[#f7f4ee] text-[#071a31]">
-      {/* Header */}
-      <header className="absolute left-0 right-0 top-0 z-30 border-b border-white/10 bg-[#06182c]/95 text-white">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
-          <Logo />
+    <main className="warren-demo">
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
 
-          <nav className="hidden items-center gap-8 text-sm font-semibold uppercase tracking-wide lg:flex">
-            <a href="#home" className="hover:text-[#d59a2a]">Home</a>
-            <a href="#services" className="hover:text-[#d59a2a]">Practice Areas</a>
-            <a href="#about" className="hover:text-[#d59a2a]">About Us</a>
-            <a href="#reviews" className="hover:text-[#d59a2a]">Reviews</a>
-            <a href="#resources" className="hover:text-[#d59a2a]">Resources</a>
-            <a href={`mailto:${EMAIL}`} className="hover:text-[#d59a2a]">Contact</a>
-          </nav>
+        .warren-demo {
+          --navy: #001a33;
+          --navy-2: #031f3b;
+          --navy-3: #07172a;
+          --gold: #d89a2b;
+          --gold-2: #b97819;
+          --cream: #fbfaf7;
+          --ink: #061b38;
+          --muted: #465365;
+          min-height: 100vh;
+          background: #ececec;
+          color: var(--ink);
+          font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
 
-          <a
-            href={`tel:${PHONE}`}
-            className="hidden items-center gap-2 rounded-sm bg-[#c98b24] px-6 py-3 text-lg font-bold shadow-lg shadow-black/20 hover:bg-[#d99b34] md:flex"
-          >
-            <Phone size={22} fill="currentColor" />
-            {PHONE_DISPLAY}
+        .warren-page {
+          width: min(1430px, 100%);
+          margin: 0 auto;
+          background: white;
+          box-shadow: 0 8px 28px rgba(0,0,0,.18);
+          overflow: hidden;
+        }
+
+        .topbar {
+          height: 112px;
+          background: linear-gradient(90deg, #02192f 0%, #041f3b 100%);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0 36px;
+          color: white;
+          border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        .brand {
+          display: flex;
+          align-items: center;
+          gap: 18px;
+          text-decoration: none;
+          color: white;
+        }
+
+        .brand-mark {
+          width: 64px;
+          height: 64px;
+          border: 1.5px solid rgba(255,255,255,.85);
+          display: grid;
+          place-items: center;
+          font-family: "Cormorant Garamond", serif;
+          font-size: 44px;
+          line-height: 1;
+          font-weight: 600;
+        }
+
+        .brand-name {
+          font-family: "Cormorant Garamond", serif;
+          font-weight: 700;
+          font-size: clamp(30px, 3vw, 43px);
+          line-height: .83;
+          letter-spacing: 4px;
+          text-transform: uppercase;
+        }
+
+        .brand-name span {
+          display: block;
+          font-size: .56em;
+          letter-spacing: 8px;
+          margin-top: 8px;
+        }
+
+        .desktop-nav {
+          display: flex;
+          align-items: center;
+          gap: clamp(18px, 2vw, 38px);
+          margin-left: auto;
+          margin-right: 30px;
+        }
+
+        .desktop-nav a {
+          color: white;
+          text-decoration: none;
+          font-size: 14px;
+          font-weight: 800;
+          letter-spacing: .02em;
+        }
+
+        .header-phone,
+        .gold-button {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 11px;
+          background: linear-gradient(180deg, #dda23a 0%, #bd7817 100%);
+          color: white;
+          text-decoration: none;
+          border-radius: 4px;
+          font-weight: 800;
+          box-shadow: inset 0 1px 0 rgba(255,255,255,.25);
+          border: 1px solid rgba(255,255,255,.12);
+        }
+
+        .header-phone {
+          height: 58px;
+          padding: 0 28px;
+          font-size: 22px;
+        }
+
+        .mobile-menu {
+          display: none;
+          color: white;
+        }
+
+        .hero {
+          position: relative;
+          min-height: 555px;
+          display: grid;
+          grid-template-columns: 45% 55%;
+          background:
+            radial-gradient(circle at 88% 15%, rgba(255,255,255,.08), transparent 18%),
+            linear-gradient(90deg, rgba(0,16,31,.98) 0%, rgba(0,20,39,.92) 39%, rgba(1,23,41,.26) 61%, rgba(0,0,0,.18) 100%),
+            linear-gradient(135deg, #061b31 0%, #2a160b 100%);
+          overflow: hidden;
+        }
+
+        .hero::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background:
+            linear-gradient(90deg, rgba(0,18,35,.94) 0%, rgba(0,18,35,.80) 30%, rgba(0,18,35,.25) 53%, rgba(0,0,0,0) 70%),
+            linear-gradient(0deg, rgba(0,0,0,.12), rgba(0,0,0,.12));
+          pointer-events: none;
+        }
+
+        .hero-copy {
+          position: relative;
+          z-index: 2;
+          padding: 46px 0 42px 58px;
+          max-width: 600px;
+        }
+
+        .eyebrow {
+          color: var(--gold);
+          font-size: 22px;
+          font-weight: 800;
+          letter-spacing: 1.4px;
+          text-transform: uppercase;
+          margin-bottom: 18px;
+        }
+
+        .hero h1 {
+          font-family: "Cormorant Garamond", serif;
+          font-weight: 700;
+          font-size: clamp(52px, 5vw, 70px);
+          line-height: .98;
+          color: white;
+          margin: 0;
+          letter-spacing: -.03em;
+        }
+
+        .hero h1 .gold {
+          color: var(--gold);
+          display: block;
+        }
+
+        .gold-rule {
+          width: 62px;
+          height: 2px;
+          background: var(--gold);
+          margin: 28px 0 26px;
+        }
+
+        .hero p {
+          color: white;
+          font-size: 18px;
+          line-height: 1.55;
+          max-width: 520px;
+          margin: 0 0 26px;
+        }
+
+        .hero-actions {
+          display: flex;
+          gap: 22px;
+          flex-wrap: wrap;
+          align-items: center;
+        }
+
+        .gold-button {
+          min-height: 52px;
+          padding: 0 25px;
+          font-size: 15px;
+          letter-spacing: .02em;
+        }
+
+        .outline-button {
+          min-height: 52px;
+          padding: 0 24px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          border: 1px solid rgba(255,255,255,.72);
+          text-decoration: none;
+          border-radius: 3px;
+          font-weight: 800;
+          font-size: 15px;
+        }
+
+        .hero-photo-wrap {
+          position: relative;
+          z-index: 1;
+          min-height: 555px;
+          overflow: hidden;
+        }
+
+        .hero-photo-wrap::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background:
+            linear-gradient(90deg, rgba(0,19,37,.05), rgba(0,0,0,0) 28%),
+            radial-gradient(circle at 78% 18%, rgba(255,255,255,.08), transparent 16%),
+            repeating-linear-gradient(90deg, rgba(124,70,25,.16) 0 9px, rgba(52,25,13,.08) 9px 18px);
+          z-index: 1;
+          pointer-events: none;
+        }
+
+        .hero-photo {
+          position: absolute;
+          right: 9%;
+          bottom: -10px;
+          height: 108%;
+          width: min(570px, 75%);
+          object-fit: cover;
+          object-position: center top;
+          filter: contrast(1.03) saturate(1.02);
+          border-radius: 0;
+          z-index: 2;
+          mix-blend-mode: normal;
+        }
+
+        .hero-photo-bg {
+          position: absolute;
+          inset: 0;
+          background:
+            linear-gradient(90deg, rgba(11,30,45,.5), rgba(58,30,13,.22)),
+            url(${JAMES_PHOTO});
+          background-size: cover;
+          background-position: center 30%;
+          transform: scale(1.09);
+          filter: blur(1px) brightness(.58) saturate(.85);
+        }
+
+        .services {
+          background: var(--cream);
+          padding: 18px 44px 24px;
+          text-align: center;
+          border-top: 1px solid rgba(0,0,0,.05);
+        }
+
+        .services .eyebrow-small {
+          color: var(--gold-2);
+          font-size: 16px;
+          font-weight: 800;
+          letter-spacing: 4px;
+          text-transform: uppercase;
+          margin-bottom: 2px;
+        }
+
+        .services h2 {
+          font-family: "Cormorant Garamond", serif;
+          font-size: clamp(35px, 3vw, 44px);
+          line-height: 1;
+          margin: 0;
+          color: var(--ink);
+        }
+
+        .title-rule {
+          width: 70px;
+          height: 2px;
+          background: var(--gold);
+          margin: 18px auto 0;
+        }
+
+        .service-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          margin-top: 0;
+        }
+
+        .service-card {
+          padding: 0 30px;
+          min-height: 152px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-end;
+          border-right: 1px solid rgba(6,27,56,.25);
+        }
+
+        .service-card:last-child {
+          border-right: none;
+        }
+
+        .service-card svg {
+          width: 52px;
+          height: 52px;
+          color: var(--ink);
+          fill: none;
+          stroke-width: 2.4;
+          margin-bottom: 14px;
+        }
+
+        .service-card h3 {
+          font-family: "Cormorant Garamond", serif;
+          font-size: 21px;
+          line-height: 1.08;
+          color: var(--ink);
+          margin: 0 0 8px;
+          font-weight: 700;
+        }
+
+        .service-card p {
+          color: #10233e;
+          font-size: 14px;
+          line-height: 1.45;
+          margin: 0 0 13px;
+        }
+
+        .learn {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          color: var(--ink);
+          text-decoration: none;
+          font-size: 12px;
+          font-weight: 900;
+          letter-spacing: .05em;
+        }
+
+        .reviews {
+          display: grid;
+          grid-template-columns: 29% 34% 37%;
+          min-height: 207px;
+          background: var(--navy);
+          color: white;
+        }
+
+        .review-score {
+          padding: 30px 40px;
+          background: linear-gradient(135deg, #00192f, #06243f);
+          border-right: 1px solid rgba(255,255,255,.22);
+        }
+
+        .review-score .label {
+          color: var(--gold);
+          font-weight: 800;
+          letter-spacing: .06em;
+          font-size: 15px;
+          margin-bottom: 13px;
+        }
+
+        .stars {
+          color: var(--gold);
+          display: flex;
+          gap: 8px;
+          margin-bottom: 9px;
+        }
+
+        .stars svg {
+          width: 28px;
+          height: 28px;
+          fill: currentColor;
+          stroke: currentColor;
+        }
+
+        .review-score p {
+          margin: 0 0 18px;
+          font-size: 14px;
+        }
+
+        .review-button {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 42px;
+          padding: 0 20px;
+          border: 1px solid var(--gold);
+          color: white;
+          text-decoration: none;
+          border-radius: 3px;
+          font-size: 13px;
+          font-weight: 800;
+        }
+
+        .quote-box {
+          padding: 22px 34px;
+          background: linear-gradient(90deg, #00192f, #07233c);
+          display: grid;
+          grid-template-columns: 56px 1fr;
+          align-items: start;
+          gap: 6px;
+        }
+
+        .quote-mark {
+          font-family: Georgia, serif;
+          color: var(--gold);
+          font-size: 86px;
+          line-height: .75;
+        }
+
+        .quote-box blockquote {
+          margin: 0;
+          font-family: "Cormorant Garamond", serif;
+          font-size: 18px;
+          line-height: 1.45;
+          font-style: italic;
+          color: white;
+        }
+
+        .quote-box cite {
+          display: block;
+          color: var(--gold);
+          margin-top: 9px;
+          font-style: normal;
+          font-size: 15px;
+        }
+
+        .city-panel {
+          position: relative;
+          overflow: hidden;
+          background:
+            linear-gradient(180deg, rgba(221,128,38,.15), rgba(3,31,59,.35)),
+            linear-gradient(135deg, #ff8e40 0%, #253b68 52%, #021f3a 100%);
+        }
+
+        .city-panel::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background:
+            linear-gradient(to top, #021324 0 19%, transparent 19%),
+            linear-gradient(90deg,
+              transparent 0 6%, rgba(0,12,27,.86) 6% 12%, transparent 12% 16%,
+              rgba(0,12,27,.8) 16% 22%, transparent 22% 26%,
+              rgba(0,12,27,.9) 26% 32%, transparent 32% 36%,
+              rgba(0,12,27,.82) 36% 46%, transparent 46% 50%,
+              rgba(0,12,27,.88) 50% 58%, transparent 58% 62%,
+              rgba(0,12,27,.8) 62% 70%, transparent 70% 76%,
+              rgba(0,12,27,.86) 76% 84%, transparent 84% 100%);
+          opacity: .95;
+          clip-path: polygon(0 70%, 6% 70%, 6% 40%, 12% 40%, 12% 62%, 16% 62%, 16% 35%, 22% 35%, 22% 69%, 26% 69%, 26% 27%, 32% 27%, 32% 70%, 36% 70%, 36% 48%, 46% 48%, 46% 70%, 50% 70%, 50% 22%, 58% 22%, 58% 70%, 62% 70%, 62% 30%, 70% 30%, 70% 70%, 76% 70%, 76% 41%, 84% 41%, 84% 70%, 100% 70%, 100% 100%, 0 100%);
+        }
+
+        .city-panel::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: 54px;
+          background:
+            repeating-linear-gradient(165deg, transparent 0 18px, rgba(255,255,255,.22) 18px 21px, transparent 21px 35px),
+            linear-gradient(90deg, #071725, #0a2542);
+        }
+
+        .trust {
+          background: var(--cream);
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 0;
+          padding: 28px 58px;
+          border-bottom: 1px solid rgba(0,0,0,.05);
+        }
+
+        .trust-item {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 25px;
+          min-height: 58px;
+          border-right: 1px solid rgba(6,27,56,.25);
+          color: var(--ink);
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 1.25;
+          text-transform: uppercase;
+        }
+
+        .trust-item:last-child {
+          border-right: none;
+        }
+
+        .trust-item svg {
+          width: 52px;
+          height: 52px;
+          stroke-width: 1.8;
+          color: var(--ink);
+          flex: 0 0 auto;
+        }
+
+        .mobile-shell {
+          display: none;
+        }
+
+        @media (max-width: 1020px) {
+          .desktop-nav { display: none; }
+          .topbar { height: 90px; padding: 0 28px; }
+          .header-phone { font-size: 18px; height: 52px; }
+          .hero { grid-template-columns: 1fr; min-height: auto; }
+          .hero-copy { padding: 48px 28px; max-width: 680px; }
+          .hero-photo-wrap { min-height: 440px; }
+          .hero-photo { right: 8%; height: 112%; width: min(500px, 70%); }
+          .service-grid { grid-template-columns: repeat(2, 1fr); gap: 24px 0; }
+          .service-card:nth-child(2) { border-right: none; }
+          .reviews { grid-template-columns: 1fr; }
+          .city-panel { min-height: 190px; }
+          .trust { grid-template-columns: 1fr; padding: 20px; }
+          .trust-item { border-right: none; border-bottom: 1px solid rgba(6,27,56,.17); padding: 18px 0; }
+          .trust-item:last-child { border-bottom: none; }
+        }
+
+        @media (max-width: 720px) {
+          .warren-page.desktop-version { display: none; }
+
+          .mobile-shell {
+            display: block;
+            width: min(430px, 100%);
+            margin: 0 auto;
+            background: #001a33;
+            color: white;
+            min-height: 100vh;
+          }
+
+          .mobile-top {
+            height: 118px;
+            background: linear-gradient(90deg, #02192f, #062441);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 22px;
+          }
+
+          .mobile-top .brand-mark {
+            width: 46px;
+            height: 46px;
+            font-size: 31px;
+          }
+
+          .mobile-top .brand-name {
+            font-size: 30px;
+            letter-spacing: 2px;
+          }
+
+          .mobile-top .brand-name span {
+            font-size: .54em;
+            letter-spacing: 5px;
+            margin-top: 5px;
+          }
+
+          .mobile-hero {
+            position: relative;
+            min-height: 365px;
+            padding: 28px 24px 20px;
+            overflow: hidden;
+            background:
+              linear-gradient(90deg, rgba(0,18,35,.98) 0%, rgba(0,18,35,.72) 58%, rgba(0,18,35,.18) 100%),
+              url(${JAMES_PHOTO});
+            background-size: cover;
+            background-position: 72% top;
+          }
+
+          .mobile-hero::after {
+            content: "";
+            position: absolute;
+            inset: auto 0 0 0;
+            height: 120px;
+            background: linear-gradient(0deg, #001a33, transparent);
+          }
+
+          .mobile-hero-content {
+            position: relative;
+            z-index: 2;
+            width: 58%;
+          }
+
+          .mobile-hero h1 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 30px;
+            line-height: 1.04;
+            margin: 0 0 14px;
+            color: white;
+          }
+
+          .mobile-hero h1 .gold {
+            color: var(--gold);
+          }
+
+          .mobile-hero p {
+            font-size: 14px;
+            line-height: 1.45;
+            margin: 0 0 20px;
+          }
+
+          .mobile-actions {
+            display: grid;
+            gap: 10px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            margin-top: 18px;
+          }
+
+          .mobile-actions a {
+            min-height: 52px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+          }
+
+          .mobile-actions .gold-button {
+            color: white;
+          }
+
+          .mobile-actions .outline {
+            border: 1px solid rgba(255,255,255,.65);
+            color: white;
+            background: rgba(0,0,0,.18);
+          }
+
+          .mobile-service-list {
+            background: #fbfaf7;
+            color: var(--ink);
+          }
+
+          .mobile-service {
+            display: grid;
+            grid-template-columns: 58px 1fr 24px;
+            gap: 14px;
+            align-items: center;
+            padding: 18px 22px;
+            border-bottom: 1px solid rgba(6,27,56,.16);
+          }
+
+          .mobile-service svg {
+            width: 42px;
+            height: 42px;
+            stroke-width: 2.2;
+          }
+
+          .mobile-service h3 {
+            font-size: 16px;
+            margin: 0 0 4px;
+            color: var(--ink);
+            font-weight: 800;
+          }
+
+          .mobile-service p {
+            font-size: 13px;
+            line-height: 1.35;
+            margin: 0;
+            color: #172a43;
+          }
+
+          .mobile-reviews {
+            padding: 24px 22px 28px;
+            background: linear-gradient(135deg, #00192f, #062441);
+            text-align: center;
+          }
+
+          .google-dot {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin: 0 auto 12px;
+            background: conic-gradient(#4285f4 0 25%, #34a853 0 50%, #fbbc05 0 75%, #ea4335 0);
+            display: grid;
+            place-items: center;
+          }
+
+          .google-dot span {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            color: #4285f4;
+            font-weight: 900;
+            font-size: 28px;
+            line-height: 40px;
+          }
+
+          .mobile-stars {
+            color: var(--gold);
+            font-size: 28px;
+            letter-spacing: 3px;
+            margin-bottom: 6px;
+          }
+
+          .mobile-reviews a {
+            color: white;
+            text-decoration: underline;
+            text-underline-offset: 8px;
+            font-weight: 800;
+            display: inline-block;
+            margin-top: 18px;
+          }
+        }
+      `}</style>
+
+      <div className="warren-page desktop-version">
+        <header className="topbar">
+          <a className="brand" href="#top" aria-label="Warren Family Law">
+            <div className="brand-mark">W</div>
+            <div className="brand-name">Warren <span>Family Law</span></div>
           </a>
 
-          <button className="lg:hidden" aria-label="Open navigation menu">
-            <Menu size={32} />
-          </button>
-        </div>
-      </header>
+          <nav className="desktop-nav" aria-label="Main navigation">
+            <a href="#top">HOME</a>
+            <a href="#services">PRACTICE AREAS⌄</a>
+            <a href="#about">ABOUT US</a>
+            <a href="#reviews">REVIEWS</a>
+            <a href="#resources">RESOURCES</a>
+            <a href="#contact">CONTACT</a>
+          </nav>
 
-      {/* Hero */}
-      <section
-        id="home"
-        className="relative overflow-hidden bg-[#071a31] pt-28 text-white"
-      >
-        <div className="absolute inset-0 opacity-40">
-          <div className="h-full w-full bg-[radial-gradient(circle_at_76%_35%,rgba(201,139,36,0.35),transparent_22%),linear-gradient(90deg,#06182c_0%,#06182c_39%,rgba(6,24,44,0.65)_64%,rgba(6,24,44,0.2)_100%)]" />
-        </div>
+          <a className="header-phone" href={PHONE_HREF}>
+            <Phone size={27} fill="white" /> ({PHONE.slice(0, 3)}) {PHONE.slice(4)}
+          </a>
+        </header>
 
-        <div className="mx-auto grid max-w-7xl items-center gap-8 px-5 pb-12 pt-8 lg:grid-cols-[1fr_0.9fr] lg:px-8 lg:pb-0">
-          <div className="relative z-10 max-w-2xl py-10 lg:py-20">
-            <p className="mb-4 text-lg font-bold uppercase tracking-[0.16em] text-[#d59a2a]">
-              40 Years of Experience
-            </p>
-            <h1 className="font-serif text-5xl font-bold leading-tight md:text-6xl lg:text-7xl">
-              Trusted Guidance.
-              <br />
+        <section className="hero" id="top">
+          <div className="hero-copy">
+            <div className="eyebrow">40 Years of Experience</div>
+            <h1>
+              Trusted Guidance.<br />
               Strong Advocates.
-              <br />
-              <span className="text-[#d59a2a]">Better Outcomes.</span>
+              <span className="gold">Better Outcomes.</span>
             </h1>
-            <div className="my-6 h-px w-14 bg-[#d59a2a]" />
-            <p className="max-w-xl text-lg leading-8 text-white/90">
-              For over 40 years, Warren Family Law has helped families in Charlotte and
-              surrounding areas navigate life&apos;s most challenging transitions with skill,
-              compassion, and integrity.
+            <div className="gold-rule" />
+            <p>
+              For over 40 years, Warren Family Law has helped families in Charlotte and surrounding areas
+              navigate life's most challenging transitions with skill, compassion, and integrity.
             </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <Button href={`tel:${PHONE}`}>
-                <Phone size={20} fill="currentColor" /> Call {PHONE_DISPLAY}
-              </Button>
-              <Button href={`mailto:${EMAIL}`} variant="outline">
-                <Mail size={20} /> Schedule a Consultation
-              </Button>
+            <div className="hero-actions">
+              <a className="gold-button" href={PHONE_HREF}>
+                <Phone size={21} fill="white" /> CALL ({PHONE.slice(0, 3)}) {PHONE.slice(4)}
+              </a>
+              <a className="outline-button" href={EMAIL_HREF}>
+                SCHEDULE A CONSULTATION
+              </a>
             </div>
           </div>
 
-          <div className="relative z-10 hidden min-h-[520px] items-end justify-center lg:flex">
-            <div className="absolute inset-x-10 bottom-0 h-[440px] rounded-t-full bg-gradient-to-b from-[#e8d3b1]/30 to-transparent blur-2xl" />
-            <img
-              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=80"
-              alt="Experienced family law attorney seated in an office"
-              className="relative max-h-[560px] w-full object-cover object-top mix-blend-normal"
-            />
+          <div className="hero-photo-wrap" aria-hidden="true">
+            <div className="hero-photo-bg" />
+            <img className="hero-photo" src={JAMES_PHOTO} alt="" />
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Mobile-style service strip that also works on desktop */}
-      <section id="services" className="bg-[#fbfaf7] py-12 shadow-inner">
-        <div className="mx-auto max-w-7xl px-5 text-center lg:px-8">
-          <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#c98b24] md:text-base">
-            Serving Families in Charlotte and Surrounding Areas
-          </p>
-          <h2 className="mt-2 font-serif text-4xl font-bold md:text-5xl">
-            Comprehensive Family Law Services
-          </h2>
-          <div className="mx-auto mt-4 h-px w-16 bg-[#c98b24]" />
+        <section className="services" id="services">
+          <div className="eyebrow-small">Serving Families in Charlotte and Surrounding Areas</div>
+          <h2>Comprehensive Family Law Services</h2>
+          <div className="title-rule" />
 
-          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-0">
-            {services.map((service, index) => {
+          <div className="service-grid">
+            {services.map((service) => {
               const Icon = service.icon;
               return (
-                <article
-                  key={service.title}
-                  className={`px-7 py-4 text-center ${
-                    index !== services.length - 1 ? "lg:border-r lg:border-[#071a31]/25" : ""
-                  }`}
-                >
-                  <Icon className="mx-auto mb-4 h-12 w-12 text-[#071a31]" strokeWidth={2.2} />
-                  <h3 className="font-serif text-xl font-bold leading-snug">{service.title}</h3>
-                  <p className="mx-auto mt-3 max-w-xs leading-6 text-[#071a31]/80">{service.text}</p>
-                  <a
-                    href={`mailto:${EMAIL}?subject=${encodeURIComponent(service.title + " Consultation")}`}
-                    className="mt-4 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wide hover:text-[#c98b24]"
-                  >
-                    Learn More <ChevronRight size={16} />
-                  </a>
+                <article className="service-card" key={service.title}>
+                  <Icon />
+                  <h3>{service.title}</h3>
+                  <p>{service.text}</p>
+                  <a className="learn" href={EMAIL_HREF}>LEARN MORE <ChevronRight size={13} /></a>
                 </article>
               );
             })}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Reviews */}
-      <section id="reviews" className="bg-[#06182c] text-white">
-        <div className="mx-auto grid max-w-7xl lg:grid-cols-[1.55fr_1fr]">
-          <div className="grid gap-8 px-5 py-10 md:grid-cols-[0.75fr_1.25fr] lg:px-8">
-            <div>
-              <p className="font-bold uppercase tracking-wide text-[#d59a2a]">What Our Clients Say</p>
-              <div className="mt-4 flex gap-1 text-[#d59a2a]">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={28} fill="currentColor" />
-                ))}
-              </div>
-              <p className="mt-3 text-sm text-white/80">Based on 15+ Google Reviews</p>
-              <a
-                href="#reviews"
-                className="mt-5 inline-flex rounded-sm border border-[#c98b24] px-6 py-3 text-sm font-bold uppercase tracking-wide hover:bg-[#c98b24]"
-              >
-                Read All Reviews
-              </a>
+        <section className="reviews" id="reviews">
+          <div className="review-score">
+            <div className="label">WHAT OUR CLIENTS SAY</div>
+            <div className="stars" aria-label="5 star rating">
+              {[1, 2, 3, 4, 5].map((star) => <Star key={star} />)}
             </div>
-
-            <blockquote className="border-l border-white/20 pl-8 font-serif text-lg italic leading-8 text-white/90">
-              <span className="mr-3 align-top text-6xl leading-none text-[#d59a2a]">“</span>
-              Jim Warren and his team were incredible. They guided me through one of
-              the hardest times in my life with professionalism, compassion, and
-              exceptional attention to detail. I highly recommend Warren Family Law.
-              <footer className="mt-3 font-sans text-base not-italic text-[#d59a2a]">
-                – Client, Concord, NC
-              </footer>
-            </blockquote>
+            <p>Based on 15+ Google Reviews</p>
+            <a className="review-button" href={EMAIL_HREF}>READ ALL REVIEWS</a>
           </div>
 
-          <div className="min-h-[230px] bg-[linear-gradient(rgba(6,24,44,0.15),rgba(6,24,44,0.15)),url('https://images.unsplash.com/photo-1605730953301-137cb6a40365?auto=format&fit=crop&w=900&q=80')] bg-cover bg-center" />
-        </div>
-      </section>
+          <div className="quote-box">
+            <div className="quote-mark">“</div>
+            <div>
+              <blockquote>
+                Jim Warren and his team were incredible. They guided me through one of the hardest times
+                in my life with professionalism, compassion, and exceptional attention to detail. I highly
+                recommend Warren Family Law.
+              </blockquote>
+              <cite>– Client, Concord, NC</cite>
+            </div>
+          </div>
 
-      {/* Trust bar */}
-      <section className="bg-[#fbfaf7] py-7">
-        <div className="mx-auto grid max-w-7xl gap-6 px-5 md:grid-cols-3 lg:px-8">
-          <div className="flex items-center justify-center gap-5 border-[#071a31]/20 md:border-r">
-            <ShieldCheck className="h-12 w-12" />
-            <p className="font-semibold uppercase tracking-wide">40+ Years<br />of Experience</p>
-          </div>
-          <div className="flex items-center justify-center gap-5 border-[#071a31]/20 md:border-r">
-            <Handshake className="h-12 w-12" />
-            <p className="font-semibold uppercase tracking-wide">Local, Trusted,<br />Focused on Family</p>
-          </div>
-          <div className="flex items-center justify-center gap-5">
-            <UserRoundCheck className="h-12 w-12" />
-            <p className="font-semibold uppercase tracking-wide">Personalized Attention<br />Every Step of the Way</p>
-          </div>
-        </div>
-      </section>
+          <div className="city-panel" aria-label="Charlotte skyline graphic" />
+        </section>
 
-      {/* Contact CTA */}
-      <section id="contact" className="bg-white px-5 py-14 text-center">
-        <h2 className="font-serif text-4xl font-bold">Ready to Talk?</h2>
-        <p className="mx-auto mt-3 max-w-2xl text-lg text-[#071a31]/75">
-          Contact Warren Family Law to schedule a confidential consultation.
-        </p>
-        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <Button href={`tel:${PHONE}`}>
-            <Phone size={20} fill="currentColor" /> Call {PHONE_DISPLAY}
-          </Button>
-          <a
-            href={`mailto:${EMAIL}`}
-            className="inline-flex items-center gap-2 font-semibold text-[#071a31] hover:text-[#c98b24]"
-          >
-            <Mail size={20} /> {EMAIL}
+        <section className="trust">
+          <div className="trust-item">
+            <ShieldCheck />
+            <span>40+ Years<br />of Experience</span>
+          </div>
+          <div className="trust-item">
+            <Handshake />
+            <span>Local, Trusted,<br />Focused on Family.</span>
+          </div>
+          <div className="trust-item">
+            <Users />
+            <span>Personalized Attention<br />Every Step of the Way</span>
+          </div>
+        </section>
+      </div>
+
+      <div className="mobile-shell">
+        <header className="mobile-top">
+          <a className="brand" href="#top" aria-label="Warren Family Law">
+            <div className="brand-mark">W</div>
+            <div className="brand-name">Warren <span>Family Law</span></div>
           </a>
-        </div>
-      </section>
+          <Menu size={34} />
+        </header>
+
+        <section className="mobile-hero">
+          <div className="mobile-hero-content">
+            <h1><span className="gold">40 Years</span><br />of Family Law Experience You Can Trust</h1>
+            <p>Compassionate. Experienced. Focused on your family and your future.</p>
+          </div>
+          <div className="mobile-actions">
+            <a className="gold-button" href={PHONE_HREF}>
+              <Phone size={20} fill="white" /> CALL ({PHONE.slice(0, 3)}) {PHONE.slice(4)}
+            </a>
+            <a className="outline" href={EMAIL_HREF}>
+              <Mail size={20} /> CONTACT US
+            </a>
+          </div>
+        </section>
+
+        <section className="mobile-service-list">
+          {services.map((service) => {
+            const Icon = service.icon;
+            return (
+              <article className="mobile-service" key={service.title}>
+                <Icon />
+                <div>
+                  <h3>{service.title}</h3>
+                  <p>{service.text}</p>
+                </div>
+                <ChevronRight />
+              </article>
+            );
+          })}
+        </section>
+
+        <section className="mobile-reviews">
+          <div className="google-dot"><span>G</span></div>
+          <div className="mobile-stars">★★★★★</div>
+          <div>15+ 5-Star Google Reviews</div>
+          <a href={EMAIL_HREF}>READ OUR REVIEWS</a>
+        </section>
+      </div>
     </main>
   );
 }
