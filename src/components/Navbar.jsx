@@ -50,7 +50,7 @@ export default function Navbar() {
       // The header is ~80px on mobile and ~188px on desktop, so a hardcoded offset
       // (the old 120) was wrong at both sizes. +16 gives a little breathing room.
       const navEl = document.querySelector('nav');
-      const offset = (navEl ? navEl.offsetHeight : 120) + 16;
+      const offset = navEl ? navEl.offsetHeight : 120;
       const targetPosition = el.getBoundingClientRect().top + window.pageYOffset - offset;
       const startPosition = window.pageYOffset;
       const distance = targetPosition - startPosition;
