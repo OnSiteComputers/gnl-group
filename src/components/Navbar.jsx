@@ -46,7 +46,11 @@ export default function Navbar() {
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
     if (el) {
-      const offset = 120; // adjusted for two-row header
+      // Measure the fixed navbar's real height so the section lands just below it.
+      // The header is ~80px on mobile and ~188px on desktop, so a hardcoded offset
+      // (the old 120) was wrong at both sizes. +16 gives a little breathing room.
+      const navEl = document.querySelector('nav');
+      const offset = (navEl ? navEl.offsetHeight : 120) + 16;
       const targetPosition = el.getBoundingClientRect().top + window.pageYOffset - offset;
       const startPosition = window.pageYOffset;
       const distance = targetPosition - startPosition;
