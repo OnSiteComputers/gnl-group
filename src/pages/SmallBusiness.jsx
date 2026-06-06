@@ -24,7 +24,7 @@ export default function SmallBusiness() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-start justify-center pt-20 md:pt-52 overflow-hidden">
+      <section className="relative min-h-[70vh] flex items-start justify-center pt-24 md:pt-52 overflow-hidden">
         <div className="absolute inset-0">
           <img src={HERO_BG} alt="Small business" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-primary/85" />
