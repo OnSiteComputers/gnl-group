@@ -5,14 +5,16 @@ const WARREN_EMAIL = 'james@warrenfamilylaw.net';
 const DEMO_PATH = '/warren-demo';
 
 const palette = {
-  navy: '#071728',
-  navy2: '#0d1f35',
-  navy3: '#132842',
-  gold: '#c8952d',
-  gold2: '#e0aa3f',
-  cream: '#f6f1e8',
-  text: '#d9e2ef',
-  muted: '#93a4b8',
+  navy: '#f7f3ec',     // page background (was dark) -> warm cream
+  navy2: '#eef1e8',    // section background -> soft sage-tinted cream
+  navy3: '#e8ede3',    // alt section -> sage mist
+  sage: '#5f6f58',
+  sage2: '#4c5a47',
+  gold: '#b98e3f',
+  gold2: '#a87f3d',
+  cream: '#fdfbf7',
+  text: '#3a3a37',     // primary text (was light) -> warm charcoal
+  muted: '#6f6c66',    // secondary text -> warm gray
 };
 
 const deliverables = [
@@ -86,10 +88,10 @@ function Button({ href, children, variant = 'gold', target }) {
         letterSpacing: '.4px',
         textDecoration: 'none',
         textTransform: isGold ? 'uppercase' : 'none',
-        color: isGold ? palette.navy : palette.cream,
-        background: isGold ? `linear-gradient(135deg, ${palette.gold2}, ${palette.gold})` : 'rgba(255,255,255,.06)',
-        border: isGold ? '1px solid rgba(255,255,255,.14)' : '1px solid rgba(255,255,255,.22)',
-        boxShadow: isGold ? '0 14px 30px rgba(200,149,45,.22)' : 'none',
+        color: isGold ? '#ffffff' : palette.sage2,
+        background: isGold ? `linear-gradient(135deg, ${palette.sage}, ${palette.sage2})` : 'rgba(95,111,88,.06)',
+        border: isGold ? '1px solid rgba(255,255,255,.18)' : `1px solid ${palette.sage}`,
+        boxShadow: isGold ? '0 14px 30px rgba(95,111,88,.22)' : 'none',
       }}
     >
       {children}
@@ -101,7 +103,7 @@ function SectionHeader({ eyebrow, title, children }) {
   return (
     <div style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto 42px' }}>
       <div style={{ color: palette.gold2, letterSpacing: '4px', textTransform: 'uppercase', fontSize: 12, fontWeight: 800, marginBottom: 12 }}>{eyebrow}</div>
-      <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(34px, 4vw, 52px)', lineHeight: 1.05, color: '#fff', margin: 0, fontWeight: 700 }}>{title}</h2>
+      <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(34px, 4vw, 52px)', lineHeight: 1.05, color: palette.text, margin: 0, fontWeight: 700 }}>{title}</h2>
       {children && <p style={{ color: palette.muted, fontSize: 18, lineHeight: 1.7, margin: '18px auto 0' }}>{children}</p>}
     </div>
   );
@@ -121,7 +123,7 @@ export default function WarrenProposal() {
         .btn { transition: transform .18s ease, opacity .18s ease, box-shadow .18s ease; }
         .btn:hover { transform: translateY(-2px); opacity: .92; }
         .card { transition: transform .18s ease, border-color .18s ease, background .18s ease; }
-        .card:hover { transform: translateY(-4px); border-color: rgba(224,170,63,.45) !important; background: rgba(255,255,255,.065) !important; }
+        .card:hover { transform: translateY(-4px); border-color: rgba(185,142,63,.5) !important; box-shadow: 0 14px 36px rgba(95,111,88,.14) !important; }
         .hero-grid { grid-template-columns: minmax(0, 1fr) 420px; }
         @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } .desktop-only { display:none !important; } }
       `}</style>
@@ -130,14 +132,14 @@ export default function WarrenProposal() {
         Private Proposal — Prepared Exclusively for Warren Family Law
       </div>
 
-      <section style={{ position: 'relative', overflow: 'hidden', padding: '34px 24px 76px', borderBottom: '1px solid rgba(255,255,255,.08)' }}>
-        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at top left, rgba(224,170,63,.17), transparent 42%), radial-gradient(ellipse at 80% 0%, rgba(255,255,255,.08), transparent 36%)', pointerEvents: 'none' }} />
+      <section style={{ position: 'relative', overflow: 'hidden', padding: '34px 24px 76px', borderBottom: '1px solid rgba(58,58,55,.10)' }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at top left, rgba(185,142,63,.12), transparent 46%), radial-gradient(ellipse at 80% 0%, rgba(95,111,88,.10), transparent 40%)', pointerEvents: 'none' }} />
 
         <header style={{ position: 'relative', maxWidth: 1180, margin: '0 auto 74px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-            <div style={{ width: 44, height: 44, border: `1px solid ${palette.gold2}`, display: 'grid', placeItems: 'center', fontFamily: "'Cormorant Garamond', serif", fontSize: 26, color: '#fff' }}>G</div>
+            <div style={{ width: 44, height: 44, border: `1px solid ${palette.gold2}`, display: 'grid', placeItems: 'center', fontFamily: "'Cormorant Garamond', serif", fontSize: 26, color: palette.text }}>G</div>
             <div>
-              <div style={{ fontFamily: "'Cormorant Garamond', serif", color: '#fff', fontSize: 27, letterSpacing: '2px', lineHeight: 1 }}>GNL</div>
+              <div style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.text, fontSize: 27, letterSpacing: '2px', lineHeight: 1 }}>GNL</div>
               <div style={{ color: palette.gold2, fontSize: 12, letterSpacing: '3px', textTransform: 'uppercase' }}>Digital Group</div>
             </div>
           </div>
@@ -151,10 +153,10 @@ export default function WarrenProposal() {
         <div className="hero-grid" style={{ position: 'relative', maxWidth: 1180, margin: '0 auto', display: 'grid', gap: 44, alignItems: 'center' }}>
           <div>
             <div className="fade-up" style={{ color: palette.gold2, letterSpacing: '4px', textTransform: 'uppercase', fontSize: 13, fontWeight: 800, marginBottom: 18 }}>Website • SEO • Email • Phones</div>
-            <h1 className="fade-up d2" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(44px, 6vw, 78px)', lineHeight: .98, color: '#fff', fontWeight: 700, margin: '0 0 22px' }}>
+            <h1 className="fade-up d2" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(44px, 6vw, 78px)', lineHeight: .98, color: palette.text, fontWeight: 700, margin: '0 0 22px' }}>
               A stronger digital presence for <span style={{ color: palette.gold2 }}>Warren Family Law.</span>
             </h1>
-            <p className="fade-up d3" style={{ maxWidth: 650, color: '#b9c5d3', fontSize: 19, lineHeight: 1.7, margin: '0 0 32px' }}>
+            <p className="fade-up d3" style={{ maxWidth: 650, color: palette.muted, fontSize: 19, lineHeight: 1.7, margin: '0 0 32px' }}>
               James, this is the practical plan we discussed: modernize the website, improve local search visibility, move to a professional email address, and simplify the phone workflow so the firm looks as established online as it is in person.
             </p>
             <div className="fade-up d4" style={{ display: 'flex', flexWrap: 'wrap', gap: 14 }}>
@@ -163,7 +165,7 @@ export default function WarrenProposal() {
             </div>
           </div>
 
-          <aside className="fade-up d3" style={{ background: 'linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.035))', border: '1px solid rgba(255,255,255,.13)', borderRadius: 18, padding: 24, boxShadow: '0 24px 70px rgba(0,0,0,.28)' }}>
+          <aside className="fade-up d3" style={{ background: '#ffffff', border: '1px solid rgba(58,58,55,.12)', borderRadius: 18, padding: 24, boxShadow: '0 22px 60px rgba(95,111,88,.16)' }}>
             <div style={{ color: palette.gold2, fontSize: 12, letterSpacing: '3px', textTransform: 'uppercase', fontWeight: 800, marginBottom: 16 }}>Proposal Snapshot</div>
             {[
               ['New demo website', 'Ready for James to review'],
@@ -171,8 +173,8 @@ export default function WarrenProposal() {
               ['Lead flow', 'Form inquiries routed properly'],
               ['Phone system', 'Modern VoIP option'],
             ].map(([label, value]) => (
-              <div key={label} style={{ borderTop: '1px solid rgba(255,255,255,.09)', padding: '16px 0' }}>
-                <div style={{ color: '#fff', fontWeight: 800, fontSize: 17 }}>{label}</div>
+              <div key={label} style={{ borderTop: '1px solid rgba(58,58,55,.10)', padding: '16px 0' }}>
+                <div style={{ color: palette.text, fontWeight: 800, fontSize: 17 }}>{label}</div>
                 <div style={{ color: palette.muted, marginTop: 4 }}>{value}</div>
               </div>
             ))}
@@ -180,7 +182,7 @@ export default function WarrenProposal() {
         </div>
       </section>
 
-      <section style={{ background: palette.cream, color: palette.navy, padding: '34px 24px' }}>
+      <section style={{ background: palette.cream, color: palette.text, padding: '34px 24px' }}>
         <div style={{ maxWidth: 1080, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))', gap: 18, textAlign: 'center' }}>
           {proofPoints.map((item) => (
             <div key={item.label} style={{ padding: '16px 10px' }}>
@@ -198,22 +200,22 @@ export default function WarrenProposal() {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(310px, 1fr))', gap: 20 }}>
           {deliverables.map((item) => (
-            <div key={item.title} className="card" style={{ background: 'rgba(255,255,255,.045)', border: '1px solid rgba(255,255,255,.10)', borderRadius: 14, padding: 28 }}>
+            <div key={item.title} className="card" style={{ background: '#ffffff', border: '1px solid rgba(58,58,55,.12)', borderRadius: 14, padding: 28 }}>
               <div style={{ fontSize: 30, marginBottom: 14 }}>{item.icon}</div>
               <div style={{ color: palette.gold2, fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', fontWeight: 800, marginBottom: 8 }}>{item.eyebrow}</div>
-              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: '#fff', fontSize: 28, lineHeight: 1.1, margin: '0 0 12px', fontWeight: 700 }}>{item.title}</h3>
+              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.text, fontSize: 28, lineHeight: 1.1, margin: '0 0 12px', fontWeight: 700 }}>{item.title}</h3>
               <p style={{ color: palette.muted, lineHeight: 1.7, fontSize: 16, margin: 0 }}>{item.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section id="demo" style={{ padding: '84px 24px', background: `linear-gradient(135deg, ${palette.navy2}, ${palette.navy3})`, borderTop: '1px solid rgba(255,255,255,.08)', borderBottom: '1px solid rgba(255,255,255,.08)' }}>
+      <section id="demo" style={{ padding: '84px 24px', background: `linear-gradient(135deg, ${palette.navy2}, ${palette.navy3})`, color: palette.text, borderTop: '1px solid rgba(58,58,55,.10)', borderBottom: '1px solid rgba(58,58,55,.10)' }}>
         <div style={{ maxWidth: 1080, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 34, alignItems: 'center' }}>
           <div>
             <div style={{ color: palette.gold2, letterSpacing: '4px', textTransform: 'uppercase', fontSize: 12, fontWeight: 800, marginBottom: 14 }}>Proof of Concept</div>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", color: '#fff', fontSize: 'clamp(34px, 4.5vw, 56px)', lineHeight: 1.02, margin: '0 0 18px', fontWeight: 700 }}>The demo shows the direction before anyone commits.</h2>
-            <p style={{ color: '#b9c5d3', fontSize: 18, lineHeight: 1.72, margin: '0 0 28px' }}>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.text, fontSize: 'clamp(34px, 4.5vw, 56px)', lineHeight: 1.02, margin: '0 0 18px', fontWeight: 700 }}>The demo shows the direction before anyone commits.</h2>
+            <p style={{ color: palette.muted, fontSize: 18, lineHeight: 1.72, margin: '0 0 28px' }}>
               The Warren demo page gives James a real feel for the final product: attorney-focused design, family-law service sections, consultation buttons, review trust signals, and mobile-first presentation.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14 }}>
@@ -222,7 +224,7 @@ export default function WarrenProposal() {
             </div>
           </div>
 
-          <div style={{ background: palette.cream, color: palette.navy, borderRadius: 16, padding: 28, boxShadow: '0 22px 58px rgba(0,0,0,.28)' }}>
+          <div style={{ background: palette.cream, color: palette.text, borderRadius: 16, padding: 28, boxShadow: '0 20px 50px rgba(95,111,88,.16)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: 14, borderBottom: '1px solid rgba(7,23,40,.15)', paddingBottom: 16, marginBottom: 18 }}>
               <div>
                 <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 30, fontWeight: 700 }}>Warren Demo</div>
@@ -243,16 +245,16 @@ export default function WarrenProposal() {
         <SectionHeader eyebrow="Simple Rollout" title="A clean path from review to launch" />
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 20 }}>
           {timeline.map(([num, title, desc]) => (
-            <div key={num} style={{ position: 'relative', background: 'rgba(255,255,255,.045)', border: '1px solid rgba(255,255,255,.10)', borderRadius: 14, padding: 28 }}>
+            <div key={num} style={{ position: 'relative', background: '#ffffff', border: '1px solid rgba(58,58,55,.12)', borderRadius: 14, padding: 28 }}>
               <div style={{ width: 46, height: 46, borderRadius: 999, background: 'rgba(224,170,63,.16)', color: palette.gold2, display: 'grid', placeItems: 'center', fontWeight: 900, fontSize: 20, marginBottom: 18 }}>{num}</div>
-              <h3 style={{ color: '#fff', fontSize: 23, margin: '0 0 10px', fontWeight: 800 }}>{title}</h3>
+              <h3 style={{ color: palette.text, fontSize: 23, margin: '0 0 10px', fontWeight: 800 }}>{title}</h3>
               <p style={{ color: palette.muted, lineHeight: 1.7, margin: 0 }}>{desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section id="next" style={{ padding: '82px 24px', background: palette.cream, color: palette.navy }}>
+      <section id="next" style={{ padding: '82px 24px', background: palette.cream, color: palette.text }}>
         <div style={{ maxWidth: 820, margin: '0 auto', textAlign: 'center' }}>
           <div style={{ color: palette.gold, letterSpacing: '4px', textTransform: 'uppercase', fontSize: 12, fontWeight: 900, marginBottom: 14 }}>Next Step</div>
           <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(36px, 5vw, 58px)', lineHeight: 1.02, margin: '0 0 18px', fontWeight: 700 }}>Review the agreement and the demo.</h2>
@@ -267,7 +269,7 @@ export default function WarrenProposal() {
         </div>
       </section>
 
-      <footer style={{ padding: '28px 24px', color: '#64758a', textAlign: 'center', fontSize: 13, borderTop: '1px solid rgba(255,255,255,.08)' }}>
+      <footer style={{ padding: '28px 24px', color: '#64758a', textAlign: 'center', fontSize: 13, borderTop: '1px solid rgba(58,58,55,.10)' }}>
         © 2026 GNL Digital Group — Private proposal for Warren Family Law. Not for public distribution.
       </footer>
     </div>

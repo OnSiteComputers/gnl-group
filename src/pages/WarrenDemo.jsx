@@ -52,16 +52,17 @@ export default function WarrenDemo() {
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
 
         .warren-demo {
-          --navy: #001a33;
-          --navy-2: #031f3b;
-          --navy-3: #07172a;
-          --gold: #d89a2b;
-          --gold-2: #b97819;
-          --cream: #fbfaf7;
-          --ink: #061b38;
-          --muted: #465365;
+          --sage: #5f6f58;
+          --sage-2: #4c5a47;
+          --sage-soft: #e8ede3;
+          --gold: #c2974e;
+          --gold-2: #a87f3d;
+          --cream: #f7f3ec;
+          --cream-2: #fdfbf7;
+          --ink: #3a3a37;
+          --muted: #6f6c66;
           min-height: 100vh;
-          background: #ececec;
+          background: #ece7dd;
           color: var(--ink);
           font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         }
@@ -76,13 +77,13 @@ export default function WarrenDemo() {
 
         .topbar {
           height: 112px;
-          background: linear-gradient(90deg, #02192f 0%, #041f3b 100%);
+          background: linear-gradient(90deg, #5f6f58 0%, #4c5a47 100%);
           display: flex;
           align-items: center;
           justify-content: space-between;
           padding: 0 36px;
           color: white;
-          border-bottom: 1px solid rgba(255,255,255,.08);
+          border-bottom: 1px solid rgba(255,255,255,.12);
         }
 
         .brand {
@@ -143,12 +144,12 @@ export default function WarrenDemo() {
           align-items: center;
           justify-content: center;
           gap: 11px;
-          background: linear-gradient(180deg, #dda23a 0%, #bd7817 100%);
+          background: linear-gradient(180deg, #6f7f66 0%, #4c5a47 100%);
           color: white;
           text-decoration: none;
           border-radius: 4px;
           font-weight: 800;
-          box-shadow: inset 0 1px 0 rgba(255,255,255,.25);
+          box-shadow: inset 0 1px 0 rgba(255,255,255,.18);
           border: 1px solid rgba(255,255,255,.12);
         }
 
@@ -169,9 +170,9 @@ export default function WarrenDemo() {
           display: grid;
           grid-template-columns: 45% 55%;
           background:
-            radial-gradient(circle at 88% 15%, rgba(255,255,255,.08), transparent 18%),
-            linear-gradient(90deg, rgba(0,16,31,.98) 0%, rgba(0,20,39,.92) 39%, rgba(1,23,41,.26) 61%, rgba(0,0,0,.18) 100%),
-            linear-gradient(135deg, #061b31 0%, #2a160b 100%);
+            radial-gradient(circle at 88% 15%, rgba(95,111,88,.06), transparent 22%),
+            linear-gradient(90deg, #f7f3ec 0%, #f2ede3 42%, rgba(242,237,227,.55) 62%, rgba(242,237,227,.15) 100%),
+            linear-gradient(135deg, #f7f3ec 0%, #eef1e8 100%);
           overflow: hidden;
         }
 
@@ -180,8 +181,7 @@ export default function WarrenDemo() {
           position: absolute;
           inset: 0;
           background:
-            linear-gradient(90deg, rgba(0,18,35,.94) 0%, rgba(0,18,35,.80) 30%, rgba(0,18,35,.25) 53%, rgba(0,0,0,0) 70%),
-            linear-gradient(0deg, rgba(0,0,0,.12), rgba(0,0,0,.12));
+            linear-gradient(90deg, rgba(247,243,236,.92) 0%, rgba(247,243,236,.72) 32%, rgba(247,243,236,.20) 55%, rgba(247,243,236,0) 72%);
           pointer-events: none;
         }
 
@@ -206,13 +206,13 @@ export default function WarrenDemo() {
           font-weight: 700;
           font-size: clamp(52px, 5vw, 70px);
           line-height: .98;
-          color: white;
+          color: var(--ink);
           margin: 0;
           letter-spacing: -.03em;
         }
 
         .hero h1 .gold {
-          color: var(--gold);
+          color: var(--sage);
           display: block;
         }
 
@@ -224,7 +224,7 @@ export default function WarrenDemo() {
         }
 
         .hero p {
-          color: white;
+          color: var(--muted);
           font-size: 18px;
           line-height: 1.55;
           max-width: 520px;
@@ -251,8 +251,8 @@ export default function WarrenDemo() {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          color: white;
-          border: 1px solid rgba(255,255,255,.72);
+          color: var(--sage-2);
+          border: 1px solid var(--sage);
           text-decoration: none;
           border-radius: 3px;
           font-weight: 800;
@@ -271,9 +271,8 @@ export default function WarrenDemo() {
           position: absolute;
           inset: 0;
           background:
-            linear-gradient(90deg, rgba(0,19,37,.05), rgba(0,0,0,0) 28%),
-            radial-gradient(circle at 78% 18%, rgba(255,255,255,.08), transparent 16%),
-            repeating-linear-gradient(90deg, rgba(124,70,25,.16) 0 9px, rgba(52,25,13,.08) 9px 18px);
+            linear-gradient(90deg, rgba(247,243,236,.55), rgba(247,243,236,0) 32%),
+            radial-gradient(circle at 78% 18%, rgba(194,151,78,.10), transparent 30%);
           z-index: 1;
           pointer-events: none;
         }
@@ -296,12 +295,12 @@ export default function WarrenDemo() {
           position: absolute;
           inset: 0;
           background:
-            linear-gradient(90deg, rgba(11,30,45,.5), rgba(58,30,13,.22)),
+            linear-gradient(90deg, rgba(247,243,236,.45), rgba(232,237,227,.25)),
             url(${JAMES_PHOTO});
           background-size: cover;
           background-position: center 30%;
           transform: scale(1.09);
-          filter: blur(1px) brightness(.58) saturate(.85);
+          filter: blur(2px) brightness(1.05) saturate(.95);
         }
 
         .services {
@@ -348,7 +347,7 @@ export default function WarrenDemo() {
           flex-direction: column;
           align-items: center;
           justify-content: flex-end;
-          border-right: 1px solid rgba(6,27,56,.25);
+          border-right: 1px solid rgba(58,58,55,.14);
         }
 
         .service-card:last-child {
@@ -358,7 +357,7 @@ export default function WarrenDemo() {
         .service-card svg {
           width: 52px;
           height: 52px;
-          color: var(--ink);
+          color: var(--sage);
           fill: none;
           stroke-width: 2.4;
           margin-bottom: 14px;
@@ -374,7 +373,7 @@ export default function WarrenDemo() {
         }
 
         .service-card p {
-          color: #10233e;
+          color: var(--muted);
           font-size: 14px;
           line-height: 1.45;
           margin: 0 0 13px;
@@ -395,13 +394,13 @@ export default function WarrenDemo() {
           display: grid;
           grid-template-columns: 29% 34% 37%;
           min-height: 207px;
-          background: var(--navy);
+          background: var(--sage);
           color: white;
         }
 
         .review-score {
           padding: 30px 40px;
-          background: linear-gradient(135deg, #00192f, #06243f);
+          background: linear-gradient(135deg, #5f6f58, #4c5a47);
           border-right: 1px solid rgba(255,255,255,.22);
         }
 
@@ -448,7 +447,7 @@ export default function WarrenDemo() {
 
         .quote-box {
           padding: 22px 34px;
-          background: linear-gradient(90deg, #00192f, #07233c);
+          background: linear-gradient(90deg, #5a6a53, #4c5a47);
           display: grid;
           grid-template-columns: 56px 1fr;
           align-items: start;
@@ -483,8 +482,8 @@ export default function WarrenDemo() {
           position: relative;
           overflow: hidden;
           background:
-            linear-gradient(180deg, rgba(221,128,38,.15), rgba(3,31,59,.35)),
-            linear-gradient(135deg, #ff8e40 0%, #253b68 52%, #021f3a 100%);
+            linear-gradient(180deg, rgba(194,151,78,.18), rgba(95,111,88,.30)),
+            linear-gradient(135deg, #d8b877 0%, #8a9a7e 52%, #5f6f58 100%);
         }
 
         .city-panel::before {
@@ -492,15 +491,15 @@ export default function WarrenDemo() {
           position: absolute;
           inset: 0;
           background:
-            linear-gradient(to top, #021324 0 19%, transparent 19%),
+            linear-gradient(to top, #4c5a47 0 19%, transparent 19%),
             linear-gradient(90deg,
-              transparent 0 6%, rgba(0,12,27,.86) 6% 12%, transparent 12% 16%,
-              rgba(0,12,27,.8) 16% 22%, transparent 22% 26%,
-              rgba(0,12,27,.9) 26% 32%, transparent 32% 36%,
-              rgba(0,12,27,.82) 36% 46%, transparent 46% 50%,
-              rgba(0,12,27,.88) 50% 58%, transparent 58% 62%,
-              rgba(0,12,27,.8) 62% 70%, transparent 70% 76%,
-              rgba(0,12,27,.86) 76% 84%, transparent 84% 100%);
+              transparent 0 6%, rgba(76,90,71,.86) 6% 12%, transparent 12% 16%,
+              rgba(76,90,71,.8) 16% 22%, transparent 22% 26%,
+              rgba(76,90,71,.9) 26% 32%, transparent 32% 36%,
+              rgba(76,90,71,.82) 36% 46%, transparent 46% 50%,
+              rgba(76,90,71,.88) 50% 58%, transparent 58% 62%,
+              rgba(76,90,71,.8) 62% 70%, transparent 70% 76%,
+              rgba(76,90,71,.86) 76% 84%, transparent 84% 100%);
           opacity: .95;
           clip-path: polygon(0 70%, 6% 70%, 6% 40%, 12% 40%, 12% 62%, 16% 62%, 16% 35%, 22% 35%, 22% 69%, 26% 69%, 26% 27%, 32% 27%, 32% 70%, 36% 70%, 36% 48%, 46% 48%, 46% 70%, 50% 70%, 50% 22%, 58% 22%, 58% 70%, 62% 70%, 62% 30%, 70% 30%, 70% 70%, 76% 70%, 76% 41%, 84% 41%, 84% 70%, 100% 70%, 100% 100%, 0 100%);
         }
@@ -514,7 +513,7 @@ export default function WarrenDemo() {
           height: 54px;
           background:
             repeating-linear-gradient(165deg, transparent 0 18px, rgba(255,255,255,.22) 18px 21px, transparent 21px 35px),
-            linear-gradient(90deg, #071725, #0a2542);
+            linear-gradient(90deg, #4c5a47, #5f6f58);
         }
 
         .trust {
@@ -580,18 +579,19 @@ export default function WarrenDemo() {
             display: block;
             width: min(430px, 100%);
             margin: 0 auto;
-            background: #001a33;
-            color: white;
+            background: var(--cream);
+            color: var(--ink);
             min-height: 100vh;
           }
 
           .mobile-top {
             height: 118px;
-            background: linear-gradient(90deg, #02192f, #062441);
+            background: linear-gradient(90deg, #5f6f58, #4c5a47);
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 0 22px;
+            color: white;
           }
 
           .mobile-top .brand-mark {
@@ -617,7 +617,7 @@ export default function WarrenDemo() {
             padding: 28px 24px 20px;
             overflow: hidden;
             background:
-              linear-gradient(90deg, rgba(0,18,35,.98) 0%, rgba(0,18,35,.72) 58%, rgba(0,18,35,.18) 100%),
+              linear-gradient(90deg, rgba(247,243,236,.95) 0%, rgba(247,243,236,.72) 52%, rgba(247,243,236,.25) 100%),
               url(${JAMES_PHOTO});
             background-size: cover;
             background-position: 72% top;
@@ -628,7 +628,7 @@ export default function WarrenDemo() {
             position: absolute;
             inset: auto 0 0 0;
             height: 120px;
-            background: linear-gradient(0deg, #001a33, transparent);
+            background: linear-gradient(0deg, var(--cream), transparent);
           }
 
           .mobile-hero-content {
@@ -642,17 +642,18 @@ export default function WarrenDemo() {
             font-size: 30px;
             line-height: 1.04;
             margin: 0 0 14px;
-            color: white;
+            color: var(--ink);
           }
 
           .mobile-hero h1 .gold {
-            color: var(--gold);
+            color: var(--sage);
           }
 
           .mobile-hero p {
             font-size: 14px;
             line-height: 1.45;
             margin: 0 0 20px;
+            color: var(--muted);
           }
 
           .mobile-actions {
@@ -680,13 +681,13 @@ export default function WarrenDemo() {
           }
 
           .mobile-actions .outline {
-            border: 1px solid rgba(255,255,255,.65);
-            color: white;
-            background: rgba(0,0,0,.18);
+            border: 1px solid var(--sage);
+            color: var(--sage-2);
+            background: rgba(95,111,88,.06);
           }
 
           .mobile-service-list {
-            background: #fbfaf7;
+            background: var(--cream-2);
             color: var(--ink);
           }
 
@@ -696,13 +697,14 @@ export default function WarrenDemo() {
             gap: 14px;
             align-items: center;
             padding: 18px 22px;
-            border-bottom: 1px solid rgba(6,27,56,.16);
+            border-bottom: 1px solid rgba(58,58,55,.12);
           }
 
           .mobile-service svg {
             width: 42px;
             height: 42px;
             stroke-width: 2.2;
+            color: var(--sage);
           }
 
           .mobile-service h3 {
@@ -716,13 +718,14 @@ export default function WarrenDemo() {
             font-size: 13px;
             line-height: 1.35;
             margin: 0;
-            color: #172a43;
+            color: var(--muted);
           }
 
           .mobile-reviews {
             padding: 24px 22px 28px;
-            background: linear-gradient(135deg, #00192f, #062441);
+            background: linear-gradient(135deg, #5f6f58, #4c5a47);
             text-align: center;
+            color: white;
           }
 
           .google-dot {
@@ -787,7 +790,7 @@ export default function WarrenDemo() {
 
         <section className="hero" id="top">
           <div className="hero-copy">
-            <div className="eyebrow">40 Years of Experience</div>
+            <div className="eyebrow">42 Years of Experience</div>
             <h1>
               Trusted Guidance.<br />
               Strong Advocates.
@@ -795,7 +798,7 @@ export default function WarrenDemo() {
             </h1>
             <div className="gold-rule" />
             <p>
-              For over 40 years, Warren Family Law has helped families in Charlotte and surrounding areas
+              For over 42 years, Warren Family Law has helped families in Charlotte and surrounding areas
               navigate life's most challenging transitions with skill, compassion, and integrity.
             </p>
             <div className="hero-actions">
@@ -848,11 +851,11 @@ export default function WarrenDemo() {
             <div className="quote-mark">“</div>
             <div>
               <blockquote>
-                Jim Warren and his team were incredible. They guided me through one of the hardest times
-                in my life with professionalism, compassion, and exceptional attention to detail. I highly
-                recommend Warren Family Law.
+                BEST family law attorney, by far. I've known Mr. Warren since the mid 90's and
+                would use no other in a divorce situation. Extremely professional and will fight
+                for you, all the way.
               </blockquote>
-              <cite>– Client, Concord, NC</cite>
+              <cite>– Greg H., Charlotte, NC</cite>
             </div>
           </div>
 
@@ -862,7 +865,7 @@ export default function WarrenDemo() {
         <section className="trust">
           <div className="trust-item">
             <ShieldCheck />
-            <span>40+ Years<br />of Experience</span>
+            <span>42+ Years<br />of Experience</span>
           </div>
           <div className="trust-item">
             <Handshake />
@@ -886,7 +889,7 @@ export default function WarrenDemo() {
 
         <section className="mobile-hero">
           <div className="mobile-hero-content">
-            <h1><span className="gold">40 Years</span><br />of Family Law Experience You Can Trust</h1>
+            <h1><span className="gold">42 Years</span><br />of Family Law Experience You Can Trust</h1>
             <p>Compassionate. Experienced. Focused on your family and your future.</p>
           </div>
           <div className="mobile-actions">
