@@ -72,7 +72,19 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 192px;
+    /* Offset for the FIXED navbar so anchored sections (Services, Reviews, FAQ)
+       land just below the bar instead of being hidden behind it — or, on mobile,
+       being pushed way too far down. The navbar is a single 80px row on mobile and
+       a two-row 188px header on desktop, so the offset has to change at the md
+       breakpoint. A flat value (the old 192px) was correct on desktop but shoved
+       mobile targets ~110px too low. */
+    scroll-padding-top: 96px;
+  }
+
+  @media (min-width: 768px) {
+    html {
+      scroll-padding-top: 200px;
+    }
   }
 
   * {
