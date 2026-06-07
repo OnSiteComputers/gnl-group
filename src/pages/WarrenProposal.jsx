@@ -4,6 +4,19 @@ const GNL_EMAIL = 'greg@gnldigitalgroup.com';
 const WARREN_EMAIL = 'james@warrenfamilylaw.net';
 const DEMO_PATH = '/warren-demo';
 
+// ── PER-CLIENT SETTINGS ── edit these for each client, then republish ──
+// 1) SIGN_URL: paste the link from your e-signature tool (the signable contract).
+// 2) PAY_URL:  paste the hosted payment-page link from your merchant account.
+// 3) FIRST_MONTH: the amount shown on the Pay button.
+// 4) CONSULT_URL: paste the paid-booking link (Calendly/Acuity/Cal.com) that
+//    collects the consult fee AND creates the Zoom link automatically.
+// 5) CONSULT_FEE: the consultation price shown on the page.
+const SIGN_URL = 'PASTE_SIGNING_LINK_HERE';
+const PAY_URL = 'PASTE_PAYMENT_LINK_HERE';
+const FIRST_MONTH = '$5,000';
+const CONSULT_URL = 'PASTE_CONSULTATION_BOOKING_LINK_HERE';
+const CONSULT_FEE = '$250';
+
 const palette = {
   navy: '#f7f3ec',     // page background (was dark) -> warm cream
   navy2: '#eef1e8',    // section background -> soft sage-tinted cream
@@ -23,6 +36,12 @@ const deliverables = [
     title: 'New Website',
     eyebrow: 'Modern, mobile-first, built to convert',
     desc: 'A professional family-law website with clear practice-area sections, strong consultation calls-to-action, and a polished design that gives visitors confidence before they call.',
+  },
+  {
+    icon: '📅',
+    title: 'Paid Consultation Booking',
+    eyebrow: 'Zoom consults, paid up front',
+    desc: 'A booking link clients use to schedule a Zoom consultation and pay the consultation fee at the same time. The meeting link is created automatically, and the fee is collected before the call — no chasing payment, no unpaid no-shows.',
   },
   {
     icon: '📍',
@@ -251,6 +270,75 @@ export default function WarrenProposal() {
               <p style={{ color: palette.muted, lineHeight: 1.7, margin: 0 }}>{desc}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section id="official" style={{ padding: '82px 24px', background: `linear-gradient(135deg, ${palette.sage}, ${palette.sage2})`, color: '#fff' }}>
+        <div style={{ maxWidth: 920, margin: '0 auto', textAlign: 'center' }}>
+          <div style={{ color: '#f0ead9', letterSpacing: '4px', textTransform: 'uppercase', fontSize: 12, fontWeight: 900, marginBottom: 14 }}>Ready When You Are</div>
+          <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(34px, 4.5vw, 54px)', lineHeight: 1.04, margin: '0 0 16px', fontWeight: 700, color: '#fff' }}>Make it official.</h2>
+          <p style={{ color: 'rgba(255,255,255,.9)', fontSize: 18, lineHeight: 1.7, margin: '0 auto 28px', maxWidth: 640 }}>
+            Two simple steps, whenever you're ready: review and sign the agreement, then take care of the first month. No long-term lock-in &mdash; month to month.
+          </p>
+
+          <div style={{ maxWidth: 680, margin: '0 auto 36px', background: 'rgba(255,255,255,.12)', border: `1px solid ${palette.gold}`, borderRadius: 14, padding: '22px 26px', textAlign: 'left', display: 'flex', gap: 20, alignItems: 'center', flexWrap: 'wrap' }}>
+            <img src="/grandstream-grp2636.png" alt="Grandstream GRP2636 IP desk phone"
+                 style={{ width: 150, maxWidth: '100%', borderRadius: 10, background: '#fff', padding: 8, flexShrink: 0 }} />
+            <div style={{ flex: 1, minWidth: 240 }}>
+              <div style={{ color: palette.gold, letterSpacing: '2px', textTransform: 'uppercase', fontSize: 12, fontWeight: 900, marginBottom: 6 }}>12-Month Term Bonus</div>
+              <div style={{ color: '#fff', fontWeight: 800, fontSize: 17, marginBottom: 6 }}>Sign the 12-month term and your phones &amp; phone service are on us.</div>
+              <p style={{ color: 'rgba(255,255,255,.85)', fontSize: 14, lineHeight: 1.6, margin: 0 }}>
+                Choose the optional 12-month term and GNL includes <strong style={{ color: '#fff' }}>two Grandstream IP phones &mdash; yours to keep</strong> (one for the office, one for your secretary working from home), plus <strong style={{ color: '#fff' }}>VoIP phone service for the full first year</strong>. Professional setup included; phones are yours to keep even if you don&rsquo;t continue after the term.
+              </p>
+            </div>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 20, maxWidth: 760, margin: '0 auto', textAlign: 'left' }}>
+            {/* Sign card */}
+            <div style={{ background: '#fff', borderRadius: 16, padding: 28, boxShadow: '0 20px 50px rgba(0,0,0,.18)' }}>
+              <div style={{ color: palette.sage2, letterSpacing: '2px', textTransform: 'uppercase', fontSize: 12, fontWeight: 800, marginBottom: 8 }}>Step 1</div>
+              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.text, fontSize: 26, margin: '0 0 10px', fontWeight: 700 }}>Sign the Agreement</h3>
+              <p style={{ color: palette.muted, lineHeight: 1.6, fontSize: 15, margin: '0 0 20px' }}>
+                Review the full agreement and sign securely online. You&rsquo;ll receive a signed copy by email for your records.
+              </p>
+              <a className="btn" href={SIGN_URL} target="_blank" rel="noopener noreferrer"
+                 style={{ display: 'block', textAlign: 'center', padding: '15px 20px', borderRadius: 8, fontWeight: 800, textDecoration: 'none', color: '#fff', background: `linear-gradient(135deg, ${palette.sage}, ${palette.sage2})` }}>
+                Review &amp; Sign &rarr;
+              </a>
+            </div>
+
+            {/* Pay card */}
+            <div style={{ background: '#fff', borderRadius: 16, padding: 28, boxShadow: '0 20px 50px rgba(0,0,0,.18)' }}>
+              <div style={{ color: palette.sage2, letterSpacing: '2px', textTransform: 'uppercase', fontSize: 12, fontWeight: 800, marginBottom: 8 }}>Step 2</div>
+              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.text, fontSize: 26, margin: '0 0 4px', fontWeight: 700 }}>First Month</h3>
+              <div style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.gold, fontSize: 40, fontWeight: 700, lineHeight: 1, margin: '0 0 12px' }}>{FIRST_MONTH}</div>
+              <p style={{ color: palette.muted, lineHeight: 1.6, fontSize: 15, margin: '0 0 18px' }}>
+                Pay securely online. <strong style={{ color: palette.text }}>Debit cards are free.</strong> Credit cards include a 3% processing fee.
+              </p>
+              <a className="btn" href={PAY_URL} target="_blank" rel="noopener noreferrer"
+                 style={{ display: 'block', textAlign: 'center', padding: '15px 20px', borderRadius: 8, fontWeight: 800, textDecoration: 'none', color: palette.text, background: `linear-gradient(135deg, ${palette.gold2}, ${palette.gold})` }}>
+                Pay First Month &rarr;
+              </a>
+            </div>
+          </div>
+
+          <div style={{ marginTop: 26, padding: '20px 24px', background: 'rgba(255,255,255,.12)', border: '1px solid rgba(255,255,255,.25)', borderRadius: 14, maxWidth: 620, marginLeft: 'auto', marginRight: 'auto' }}>
+            <div style={{ fontWeight: 800, fontSize: 16, marginBottom: 6 }}>Preview the paid consultation booking</div>
+            <p style={{ color: 'rgba(255,255,255,.9)', fontSize: 14, lineHeight: 1.6, margin: '0 0 14px' }}>
+              Take a look at the booking experience your clients would use &mdash; they pick a time, pay the {CONSULT_FEE} consultation fee, and the Zoom link is created automatically. Your private appointments stay private; clients only ever see open slots.
+            </p>
+            <a className="btn" href={CONSULT_URL} target="_blank" rel="noopener noreferrer"
+               style={{ display: 'inline-block', padding: '13px 26px', borderRadius: 8, fontWeight: 800, textDecoration: 'none', color: '#fff', background: 'rgba(255,255,255,.16)', border: '1px solid rgba(255,255,255,.5)' }}>
+              Preview the Booking Experience &rarr;
+            </a>
+            <div style={{ color: 'rgba(255,255,255,.65)', fontSize: 12, marginTop: 10 }}>
+              Preview only &mdash; this is a sample setup, not a live charge.
+            </div>
+          </div>
+
+          <p style={{ color: 'rgba(255,255,255,.8)', fontSize: 14, marginTop: 26 }}>
+            Questions first? Call Greg at {GNL_PHONE} &mdash; no rush, no pressure.
+          </p>
         </div>
       </section>
 
