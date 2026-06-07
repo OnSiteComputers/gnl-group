@@ -17,6 +17,7 @@ const PHONE = '704-741-1763';
 const PHONE_HREF = 'tel:+17047411763';
 const EMAIL = 'james@warrenfamilylaw.net';
 const EMAIL_HREF = `mailto:${EMAIL}`;
+const CONSULT_URL = 'https://calendly.com/greg-gnldigitalgroup/warren-family-law-consult';
 const LOGO_CREST = '/warren-crest.png';
 const LOGO_FULL = '/warren-logo-full.png';
 
@@ -853,7 +854,7 @@ export default function WarrenDemo() {
               <a className="gold-button" href={PHONE_HREF}>
                 <Phone size={21} fill="white" /> CALL ({PHONE.slice(0, 3)}) {PHONE.slice(4)}
               </a>
-              <a className="outline-button" href={EMAIL_HREF}>
+              <a className="outline-button" href={CONSULT_URL} target="_blank" rel="noopener noreferrer">
                 SCHEDULE A CONSULTATION
               </a>
             </div>
@@ -877,7 +878,7 @@ export default function WarrenDemo() {
                   <Icon />
                   <h3>{service.title}</h3>
                   <p>{service.text}</p>
-                  <a className="learn" href={EMAIL_HREF}>LEARN MORE <ChevronRight size={13} /></a>
+                  <a className="learn" href="#" onClick={(e) => e.preventDefault()} style={{ cursor: 'default' }}>LEARN MORE <ChevronRight size={13} /></a>
                 </article>
               );
             })}
@@ -891,7 +892,7 @@ export default function WarrenDemo() {
               {[1, 2, 3, 4, 5].map((star) => <Star key={star} />)}
             </div>
             <p>4.5 ★ on Google · 15 reviews</p>
-            <a className="review-button" href={EMAIL_HREF}>READ ALL REVIEWS</a>
+            <a className="review-button" href="#reviews">READ ALL REVIEWS</a>
           </div>
 
           <div className="quote-box">
@@ -965,7 +966,7 @@ export default function WarrenDemo() {
           <div className="google-dot"><span>G</span></div>
           <div className="mobile-stars">★★★★½</div>
           <div>4.5 ★ on Google · 15 Reviews</div>
-          <a href={EMAIL_HREF}>READ OUR REVIEWS</a>
+          <a href="#reviews">READ OUR REVIEWS</a>
         </section>
       </div>
     </main>
