@@ -219,9 +219,9 @@ export default function WarrenProposal() {
           A focused package that improves the first impression, the local visibility, and the way new client inquiries move through the office.
         </SectionHeader>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(310px, 1fr))', gap: 20 }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 20 }}>
           {deliverables.map((item) => (
-            <div key={item.title} className="card" style={{ background: '#ffffff', border: '1px solid rgba(58,58,55,.12)', borderRadius: 14, padding: 28 }}>
+            <div key={item.title} className="card" style={{ flex: '0 1 340px', maxWidth: 360, background: '#ffffff', border: '1px solid rgba(58,58,55,.12)', borderRadius: 14, padding: 28 }}>
               <div style={{ fontSize: 30, marginBottom: 14 }}>{item.icon}</div>
               <div style={{ color: palette.gold2, fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', fontWeight: 800, marginBottom: 8 }}>{item.eyebrow}</div>
               <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.text, fontSize: 28, lineHeight: 1.1, margin: '0 0 12px', fontWeight: 700 }}>{item.title}</h3>
@@ -281,8 +281,8 @@ export default function WarrenProposal() {
             This is the paid consultation system we set up for you. You won&rsquo;t touch a single setting &mdash; we build it, connect it to your calendar and Zoom, and show you and Candace exactly how to use it.
           </SectionHeader>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 20 }}>
-            <div className="card" style={{ background: '#ffffff', border: '1px solid rgba(58,58,55,.12)', borderRadius: 14, padding: 28 }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 20 }}>
+            <div className="card" style={{ flex: '0 1 320px', maxWidth: 340, background: '#ffffff', border: '1px solid rgba(58,58,55,.12)', borderRadius: 14, padding: 28 }}>
               <div style={{ fontSize: 30, marginBottom: 14 }}>📅</div>
               <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.text, fontSize: 26, lineHeight: 1.1, margin: '0 0 12px', fontWeight: 700 }}>What your clients do</h3>
               <p style={{ color: palette.muted, lineHeight: 1.7, fontSize: 16, margin: 0 }}>
@@ -290,7 +290,7 @@ export default function WarrenProposal() {
               </p>
             </div>
 
-            <div className="card" style={{ background: '#ffffff', border: '1px solid rgba(58,58,55,.12)', borderRadius: 14, padding: 28 }}>
+            <div className="card" style={{ flex: '0 1 320px', maxWidth: 340, background: '#ffffff', border: '1px solid rgba(58,58,55,.12)', borderRadius: 14, padding: 28 }}>
               <div style={{ fontSize: 30, marginBottom: 14 }}>🔒</div>
               <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.text, fontSize: 26, lineHeight: 1.1, margin: '0 0 12px', fontWeight: 700 }}>Your calendar stays private</h3>
               <p style={{ color: palette.muted, lineHeight: 1.7, fontSize: 16, margin: 0 }}>
@@ -298,7 +298,7 @@ export default function WarrenProposal() {
               </p>
             </div>
 
-            <div className="card" style={{ background: '#ffffff', border: '1px solid rgba(58,58,55,.12)', borderRadius: 14, padding: 28 }}>
+            <div className="card" style={{ flex: '0 1 320px', maxWidth: 340, background: '#ffffff', border: '1px solid rgba(58,58,55,.12)', borderRadius: 14, padding: 28 }}>
               <div style={{ fontSize: 30, marginBottom: 14 }}>👤</div>
               <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.text, fontSize: 26, lineHeight: 1.1, margin: '0 0 12px', fontWeight: 700 }}>You and Candace each get a login</h3>
               <p style={{ color: palette.muted, lineHeight: 1.7, fontSize: 16, margin: 0 }}>
@@ -306,7 +306,7 @@ export default function WarrenProposal() {
               </p>
             </div>
 
-            <div className="card" style={{ background: '#ffffff', border: '1px solid rgba(58,58,55,.12)', borderRadius: 14, padding: 28 }}>
+            <div className="card" style={{ flex: '0 1 320px', maxWidth: 340, background: '#ffffff', border: '1px solid rgba(58,58,55,.12)', borderRadius: 14, padding: 28 }}>
               <div style={{ fontSize: 30, marginBottom: 14 }}>📱</div>
               <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.text, fontSize: 26, lineHeight: 1.1, margin: '0 0 12px', fontWeight: 700 }}>Manage it from your phone</h3>
               <p style={{ color: palette.muted, lineHeight: 1.7, fontSize: 16, margin: 0 }}>
@@ -314,7 +314,7 @@ export default function WarrenProposal() {
               </p>
             </div>
 
-            <div className="card" style={{ background: '#ffffff', border: '1px solid rgba(58,58,55,.12)', borderRadius: 14, padding: 28 }}>
+            <div className="card" style={{ flex: '0 1 320px', maxWidth: 340, background: '#ffffff', border: '1px solid rgba(58,58,55,.12)', borderRadius: 14, padding: 28 }}>
               <div style={{ fontSize: 30, marginBottom: 14 }}>🛠️</div>
               <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.text, fontSize: 26, lineHeight: 1.1, margin: '0 0 12px', fontWeight: 700 }}>You stay in control</h3>
               <p style={{ color: palette.muted, lineHeight: 1.7, fontSize: 16, margin: 0 }}>
