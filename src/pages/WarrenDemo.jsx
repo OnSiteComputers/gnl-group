@@ -17,6 +17,9 @@ const PHONE = '704-741-1763';
 const PHONE_HREF = 'tel:+17047411763';
 const EMAIL = 'james@warrenfamilylaw.net';
 const EMAIL_HREF = `mailto:${EMAIL}`;
+const LOGO_CREST = '/warren-crest.png';
+const LOGO_FULL = '/warren-logo-full.png';
+
 
 // Real Google reviews (lightly trimmed for length). Rotates automatically.
 const REVIEWS = [
@@ -148,6 +151,12 @@ export default function WarrenDemo() {
           font-size: 44px;
           line-height: 1;
           font-weight: 600;
+        }
+
+        .brand-crest {
+          height: 68px;
+          width: auto;
+          display: block;
         }
 
         .brand-name {
@@ -308,6 +317,7 @@ export default function WarrenDemo() {
           z-index: 1;
           min-height: 555px;
           overflow: hidden;
+          background: linear-gradient(180deg, #ece7dd 0%, #e3ddd0 100%);
         }
 
         .hero-photo-wrap::before {
@@ -333,18 +343,6 @@ export default function WarrenDemo() {
           border-radius: 0;
           z-index: 2;
           mix-blend-mode: normal;
-        }
-
-        .hero-photo-bg {
-          position: absolute;
-          inset: 0;
-          background:
-            linear-gradient(90deg, rgba(247,243,236,.45), rgba(232,237,227,.25)),
-            url(${JAMES_PHOTO});
-          background-size: cover;
-          background-position: center 30%;
-          transform: scale(1.09);
-          filter: blur(2px) brightness(1.05) saturate(.95);
         }
 
         .services {
@@ -820,7 +818,7 @@ export default function WarrenDemo() {
       <div className="warren-page desktop-version">
         <header className="topbar">
           <a className="brand" href="#top" aria-label="Warren Family Law">
-            <div className="brand-mark">W</div>
+            <img className="brand-crest" src={LOGO_CREST} alt="Warren Family Law" />
             <div className="brand-name">Warren <span>Family Law</span></div>
           </a>
 
@@ -862,7 +860,6 @@ export default function WarrenDemo() {
           </div>
 
           <div className="hero-photo-wrap" aria-hidden="true">
-            <div className="hero-photo-bg" />
             <img className="hero-photo" src={JAMES_PHOTO} alt="" />
           </div>
         </section>
@@ -927,7 +924,7 @@ export default function WarrenDemo() {
       <div className="mobile-shell">
         <header className="mobile-top">
           <a className="brand" href="#top" aria-label="Warren Family Law">
-            <div className="brand-mark">W</div>
+            <img className="brand-crest" src={LOGO_CREST} alt="Warren Family Law" />
             <div className="brand-name">Warren <span>Family Law</span></div>
           </a>
           <Menu size={34} />
