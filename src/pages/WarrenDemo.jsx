@@ -723,14 +723,9 @@ export default function WarrenDemo() {
 
           .mobile-hero {
             position: relative;
-            min-height: 365px;
-            padding: 28px 24px 20px;
+            padding: 32px 24px 20px;
             overflow: hidden;
-            background:
-              linear-gradient(90deg, rgba(247,243,236,.95) 0%, rgba(247,243,236,.72) 52%, rgba(247,243,236,.25) 100%),
-              url(${JAMES_PHOTO});
-            background-size: cover;
-            background-position: 72% top;
+            background: var(--cream);
           }
 
           .mobile-hero::after {
@@ -744,7 +739,7 @@ export default function WarrenDemo() {
           .mobile-hero-content {
             position: relative;
             z-index: 2;
-            width: 58%;
+            width: 100%;
           }
 
           .mobile-hero h1 {
@@ -763,7 +758,7 @@ export default function WarrenDemo() {
             font-size: 14px;
             line-height: 1.45;
             margin: 0 0 20px;
-            color: var(--muted);
+            color: var(--ink);
           }
 
           .mobile-actions {
