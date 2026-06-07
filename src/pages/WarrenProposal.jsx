@@ -278,6 +278,13 @@ export default function WarrenProposal() {
         </p>
       </section>
 
+      <section style={{ padding: '72px 24px', maxWidth: 920, margin: '0 auto', textAlign: 'center' }}>
+        <div style={{ color: palette.gold2, letterSpacing: '4px', textTransform: 'uppercase', fontSize: 12, fontWeight: 800, marginBottom: 18 }}>Everything Here Is Your Call</div>
+        <p style={{ color: palette.muted, fontSize: 18, lineHeight: 1.72, maxWidth: 720, margin: '0 auto' }}>
+          This proposal lays out everything GNL can offer Warren Family Law &mdash; but you decide what you actually want. The <strong style={{ color: palette.text }}>paid Zoom consultations are completely optional</strong>; they&rsquo;re there if you&rsquo;d ever like to meet a prospective client by video, but you&rsquo;re never required to use them. The same goes for the VoIP phones, the review program, and everything else here &mdash; all optional, all built around how you want to run your practice. <strong style={{ color: palette.text }}>Nothing gets added, changed, or charged without your approval first.</strong> You&rsquo;re in the driver&rsquo;s seat on every piece of this.
+        </p>
+      </section>
+
       <section style={{ padding: '82px 24px', maxWidth: 1080, margin: '0 auto' }}>
         <SectionHeader eyebrow="Simple Rollout" title="A clean path from review to launch" />
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 20 }}>
