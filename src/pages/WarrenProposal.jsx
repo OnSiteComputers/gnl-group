@@ -163,9 +163,14 @@ export default function WarrenProposal() {
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at top left, rgba(185,142,63,.12), transparent 46%), radial-gradient(ellipse at 80% 0%, rgba(95,111,88,.10), transparent 40%)', pointerEvents: 'none' }} />
 
         <header style={{ position: 'relative', maxWidth: 1180, margin: '0 auto 74px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-            <img src="/gnl-logo.png" alt="GNL Digital Group — Local Dominance. Real Results."
-                 style={{ height: 64, width: 'auto', display: 'block' }} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+            <div style={{ background: palette.sage, borderRadius: 14, padding: '12px 16px', display: 'inline-flex', alignItems: 'center', boxShadow: '0 10px 30px rgba(95,111,88,.22)' }}>
+              <img src="/gnl-logo-sig.png" alt="GNL Digital Group"
+                   style={{ height: 50, width: 'auto', display: 'block' }} />
+            </div>
+            <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: 26, color: palette.text, lineHeight: 1 }}>
+              GNL <span style={{ color: palette.gold2 }}>Digital Group</span>
+            </div>
           </div>
           <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: 24, fontSize: 13, letterSpacing: '1px', textTransform: 'uppercase', color: palette.muted }}>
             <a href="#scope" style={{ color: 'inherit', textDecoration: 'none' }}>Scope</a>
