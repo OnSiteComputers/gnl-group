@@ -87,6 +87,7 @@ const services = [
 
 export default function WarrenDemo() {
   const [reviewIndex, setReviewIndex] = useState(0);
+  const [paOpen, setPaOpen] = useState(false);
   useEffect(() => {
     const id = setInterval(() => {
       setReviewIndex((i) => (i + 1) % REVIEWS.length);
@@ -190,6 +191,66 @@ export default function WarrenDemo() {
           font-size: 14px;
           font-weight: 800;
           letter-spacing: .02em;
+        }
+
+        .pa-dropdown {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+        }
+        .pa-dropdown > a {
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+        }
+        .pa-menu {
+          position: absolute;
+          top: calc(100% + 14px);
+          left: 50%;
+          transform: translateX(-50%);
+          background: var(--cream-2);
+          border: 1px solid rgba(95,111,88,.22);
+          border-radius: 10px;
+          box-shadow: 0 18px 44px rgba(58,58,55,.20);
+          padding: 8px;
+          min-width: 248px;
+          z-index: 50;
+        }
+        .pa-menu::before {
+          content: "";
+          position: absolute;
+          top: -7px;
+          left: 50%;
+          transform: translateX(-50%) rotate(45deg);
+          width: 12px;
+          height: 12px;
+          background: var(--cream-2);
+          border-left: 1px solid rgba(95,111,88,.22);
+          border-top: 1px solid rgba(95,111,88,.22);
+        }
+        .pa-menu a {
+          display: block;
+          color: var(--sage-2);
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: 0;
+          padding: 10px 14px;
+          border-radius: 7px;
+          cursor: pointer;
+        }
+        .pa-menu a:hover {
+          background: var(--sage-soft);
+          color: var(--gold-2);
+        }
+        .pa-note {
+          color: var(--gold-2);
+          font-size: 12px;
+          font-style: italic;
+          line-height: 1.45;
+          padding: 10px 14px 6px;
+          border-top: 1px solid rgba(95,111,88,.16);
+          margin-top: 6px;
         }
 
         .header-phone,
@@ -824,12 +885,30 @@ export default function WarrenDemo() {
           </a>
 
           <nav className="desktop-nav" aria-label="Main navigation">
-            <a href="#top">HOME</a>
-            <a href="#services">PRACTICE AREAS⌄</a>
-            <a href="#about">ABOUT US</a>
-            <a href="#reviews">REVIEWS</a>
-            <a href="#resources">RESOURCES</a>
-            <a href="#contact">CONTACT</a>
+            <a href="#" onClick={(e) => e.preventDefault()} style={{ cursor: 'default' }}>HOME</a>
+            <div
+              className="pa-dropdown"
+              onMouseEnter={() => setPaOpen(true)}
+              onMouseLeave={() => setPaOpen(false)}
+            >
+              <a
+                href="#"
+                onClick={(e) => { e.preventDefault(); setPaOpen((v) => !v); }}
+                aria-expanded={paOpen}
+              >
+                PRACTICE AREAS <span style={{ fontSize: 11 }}>{paOpen ? '\u25B2' : '\u25BC'}</span>
+              </a>
+              <div className="pa-menu" style={{ display: paOpen ? 'block' : 'none' }}>
+                {['Divorce', 'Child Custody', 'Child Support', 'Spousal Support / Alimony', 'Property Division', 'Legal Separation'].map((area) => (
+                  <a key={area} href="#" onClick={(e) => e.preventDefault()}>{area}</a>
+                ))}
+                <div className="pa-note">Suggested pages &mdash; we&rsquo;ll finalize these together once you&rsquo;re on board.</div>
+              </div>
+            </div>
+            <a href="#" onClick={(e) => e.preventDefault()} style={{ cursor: 'default' }}>ABOUT US</a>
+            <a href="#" onClick={(e) => e.preventDefault()} style={{ cursor: 'default' }}>REVIEWS</a>
+            <a href="#" onClick={(e) => e.preventDefault()} style={{ cursor: 'default' }}>RESOURCES</a>
+            <a href="#" onClick={(e) => e.preventDefault()} style={{ cursor: 'default' }}>CONTACT</a>
           </nav>
 
           <a className="header-phone" href={PHONE_HREF}>
