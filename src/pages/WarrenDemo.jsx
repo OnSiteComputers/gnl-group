@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Phone,
   Mail,
@@ -17,6 +17,42 @@ const PHONE = '704-741-1763';
 const PHONE_HREF = 'tel:+17047411763';
 const EMAIL = 'james@warrenfamilylaw.net';
 const EMAIL_HREF = `mailto:${EMAIL}`;
+
+// Real Google reviews (lightly trimmed for length). Rotates automatically.
+const REVIEWS = [
+  {
+    text: "Mr. Warren is the attorney you hire when you want the truth, not fluff. He was honest, strategic, and fully focused on what matters most: my child. He and his paralegal make a sharp, responsive team that kept me informed and prepared. You won't feel like a case number, you'll feel represented.",
+    cite: 'Zack M., Charlotte, NC'
+  },
+  {
+    text: "Only hire Mr. Warren if you want to WIN. One of the best civil lawyers in the Charlotte area. He is extremely detail-oriented, professional, and strategic. He fought hard for my case and communicated clearly throughout the process. Highly recommend him to anyone needing strong legal representation.",
+    cite: 'Saicharan K., Charlotte, NC'
+  },
+  {
+    text: "Mr. Warren did a fantastic job representing me for a visitation case for my granddaughter. His experience is priceless, his advice and attention to law and facts are to the point. He is a powerhouse in the courtroom, doesn't waste any time, and had our case won in our favor in a couple hours.",
+    cite: 'Sara J., Charlotte, NC'
+  },
+  {
+    text: "I wish I had found Mr. Warren years earlier. He was forthright, fair, and asked me from the outset what my goals were. He cuts to the chase and does not nickel and dime you like many other attorneys do. I would highly recommend him to go to bat for you in your case.",
+    cite: 'Mark P., Charlotte, NC'
+  },
+  {
+    text: "BEST family law attorney, by far. I've known Mr. Warren since the mid 90's and would use no other in a divorce situation. Extremely professional and will fight for you, all the way.",
+    cite: 'Greg H., Charlotte, NC'
+  },
+  {
+    text: "I have been a client of Mr. Warren for many years. We went to trial in one divorce case, and he was so good, so on-point, we easily won the case. He has sound advice, is a good listener, and did not kill us on fees. I highly recommend Mr. Warren!",
+    cite: 'Steve J., Charlotte, NC'
+  },
+  {
+    text: "Won my case with the upmost professionalism and toughness. I would recommend James to anyone dealing with a custody and/or child support issue. Fantastic!",
+    cite: 'Mary B., Charlotte, NC'
+  },
+  {
+    text: "Mr. Warren has done a wonderful job representing me. He is very strong in the courtroom, is upfront with what outcomes are realistically possible, and stays on top of case law to support the case at hand. I highly recommend him.",
+    cite: 'Beth H., Charlotte, NC'
+  }
+];
 
 // Put James.Warren.jpg in your Base44 / public directory.
 // Public assets are referenced from the site root like this:
@@ -46,6 +82,14 @@ const services = [
 ];
 
 export default function WarrenDemo() {
+  const [reviewIndex, setReviewIndex] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => {
+      setReviewIndex((i) => (i + 1) % REVIEWS.length);
+    }, 6000);
+    return () => clearInterval(id);
+  }, []);
+  const review = REVIEWS[reviewIndex];
   return (
     <main className="warren-demo">
       <style>{`
@@ -461,6 +505,12 @@ export default function WarrenDemo() {
           line-height: .75;
         }
 
+        @keyframes reviewFade {
+          from { opacity: 0; transform: translateY(8px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .review-fade { animation: reviewFade .6s ease both; }
+
         .quote-box blockquote {
           margin: 0;
           font-family: "Cormorant Garamond", serif;
@@ -840,22 +890,18 @@ export default function WarrenDemo() {
         <section className="reviews" id="reviews">
           <div className="review-score">
             <div className="label">WHAT OUR CLIENTS SAY</div>
-            <div className="stars" aria-label="5 star rating">
+            <div className="stars" aria-label="4.5 star rating">
               {[1, 2, 3, 4, 5].map((star) => <Star key={star} />)}
             </div>
-            <p>Based on 15+ Google Reviews</p>
+            <p>4.5 ★ on Google · 15 reviews</p>
             <a className="review-button" href={EMAIL_HREF}>READ ALL REVIEWS</a>
           </div>
 
           <div className="quote-box">
             <div className="quote-mark">“</div>
-            <div>
-              <blockquote>
-                BEST family law attorney, by far. I've known Mr. Warren since the mid 90's and
-                would use no other in a divorce situation. Extremely professional and will fight
-                for you, all the way.
-              </blockquote>
-              <cite>– Greg H., Charlotte, NC</cite>
+            <div key={reviewIndex} className="review-fade">
+              <blockquote>{review.text}</blockquote>
+              <cite>– {review.cite}</cite>
             </div>
           </div>
 
@@ -920,8 +966,8 @@ export default function WarrenDemo() {
 
         <section className="mobile-reviews">
           <div className="google-dot"><span>G</span></div>
-          <div className="mobile-stars">★★★★★</div>
-          <div>15+ 5-Star Google Reviews</div>
+          <div className="mobile-stars">★★★★½</div>
+          <div>4.5 ★ on Google · 15 Reviews</div>
           <a href={EMAIL_HREF}>READ OUR REVIEWS</a>
         </section>
       </div>
