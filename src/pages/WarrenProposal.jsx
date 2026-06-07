@@ -122,11 +122,11 @@ function Button({ href, children, variant = 'gold', target }) {
   );
 }
 
-function SectionHeader({ eyebrow, title, children }) {
+function SectionHeader({ eyebrow, title, children, wide }) {
   return (
-    <div style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto 42px' }}>
+    <div style={{ textAlign: 'center', maxWidth: wide ? 1000 : 760, margin: '0 auto 42px' }}>
       <div style={{ color: palette.gold2, letterSpacing: '4px', textTransform: 'uppercase', fontSize: 12, fontWeight: 800, marginBottom: 12 }}>{eyebrow}</div>
-      <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(34px, 4vw, 52px)', lineHeight: 1.05, color: palette.text, margin: 0, fontWeight: 700 }}>{title}</h2>
+      <h2 className={wide ? 'sh-nowrap' : undefined} style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(34px, 4vw, 52px)', lineHeight: 1.05, color: palette.text, margin: 0, fontWeight: 700 }}>{title}</h2>
       {children && <p style={{ color: palette.muted, fontSize: 18, lineHeight: 1.7, margin: '18px auto 0' }}>{children}</p>}
     </div>
   );
@@ -149,6 +149,7 @@ export default function WarrenProposal() {
         .card:hover { transform: translateY(-4px); border-color: rgba(185,142,63,.5) !important; box-shadow: 0 14px 36px rgba(95,111,88,.14) !important; }
         .hero-grid { grid-template-columns: minmax(0, 1fr) 420px; }
         @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } .desktop-only { display:none !important; } }
+        @media (min-width: 760px) { .sh-nowrap { white-space: nowrap; } }
       `}</style>
 
       <div style={{ background: 'rgba(224,170,63,.12)', borderBottom: '1px solid rgba(224,170,63,.24)', padding: '11px 22px', textAlign: 'center', color: palette.gold2, letterSpacing: '3px', textTransform: 'uppercase', fontSize: 12, fontWeight: 800 }}>
@@ -214,7 +215,7 @@ export default function WarrenProposal() {
       </section>
 
       <section id="scope" style={{ padding: '82px 24px', maxWidth: 1180, margin: '0 auto' }}>
-        <SectionHeader eyebrow="The Full Scope" title="What GNL builds for Warren Family Law">
+        <SectionHeader eyebrow="The Full Scope" title="What GNL builds for Warren Family Law" wide>
           A focused package that improves the first impression, the local visibility, and the way new client inquiries move through the office.
         </SectionHeader>
 
