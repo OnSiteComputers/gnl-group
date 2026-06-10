@@ -13,13 +13,20 @@ import { useState, useEffect, useCallback } from "react";
 //  page still works in manual mode with the Refresh + edit buttons.
 // ============================================================
 
-const WORKER_URL = "https://dry-forest-d634.greg-ff0.workers.dev";
+const WORKER_URL = ""; // <-- paste your worker URL here, e.g. "https://canes-feed.greg.workers.dev"
 
 // ---- Hurricanes palette ----
 const RED = "#CC0000";
 const BLACK = "#0A0A0A";
 const SILVER = "#A2AAAD";
 const BONE = "#F4F4F4";
+
+// Next game puck drop — edit this after each game.
+// ISO format with -04:00 = Eastern Daylight (summer). Game 5: Thu Jun 11, 8:00 PM ET.
+const NEXT_GAME = {
+  iso: "2026-06-11T20:00:00-04:00",
+  label: "Game 5 · vs Vegas · Raleigh",
+};
 
 // Series state (best-of-7). Edit these two numbers after each game
 // if you're running manual, or just enjoy — the live feed doesn't
@@ -40,6 +47,16 @@ const MANUAL_DEFAULT = {
   venue: "T-Mobile Arena",
 };
 
+function getCountdown(iso) {
+  const diff = new Date(iso).getTime() - Date.now();
+  if (diff <= 0) return { live: true, d: 0, h: 0, m: 0, s: 0 };
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  return { live: false, d, h, m, s };
+}
+
 export default function CanesLive() {
   const [game, setGame] = useState(MANUAL_DEFAULT);
   const [series, setSeries] = useState(SERIES_DEFAULT);
@@ -47,6 +64,12 @@ export default function CanesLive() {
   const [lastUpdated, setLastUpdated] = useState(null);
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState(null);
+  const [countdown, setCountdown] = useState(getCountdown(NEXT_GAME.iso));
+
+  useEffect(() => {
+    const id = setInterval(() => setCountdown(getCountdown(NEXT_GAME.iso)), 1000);
+    return () => clearInterval(id);
+  }, []);
 
   const fetchLive = useCallback(async () => {
     if (!WORKER_URL) return;
@@ -106,6 +129,7 @@ export default function CanesLive() {
 
       <header style={styles.header}>
         <div style={styles.eyebrow}>STANLEY CUP FINAL · PRIVATE BOARD</div>
+        <StormFlag />
         <h1 style={styles.wordmark}>
           <span style={{ color: RED }}>CAROLINA</span>{" "}
           <span style={{ color: BONE }}>HURRICANES</span>
@@ -198,6 +222,27 @@ export default function CanesLive() {
         </div>
       </section>
 
+      {/* NEXT GAME COUNTDOWN */}
+      <section style={styles.countdown}>
+        {countdown.live ? (
+          <div style={styles.cdLive}>🚨 GAME TIME 🚨</div>
+        ) : (
+          <>
+            <div style={styles.cdTitle}>NEXT PUCK DROP</div>
+            <div style={styles.cdClock}>
+              <CdUnit n={countdown.d} label="DAYS" />
+              <span style={styles.cdColon}>:</span>
+              <CdUnit n={countdown.h} label="HRS" />
+              <span style={styles.cdColon}>:</span>
+              <CdUnit n={countdown.m} label="MIN" />
+              <span style={styles.cdColon}>:</span>
+              <CdUnit n={countdown.s} label="SEC" />
+            </div>
+            <div style={styles.cdGame}>{NEXT_GAME.label}</div>
+          </>
+        )}
+      </section>
+
       {/* CONTROLS */}
       <section style={styles.controls}>
         {live ? (
@@ -276,6 +321,48 @@ function SeriesTeam({ label, wins, accent }) {
   );
 }
 
+// Hurricane-warning flag: the National Weather Service signal for a
+// hurricane — two red squares with black centers. The severe-weather
+// emblem the team's identity nods to, drawn here as the flag itself.
+function StormFlag() {
+  return (
+    <div
+      style={{
+        display: "flex",
+        gap: 8,
+        justifyContent: "center",
+        marginBottom: 14,
+      }}
+      aria-label="Hurricane warning flags"
+    >
+      {[0, 1].map((i) => (
+        <svg
+          key={i}
+          width="46"
+          height="46"
+          viewBox="0 0 100 100"
+          style={{
+            filter: "drop-shadow(0 0 10px rgba(204,0,0,0.45))",
+            animation: `flagwave 3s ease-in-out ${i * 0.4}s infinite`,
+          }}
+        >
+          <rect x="0" y="0" width="100" height="100" fill="#CC0000" />
+          <rect x="32" y="32" width="36" height="36" fill="#0A0A0A" />
+        </svg>
+      ))}
+    </div>
+  );
+}
+
+function CdUnit({ n, label }) {
+  return (
+    <div style={styles.cdUnit}>
+      <div style={styles.cdNum}>{String(n).padStart(2, "0")}</div>
+      <div style={styles.cdLabel}>{label}</div>
+    </div>
+  );
+}
+
 function ScoreStepper({ label, value, onChange, accent }) {
   return (
     <div style={styles.stepper}>
@@ -292,6 +379,7 @@ function ScoreStepper({ label, value, onChange, accent }) {
 const keyframes = `
 @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.45;} }
 @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.2;} }
+@keyframes flagwave { 0%,100%{transform:skewX(0deg) translateY(0);} 50%{transform:skewX(-6deg) translateY(-2px);} }
 @media (max-width:520px){
   .canes-score-big{ font-size:5.5rem !important; }
 }
@@ -426,6 +514,33 @@ const styles = {
     cursor: "pointer",
     fontSize: 16,
     lineHeight: 1,
+  },
+  countdown: {
+    maxWidth: 520,
+    margin: "24px auto 0",
+    padding: "20px",
+    textAlign: "center",
+    borderTop: "1px solid #1f1f1f",
+  },
+  cdTitle: { color: SILVER, fontSize: 11, letterSpacing: 3, fontWeight: 700, marginBottom: 14 },
+  cdClock: { display: "flex", alignItems: "flex-start", justifyContent: "center", gap: 4 },
+  cdUnit: { minWidth: 54 },
+  cdNum: {
+    fontSize: 38,
+    fontWeight: 900,
+    color: BONE,
+    fontVariantNumeric: "tabular-nums",
+    lineHeight: 1,
+  },
+  cdLabel: { fontSize: 10, letterSpacing: 2, color: SILVER, marginTop: 6 },
+  cdColon: { fontSize: 30, fontWeight: 900, color: RED, lineHeight: 1.1 },
+  cdGame: { color: RED, fontSize: 13, fontWeight: 800, letterSpacing: 1, marginTop: 16 },
+  cdLive: {
+    fontSize: 26,
+    fontWeight: 900,
+    color: RED,
+    letterSpacing: 2,
+    animation: "blink 1s infinite",
   },
   controls: { maxWidth: 520, margin: "8px auto 0", padding: "12px 20px", textAlign: "center" },
   primaryBtn: {
