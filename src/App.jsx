@@ -25,6 +25,7 @@ import WhoWeHelpRealtors from './pages/WhoWeHelpRealtors';
 import OnsiteHome from './pages/OnsiteHome';
 import WarrenProposal from './pages/WarrenProposal';
 import WarrenDemo from './pages/WarrenDemo';
+import CanesLive from './pages/CanesLive';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -67,6 +68,7 @@ const AuthenticatedApp = () => {
       <Route path="/onsite-computer-service" element={<OnsiteHome />} />
       <Route path="/warren" element={<WarrenProposal />} />
       <Route path="/warren-demo" element={<WarrenDemo />} />
+      <Route path="/canes" element={<CanesLive />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
     </>
