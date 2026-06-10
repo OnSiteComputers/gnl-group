@@ -129,7 +129,7 @@ export default function CanesLive() {
 
       <header style={styles.header}>
         <div style={styles.eyebrow}>STANLEY CUP FINAL · PRIVATE BOARD</div>
-        <StormFlag />
+        <img src="/Carolina_Hurricanes_flag.gif" alt="" style={{ width: 220, marginBottom: 14 }} />
         <h1 style={styles.wordmark}>
           <span style={{ color: RED }}>CAROLINA</span>{" "}
           <span style={{ color: BONE }}>HURRICANES</span>
