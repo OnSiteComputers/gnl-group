@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 
 // ============================================================
 //  CANES LIVE — private family board for route /canes
@@ -15,6 +15,7 @@ const BLACK = "#050505";
 const SILVER = "#A2AAAD";
 const BONE = "#F4F4F4";
 const MUTED = "#74797C";
+const HORN_SECONDS = 60;
 
 const NEXT_GAME = {
   iso: "2026-06-11T20:00:00-04:00",
@@ -61,11 +62,129 @@ export default function CanesLive() {
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState(null);
   const [countdown, setCountdown] = useState(getCountdown(NEXT_GAME.iso));
+  const [hornReady, setHornReady] = useState(false);
+  const [hornPlaying, setHornPlaying] = useState(false);
+  const audioCtxRef = useRef(null);
+  const hornNodesRef = useRef([]);
+  const hornTimerRef = useRef(null);
+  const hornReadyRef = useRef(false);
+  const previousCanesScoreRef = useRef(null);
 
   useEffect(() => {
     const id = setInterval(() => setCountdown(getCountdown(NEXT_GAME.iso)), 1000);
     return () => clearInterval(id);
   }, []);
+
+
+  const stopHorn = useCallback(() => {
+    if (hornTimerRef.current) {
+      window.clearTimeout(hornTimerRef.current);
+      hornTimerRef.current = null;
+    }
+
+    hornNodesRef.current.forEach((node) => {
+      try {
+        if (node.stop) node.stop();
+        if (node.disconnect) node.disconnect();
+      } catch {
+        // Already stopped or disconnected.
+      }
+    });
+
+    hornNodesRef.current = [];
+    setHornPlaying(false);
+  }, []);
+
+  const getAudioContext = useCallback(() => {
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContextClass) return null;
+
+    if (!audioCtxRef.current) {
+      audioCtxRef.current = new AudioContextClass();
+    }
+
+    return audioCtxRef.current;
+  }, []);
+
+  const enableHorn = useCallback(async () => {
+    const ctx = getAudioContext();
+    if (!ctx) {
+      setErr("This browser does not support the built-in horn sound.");
+      return;
+    }
+
+    if (ctx.state === "suspended") {
+      await ctx.resume();
+    }
+
+    hornReadyRef.current = true;
+    setHornReady(true);
+  }, [getAudioContext]);
+
+  const playHorn = useCallback(async () => {
+    const ctx = getAudioContext();
+    if (!ctx) return;
+
+    if (ctx.state === "suspended") {
+      await ctx.resume();
+    }
+
+    stopHorn();
+
+    const master = ctx.createGain();
+    master.gain.setValueAtTime(0.0001, ctx.currentTime);
+    master.gain.exponentialRampToValueAtTime(0.22, ctx.currentTime + 0.18);
+    master.connect(ctx.destination);
+
+    const compressor = ctx.createDynamicsCompressor();
+    compressor.threshold.setValueAtTime(-18, ctx.currentTime);
+    compressor.knee.setValueAtTime(24, ctx.currentTime);
+    compressor.ratio.setValueAtTime(8, ctx.currentTime);
+    compressor.attack.setValueAtTime(0.01, ctx.currentTime);
+    compressor.release.setValueAtTime(0.25, ctx.currentTime);
+    master.disconnect();
+    master.connect(compressor);
+    compressor.connect(ctx.destination);
+
+    const frequencies = [185, 233, 277];
+    const nodes = [master, compressor];
+
+    frequencies.forEach((freq, index) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      const wobble = ctx.createOscillator();
+      const wobbleGain = ctx.createGain();
+
+      osc.type = index === 0 ? "sawtooth" : "square";
+      osc.frequency.setValueAtTime(freq, ctx.currentTime);
+      wobble.frequency.setValueAtTime(4 + index, ctx.currentTime);
+      wobbleGain.gain.setValueAtTime(5 + index * 2, ctx.currentTime);
+      gain.gain.setValueAtTime(0.18 / frequencies.length, ctx.currentTime);
+
+      wobble.connect(wobbleGain);
+      wobbleGain.connect(osc.frequency);
+      osc.connect(gain);
+      gain.connect(master);
+      osc.start();
+      wobble.start();
+
+      nodes.push(osc, gain, wobble, wobbleGain);
+    });
+
+    hornNodesRef.current = nodes;
+    hornReadyRef.current = true;
+    setHornReady(true);
+    setHornPlaying(true);
+
+    hornTimerRef.current = window.setTimeout(() => {
+      master.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.35);
+      window.setTimeout(stopHorn, 400);
+    }, HORN_SECONDS * 1000);
+  }, [getAudioContext, stopHorn]);
+
+  useEffect(() => {
+    return () => stopHorn();
+  }, [stopHorn]);
 
   const fetchLive = useCallback(async () => {
     if (!WORKER_URL) return;
@@ -79,7 +198,17 @@ export default function CanesLive() {
 
       const data = await res.json();
       if (data?.found) {
-        setGame(data);
+        setGame((previousGame) => {
+          const previousScore = previousCanesScoreRef.current;
+          const nextScore = Number(data?.canes?.score ?? previousGame.canes.score);
+
+          if (previousScore !== null && nextScore > previousScore && hornReadyRef.current) {
+            playHorn();
+          }
+
+          previousCanesScoreRef.current = nextScore;
+          return data;
+        });
         setLastUpdated(new Date());
       } else if (data?.found === false) {
         setErr("No Canes game found in the feed right now.");
@@ -87,7 +216,7 @@ export default function CanesLive() {
         setErr("Feed hiccup — try again in a sec.");
       }
     } catch {
-      setErr("Couldn't reach the feed. Manual mode still has your back.");
+      setErr("Couldn't reach the live feed. Try Refresh now again in a bit.");
     } finally {
       setLoading(false);
     }
@@ -132,12 +261,6 @@ export default function CanesLive() {
 
   const adjustSeries = (key, delta) =>
     setSeries((s) => ({ ...s, [key]: clampWins(s[key] + delta) }));
-
-  const adjustScore = (team, delta) =>
-    setGame((g) => ({
-      ...g,
-      [team]: { ...g[team], score: Math.max(0, g[team].score + delta) },
-    }));
 
   return (
     <div style={styles.page}>
@@ -261,20 +384,35 @@ export default function CanesLive() {
             {liveFeed ? "Use manual" : "Use live feed"}
           </button>
 
+          <button
+            style={hornReady ? styles.secondaryBtn : styles.hornBtn}
+            onClick={hornReady ? playHorn : enableHorn}
+            type="button"
+          >
+            {hornReady ? "Test goal horn" : "Enable goal horn"}
+          </button>
+
+          {hornPlaying && (
+            <button style={styles.secondaryBtn} onClick={stopHorn} type="button">
+              Stop horn
+            </button>
+          )}
+
           <div style={styles.liveTag}>
             <span style={liveFeed ? styles.liveDot : styles.manualDot} />
             {liveFeed ? "LIVE FEED · auto every 15s" : "MANUAL MODE"}
           </div>
 
+          <div style={styles.hornStatus}>
+            {hornReady
+              ? hornPlaying
+                ? `GOAL HORN PLAYING · auto-stops in ${HORN_SECONDS} seconds`
+                : "Goal horn armed — it will sound when the Canes score."
+              : "Tap Enable goal horn once so your browser allows sound."}
+          </div>
+
           {lastUpdated && <div style={styles.updated}>Updated {lastUpdated.toLocaleTimeString()}</div>}
           {err && <div style={styles.err}>{err}</div>}
-
-          {!liveFeed && (
-            <div style={styles.manualScore}>
-              <ScoreStepper label="Canes" value={game.canes.score} onMinus={() => adjustScore("canes", -1)} onPlus={() => adjustScore("canes", 1)} accent={RED} />
-              <ScoreStepper label={game.opp.abbrev} value={game.opp.score} onMinus={() => adjustScore("opp", -1)} onPlus={() => adjustScore("opp", 1)} accent={SILVER} />
-            </div>
-          )}
         </section>
       </main>
 
@@ -354,19 +492,6 @@ function ControlGroup({ label, onMinus, onPlus }) {
       <span style={styles.ctrlLabel}>{label}</span>
       <button style={styles.ctrlBtn} onClick={onMinus} aria-label={`Decrease ${label}`}>−</button>
       <button style={styles.ctrlBtn} onClick={onPlus} aria-label={`Increase ${label}`}>+</button>
-    </div>
-  );
-}
-
-function ScoreStepper({ label, value, onMinus, onPlus, accent }) {
-  return (
-    <div style={styles.stepper}>
-      <div style={{ ...styles.stepperLabel, color: accent }}>{label}</div>
-      <div style={styles.stepperRow}>
-        <button style={styles.ctrlBtn} onClick={onMinus} aria-label={`Decrease ${label} score`}>−</button>
-        <span style={styles.stepperVal}>{value}</span>
-        <button style={styles.ctrlBtn} onClick={onPlus} aria-label={`Increase ${label} score`}>+</button>
-      </div>
     </div>
   );
 }
@@ -458,10 +583,12 @@ const styles = {
   primaryBtn: { background: RED, color: BONE, border: "none", padding: "12px 22px", borderRadius: 12, fontWeight: 1000, fontSize: 14, cursor: "pointer", letterSpacing: 1, margin: 5, boxShadow: "0 12px 30px rgba(204,0,0,0.24)" },
   primaryBtnAlt: { background: DEEP_RED, color: BONE, border: "none", padding: "12px 22px", borderRadius: 12, fontWeight: 1000, fontSize: 14, cursor: "pointer", letterSpacing: 1, margin: 5 },
   secondaryBtn: { background: "transparent", color: BONE, border: `1px solid rgba(162,170,173,0.46)`, padding: "12px 22px", borderRadius: 12, fontWeight: 900, fontSize: 14, cursor: "pointer", letterSpacing: 1, margin: 5 },
+  hornBtn: { background: "linear-gradient(180deg, #f4f4f4, #a2aaad)", color: BLACK, border: "none", padding: "12px 22px", borderRadius: 12, fontWeight: 1000, fontSize: 14, cursor: "pointer", letterSpacing: 1, margin: 5, boxShadow: "0 12px 30px rgba(244,244,244,0.16)" },
   liveTag: { marginTop: 12, color: SILVER, fontSize: 12, letterSpacing: 1.2, display: "flex", alignItems: "center", justifyContent: "center", gap: 8, fontWeight: 900 },
   liveDot: { width: 9, height: 9, borderRadius: "50%", background: RED, display: "inline-block", animation: "pulse 1.5s infinite", boxShadow: "0 0 10px rgba(204,0,0,0.8)" },
   manualDot: { width: 9, height: 9, borderRadius: "50%", background: SILVER, display: "inline-block" },
   updated: { color: MUTED, fontSize: 11, marginTop: 7 },
+  hornStatus: { color: MUTED, fontSize: 11, marginTop: 7, fontWeight: 800 },
   err: { color: "#ff7d7d", fontSize: 12, marginTop: 8, fontWeight: 700 },
   manualScore: { display: "flex", justifyContent: "center", gap: 32, marginTop: 18, flexWrap: "wrap" },
   stepper: { textAlign: "center" },
