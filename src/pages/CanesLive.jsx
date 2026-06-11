@@ -469,6 +469,17 @@ export default function CanesLive() {
     return { isFinal, isLiveGame, canesWinning, canesLost, tied };
   }, [game]);
 
+  // Which game of the series is on the board.
+  // Priority: feed value (if worker passes it) -> derived from series wins -> NEXT_GAME label.
+  const gameNumber = useMemo(() => {
+    if (game.gameNumber) return game.gameNumber;
+    if (seriesFeed && Number.isFinite(seriesFeed.canes) && Number.isFinite(seriesFeed.opp)) {
+      return seriesFeed.canes + seriesFeed.opp + (status.isFinal ? 0 : 1);
+    }
+    const m = /game\s*(\d+)/i.exec(NEXT_GAME.label || "");
+    return m ? Number(m[1]) : null;
+  }, [game, seriesFeed, status.isFinal]);
+
   const periodLabel = () => {
     if (game.inIntermission) return "INTERMISSION";
     if (status.isFinal) return "FINAL";
@@ -513,6 +524,7 @@ export default function CanesLive() {
             <span style={status.isLiveGame ? styles.livePill : styles.idlePill}>
               {status.isLiveGame ? "LIVE" : periodLabel()}
             </span>
+            {gameNumber ? <span style={styles.gameTag}>GAME {gameNumber}</span> : null}
             <span style={styles.statusText}>{game.venue || "Canes country"}</span>
           </div>
 
@@ -693,7 +705,7 @@ function StormFlag() {
   return (
     <div style={styles.stormFlag} aria-label="Hurricane warning flags">
       {[0, 1].map((i) => (
-        <svg key={i} width="44" height="44" viewBox="0 0 100 100" style={{ ...styles.flagSvg, animationDelay: `${i * 0.35}s` }}>
+        <svg key={i} width="30" height="30" viewBox="0 0 100 100" style={{ ...styles.flagSvg, animationDelay: `${i * 0.35}s` }}>
           <rect x="0" y="0" width="100" height="100" fill={RED} />
           <rect x="31" y="31" width="38" height="38" fill={BLACK} />
         </svg>
@@ -742,55 +754,56 @@ const styles = {
     animation: "glowdrift 7s ease-in-out infinite",
   },
   flagBar: {
-    height: 10,
+    height: 6,
     background: `repeating-linear-gradient(45deg, ${RED} 0 22px, ${BLACK} 22px 44px, ${SILVER} 44px 48px)`,
   },
-  header: { position: "relative", zIndex: 1, textAlign: "center", padding: "30px 18px 12px" },
-  stormFlag: { display: "flex", gap: 9, justifyContent: "center", marginBottom: 15 },
+  header: { position: "relative", zIndex: 1, textAlign: "center", padding: "14px 18px 4px" },
+  stormFlag: { display: "flex", gap: 8, justifyContent: "center", marginBottom: 8 },
   flagSvg: { filter: "drop-shadow(0 0 12px rgba(204,0,0,0.52))", animation: "flagwave 3.2s ease-in-out infinite" },
-  eyebrow: { letterSpacing: 3.4, fontSize: 11, color: SILVER, fontWeight: 900, marginBottom: 10 },
-  wordmark: { margin: 0, fontSize: "clamp(30px, 7vw, 58px)", fontWeight: 1000, letterSpacing: 1, fontStyle: "italic", textTransform: "uppercase" },
-  logo: { width: "min(240px, 72vw)", display: "block", margin: "14px auto 0", borderRadius: 18, background: BLACK, boxShadow: "0 18px 60px rgba(0,0,0,0.45)" },
-  tagline: { color: SILVER, fontStyle: "italic", marginTop: 12, fontSize: 14 },
+  eyebrow: { letterSpacing: 3, fontSize: 10, color: SILVER, fontWeight: 900, marginBottom: 6 },
+  wordmark: { margin: 0, fontSize: "clamp(22px, 4.5vw, 34px)", fontWeight: 1000, letterSpacing: 1, fontStyle: "italic", textTransform: "uppercase" },
+  logo: { width: "min(130px, 36vw)", display: "block", margin: "8px auto 0", borderRadius: 18, background: BLACK, boxShadow: "0 18px 60px rgba(0,0,0,0.45)" },
+  tagline: { color: SILVER, fontStyle: "italic", marginTop: 6, fontSize: 12 },
   shell: { position: "relative", zIndex: 1, width: "min(720px, calc(100% - 28px))", margin: "0 auto" },
-  board: { marginTop: 18, padding: "18px clamp(14px, 4vw, 28px) 24px", border: "1px solid rgba(162,170,173,0.18)", borderRadius: 28, background: "linear-gradient(180deg, rgba(17,17,17,0.92), rgba(5,5,5,0.92))", boxShadow: "0 24px 80px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.05)" },
+  board: { marginTop: 10, padding: "12px clamp(12px, 3vw, 20px) 14px", border: "1px solid rgba(162,170,173,0.18)", borderRadius: 28, background: "linear-gradient(180deg, rgba(17,17,17,0.92), rgba(5,5,5,0.92))", boxShadow: "0 24px 80px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.05)" },
   statusStrip: { display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, marginBottom: 12, flexWrap: "wrap" },
   livePill: { background: RED, color: BONE, padding: "6px 11px", borderRadius: 999, fontSize: 11, fontWeight: 1000, letterSpacing: 2, boxShadow: "0 0 20px rgba(204,0,0,0.45)" },
   idlePill: { background: "rgba(162,170,173,0.13)", color: SILVER, padding: "6px 11px", borderRadius: 999, fontSize: 11, fontWeight: 900, letterSpacing: 2 },
   statusText: { color: MUTED, fontSize: 12, letterSpacing: 1 },
+  gameTag: { color: RED, fontWeight: 1000, fontSize: 13, letterSpacing: 3, textShadow: "0 0 14px rgba(204,0,0,0.4)" },
   scoreRow: { display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 },
   canesSide: { flex: 1, textAlign: "center", minWidth: 0 },
   oppSide: { flex: 1, textAlign: "center", minWidth: 0, opacity: 0.88 },
   teamTag: { fontWeight: 1000, fontSize: "clamp(14px, 3vw, 19px)", letterSpacing: 2.4 },
-  scoreBig: { fontSize: "clamp(78px, 23vw, 148px)", fontWeight: 1000, lineHeight: 0.95, fontVariantNumeric: "tabular-nums" },
-  scoreSmall: { fontSize: "clamp(48px, 14vw, 88px)", fontWeight: 900, lineHeight: 1, fontVariantNumeric: "tabular-nums" },
+  scoreBig: { fontSize: "clamp(48px, 11vw, 80px)", fontWeight: 1000, lineHeight: 0.95, fontVariantNumeric: "tabular-nums" },
+  scoreSmall: { fontSize: "clamp(32px, 7.5vw, 54px)", fontWeight: 900, lineHeight: 1, fontVariantNumeric: "tabular-nums" },
   sog: { color: SILVER, fontSize: 12, marginTop: 7, letterSpacing: 1.4, fontWeight: 800 },
   sogOpp: { color: MUTED, fontSize: 11, marginTop: 7, letterSpacing: 1.2, fontWeight: 700 },
   center: { flex: "0 0 auto", textAlign: "center", minWidth: 92 },
   period: { fontWeight: 1000, fontSize: 15, letterSpacing: 2.2 },
-  clock: { fontSize: 25, fontWeight: 900, fontVariantNumeric: "tabular-nums", marginTop: 5 },
+  clock: { fontSize: 19, fontWeight: 900, fontVariantNumeric: "tabular-nums", marginTop: 5 },
   vs: { color: "#555", fontSize: 12, marginTop: 10, fontWeight: 900, letterSpacing: 2 },
-  winBanner: { textAlign: "center", marginTop: 22, fontSize: "clamp(24px, 6vw, 34px)", fontWeight: 1000, color: RED, letterSpacing: 2.4, animation: "blink 1s infinite" },
-  leadBanner: { textAlign: "center", marginTop: 20, fontSize: 16, fontWeight: 1000, color: RED, letterSpacing: 3.4 },
+  winBanner: { textAlign: "center", marginTop: 10, fontSize: "clamp(17px, 4vw, 22px)", fontWeight: 1000, color: RED, letterSpacing: 2.4, animation: "blink 1s infinite" },
+  leadBanner: { textAlign: "center", marginTop: 8, fontSize: 13, fontWeight: 1000, color: RED, letterSpacing: 3.4 },
   lossBanner: { textAlign: "center", marginTop: 18, fontSize: 15, color: SILVER, fontStyle: "italic" },
-  grid: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: 14, marginTop: 14 },
-  card: { padding: 20, textAlign: "center", border: "1px solid rgba(162,170,173,0.15)", borderRadius: 22, background: "rgba(17,17,17,0.72)", boxShadow: "0 16px 40px rgba(0,0,0,0.28)" },
-  cardTitle: { color: SILVER, fontSize: 11, letterSpacing: 3, fontWeight: 900, marginBottom: 15 },
+  grid: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))", gap: 10, marginTop: 10 },
+  card: { padding: 12, textAlign: "center", border: "1px solid rgba(162,170,173,0.15)", borderRadius: 22, background: "rgba(17,17,17,0.72)", boxShadow: "0 16px 40px rgba(0,0,0,0.28)" },
+  cardTitle: { color: SILVER, fontSize: 10, letterSpacing: 2.6, fontWeight: 900, marginBottom: 8 },
   seriesRow: { display: "flex", alignItems: "center", justifyContent: "center", gap: 24 },
   seriesPips: { display: "flex", gap: 7, justifyContent: "center", marginBottom: 8 },
   pip: { width: 14, height: 14, borderRadius: "50%", border: "2px solid", display: "inline-block" },
   seriesTeam: { textAlign: "center" },
-  seriesDash: { color: "#444", fontSize: 30, fontWeight: 300 },
+  seriesDash: { color: "#444", fontSize: 22, fontWeight: 300 },
   seriesLabel: { fontWeight: 1000, fontSize: 13, letterSpacing: 1.4 },
-  seriesWins: { fontSize: 31, fontWeight: 1000, marginTop: 2 },
+  seriesWins: { fontSize: 22, fontWeight: 1000, marginTop: 2 },
   seriesNote: { color: MUTED, fontSize: 12, marginTop: 13, fontStyle: "italic" },
   cdClock: { display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8 },
   cdUnit: { minWidth: 0, padding: "10px 6px", borderRadius: 16, background: "rgba(255,255,255,0.035)", border: "1px solid rgba(162,170,173,0.09)" },
-  cdNum: { fontSize: "clamp(27px, 7vw, 40px)", fontWeight: 1000, color: BONE, fontVariantNumeric: "tabular-nums", lineHeight: 1 },
+  cdNum: { fontSize: "clamp(18px, 4.5vw, 26px)", fontWeight: 1000, color: BONE, fontVariantNumeric: "tabular-nums", lineHeight: 1 },
   cdLabel: { fontSize: 9, letterSpacing: 1.8, color: SILVER, marginTop: 7, fontWeight: 900 },
   cdGame: { color: RED, fontSize: 13, fontWeight: 1000, letterSpacing: 1, marginTop: 15 },
-  cdLive: { fontSize: 28, fontWeight: 1000, color: RED, letterSpacing: 2, animation: "blink 1s infinite" },
-  controls: { marginTop: 14, padding: "18px 16px", textAlign: "center", borderRadius: 22, border: "1px solid rgba(162,170,173,0.12)", background: "rgba(5,5,5,0.52)" },
+  cdLive: { fontSize: 20, fontWeight: 1000, color: RED, letterSpacing: 2, animation: "blink 1s infinite" },
+  controls: { marginTop: 10, padding: "10px 14px", textAlign: "center", borderRadius: 22, border: "1px solid rgba(162,170,173,0.12)", background: "rgba(5,5,5,0.52)" },
   primaryBtn: { background: RED, color: BONE, border: "none", padding: "12px 22px", borderRadius: 12, fontWeight: 1000, fontSize: 14, cursor: "pointer", letterSpacing: 1, margin: 5, boxShadow: "0 12px 30px rgba(204,0,0,0.24)" },
   secondaryBtn: { background: "transparent", color: BONE, border: `1px solid rgba(162,170,173,0.46)`, padding: "12px 22px", borderRadius: 12, fontWeight: 900, fontSize: 14, cursor: "pointer", letterSpacing: 1, margin: 5 },
   hornBtn: { background: "linear-gradient(180deg, #f4f4f4, #a2aaad)", color: BLACK, border: "none", padding: "12px 22px", borderRadius: 12, fontWeight: 1000, fontSize: 14, cursor: "pointer", letterSpacing: 1, margin: 5, boxShadow: "0 12px 30px rgba(244,244,244,0.16)" },
