@@ -636,7 +636,8 @@ export default function CanesLive() {
 
           <div style={styles.liveTag}>
             <span style={styles.liveDot} />
-            OFFICIAL NHL FEED · auto every 15s
+            OFFICIAL NHL FEED
+            <span style={styles.liveDot} />
           </div>
 
           <div style={styles.hornStatus}>
@@ -644,7 +645,7 @@ export default function CanesLive() {
               ? hornPlaying
                 ? "GOAL HORN PLAYING · plays one time"
                 : "Goal horn armed — it will sound one time when the Canes score."
-              : "Tap Enable goal horn"}
+              : ""}
           </div>
 
           {lastUpdated && <div style={styles.updated}>Updated {lastUpdated.toLocaleTimeString()}</div>}
