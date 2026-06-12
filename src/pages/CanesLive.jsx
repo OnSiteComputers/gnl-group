@@ -1,265 +1,35 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 
 // ============================================================
-//  CANES LIVE — private family board for route /canes
+//  CANES LIVE v2 — private family board for route /canes
 //
-//  Drop this file into your React/Vite app and add the route:
+//  WHAT CHANGED vs v1:
+//   - Series record now comes from the Worker (live NHL feed).
+//     SERIES_OVERRIDE is gone — never manually update it again.
+//   - Countdown now targets the real next game from the Worker.
+//     NEXT_GAME is gone too.
+//   - Removed the direct browser fetch to api-web.nhle.com that
+//     was getting CORS-blocked (the reason the series card froze).
+//   - If the Canes clinch, the countdown card flips to a
+//     STANLEY CUP CHAMPIONS banner. 🏆
+//
+//  REQUIRES: the v2 Cloudflare Worker (canes-worker-v2.js)
+//  deployed at WORKER_URL below.
+//
+//  Route stays the same:
 //     <Route path="/canes" element={<CanesLive />} />
 // ============================================================
 
 const WORKER_URL = "https://dry-forest-d634.greg-ff0.workers.dev";
-const CANES_ABBREV = "CAR";
-const NHL_SEASON = "20252026";
-const NHL_SCHEDULE_URL = `https://api-web.nhle.com/v1/club-schedule-season/${CANES_ABBREV}/${NHL_SEASON}`;
-
-function teamAbbrev(team) {
-  return team?.abbrev || team?.triCode || team?.teamAbbrev?.default || team?.placeName?.default || "";
-}
-
-function isFinalState(state) {
-  return state === "OFF" || state === "FINAL";
-}
-
-function isPlayoffGame(game) {
-  return Number(game?.gameType) === 3;
-}
-
-function scoreNumber(value) {
-  const n = Number(value);
-  return Number.isFinite(n) ? n : null;
-}
-
-function getCanesAndOpponent(game) {
-  const homeAbbrev = teamAbbrev(game?.homeTeam);
-  const awayAbbrev = teamAbbrev(game?.awayTeam);
-
-  if (homeAbbrev === CANES_ABBREV) {
-    return {
-      canes: game.homeTeam,
-      opp: game.awayTeam,
-      oppAbbrev: awayAbbrev,
-      canesHome: true,
-    };
-  }
-
-  if (awayAbbrev === CANES_ABBREV) {
-    return {
-      canes: game.awayTeam,
-      opp: game.homeTeam,
-      oppAbbrev: homeAbbrev,
-      canesHome: false,
-    };
-  }
-
-  return null;
-}
-
-function teamName(team, fallback) {
-  return (
-    team?.commonName?.default ||
-    team?.placeName?.default ||
-    team?.name?.default ||
-    team?.clubName?.default ||
-    fallback
-  );
-}
-
-function normalizeGameState(state) {
-  if (state === "OFF") return "FINAL";
-  return state || "FUT";
-}
-
-function gameTimestamp(game) {
-  return new Date(game?.startTimeUTC || game?.gameDate || 0).getTime();
-}
-
-function selectCanesDisplayGame(scheduleData) {
-  const games = Array.isArray(scheduleData?.games) ? scheduleData.games : [];
-  const canesGames = games
-    .filter((game) => getCanesAndOpponent(game))
-    .sort((a, b) => gameTimestamp(a) - gameTimestamp(b));
-
-  if (!canesGames.length) return null;
-
-  const liveGame = canesGames.find((game) => game.gameState === "LIVE" || game.gameState === "CRIT");
-  if (liveGame) return liveGame;
-
-  const finishedGames = canesGames.filter((game) => isFinalState(game.gameState));
-  if (finishedGames.length) return finishedGames[finishedGames.length - 1];
-
-  const now = Date.now();
-  const nextGame = canesGames.find((game) => gameTimestamp(game) >= now);
-  return nextGame || canesGames[canesGames.length - 1];
-}
-
-function normalizeCanesGame(scheduleGame) {
-  const matchup = getCanesAndOpponent(scheduleGame);
-  if (!matchup) return null;
-
-  const periodDescriptor = scheduleGame?.periodDescriptor || {};
-  const state = normalizeGameState(scheduleGame?.gameState);
-  const isFinal = isFinalState(scheduleGame?.gameState);
-
-  return {
-    found: true,
-    state,
-    period: periodDescriptor.number || (isFinal ? 3 : 0),
-    periodType: periodDescriptor.periodType || "REG",
-    clock: isFinal ? "00:00" : scheduleGame?.clock?.timeRemaining || "",
-    inIntermission: Boolean(scheduleGame?.clock?.inIntermission),
-    canesAreHome: matchup.canesHome,
-    canes: {
-      name: "Hurricanes",
-      abbrev: CANES_ABBREV,
-      score: scoreNumber(matchup.canes?.score) ?? 0,
-      sog: scoreNumber(matchup.canes?.sog) ?? 0,
-    },
-    opp: {
-      name: teamName(matchup.opp, matchup.oppAbbrev),
-      abbrev: matchup.oppAbbrev,
-      score: scoreNumber(matchup.opp?.score) ?? 0,
-      sog: scoreNumber(matchup.opp?.sog) ?? 0,
-    },
-    venue: scheduleGame?.venue?.default || "Canes country",
-    startTimeUTC: scheduleGame?.startTimeUTC,
-    gameDate: scheduleGame?.gameDate,
-    source: "nhl-schedule",
-  };
-}
-
-function computeBestOfSevenSeries(scheduleData, currentGame) {
-  const games = Array.isArray(scheduleData?.games) ? scheduleData.games : [];
-  const currentOpp = currentGame?.opp?.abbrev || "";
-
-  const canesPlayoffGames = games
-    .filter(isPlayoffGame)
-    .map((g) => ({ raw: g, matchup: getCanesAndOpponent(g) }))
-    .filter((item) => item.matchup);
-
-  const opponentFromSchedule =
-    currentOpp ||
-    [...canesPlayoffGames].reverse().find((item) => item.matchup.oppAbbrev)?.matchup.oppAbbrev ||
-    currentGame?.opp?.name ||
-    "OPP";
-
-  const seriesGames = canesPlayoffGames
-    .filter((item) => item.matchup.oppAbbrev === opponentFromSchedule)
-    .sort((a, b) => {
-      const aDate = new Date(a.raw.gameDate || a.raw.startTimeUTC || 0).getTime();
-      const bDate = new Date(b.raw.gameDate || b.raw.startTimeUTC || 0).getTime();
-      return aDate - bDate;
-    });
-
-  let canesWins = 0;
-  let oppWins = 0;
-
-  for (const item of seriesGames) {
-    if (!isFinalState(item.raw.gameState)) continue;
-
-    const canesScore = scoreNumber(item.matchup.canes?.score);
-    const oppScore = scoreNumber(item.matchup.opp?.score);
-
-    if (canesScore === null || oppScore === null || canesScore === oppScore) continue;
-
-    if (canesScore > oppScore) canesWins += 1;
-    else oppWins += 1;
-
-    if (canesWins >= 4 || oppWins >= 4) break;
-  }
-
-  // Fallback: if the schedule has not updated yet but the live feed says the
-  // current game is final, count that one game so the card does not stay blank.
-  if (canesWins === 0 && oppWins === 0 && isFinalState(currentGame?.state)) {
-    const canesScore = scoreNumber(currentGame?.canes?.score);
-    const oppScore = scoreNumber(currentGame?.opp?.score);
-
-    if (canesScore !== null && oppScore !== null && canesScore !== oppScore) {
-      if (canesScore > oppScore) canesWins = 1;
-      else oppWins = 1;
-    }
-  }
-
-  return {
-    canes: canesWins,
-    opp: oppWins,
-    oppName: opponentFromSchedule,
-    neededToWin: 4,
-    foundGames: seriesGames.length,
-  };
-}
-
-function getSeriesScore(scheduleData, currentGame) {
-  if (SERIES_OVERRIDE.enabled) {
-    let canesWins = SERIES_OVERRIDE.canes;
-    let oppWins = SERIES_OVERRIDE.opp;
-    let autoApplied = false;
-
-    const canesScore = scoreNumber(currentGame?.canes?.score);
-    const oppScore = scoreNumber(currentGame?.opp?.score);
-    const currentGameTime = new Date(
-      currentGame?.startTimeUTC || currentGame?.gameDate || currentGame?.iso || 0
-    ).getTime();
-    const nextGameTime = new Date(SERIES_OVERRIDE.nextGameIso || NEXT_GAME.iso).getTime();
-
-    // Only count the next game after the 2-2 baseline.
-    // This prevents an older final score from being counted again.
-    const isNextGameOrLater =
-      Number.isFinite(currentGameTime) &&
-      Number.isFinite(nextGameTime) &&
-      currentGameTime >= nextGameTime - 6 * 60 * 60 * 1000;
-
-    if (
-      SERIES_OVERRIDE.autoAddNextFinal &&
-      isNextGameOrLater &&
-      isFinalState(currentGame?.state) &&
-      canesScore !== null &&
-      oppScore !== null &&
-      canesScore !== oppScore
-    ) {
-      if (canesScore > oppScore) canesWins += 1;
-      else oppWins += 1;
-      autoApplied = true;
-    }
-
-    return {
-      canes: Math.min(canesWins, SERIES_OVERRIDE.neededToWin || 4),
-      opp: Math.min(oppWins, SERIES_OVERRIDE.neededToWin || 4),
-      oppName: currentGame?.opp?.abbrev || SERIES_OVERRIDE.oppName || "OPP",
-      neededToWin: SERIES_OVERRIDE.neededToWin || 4,
-      foundGames: 0,
-      manual: true,
-      autoApplied,
-    };
-  }
-
-  return computeBestOfSevenSeries(scheduleData, currentGame);
-}
-
 
 const RED = "#CC0000";
 const BLACK = "#050505";
 const SILVER = "#A2AAAD";
 const BONE = "#F4F4F4";
 const MUTED = "#74797C";
+const GOLD = "#D4AF37";
 
-const NEXT_GAME = {
-  iso: "2026-06-11T20:00:00-04:00",
-  label: "Game 5 · vs Vegas · Raleigh",
-};
-
-// Current best-of-7 series score after the last completed game.
-// The page starts at 2-2, then automatically gives the next completed game's
-// winner one additional series win.
-const SERIES_OVERRIDE = {
-  enabled: true,
-  canes: 2,
-  opp: 2,
-  oppName: "VGK",
-  neededToWin: 4,
-  autoAddNextFinal: true,
-  nextGameIso: NEXT_GAME.iso,
-};
-
+// Shown for the first ~5 seconds until the Worker answers.
 const MANUAL_DEFAULT = {
   found: true,
   state: "FINAL",
@@ -267,10 +37,10 @@ const MANUAL_DEFAULT = {
   periodType: "REG",
   clock: "00:00",
   inIntermission: false,
-  canesAreHome: false,
-  canes: { name: "Hurricanes", abbrev: "CAR", score: 5, sog: 0 },
-  opp: { name: "Golden Knights", abbrev: "VGK", score: 3, sog: 0 },
-  venue: "T-Mobile Arena",
+  canesAreHome: true,
+  canes: { name: "Hurricanes", abbrev: "CAR", score: 4, sog: 0 },
+  opp: { name: "Golden Knights", abbrev: "VGK", score: 2, sog: 0 },
+  venue: "Raleigh",
 };
 
 function getCountdown(iso) {
@@ -286,16 +56,15 @@ function getCountdown(iso) {
   };
 }
 
-
 export default function CanesLive() {
   const [game, setGame] = useState(MANUAL_DEFAULT);
   const [liveFeed] = useState(true);
   const [lastUpdated, setLastUpdated] = useState(null);
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState(null);
-  const [countdown, setCountdown] = useState(getCountdown(NEXT_GAME.iso));
   const [seriesFeed, setSeriesFeed] = useState(null);
-  const [seriesErr, setSeriesErr] = useState(null);
+  const [nextGameInfo, setNextGameInfo] = useState(null);
+  const [countdown, setCountdown] = useState(null);
   const [hornReady, setHornReady] = useState(false);
   const [hornPlaying, setHornPlaying] = useState(false);
   const hornAudioRef = useRef(null);
@@ -303,11 +72,17 @@ export default function CanesLive() {
   const hornReadyRef = useRef(false);
   const previousCanesScoreRef = useRef(null);
 
+  // Countdown ticker — always aimed at the real next game from the feed.
   useEffect(() => {
-    const id = setInterval(() => setCountdown(getCountdown(NEXT_GAME.iso)), 1000);
+    if (!nextGameInfo?.startTimeUTC) {
+      setCountdown(null);
+      return;
+    }
+    const tick = () => setCountdown(getCountdown(nextGameInfo.startTimeUTC));
+    tick();
+    const id = setInterval(tick, 1000);
     return () => clearInterval(id);
-  }, []);
-
+  }, [nextGameInfo?.startTimeUTC]);
 
   useEffect(() => {
     hornAudioRef.current = new Audio("/canes-horn.mp3");
@@ -393,41 +168,32 @@ export default function CanesLive() {
     return () => horn.removeEventListener("ended", handleEnded);
   }, []);
 
-  const fetchSeries = useCallback(async () => {
-    try {
-      const res = await fetch(NHL_SCHEDULE_URL, { cache: "no-store" });
-      if (!res.ok) throw new Error(`Schedule feed returned ${res.status}`);
-
-      const scheduleData = await res.json();
-      const computedSeries = getSeriesScore(scheduleData, game);
-
-      setSeriesFeed(computedSeries);
-      setSeriesErr(null);
-    } catch {
-      const fallbackSeries = getSeriesScore(null, game);
-      setSeriesFeed(fallbackSeries);
-      setSeriesErr("Couldn't reach the NHL schedule feed, so this is using the current final game as a fallback.");
-    }
-  }, [game]);
-
-  useEffect(() => {
-    fetchSeries();
-    const id = setInterval(fetchSeries, 5 * 60 * 1000);
-    return () => clearInterval(id);
-  }, [fetchSeries]);
-
   const fetchLive = useCallback(async () => {
     setLoading(true);
     setErr(null);
 
     try {
-      // Read the Cloudflare worker, which finds the live/most-relevant Canes
-      // game and returns it already normalized (one clean game, not the whole season).
+      // One call, one source of truth: the Worker returns the
+      // live/next/most-recent game PLUS the series record and
+      // the next-game info for the countdown.
       const res = await fetch(WORKER_URL, { cache: "no-store" });
       if (!res.ok) throw new Error(`Worker returned ${res.status}`);
 
       const liveGame = await res.json();
       if (!liveGame || liveGame.found === false) throw new Error("No Canes game from worker.");
+
+      // Series record straight from the NHL feed.
+      if (liveGame.series) {
+        setSeriesFeed({
+          canes: liveGame.series.canesWins ?? 0,
+          opp: liveGame.series.oppWins ?? 0,
+          oppName: liveGame.series.oppAbbrev || liveGame?.opp?.abbrev || "OPP",
+          neededToWin: 4,
+        });
+      }
+
+      // Next puck drop straight from the NHL feed (null = none scheduled).
+      setNextGameInfo(liveGame.nextGame || null);
 
       setGame((previousGame) => {
         const previousScore = previousCanesScoreRef.current;
@@ -467,16 +233,31 @@ export default function CanesLive() {
     return { isFinal, isLiveGame, canesWinning, canesLost, tied };
   }, [game]);
 
+  // Series milestones.
+  const need = seriesFeed?.neededToWin || 4;
+  const cupWon = Boolean(seriesFeed && seriesFeed.canes >= need);
+  const seriesLost = Boolean(seriesFeed && seriesFeed.opp >= need);
+
   // Which game of the series is on the board.
-  // Priority: feed value (if worker passes it) -> derived from series wins -> NEXT_GAME label.
+  // Priority: feed value -> derived from series wins.
   const gameNumber = useMemo(() => {
     if (game.gameNumber) return game.gameNumber;
     if (seriesFeed && Number.isFinite(seriesFeed.canes) && Number.isFinite(seriesFeed.opp)) {
       return seriesFeed.canes + seriesFeed.opp + (status.isFinal ? 0 : 1);
     }
-    const m = /game\s*(\d+)/i.exec(NEXT_GAME.label || "");
-    return m ? Number(m[1]) : null;
+    return null;
   }, [game, seriesFeed, status.isFinal]);
+
+  // Countdown label, e.g. "GAME 6 · AT VGK · T-Mobile Arena"
+  const nextGameLabel = useMemo(() => {
+    if (!nextGameInfo) return "";
+    const parts = [];
+    if (nextGameInfo.gameNumber) parts.push(`GAME ${nextGameInfo.gameNumber}`);
+    const opp = nextGameInfo.oppAbbrev || nextGameInfo.oppName;
+    if (opp) parts.push(`${nextGameInfo.canesAreHome ? "VS" : "AT"} ${opp}`);
+    if (nextGameInfo.venue) parts.push(nextGameInfo.venue);
+    return parts.join(" · ");
+  }, [nextGameInfo]);
 
   const periodLabel = () => {
     if (game.inIntermission) return "INTERMISSION";
@@ -491,13 +272,13 @@ export default function CanesLive() {
   };
 
   const gameMood = () => {
+    if (cupWon) return "Raise it. The Cup comes to Carolina.";
     if (status.isFinal && status.canesWinning) return "Storm surge complete.";
     if (status.isLiveGame && status.canesWinning) return "Hold the line. Finish strong.";
     if (status.isLiveGame && status.tied) return "Next goal wakes the house.";
     if (status.canesLost) return "Tough one. Reset and take warning.";
     return "Family board is armed and ready.";
   };
-
 
   return (
     <div style={styles.page}>
@@ -586,21 +367,25 @@ export default function CanesLive() {
                   <div style={styles.seriesDash}>—</div>
                   <SeriesTeam label={seriesFeed.oppName} wins={seriesFeed.opp} accent={SILVER} neededToWin={seriesFeed.neededToWin} />
                 </div>
-                {!seriesFeed?.manual && (
-                  <div style={styles.seriesNote}>
-                    {seriesErr || "Computed from final playoff games in the NHL schedule feed."}
-                  </div>
-                )}
+                <div style={styles.seriesNote}>
+                  {cupWon
+                    ? "Series clinched. BUNCH OF JERKS."
+                    : seriesLost
+                    ? "Series over. Take warning for next season."
+                    : "Live from the official NHL feed."}
+                </div>
               </>
             ) : (
-              <div style={styles.seriesNote}>{seriesErr || "Loading NHL series feed..."}</div>
+              <div style={styles.seriesNote}>Loading series from the NHL feed...</div>
             )}
           </div>
 
           <div style={styles.card}>
-            {countdown.live ? (
+            {cupWon ? (
+              <div style={styles.cupBanner}>🏆 STANLEY CUP CHAMPIONS 🏆</div>
+            ) : status.isLiveGame || (countdown && countdown.live) ? (
               <div style={styles.cdLive}>🚨 GAME TIME 🚨</div>
-            ) : (
+            ) : nextGameInfo && countdown ? (
               <>
                 <div style={styles.cardTitle}>NEXT PUCK DROP</div>
                 <div style={styles.cdClock}>
@@ -609,7 +394,12 @@ export default function CanesLive() {
                   <CdUnit n={countdown.m} label="MIN" />
                   <CdUnit n={countdown.s} label="SEC" />
                 </div>
-                <div style={styles.cdGame}>{NEXT_GAME.label}</div>
+                <div style={styles.cdGame}>{nextGameLabel}</div>
+              </>
+            ) : (
+              <>
+                <div style={styles.cardTitle}>NEXT PUCK DROP</div>
+                <div style={styles.seriesNote}>No upcoming game on the feed.</div>
               </>
             )}
           </div>
@@ -648,6 +438,8 @@ export default function CanesLive() {
               : ""}
           </div>
 
+          {err && <div style={styles.err}>{err}</div>}
+
           {lastUpdated && <div style={styles.updated}>Updated {lastUpdated.toLocaleTimeString()}</div>}
           </section>
       </main>
@@ -671,7 +463,7 @@ function TeamScore({ hero = false, label, score, sog, live, accent, winning = fa
           textShadow: winning ? `0 0 36px rgba(204, 0, 0, 0.72)` : "none",
         }}
       >
-        {score}
+        {score ?? "–"}
       </div>
       {live && <div style={hero ? styles.sog : styles.sogOpp}>{sog ?? 0} SOG</div>}
     </div>
@@ -803,6 +595,7 @@ const styles = {
   cdLabel: { fontSize: 9, letterSpacing: 1.8, color: SILVER, marginTop: 7, fontWeight: 900 },
   cdGame: { color: RED, fontSize: 13, fontWeight: 1000, letterSpacing: 1, marginTop: 15 },
   cdLive: { fontSize: 20, fontWeight: 1000, color: RED, letterSpacing: 2, animation: "blink 1s infinite" },
+  cupBanner: { fontSize: "clamp(16px, 4vw, 20px)", fontWeight: 1000, color: GOLD, letterSpacing: 2, animation: "blink 1.4s infinite", textShadow: "0 0 24px rgba(212,175,55,0.55)", padding: "14px 4px" },
   controls: { marginTop: 10, padding: "10px 14px", textAlign: "center", borderRadius: 22, border: "1px solid rgba(162,170,173,0.12)", background: "rgba(5,5,5,0.52)" },
   primaryBtn: { background: RED, color: BONE, border: "none", padding: "12px 22px", borderRadius: 12, fontWeight: 1000, fontSize: 14, cursor: "pointer", letterSpacing: 1, margin: 5, boxShadow: "0 12px 30px rgba(204,0,0,0.24)" },
   secondaryBtn: { background: "transparent", color: BONE, border: `1px solid rgba(162,170,173,0.46)`, padding: "12px 22px", borderRadius: 12, fontWeight: 900, fontSize: 14, cursor: "pointer", letterSpacing: 1, margin: 5 },
