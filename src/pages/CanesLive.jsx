@@ -421,31 +421,29 @@ export default function CanesLive() {
     setErr(null);
 
     try {
-      const scheduleRes = await fetch(NHL_SCHEDULE_URL, { cache: "no-store" });
-      if (!scheduleRes.ok) throw new Error(`NHL schedule returned ${scheduleRes.status}`);
+      // Read the Cloudflare worker, which finds the live/most-relevant Canes
+      // game and returns it already normalized (one clean game, not the whole season).
+      const res = await fetch(WORKER_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error(`Worker returned ${res.status}`);
 
-      const scheduleData = await scheduleRes.json();
-      const officialGame = normalizeCanesGame(selectCanesDisplayGame(scheduleData));
-      if (!officialGame) throw new Error("No Canes game found in NHL schedule.");
+      const liveGame = await res.json();
+      if (!liveGame || liveGame.found === false) throw new Error("No Canes game from worker.");
 
       setGame((previousGame) => {
         const previousScore = previousCanesScoreRef.current;
-        const nextScore = Number(officialGame?.canes?.score ?? previousGame.canes.score);
+        const nextScore = Number(liveGame?.canes?.score ?? previousGame.canes.score);
 
         if (previousScore !== null && nextScore > previousScore && hornReadyRef.current) {
           playHorn();
         }
 
         previousCanesScoreRef.current = nextScore;
-        return officialGame;
+        return { ...previousGame, ...liveGame, source: "worker" };
       });
 
       setLastUpdated(new Date());
       setErr(null);
     } catch {
-      // Do NOT fall back to WORKER_URL here.
-      // That old Worker is returning stale Montreal data and was overwriting
-      // the correct Vegas score immediately after the page loaded.
       setErr(null);
     } finally {
       setLoading(false);
