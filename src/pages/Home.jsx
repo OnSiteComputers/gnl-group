@@ -503,7 +503,7 @@ export default function GNLDigitalGroup() {
             <span style={{ color:"#D4A84B",textShadow:"0 0 60px rgba(212,168,75,.35),0 4px 40px rgba(0,0,0,.5)" }}>Dominate</span> Search.
           </h1>
 
-          <p style={{ fontSize:"clamp(15px,2.2vw,20px)",color:"#888",maxWidth:600,margin:"0 auto 52px",lineHeight:1.78,fontWeight:400 }}>
+          <p style={{ fontSize:"clamp(15px,2.2vw,20px)",color:"#fff",maxWidth:600,margin:"0 auto 52px",lineHeight:1.78,fontWeight:400 }}>
             Charlotte's most experienced digital marketing agency. 25 years of proven expertise.
             Real rankings. Real revenue. <strong style={{ color:"#D4A84B",fontWeight:700 }}>Zero fluff.</strong>
           </p>
@@ -515,7 +515,7 @@ export default function GNLDigitalGroup() {
 
           <div style={{ display:"flex",justifyContent:"center",gap:32,flexWrap:"wrap",marginTop:16 }}>
             {["No long contracts","Charlotte specialists","Real monthly reports"].map(t=>(
-              <div key={t} style={{ display:"flex",alignItems:"center",gap:7,color:"#555",fontSize:13,fontWeight:500 }}>
+              <div key={t} style={{ display:"flex",alignItems:"center",gap:7,color:"#fff",fontSize:13,fontWeight:500 }}>
                 <CheckCircle size={14} color="#D4A84B" />{t}
               </div>
             ))}
@@ -546,7 +546,7 @@ export default function GNLDigitalGroup() {
                   filter:"drop-shadow(0 0 20px rgba(212,168,75,.3))" }}>
                   <Counter value={s.value} suffix={s.suffix}/>
                 </div>
-                <div style={{ fontSize:11,fontWeight:700,color:"#444",letterSpacing:".14em",textTransform:"uppercase",marginTop:10 }}>{s.label}</div>
+                <div style={{ fontSize:11,fontWeight:700,color:"#aaa",letterSpacing:".14em",textTransform:"uppercase",marginTop:10 }}>{s.label}</div>
               </div>
             </Reveal>
           ))}
@@ -564,7 +564,7 @@ export default function GNLDigitalGroup() {
               <h2 className="df" style={{ fontSize:"clamp(34px,5vw,64px)",fontWeight:800,color:"#fff",lineHeight:1.1 }}>
                 Built for Local<br/><span style={{ color:"#D4A84B" }}>Dominance</span>
               </h2>
-              <p style={{ color:"#555",fontSize:17,maxWidth:540,margin:"20px auto 0",lineHeight:1.78 }}>
+              <p style={{ color:"#fff",fontSize:17,maxWidth:540,margin:"20px auto 0",lineHeight:1.78 }}>
                 We don't do generic SEO. Every strategy is engineered specifically for the Charlotte metro market.
               </p>
             </div>
@@ -577,7 +577,7 @@ export default function GNLDigitalGroup() {
                     <s.icon size={22} color="#D4A84B"/>
                   </div>
                   <h3 className="df" style={{ fontSize:21,fontWeight:700,color:"#fff",marginBottom:12 }}>{s.title}</h3>
-                  <p style={{ fontSize:14,color:"#666",lineHeight:1.8 }}>{s.desc}</p>
+                  <p style={{ fontSize:14,color:"#ccc",lineHeight:1.8 }}>{s.desc}</p>
                 </div>
               </Reveal>
             ))}
@@ -589,7 +589,7 @@ export default function GNLDigitalGroup() {
               </div>
               <div style={{ flex:1,minWidth:280 }}>
                 <h3 className="df" style={{ fontSize:26,fontWeight:700,color:"#fff",marginBottom:8 }}>All-In-One Web Package</h3>
-                <p style={{ fontSize:15,color:"#888",lineHeight:1.78 }}>Complete website rebuild, domain, hosting, and ongoing management—one simple monthly fee. Everything handled, nothing missed.</p>
+                <p style={{ fontSize:15,color:"#ccc",lineHeight:1.78 }}>Complete website rebuild, domain, hosting, and ongoing management—one simple monthly fee. Everything handled, nothing missed.</p>
               </div>
               <a href="#contact" className="btn-g" style={{ flexShrink:0 }}>Get Pricing <ChevronRight size={16}/></a>
             </div>
@@ -625,7 +625,7 @@ export default function GNLDigitalGroup() {
               <h2 className="df" style={{ fontSize:"clamp(36px,4.5vw,60px)",fontWeight:800,color:"#fff",lineHeight:1.1,marginBottom:24 }}>
                 While Others<br/>Promise—We<br/><span style={{ color:"#D4A84B" }}>Deliver.</span>
               </h2>
-              <p style={{ color:"#777",fontSize:16,lineHeight:1.85,marginBottom:32 }}>
+              <p style={{ color:"#ccc",fontSize:16,lineHeight:1.85,marginBottom:32 }}>
                 Most agencies sell you hope. We sell you results. Our 25-year track record of dominating Charlotte's most competitive local search markets isn't an accident—it's a system.
               </p>
               {["Engineered for your specific market","Transparent, no-fluff reporting","Your competitors won't know what hit them"].map(t=>(
@@ -633,7 +633,7 @@ export default function GNLDigitalGroup() {
                   <div style={{ width:22,height:22,background:"rgba(212,168,75,.12)",border:"1px solid rgba(212,168,75,.3)",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0 }}>
                     <CheckCircle size={12} color="#D4A84B"/>
                   </div>
-                  <span style={{ color:"#aaa",fontSize:15 }}>{t}</span>
+                  <span style={{ color:"#fff",fontSize:15 }}>{t}</span>
                 </div>
               ))}
               <div style={{ marginTop:36 }}>
@@ -697,7 +697,7 @@ export default function GNLDigitalGroup() {
                   : <div key={ind.label} className="pill">{ind.label}</div>
               )}
             </div>
-            <p style={{ marginTop:44,color:"#444",fontSize:15,maxWidth:600,margin:"44px auto 0",lineHeight:1.8 }}>
+            <p style={{ marginTop:44,color:"#ccc",fontSize:15,maxWidth:600,margin:"44px auto 0",lineHeight:1.8 }}>
               Serving businesses across Charlotte, Concord, Huntersville, Kannapolis, Matthews, Ballantyne, and greater Mecklenburg County.
             </p>
           </Reveal>
@@ -715,10 +715,10 @@ export default function GNLDigitalGroup() {
               <h2 className="df" style={{ fontSize:"clamp(34px,4.5vw,62px)",fontWeight:800,lineHeight:1.1,marginBottom:24,color:"#fff" }}>
                 We've Been Here<br/>Since Before Google<br/><span style={{ color:"#D4A84B" }}>Was Google.</span>
               </h2>
-              <p style={{ color:"#666",lineHeight:1.88,fontSize:16,marginBottom:20 }}>
+              <p style={{ color:"#ccc",lineHeight:1.88,fontSize:16,marginBottom:20 }}>
                 25 years in digital means we've seen it all—algorithm updates, trend cycles, "guaranteed #1" agencies that disappeared overnight. We're still here because we get results.
               </p>
-              <p style={{ color:"#666",lineHeight:1.88,fontSize:16,marginBottom:44 }}>
+              <p style={{ color:"#ccc",lineHeight:1.88,fontSize:16,marginBottom:44 }}>
                 Our Charlotte-first approach means we understand your customers, your competition, and your market in a way no national agency ever will. You work directly with experts—not a rotating cast of account managers.
               </p>
               <a href="#contact" className="btn-g">Start Dominating <ArrowRight size={16}/></a>
@@ -730,7 +730,7 @@ export default function GNLDigitalGroup() {
                 <div key={c.title} className="glass-card">
                   <c.icon size={22} color="#D4A84B"/>
                   <div style={{ marginTop:16,fontWeight:700,fontSize:14,color:"#fff",marginBottom:7,letterSpacing:".01em" }}>{c.title}</div>
-                  <div style={{ fontSize:13,color:"#555",lineHeight:1.65 }}>{c.desc}</div>
+                  <div style={{ fontSize:13,color:"#ccc",lineHeight:1.65 }}>{c.desc}</div>
                 </div>
               ))}
             </div>
@@ -761,7 +761,7 @@ export default function GNLDigitalGroup() {
                     <ChevronDown size={18} color="#D4A84B" style={{ transform:openFaq===i?"rotate(180deg)":"rotate(0)",transition:"transform .35s ease",flexShrink:0 }}/>
                   </button>
                   <div style={{ maxHeight:openFaq===i?320:0,overflow:"hidden",transition:"max-height .4s ease" }}>
-                    <p style={{ padding:"0 28px 26px",fontSize:15,color:"#666",lineHeight:1.85 }}>{faq.a}</p>
+                    <p style={{ padding:"0 28px 26px",fontSize:15,color:"#ccc",lineHeight:1.85 }}>{faq.a}</p>
                   </div>
                 </div>
               ))}
@@ -786,7 +786,7 @@ export default function GNLDigitalGroup() {
             <h2 className="df" style={{ fontSize:"clamp(38px,6vw,76px)",fontWeight:800,color:"#fff",marginBottom:22,lineHeight:1.08 }}>
               Ready to Own<br/><span style={{ color:"#D4A84B",textShadow:"0 0 50px rgba(212,168,75,.3)" }}>Page One?</span>
             </h2>
-            <p style={{ color:"#666",fontSize:18,lineHeight:1.8,marginBottom:50,maxWidth:540,margin:"0 auto 50px" }}>
+            <p style={{ color:"#fff",fontSize:18,lineHeight:1.8,marginBottom:50,maxWidth:540,margin:"0 auto 50px" }}>
               Schedule your free strategy session. We'll analyze your presence, expose competitor weaknesses, and map the exact path to dominating Charlotte search.
             </p>
             <div className="cta-btns" style={{ display:"flex",flexWrap:"wrap",gap:18,justifyContent:"center",marginBottom:48 }}>
@@ -799,7 +799,7 @@ export default function GNLDigitalGroup() {
             </div>
             <div style={{ display:"flex",justifyContent:"center",gap:40,flexWrap:"wrap" }}>
               {["Free consultation","No commitment","Same-week availability"].map(t=>(
-                <div key={t} style={{ display:"flex",alignItems:"center",gap:8,color:"#444",fontSize:13,fontWeight:500 }}>
+                <div key={t} style={{ display:"flex",alignItems:"center",gap:8,color:"#fff",fontSize:13,fontWeight:500 }}>
                   <Star size={13} color="#D4A84B"/>{t}
                 </div>
               ))}
