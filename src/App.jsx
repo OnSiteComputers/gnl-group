@@ -64,14 +64,14 @@ const AuthenticatedApp = () => {
   return (
     <Routes>
       {/* On-Site Computer Service */}
-      <Route path="/" element={<OnSite />} />
+      <Route path="/onsite" element={<OnSite />} />
       <Route path="/remote-support" element={<RemoteSupport />} />
       <Route path="/onsite-home" element={<OnsiteHome />} />
 
       {/* GNL Digital Group */}
+      <Route path="/" element={<Home />} />
       <Route path="/gnl" element={<GNL />} />
       <Route path="/gnl-proposal" element={<GNLProposal />} />
-      <Route path="/home" element={<Home />} />
       <Route path="/home2" element={<Home2 />} />
       <Route path="/about" element={<About />} />
       <Route path="/about2" element={<About2 />} />
