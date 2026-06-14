@@ -261,23 +261,21 @@ export default function GNLDigitalGroup() {
         @keyframes gradient-shift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
         @keyframes fade-up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
-        .btn-g{
+        .btn-g{border-radius:8px;
           background:linear-gradient(135deg,#C49A30,#F0C860,#C49A30);
           background-size:250% auto;color:#080808;font-weight:800;
           letter-spacing:.08em;padding:15px 36px;border:none;cursor:pointer;
           font-size:13px;text-transform:uppercase;text-decoration:none;
           display:inline-flex;align-items:center;gap:9px;
           transition:background-position .5s,transform .2s,box-shadow .2s;
-          clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));
         }
         .btn-g:hover{background-position:right center;transform:translateY(-3px);box-shadow:0 12px 32px rgba(212,168,75,.4),0 0 60px rgba(212,168,75,.15);}
-        .btn-o{
+        .btn-o{border-radius:8px;
           background:transparent;color:#fff;font-weight:700;letter-spacing:.08em;
           padding:14px 35px;border:1px solid rgba(255,255,255,.3);cursor:pointer;
           font-size:13px;text-transform:uppercase;text-decoration:none;
           display:inline-flex;align-items:center;gap:9px;
           transition:border-color .3s,color .3s,background .3s,box-shadow .3s;
-          clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));
         }
         .btn-o:hover{border-color:#D4A84B;color:#D4A84B;background:rgba(212,168,75,.07);box-shadow:0 0 30px rgba(212,168,75,.1);}
 
@@ -309,11 +307,10 @@ export default function GNLDigitalGroup() {
         }
         .glass-card:hover{border-color:rgba(212,168,75,.35);background:rgba(212,168,75,.05);box-shadow:0 8px 40px rgba(0,0,0,.4),inset 0 1px 0 rgba(212,168,75,.1);}
 
-        .pill{
+        .pill{border-radius:8px;
           border:1px solid #252525;background:linear-gradient(135deg,#111,#0D0D0D);
           color:#888;padding:12px 24px;font-size:13px;font-weight:500;letter-spacing:.03em;
           cursor:default;transition:border-color .3s,color .3s,background .3s,transform .2s;
-          clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));
         }
         .pill:hover{border-color:#D4A84B;color:#D4A84B;background:rgba(212,168,75,.06);transform:translateY(-2px);}
 
@@ -382,7 +379,7 @@ export default function GNLDigitalGroup() {
           </a>
           <nav className="dnav" style={{ gap:36,alignItems:"center" }}>
             {NAV.map(l=><a key={l.label} href={l.href} className="nav-a">{l.label}</a>)}
-            <a href="#contact" className="btn-g" style={{ padding:"10px 24px",fontSize:12,clipPath:"none",borderRadius:2 }}>
+            <a href="#contact" className="btn-g" style={{ padding:"10px 24px",fontSize:12 }}>
               Free Strategy Session
             </a>
           </nav>
@@ -399,7 +396,7 @@ export default function GNLDigitalGroup() {
                 {l.label}
               </a>
             ))}
-            <a href="tel:+17045945826" className="btn-g" style={{ marginTop:20,width:"100%",justifyContent:"center",clipPath:"none",borderRadius:2 }}>
+            <a href="tel:+17045945826" className="btn-g" style={{ marginTop:20,width:"100%",justifyContent:"center" }}>
               <Phone size={14}/>(704) 594-5826
             </a>
           </div>
@@ -796,10 +793,10 @@ export default function GNLDigitalGroup() {
         padding:"12px 20px",gap:12,
         zIndex:998,display:"none",
       }}>
-        <a href="tel:+17045945826" className="btn-g" style={{ flex:1,justifyContent:"center",padding:"13px 12px",fontSize:13,clipPath:"none",borderRadius:2 }}>
+        <a href="tel:+17045945826" className="btn-g" style={{ flex:1,justifyContent:"center",padding:"13px 12px",fontSize:13 }}>
           <Phone size={15}/>(704) 594-5826
         </a>
-        <a href="#contact" className="btn-o" style={{ flex:1,justifyContent:"center",padding:"12px 12px",fontSize:13,clipPath:"none",borderRadius:2 }}>
+        <a href="#contact" className="btn-o" style={{ flex:1,justifyContent:"center",padding:"12px 12px",fontSize:13 }}>
           Free Strategy <ArrowRight size={14}/>
         </a>
       </div>
