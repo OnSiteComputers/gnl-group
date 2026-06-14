@@ -92,7 +92,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-10 mb-10">
           <div>
             <img src={LOGO_URL} alt="GNL Digital Group" className="h-10 w-auto mb-4" />
-            <p className="text-primary-foreground/60 text-sm leading-relaxed">
+            <p className="text-primary-foreground/80 text-sm leading-relaxed">
               Charlotte's premier digital marketing agency for law firms. 25+ years of technology expertise, hyper-local focus.
             </p>
           </div>
@@ -115,7 +115,7 @@ export default function Footer() {
                       <Link
                         to={l.to}
                         onClick={(e) => handleNav(e, l.to)}
-                        className="block py-2 text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                        className="block py-2 text-sm text-primary-foreground/90 hover:text-primary-foreground transition-colors"
                       >
                         {l.label}
                       </Link>
@@ -152,7 +152,7 @@ export default function Footer() {
                     <Link
                       to="/small-business"
                       onClick={(e) => handleNav(e, '/small-business')}
-                      className="block py-2 text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                      className="block py-2 text-sm text-primary-foreground/90 hover:text-primary-foreground transition-colors"
                     >
                       For Small Business
                     </Link>
@@ -161,7 +161,7 @@ export default function Footer() {
                     <Link
                       to="/contact"
                       onClick={(e) => handleNav(e, '/contact')}
-                      className="block py-2 text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                      className="block py-2 text-sm text-primary-foreground/90 hover:text-primary-foreground transition-colors"
                     >
                       Contact
                     </Link>
@@ -182,13 +182,13 @@ export default function Footer() {
           <div>
             <h4 className="font-heading font-bold text-secondary mb-4 tracking-widest text-sm uppercase">Contact</h4>
             <div className="space-y-3">
-              <a href="tel:+17045945826" className="flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground text-sm transition-colors">
-                <Phone size={14} /> (704) 594-5826
+              <a href="tel:+17045945826" className="flex items-center gap-2 text-primary-foreground/90 hover:text-primary-foreground text-sm transition-colors">
+              <Phone size={14} /> (704) 594-5826
               </a>
-              <a href="mailto:linda@gnldigitalgroup.com" className="flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground text-sm transition-colors">
-                <Mail size={14} /> linda@gnldigitalgroup.com
+              <a href="mailto:linda@gnldigitalgroup.com" className="flex items-center gap-2 text-primary-foreground/90 hover:text-primary-foreground text-sm transition-colors">
+              <Mail size={14} /> linda@gnldigitalgroup.com
               </a>
-              <p className="text-primary-foreground/60 text-sm">53 Cabarrus Ave West<br />Concord, NC 28025</p>
+              <p className="text-primary-foreground/80 text-sm">53 Cabarrus Ave West<br />Concord, NC 28025</p>
             </div>
           </div>
         </div>
@@ -196,7 +196,7 @@ export default function Footer() {
         {/* Prominent Onsite Computer Service CTA */}
         <div className="bg-secondary/10 rounded-lg p-6 text-center border border-secondary/30">
           <h3 className="font-heading font-bold text-lg text-secondary mb-2">Professional On-Site Computer Service</h3>
-          <p className="text-primary-foreground/70 text-sm mb-6">Visit our store or call us for expert computer repair</p>
+          <p className="text-primary-foreground/90 text-sm mb-6">Visit our store or call us for expert computer repair</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="https://www.onsitecomputerservice.net"
@@ -215,7 +215,7 @@ export default function Footer() {
           </div>
         </div>
         
-        <div className="border-t border-primary-foreground/10 pt-6 text-center text-primary-foreground/40 text-sm">
+        <div className="border-t border-primary-foreground/10 pt-6 text-center text-primary-foreground/60 text-sm">
           © {new Date().getFullYear()} GNL Digital Group. All rights reserved.
         </div>
       </div>

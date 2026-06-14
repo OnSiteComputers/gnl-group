@@ -23,7 +23,7 @@ export default function Testimonials() {
         >
           <span className="text-secondary font-bold text-lg tracking-widest uppercase">Client Testimonials</span>
           <h2 className="font-heading text-4xl font-bold mt-3">What Our Clients Say</h2>
-          <p className="text-primary-foreground/60 mt-3">
+          <p className="text-primary-foreground/80 mt-3">
             Real results from real businesses. Here's what our clients have to say about working with GNL Digital Group.
           </p>
         </motion.div>
@@ -47,7 +47,7 @@ export default function Testimonials() {
               <div>
                 <p className="font-heading font-bold text-primary-foreground">{t.author}</p>
                 <p className="text-secondary text-sm">{t.firm}</p>
-                <p className="text-primary-foreground/50 text-xs">{t.location} • {t.years}</p>
+                <p className="text-primary-foreground/70 text-xs">{t.location} • {t.years}</p>
               </div>
             </div>
           </motion.div>

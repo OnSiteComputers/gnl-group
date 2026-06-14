@@ -175,7 +175,7 @@ export default function Navbar() {
                       key={item.label}
                       to={item.to}
                       onClick={() => { setDropdownOpen(false); window.scrollTo({ top: 0 }); }}
-                      className="block px-4 py-3 text-sm text-foreground hover:bg-secondary/10 hover:text-secondary transition-colors border-b border-border/40 last:border-0"
+                      className="block px-4 py-3 text-sm text-white hover:bg-secondary/10 hover:text-secondary transition-colors border-b border-border/40 last:border-0"
                     >
                       {item.label}
                     </Link>

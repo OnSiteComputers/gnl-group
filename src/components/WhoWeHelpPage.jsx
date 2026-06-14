@@ -1,52 +1,65 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Phone, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import Navbar from './Navbar';
 import Footer from './Footer';
-
 
 const PHONE_HREF = 'tel:+17045945826';
 const PHONE = '(704) 594-5826';
 
 export default function WhoWeHelpPage({ icon: Icon, headline, subheadline, intro, benefits, services, cta, introAlign = 'center' }) {
   return (
-    <div className="min-h-screen font-body">
+    <div style={{ background: '#080808', color: '#fff', fontFamily: "'Inter',sans-serif", minHeight: '100vh' }}>
       <Navbar />
 
       {/* Hero */}
-      <section className="bg-primary text-primary-foreground pt-24 md:pt-52 pb-12 px-6 text-center">
-        <div className="max-w-7xl mx-auto text-center">
-         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-4">
-             {Icon && <Icon className="text-secondary shrink-0" size={52} strokeWidth={1.5} />}
-             <h1 className="font-heading text-3xl md:text-5xl font-bold text-center sm:text-left">{headline}</h1>
-           </div>
-           <p className="text-primary-foreground/70 text-lg md:text-xl max-w-2xl mx-auto">{subheadline}</p>
-         </motion.div>
+      <section style={{ background: 'linear-gradient(135deg,#0D0B06,#1C1607,#0D0B06)', padding: '130px 24px 80px', textAlign: 'center', borderBottom: '1px solid #1E1800' }}>
+        <div style={{ maxWidth: 900, margin: '0 auto' }}>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, border: '1px solid rgba(212,168,75,.4)', background: 'rgba(212,168,75,.06)', color: '#D4A84B', padding: '9px 22px', fontSize: 11, fontWeight: 700, letterSpacing: '.16em', textTransform: 'uppercase', marginBottom: 32 }}>
+              <div style={{ width: 6, height: 6, background: '#D4A84B', borderRadius: '50%' }} />
+              Charlotte, NC · Local Dominance. Real Results.
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, marginBottom: 20 }}>
+              {Icon && <Icon style={{ color: '#D4A84B', width: 52, height: 52, strokeWidth: 1.5, flexShrink: 0 }} />}
+              <h1 style={{ fontFamily: "'Playfair Display',serif", fontSize: 'clamp(32px,5vw,60px)', fontWeight: 800, color: '#fff', lineHeight: 1.1, margin: 0 }}>{headline}</h1>
+            </div>
+            <p style={{ color: '#ccc', fontSize: 18, maxWidth: 640, margin: '0 auto' }}>{subheadline}</p>
+          </motion.div>
         </div>
       </section>
 
       {/* Intro */}
-      <section className="py-16 px-6 bg-background">
-        <div className="max-w-7xl mx-auto">
-          <motion.p initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className={`text-foreground/80 text-lg leading-relaxed text-${introAlign}`}>{intro}</motion.p>
+      <section style={{ padding: '72px 24px', background: '#0B0B0B', borderBottom: '1px solid #161616' }}>
+        <div style={{ maxWidth: 900, margin: '0 auto' }}>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+            style={{ color: '#e0e0e0', fontSize: 17, lineHeight: 1.85, textAlign: introAlign === 'center' ? 'center' : 'left' }}
+          >{intro}</motion.p>
         </div>
       </section>
 
       {/* Benefits */}
-      <section className="py-16 px-6 bg-muted/10">
-        <div className="max-w-7xl mx-auto">
-          <span className="text-secondary font-bold text-lg tracking-widest uppercase block mb-3">Why GNL Digital Works for You</span>
-          <h2 className="font-heading text-3xl font-bold text-center text-foreground">Why <span className="text-secondary">GNL Digital</span> Works for You</h2>
-          <div className="grid md:grid-cols-2 gap-6">
+      <section style={{ padding: '80px 24px', background: '#080808', borderBottom: '1px solid #161616' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: 56 }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 14, marginBottom: 16 }}>
+              <div style={{ width: 40, height: 1, background: '#D4A84B' }} />
+              <span style={{ color: '#D4A84B', fontSize: 11, fontWeight: 700, letterSpacing: '.2em', textTransform: 'uppercase' }}>Why GNL Digital</span>
+              <div style={{ width: 40, height: 1, background: '#D4A84B' }} />
+            </div>
+            <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: 'clamp(28px,4vw,48px)', fontWeight: 800, color: '#fff', margin: 0 }}>
+              Why <span style={{ color: '#D4A84B' }}>GNL Digital</span> Works for You
+            </h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: 20 }}>
             {benefits.map((b, i) => (
               <motion.div key={i} initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                className="flex items-start gap-4 bg-white border border-border rounded-lg p-6 shadow-sm">
-                <CheckCircle className="text-secondary mt-1 shrink-0" size={20} />
+                style={{ display: 'flex', alignItems: 'flex-start', gap: 16, background: 'linear-gradient(145deg,#111,#0D0D0D)', border: '1px solid #1E1E1E', padding: '24px', borderRadius: 4 }}>
+                <CheckCircle style={{ color: '#D4A84B', marginTop: 2, flexShrink: 0, width: 20, height: 20 }} />
                 <div>
-                  <h3 className="font-semibold text-foreground mb-1">{b.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{b.desc}</p>
+                  <h3 style={{ fontWeight: 700, color: '#fff', marginBottom: 6, fontSize: 15 }}>{b.title}</h3>
+                  <p style={{ color: '#ccc', fontSize: 14, lineHeight: 1.75, margin: 0 }}>{b.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -55,16 +68,22 @@ export default function WhoWeHelpPage({ icon: Icon, headline, subheadline, intro
       </section>
 
       {/* Services */}
-      <section className="py-16 px-6 bg-background">
-        <div className="max-w-7xl mx-auto">
-          <span className="text-secondary font-bold text-lg tracking-widest uppercase block mb-3">Our Services for You</span>
-          <h2 className="font-heading text-3xl font-bold text-center text-foreground">Our Services for You</h2>
-          <div className="grid md:grid-cols-3 gap-6">
+      <section style={{ padding: '80px 24px', background: '#0B0B0B', borderBottom: '1px solid #161616' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: 56 }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 14, marginBottom: 16 }}>
+              <div style={{ width: 40, height: 1, background: '#D4A84B' }} />
+              <span style={{ color: '#D4A84B', fontSize: 11, fontWeight: 700, letterSpacing: '.2em', textTransform: 'uppercase' }}>Our Services</span>
+              <div style={{ width: 40, height: 1, background: '#D4A84B' }} />
+            </div>
+            <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: 'clamp(28px,4vw,48px)', fontWeight: 800, color: '#fff', margin: 0 }}>Our Services for You</h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 20 }}>
             {services.map((s, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                className="bg-primary text-primary-foreground rounded-lg p-6">
-                <h3 className="font-heading font-bold text-lg mb-2 text-secondary">{s.title}</h3>
-                <p className="text-primary-foreground/70 text-sm leading-relaxed">{s.desc}</p>
+                style={{ background: 'linear-gradient(145deg,#111,#0D0D0D)', border: '1px solid rgba(212,168,75,.15)', padding: '28px', borderRadius: 4, transition: 'border-color .3s' }}>
+                <h3 style={{ fontFamily: "'Playfair Display',serif", fontWeight: 700, fontSize: 18, marginBottom: 10, color: '#D4A84B' }}>{s.title}</h3>
+                <p style={{ color: '#ccc', fontSize: 14, lineHeight: 1.75, margin: 0 }}>{s.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -72,23 +91,31 @@ export default function WhoWeHelpPage({ icon: Icon, headline, subheadline, intro
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-6 bg-secondary/10 text-center">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-7xl mx-auto">
-          <h2 className="font-heading text-3xl font-bold text-foreground mb-4">{cta}</h2>
-          <p className="text-muted-foreground mb-8">No contracts. No fluff. Just results from a team that knows your industry.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="font-semibold">
-              <Link to="/contact">Get a Free Strategy Session <ArrowRight size={16} /></Link>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="font-semibold">
-              <a href={PHONE_HREF}><Phone size={16} /> {PHONE}</a>
-            </Button>
+      <section style={{ padding: '100px 24px', background: 'linear-gradient(135deg,#0D0B06,#1C1607,#0D0B06)', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: 'linear-gradient(90deg,transparent,rgba(212,168,75,.4),transparent)' }} />
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={{ maxWidth: 680, margin: '0 auto', position: 'relative', zIndex: 10 }}>
+          <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: 'clamp(30px,4.5vw,56px)', fontWeight: 800, color: '#fff', marginBottom: 20 }}>{cta}</h2>
+          <p style={{ color: '#ccc', marginBottom: 40, fontSize: 16, lineHeight: 1.75 }}>No contracts. No fluff. Just results from a team that knows your industry.</p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, justifyContent: 'center' }}>
+            <Link to="/contact" style={{
+              borderRadius: 8, background: 'linear-gradient(135deg,#C49A30,#F0C860,#C49A30)', backgroundSize: '250% auto',
+              color: '#080808', fontWeight: 800, letterSpacing: '.08em', padding: '15px 36px', border: 'none', cursor: 'pointer',
+              fontSize: 13, textTransform: 'uppercase', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 9,
+            }}>
+              Get a Free Strategy Session <ArrowRight size={16} />
+            </Link>
+            <a href={PHONE_HREF} style={{
+              borderRadius: 8, background: 'transparent', color: '#fff', fontWeight: 700, letterSpacing: '.08em',
+              padding: '14px 35px', border: '1px solid rgba(255,255,255,.3)', cursor: 'pointer', fontSize: 13,
+              textTransform: 'uppercase', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 9,
+            }}>
+              <Phone size={16} /> {PHONE}
+            </a>
           </div>
         </motion.div>
       </section>
 
       <Footer />
-
     </div>
   );
 }

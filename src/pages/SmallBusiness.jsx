@@ -1,11 +1,8 @@
-import Navbar from '../components/Navbar';
-import FAQ from '../components/FAQ';
-import Footer from '../components/Footer';
-import MobileCtaBar from '../components/MobileCtaBar';
-import { Button } from '@/components/ui/button';
-import { Phone, BarChart3, Users, Globe, Star, TrendingUp } from 'lucide-react';
+import { Phone, BarChart3, Users, Globe, Star, TrendingUp, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const HERO_BG = 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1920&q=80';
 
@@ -18,82 +15,89 @@ const SERVICES = [
   { icon: Phone, title: 'All-In-One Package', description: 'Everything you need to grow online. One monthly price, no hidden fees, cancel anytime.' },
 ];
 
+const svcCard = {
+  background: 'linear-gradient(145deg,#111,#0D0D0D)', border: '1px solid #1E1E1E',
+  padding: '28px', borderRadius: 4, transition: 'border-color .3s',
+};
+
 export default function SmallBusiness() {
   return (
-    <div className="min-h-screen font-body pb-16 lg:pb-0">
+    <div style={{ background: '#080808', color: '#fff', fontFamily: "'Inter',sans-serif", minHeight: '100vh' }}>
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-start justify-center pt-24 md:pt-52 overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={HERO_BG} alt="Small business" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-primary/85" />
-        </div>
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center text-primary-foreground pb-20">
+      {/* Hero */}
+      <section style={{ position: 'relative', minHeight: '70vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+        <img src={HERO_BG} alt="Small business" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.2 }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg,rgba(8,8,8,.85),rgba(8,8,8,.95))' }} />
+        <div style={{ position: 'relative', zIndex: 10, maxWidth: 860, margin: '0 auto', padding: '130px 24px 80px', textAlign: 'center' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <span className="text-secondary font-bold text-lg tracking-widest uppercase">Grow Your Business Online</span>
-            <h1 className="font-heading text-5xl md:text-6xl font-bold mt-3 mb-4 leading-tight">
-              SEO &amp; Digital Marketing
-              <br />for Small Businesses
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, border: '1px solid rgba(212,168,75,.4)', background: 'rgba(212,168,75,.06)', color: '#D4A84B', padding: '9px 22px', fontSize: 11, fontWeight: 700, letterSpacing: '.16em', textTransform: 'uppercase', marginBottom: 28 }}>
+              <div style={{ width: 6, height: 6, background: '#D4A84B', borderRadius: '50%' }} />
+              Grow Your Business Online
+            </div>
+            <h1 style={{ fontFamily: "'Playfair Display',serif", fontSize: 'clamp(38px,7vw,72px)', fontWeight: 800, lineHeight: 1.08, color: '#fff', marginBottom: 20 }}>
+              SEO &amp; Digital Marketing<br />for Small Businesses
             </h1>
-            <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto mb-10">
+            <p style={{ color: '#ccc', fontSize: 18, maxWidth: 600, margin: '0 auto 40px', lineHeight: 1.78 }}>
               Get found by more customers, build your reputation, and grow your revenue with proven digital marketing strategies designed for small businesses.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" variant="secondary" className="rounded-sm font-bold text-primary">
-                <Link to="/contact">Get Free Consultation</Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="rounded-sm font-bold border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10">
-                <a href="tel:+17045945826"><Phone size={16} className="mr-2" />(704) 594-5826</a>
-              </Button>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, justifyContent: 'center' }}>
+              <Link to="/contact" style={{ borderRadius: 8, background: 'linear-gradient(135deg,#C49A30,#F0C860,#C49A30)', backgroundSize: '250% auto', color: '#080808', fontWeight: 800, letterSpacing: '.08em', padding: '15px 36px', border: 'none', cursor: 'pointer', fontSize: 13, textTransform: 'uppercase', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 9 }}>
+                Get Free Consultation <ArrowRight size={16} />
+              </Link>
+              <a href="tel:+17045945826" style={{ borderRadius: 8, background: 'transparent', color: '#fff', fontWeight: 700, letterSpacing: '.08em', padding: '14px 35px', border: '1px solid rgba(255,255,255,.3)', cursor: 'pointer', fontSize: 13, textTransform: 'uppercase', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 9 }}>
+                <Phone size={16} />(704) 594-5826
+              </a>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div className="text-center mb-16" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <span className="text-secondary font-bold text-lg tracking-widest uppercase">What We Offer</span>
-            <h2 className="font-heading text-4xl font-bold mt-3 text-primary">Everything You Need to Grow Online</h2>
-            <p className="text-muted-foreground mt-3 max-w-2xl mx-auto">Comprehensive digital marketing services tailored for small businesses. No jargon, no hidden fees, just results.</p>
+      {/* Services */}
+      <section style={{ padding: '90px 24px', background: '#0B0B0B', borderTop: '1px solid #161616', borderBottom: '1px solid #161616' }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+          <motion.div style={{ textAlign: 'center', marginBottom: 64 }} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 14, marginBottom: 16 }}>
+              <div style={{ width: 40, height: 1, background: '#D4A84B' }} />
+              <span style={{ color: '#D4A84B', fontSize: 11, fontWeight: 700, letterSpacing: '.2em', textTransform: 'uppercase' }}>What We Offer</span>
+              <div style={{ width: 40, height: 1, background: '#D4A84B' }} />
+            </div>
+            <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: 'clamp(30px,5vw,60px)', fontWeight: 800, color: '#fff', margin: '0 0 16px' }}>Everything You Need to Grow Online</h2>
+            <p style={{ color: '#ccc', fontSize: 16, maxWidth: 600, margin: '0 auto', lineHeight: 1.75 }}>Comprehensive digital marketing services tailored for small businesses. No jargon, no hidden fees, just results.</p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 20 }}>
             {SERVICES.map((service, idx) => (
-              <motion.div key={service.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }} className="p-6 border border-border hover:border-secondary/50 hover:shadow-md transition-all duration-300">
-                <div className="w-10 h-10 bg-primary flex items-center justify-center mb-4">
-                  <service.icon size={20} className="text-primary-foreground" />
+              <motion.div key={service.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }} style={svcCard}>
+                <div style={{ width: 44, height: 44, background: 'rgba(212,168,75,.1)', border: '1px solid rgba(212,168,75,.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 18 }}>
+                  <service.icon size={20} style={{ color: '#D4A84B' }} />
                 </div>
-                <h3 className="font-heading font-bold text-lg text-primary mb-2">{service.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{service.description}</p>
+                <h3 style={{ fontFamily: "'Playfair Display',serif", fontWeight: 700, fontSize: 18, color: '#fff', marginBottom: 10 }}>{service.title}</h3>
+                <p style={{ color: '#ccc', fontSize: 14, lineHeight: 1.75, margin: 0 }}>{service.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <FAQ />
-
       {/* CTA */}
-      <section className="py-24 bg-primary text-primary-foreground text-center">
-        <div className="max-w-3xl mx-auto px-6">
-          <h2 className="font-heading text-4xl font-bold mb-4">Ready to Grow Your Business?</h2>
-          <p className="text-primary-foreground/70 mb-8">Schedule a free consultation. We'll analyze your current online presence and show you exactly how to get more customers.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" variant="secondary" className="rounded-sm font-bold text-primary">
-              <Link to="/contact">Schedule Free Consultation</Link>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="rounded-sm font-bold border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10">
-              <a href="tel:+17045945826">Call Now</a>
-            </Button>
+      <section style={{ padding: '100px 24px', background: 'linear-gradient(135deg,#0D0B06,#1C1607,#0D0B06)', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: 'linear-gradient(90deg,transparent,rgba(212,168,75,.4),transparent)' }} />
+        <div style={{ maxWidth: 680, margin: '0 auto', position: 'relative', zIndex: 10 }}>
+          <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: 'clamp(30px,4.5vw,56px)', fontWeight: 800, color: '#fff', marginBottom: 20 }}>Ready to Grow Your Business?</h2>
+          <p style={{ color: '#ccc', marginBottom: 40, fontSize: 16, lineHeight: 1.75 }}>Schedule a free consultation. We'll analyze your current online presence and show you exactly how to get more customers.</p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, justifyContent: 'center' }}>
+            <Link to="/contact" style={{ borderRadius: 8, background: 'linear-gradient(135deg,#C49A30,#F0C860,#C49A30)', backgroundSize: '250% auto', color: '#080808', fontWeight: 800, letterSpacing: '.08em', padding: '15px 36px', border: 'none', cursor: 'pointer', fontSize: 13, textTransform: 'uppercase', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 9 }}>
+              Schedule Free Consultation <ArrowRight size={16} />
+            </Link>
+            <a href="tel:+17045945826" style={{ borderRadius: 8, background: 'transparent', color: '#fff', fontWeight: 700, letterSpacing: '.08em', padding: '14px 35px', border: '1px solid rgba(255,255,255,.3)', cursor: 'pointer', fontSize: 13, textTransform: 'uppercase', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 9 }}>
+              <Phone size={16} />Call Now
+            </a>
           </div>
         </div>
       </section>
 
       <Footer />
-      <MobileCtaBar />
     </div>
   );
 }

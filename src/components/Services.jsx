@@ -11,61 +11,48 @@ const SERVICES = [
   { icon: Package, title: 'All-In-One Web Package', desc: 'Complete website rebuild, domain registration, and hosting with ongoing management—one simple monthly fee.' },
 ];
 
-export default function Services({ servicesImage }) {
+const cardStyle = {
+  background: 'linear-gradient(145deg,#111111,#0D0D0D)', border: '1px solid #1E1E1E',
+  padding: '28px', borderRadius: 4, transition: 'border-color .3s,transform .3s',
+};
+
+export default function Services() {
   return (
-    <section id="services" className="pt-6 pb-12 md:py-12 bg-background">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <motion.div
-          className="text-center mb-10"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <span className="text-secondary font-bold text-lg tracking-widest uppercase">Our Expertise</span>
-          <h2 className="font-heading text-5xl md:text-6xl font-bold mt-3 text-primary">
-            Built for Local Dominance
-          </h2>
-          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
+    <section id="services" style={{ padding: '80px 24px', background: '#080808', borderTop: '1px solid #161616', borderBottom: '1px solid #161616' }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto' }}>
+        <motion.div style={{ textAlign: 'center', marginBottom: 64 }} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 14, marginBottom: 16 }}>
+            <div style={{ width: 40, height: 1, background: '#D4A84B' }} />
+            <span style={{ color: '#D4A84B', fontSize: 11, fontWeight: 700, letterSpacing: '.2em', textTransform: 'uppercase' }}>Our Expertise</span>
+            <div style={{ width: 40, height: 1, background: '#D4A84B' }} />
+          </div>
+          <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: 'clamp(30px,5vw,64px)', fontWeight: 800, color: '#fff', margin: '0 0 16px' }}>Built for Local Dominance</h2>
+          <p style={{ color: '#ccc', fontSize: 16, maxWidth: 580, margin: '0 auto', lineHeight: 1.78 }}>
             We don't do generic SEO. Every strategy is engineered specifically for businesses competing in the Charlotte metropolitan area.
           </p>
         </motion.div>
 
-        {/* 6-service grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 20, marginBottom: 20 }}>
           {SERVICES.slice(0, 6).map((s, i) => (
-            <motion.div
-              key={s.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="p-6 border border-border bg-card hover:border-secondary/50 hover:shadow-md transition-all duration-300 rounded-xl"
-            >
-              <div className="w-10 h-10 bg-primary flex items-center justify-center mb-4">
-                <s.icon size={20} className="text-primary-foreground" />
+            <motion.div key={s.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} style={cardStyle}>
+              <div style={{ width: 44, height: 44, background: 'rgba(212,168,75,.08)', border: '1px solid rgba(212,168,75,.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 18 }}>
+                <s.icon size={20} style={{ color: '#D4A84B' }} />
               </div>
-              <h3 className="font-heading font-bold text-lg text-primary mb-2">{s.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{s.desc}</p>
+              <h3 style={{ fontFamily: "'Playfair Display',serif", fontWeight: 700, fontSize: 19, color: '#fff', marginBottom: 10 }}>{s.title}</h3>
+              <p style={{ color: '#ccc', fontSize: 14, lineHeight: 1.78, margin: 0 }}>{s.desc}</p>
             </motion.div>
           ))}
         </div>
 
-        {/* Featured Package */}
-        {SERVICES.slice(6).map((s, i) => (
-          <motion.div
-            key={s.title}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="p-8 bg-primary text-primary-foreground flex flex-col md:flex-row items-start md:items-center gap-6 rounded-xl"
-          >
-            <div className="w-12 h-12 bg-secondary flex items-center justify-center flex-shrink-0">
-              <s.icon size={24} className="text-primary" />
+        {SERVICES.slice(6).map((s) => (
+          <motion.div key={s.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+            style={{ padding: '32px 40px', background: 'linear-gradient(135deg,#1A1507,#110E04)', border: '1px solid rgba(212,168,75,.25)', display: 'flex', gap: 24, alignItems: 'center', flexWrap: 'wrap', borderRadius: 4 }}>
+            <div style={{ width: 52, height: 52, background: 'linear-gradient(135deg,#C49A30,#F0C860)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <s.icon size={24} style={{ color: '#080808' }} />
             </div>
-            <div>
-              <h3 className="font-heading font-bold text-2xl mb-2">{s.title}</h3>
-              <p className="text-primary-foreground/80 leading-relaxed">{s.desc}</p>
+            <div style={{ flex: 1, minWidth: 240 }}>
+              <h3 style={{ fontFamily: "'Playfair Display',serif", fontWeight: 700, fontSize: 24, color: '#fff', marginBottom: 8 }}>{s.title}</h3>
+              <p style={{ color: '#ccc', fontSize: 15, lineHeight: 1.78, margin: 0 }}>{s.desc}</p>
             </div>
           </motion.div>
         ))}
