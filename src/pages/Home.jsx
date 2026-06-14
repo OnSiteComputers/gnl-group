@@ -391,9 +391,10 @@ export default function GNLDigitalGroup() {
         transition:"all .4s ease",padding:"0 32px",
       }}>
         <div style={{ maxWidth:1340,margin:"0 auto",display:"flex",alignItems:"center",justifyContent:"space-between",height:80 }}>
-          <Link to="/" style={{ display:"flex",flexDirection:"column",alignItems:"flex-start",textDecoration:"none",gap:3 }}>
+          <Link to="/" style={{ display:"flex",flexDirection:"column",alignItems:"flex-start",textDecoration:"none",gap:2 }}>
             <img src="/gnl-logo-sig.png" alt="GNL Digital Group – Charlotte NC SEO Agency" style={{ height:54,width:"auto" }} />
-            <span style={{ color:"#D4A84B",fontSize:9,fontWeight:700,letterSpacing:".18em",textTransform:"uppercase" }}>Local Dominance. Real Results.</span>
+            <span style={{ color:"#FFFFFF",fontSize:11,fontWeight:700,letterSpacing:".22em",textTransform:"uppercase",lineHeight:1 }}>GNL Digital Group</span>
+            <span style={{ color:"#D4A84B",fontSize:9,fontWeight:600,letterSpacing:".14em",textTransform:"uppercase",fontStyle:"italic",lineHeight:1 }}>Local Dominance. Real Results.</span>
           </Link>
           <nav className="dnav" style={{ gap:36,alignItems:"center" }}>
             <a href="#services" onClick={e=>{e.preventDefault();scrollToSection("services");}} className="nav-a">Services</a>
