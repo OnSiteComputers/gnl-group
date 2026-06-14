@@ -99,7 +99,7 @@ function CinematicCanvas() {
         if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
         if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
         n.pulse += 0.018;
-        const pr = n.r + Math.sin(n.pulse) * 1.2;
+        const pr = Math.max(0.01, n.r + Math.sin(n.pulse) * 1.2);
         ctx.shadowBlur = 12; ctx.shadowColor = "rgba(212,168,75,0.4)";
         ctx.beginPath(); ctx.arc(n.x, n.y, pr, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(212,168,75,${n.o * 0.6})`; ctx.fill();
@@ -121,7 +121,7 @@ function CinematicCanvas() {
         if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
         if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
         n.pulse += 0.028;
-        const pr = n.r + Math.sin(n.pulse) * 0.7;
+        const pr = Math.max(0.01, n.r + Math.sin(n.pulse) * 0.7);
         ctx.shadowBlur = 18; ctx.shadowColor = "rgba(212,168,75,0.8)";
         ctx.beginPath(); ctx.arc(n.x, n.y, pr, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(212,168,75,${n.o})`; ctx.fill();
