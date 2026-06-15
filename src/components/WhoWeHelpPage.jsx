@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import GNLHeader from "./GNLHeader";
+import GNLNavbar from "./GNLNavbar";
 
 // ============================================================================
 //  GNL DIGITAL GROUP — Who We Help (shared template)
@@ -53,15 +53,7 @@ function useReveal() {
 }
 
 export default function WhoWeHelpPage({ icon: Icon, headline, subheadline, intro, benefits = [], services = [], cta, introAlign = "center" }) {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
   const root = useReveal();
-
-  useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 24);
-    fn(); window.addEventListener("scroll", fn, { passive: true });
-    return () => window.removeEventListener("scroll", fn);
-  }, []);
 
   return (
     <div className="ww-root" ref={root}>
@@ -106,7 +98,7 @@ export default function WhoWeHelpPage({ icon: Icon, headline, subheadline, intro
         }
 
         /* hero */
-        .ww-hero { position: relative; padding: 92px 0 72px; text-align: center; }
+        .ww-hero { position: relative; padding: 144px 0 72px; text-align: center; }
         .ww-hero::before { content:""; position:absolute; inset:0; background: radial-gradient(58% 50% at 50% 0%, rgba(200,168,90,.10), transparent 70%); pointer-events:none; }
         .ww-eyebrow { position: relative; display: inline-flex; align-items: center; gap: 12px; font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: ${GOLD}; font-weight: 600; margin-bottom: 26px; }
         .ww-eyebrow::before, .ww-eyebrow::after { content:""; width: 28px; height: 1px; background: linear-gradient(90deg, transparent, ${GOLD_D}); }
@@ -181,7 +173,7 @@ export default function WhoWeHelpPage({ icon: Icon, headline, subheadline, intro
       `}</style>
 
       {/* shared site header */}
-      <GNLHeader />
+      <GNLNavbar />
 
       {/* hero */}
       <header className="ww-hero">

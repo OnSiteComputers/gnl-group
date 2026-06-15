@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Phone, Award, Users, Target, ArrowRight } from 'lucide-react';
-import Navbar from '../components/Navbar';
+import GNLNavbar from '../components/GNLNavbar';
 import Footer from '../components/Footer';
 
 const VALUES = [
@@ -13,7 +13,7 @@ const VALUES = [
 
 const S = {
   page: { background: '#080808', color: '#fff', fontFamily: "'Inter',sans-serif", minHeight: '100vh' },
-  hero: { background: 'linear-gradient(135deg,#0D0B06,#1C1607,#0D0B06)', padding: '130px 24px 80px', textAlign: 'center', borderBottom: '1px solid #1E1800' },
+  hero: { background: 'linear-gradient(135deg,#0D0B06,#1C1607,#0D0B06)', padding: '152px 24px 80px', textAlign: 'center', borderBottom: '1px solid #1E1800' },
   sectionDark: { padding: '80px 24px', background: '#080808', borderBottom: '1px solid #161616' },
   sectionMid: { padding: '80px 24px', background: '#0B0B0B', borderBottom: '1px solid #161616' },
   inner: { maxWidth: 1100, margin: '0 auto' },
@@ -30,7 +30,7 @@ const S = {
 export default function About() {
   return (
     <div style={S.page}>
-      <Navbar />
+      <GNLNavbar />
 
       {/* Hero */}
       <section style={S.hero}>
