@@ -19,8 +19,9 @@ const SIGN_PDF_URL = '/GNL-Agreement-Warren.pdf';
 const SIGN_DIGITAL_URL = 'https://www.jotform.com/sign/261685696532066/invite/01kve6rskf99b952977d97e63e';
 const MAIL_TO_ADDRESS = '53 Cabarrus Ave W, Concord, NC 28025';
 const CHECK_PAYABLE_TO = 'GNL Digital Group';
-const PAY_URL = 'https://securelink-prod.valorpaytech.com:4430/?redirect=1&uid=8ce309cb-6b54-11f1-bfa3-0e5b8ebc1287';
-const MONTHLY_FEE = '$3,500';
+const PAY_URL = 'https://securelink-prod.valorpaytech.com:4430/?redirect=1&uid=2442ddbb-6f31-11f1-8d9b-128462456e49';
+const MONTHLY_FEE = '$3,328';
+const STEPUP_FEE = '$3,500';
 const CONSULT_URL = 'https://calendly.com/greg-gnldigitalgroup/warren-family-law-consult';
 const CONSULT_FEE = '$250';
 
@@ -61,6 +62,12 @@ const deliverables = [
     title: 'Review Growth System',
     eyebrow: 'Build trust before the call',
     desc: 'A simple approval-based process to request reviews from past clients and make your reputation match the decades of experience behind the firm.',
+  },
+  {
+    icon: '📈',
+    title: 'Your Google Dashboard',
+    eyebrow: 'Watch your progress in real time',
+    desc: 'Your own live view of your Google Business Profile — calls, clicks, searches, and direction requests, tracked over time. Full transparency: you see exactly how your visibility grows month over month, on your own screen, whenever you want.',
   },
   {
     icon: '📧',
@@ -392,6 +399,18 @@ export default function WarrenProposal() {
             Two simple steps, whenever you're ready: review and sign the 12-month agreement, then take care of your first month. One flat monthly fee &mdash; everything included.
           </p>
 
+          <div style={{ maxWidth: 680, margin: '0 auto 36px', background: 'rgba(255,255,255,.12)', border: `1px solid ${palette.gold}`, borderRadius: 14, padding: '22px 26px', textAlign: 'left' }}>
+            <div style={{ color: palette.gold, letterSpacing: '2px', textTransform: 'uppercase', fontSize: 12, fontWeight: 900, marginBottom: 12 }}>Your Terms, In Writing</div>
+            <div style={{ display: 'grid', gap: 10, color: 'rgba(255,255,255,.92)', fontSize: 15.5, lineHeight: 1.6 }}>
+              <div>&bull; <strong style={{ color: '#fff' }}>{MONTHLY_FEE}/month</strong> for your first six months (July through December).</div>
+              <div>&bull; <strong style={{ color: '#fff' }}>{STEPUP_FEE}/month</strong> beginning January 1, 2027.</div>
+              <div>&bull; <strong style={{ color: '#fff' }}>12-month term</strong>, starting July 1.</div>
+              <div>&bull; <strong style={{ color: '#fff' }}>Nothing due at signing.</strong> First invoice is dated July 1 on Net 30 terms.</div>
+              <div>&bull; <strong style={{ color: '#fff' }}>No upfront build fee</strong> &mdash; waived, with your $2,000 already credited.</div>
+              <div>&bull; <strong style={{ color: '#fff' }}>Two Grandstream GRP2636 phones &amp; a full year of VoIP</strong> included &mdash; yours to keep.</div>
+            </div>
+          </div>
+
           <div style={{ maxWidth: 680, margin: '0 auto 36px', background: 'rgba(255,255,255,.12)', border: `1px solid ${palette.gold}`, borderRadius: 14, padding: '22px 26px', textAlign: 'left', display: 'flex', gap: 20, alignItems: 'center', flexWrap: 'wrap' }}>
             <img src="/grandstream-grp2636.png" alt="Grandstream GRP2636 IP desk phone"
                  style={{ width: 150, maxWidth: '100%', borderRadius: 10, background: '#fff', padding: 8, flexShrink: 0 }} />
@@ -429,14 +448,15 @@ export default function WarrenProposal() {
             {/* Pay card */}
             <div style={{ background: '#fff', borderRadius: 16, padding: 28, boxShadow: '0 20px 50px rgba(0,0,0,.18)' }}>
               <div style={{ color: palette.sage2, letterSpacing: '2px', textTransform: 'uppercase', fontSize: 12, fontWeight: 800, marginBottom: 8 }}>Step 2</div>
-              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.text, fontSize: 26, margin: '0 0 4px', fontWeight: 700 }}>First Month</h3>
+              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.text, fontSize: 26, margin: '0 0 4px', fontWeight: 700 }}>First Invoice</h3>
               <div style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.gold, fontSize: 40, fontWeight: 700, lineHeight: 1, margin: '0 0 12px' }}>{MONTHLY_FEE}<span style={{ fontSize: 18, color: palette.muted }}> / month</span></div>
+              <div style={{ display: 'inline-block', background: 'rgba(95,111,88,.10)', color: palette.sage2, fontWeight: 800, fontSize: 13, letterSpacing: '.5px', padding: '6px 12px', borderRadius: 6, marginBottom: 14 }}>Nothing due at signing</div>
               <p style={{ color: palette.muted, lineHeight: 1.6, fontSize: 15, margin: '0 0 18px' }}>
-                Pay securely online. The payment page defaults to <strong style={{ color: palette.text }}>$3,605</strong> because it assumes a credit card (a 3% processing fee). <strong style={{ color: palette.text }}>Paying by debit card removes the fee &mdash; just $3,500, nothing added.</strong>
+                Your first invoice is <strong style={{ color: palette.text }}>{MONTHLY_FEE}</strong>, dated July 1 on <strong style={{ color: palette.text }}>Net 30 terms</strong> &mdash; you have the full month to pay it, and nothing is due the day you sign. Prefer to pay at the start of the month instead? You can, using the link below &mdash; whatever&rsquo;s easier for you. Paying by debit card avoids the small card-processing fee.
               </p>
               <a className="btn" href={PAY_URL} target="_blank" rel="noopener noreferrer"
                  style={{ display: 'block', textAlign: 'center', padding: '15px 20px', borderRadius: 8, fontWeight: 800, textDecoration: 'none', color: palette.text, background: `linear-gradient(135deg, ${palette.gold2}, ${palette.gold})` }}>
-                Pay First Month &rarr;
+                Pay First Invoice &rarr;
               </a>
             </div>
           </div>
