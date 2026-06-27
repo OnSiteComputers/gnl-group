@@ -16,10 +16,10 @@ const WARREN_CARD = '/warren-business-card.png';
 //    collects the consult fee AND creates the Zoom link automatically.
 // 6) CONSULT_FEE: the consultation price shown on the page.
 const SIGN_PDF_URL = '/GNL-Agreement-Warren.pdf';
-const SIGN_DIGITAL_URL = 'https://www.jotform.com/sign/261685696532066/invite/01kve6rskf99b952977d97e63e';
+const SIGN_DIGITAL_URL = 'https://www.jotform.com/sign/261771545003048/invite/01kw418ajg4fa9704ee06f905d';
 const MAIL_TO_ADDRESS = '53 Cabarrus Ave W, Concord, NC 28025';
 const CHECK_PAYABLE_TO = 'GNL Digital Group';
-const PAY_URL = 'https://securelink-prod.valorpaytech.com:4430/?redirect=1&uid=2442ddbb-6f31-11f1-8d9b-128462456e49';
+const PAY_URL = 'https://securelink-prod.valorpaytech.com:4430/?redirect=1&uid=49385c3c-71fe-11f1-8d9b-128462456e49';
 const MONTHLY_FEE = '$3,328';
 const STEPUP_FEE = '$3,500';
 const CONSULT_URL = 'https://calendly.com/greg-gnldigitalgroup/warren-family-law-consult';
