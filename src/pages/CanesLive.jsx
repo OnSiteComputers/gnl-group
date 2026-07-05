@@ -1,4 +1,7 @@
+// CanesLive — build: 2026-07-05 v1
 import { useState, useEffect, useCallback, useMemo, useRef } from "react";
+
+console.log("CanesLive build: 2026-07-05 v1 ✅");
 
 // ============================================================
 //  CANES LIVE v2 — private family board for route /canes

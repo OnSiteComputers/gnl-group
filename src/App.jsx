@@ -3,8 +3,6 @@ import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
-import { AuthProvider, useAuth } from '@/lib/AuthContext';
-import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import ScrollToTop from './components/ScrollToTop';
 
 
@@ -37,79 +35,48 @@ import CanesLive from './pages/CanesLive';
 import HarrisburgProposal from './pages/HarrisburgProposal';
 import HarrisburgDemo from './pages/HarrisburgDemo';
 
-const AuthenticatedApp = () => {
-  const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
-
-  // Show loading spinner while checking app public settings or auth
-  if (isLoadingPublicSettings || isLoadingAuth) {
-    return (
-      <div className="fixed inset-0 flex items-center justify-center">
-        <div className="w-8 h-8 border-4 border-slate-200 border-t-slate-800 rounded-full animate-spin"></div>
-      </div>
-    );
-  }
-
-  // Handle authentication errors
-  if (authError) {
-    if (authError.type === 'user_not_registered') {
-      return <UserNotRegisteredError />;
-    } else if (authError.type === 'auth_required') {
-      navigateToLogin();
-      return null;
-    }
-  }
-
-  return (
-    <Routes>
-            <Route path="/" element={<GNL />} />
-
-      {/* GNL Digital Group */}
-      <Route path="/gnl" element={<GNL />} />
-      <Route path="/gnl-proposal" element={<GNLProposal />} />
-      <Route path="/connect" element={<Connect />} />
-      <Route path="/home" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/about2" element={<About2 />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/contact2" element={<Contact2 />} />
-      <Route path="/small-business" element={<SmallBusiness />} />
-      <Route path="/for-linda" element={<ForLinda />} />
-
-      {/* Who We Help */}
-      <Route path="/who-we-help/medical" element={<WhoWeHelpMedical />} />
-      <Route path="/who-we-help/restaurants" element={<WhoWeHelpRestaurants />} />
-      <Route path="/who-we-help/professional" element={<WhoWeHelpProfessional />} />
-      <Route path="/who-we-help/home-services" element={<WhoWeHelpHomeServices />} />
-      <Route path="/who-we-help/law-firms" element={<WhoWeHelpLawFirms />} />
-      <Route path="/who-we-help/realtors" element={<WhoWeHelpRealtors />} />
-
-      {/* Client demos & proposals */}
-      <Route path="/warren-demo" element={<WarrenDemo />} />
-      <Route path="/warren-proposal" element={<WarrenProposal />} />
-      <Route path="/dowless-demo" element={<DowlessDemo />} />
-      <Route path="/dowless-proposal" element={<DowlessProposal />} />
-      <Route path="/canes-live" element={<CanesLive />} />
-      <Route path="/harrisburg-proposal" element={<HarrisburgProposal />} />
-      <Route path="/harrisburg-demo" element={<HarrisburgDemo />} />
-
-      <Route path="*" element={<PageNotFound />} />
-    </Routes>
-  );
-};
-
-
 function App() {
-
   return (
-    <AuthProvider>
-      <QueryClientProvider client={queryClientInstance}>
-        <Router>
-          <ScrollToTop />
-          <AuthenticatedApp />
-        </Router>
-        <Toaster />
-      </QueryClientProvider>
-    </AuthProvider>
+    <QueryClientProvider client={queryClientInstance}>
+      <Router>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<GNL />} />
+
+          {/* GNL Digital Group */}
+          <Route path="/gnl" element={<GNL />} />
+          <Route path="/gnl-proposal" element={<GNLProposal />} />
+          <Route path="/connect" element={<Connect />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/about2" element={<About2 />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/contact2" element={<Contact2 />} />
+          <Route path="/small-business" element={<SmallBusiness />} />
+          <Route path="/for-linda" element={<ForLinda />} />
+
+          {/* Who We Help */}
+          <Route path="/who-we-help/medical" element={<WhoWeHelpMedical />} />
+          <Route path="/who-we-help/restaurants" element={<WhoWeHelpRestaurants />} />
+          <Route path="/who-we-help/professional" element={<WhoWeHelpProfessional />} />
+          <Route path="/who-we-help/home-services" element={<WhoWeHelpHomeServices />} />
+          <Route path="/who-we-help/law-firms" element={<WhoWeHelpLawFirms />} />
+          <Route path="/who-we-help/realtors" element={<WhoWeHelpRealtors />} />
+
+          {/* Client demos & proposals */}
+          <Route path="/warren-demo" element={<WarrenDemo />} />
+          <Route path="/warren-proposal" element={<WarrenProposal />} />
+          <Route path="/dowless-demo" element={<DowlessDemo />} />
+          <Route path="/dowless-proposal" element={<DowlessProposal />} />
+          <Route path="/canes-live" element={<CanesLive />} />
+          <Route path="/harrisburg-proposal" element={<HarrisburgProposal />} />
+          <Route path="/harrisburg-demo" element={<HarrisburgDemo />} />
+
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </Router>
+      <Toaster />
+    </QueryClientProvider>
   )
 }
 

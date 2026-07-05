@@ -1,3 +1,4 @@
+// WarrenDemo — build: 2026-07-05 v1
 import React, { useState, useEffect } from 'react';
 import {
   Phone,
@@ -12,6 +13,8 @@ import {
   Star,
   ChevronRight
 } from 'lucide-react';
+
+console.log("WarrenDemo build: 2026-07-05 v1 ✅");
 
 const PHONE = '704-741-1763';
 const PHONE_HREF = 'tel:+17047411763';
@@ -58,7 +61,7 @@ const REVIEWS = [
   }
 ];
 
-// Put James.Warren.jpg in your Base44 / public directory.
+// Put James.Warren.jpg in your public directory.
 // Public assets are referenced from the site root like this:
 const JAMES_PHOTO = '/James.Warren.jpg';
 

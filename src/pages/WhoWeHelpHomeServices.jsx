@@ -1,5 +1,8 @@
+// WhoWeHelpHomeServices — build: 2026-07-05 v1
 import { Wrench } from 'lucide-react';
 import WhoWeHelpPage from '../components/WhoWeHelpPage';
+
+console.log("WhoWeHelpHomeServices build: 2026-07-05 v1 ✅");
 
 export default function WhoWeHelpHomeServices() {
   return (

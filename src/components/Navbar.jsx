@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 
 const PHONE = '(704) 594-5826';
 const PHONE_HREF = 'tel:+17045945826';
-const LOGO_URL = 'https://media.base44.com/images/public/6a1a83ae581f8c993077c1a3/82281ed4d_GNL-Logo.png';
+const LOGO_URL = '/gnl-logo.png';
 
 const NAV_LINKS = [
   { label: 'Home', to: '/' },

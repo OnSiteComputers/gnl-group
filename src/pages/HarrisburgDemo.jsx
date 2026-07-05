@@ -1,4 +1,7 @@
+// HarrisburgDemo — build: 2026-07-05 v1
 import React, { useState } from 'react';
+
+console.log("HarrisburgDemo build: 2026-07-05 v1 ✅");
 
 /* ============================================================
    HARRISBURG SURVEYING — DEMO PAGE  (route: /harrisburg-demo)

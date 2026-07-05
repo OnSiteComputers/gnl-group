@@ -1,5 +1,8 @@
+// Connect — build: 2026-07-05 v1
 import React, { useState, useEffect, useRef } from "react";
 import GNLHeader from "../components/GNLHeader";
+
+console.log("Connect build: 2026-07-05 v1 ✅");
 
 // ============================================================================
 //  GNL DIGITAL GROUP — Client Onboarding  (route: /connect)

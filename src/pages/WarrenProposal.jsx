@@ -1,3 +1,6 @@
+// WarrenProposal — build: 2026-07-05 v1
+
+console.log("WarrenProposal build: 2026-07-05 v1 ✅");
 const GNL_PHONE = '704-594-5826';
 const GNL_PHONE_HREF = 'tel:+17045945826';
 const GNL_EMAIL = 'greg@gnldigitalgroup.com';

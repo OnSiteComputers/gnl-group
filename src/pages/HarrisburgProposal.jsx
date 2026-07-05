@@ -1,4 +1,7 @@
+// HarrisburgProposal — build: 2026-07-05 v1
 import React from 'react';
+
+console.log("HarrisburgProposal build: 2026-07-05 v1 ✅");
 
 /* ============================================================
    HARRISBURG SURVEYING — PROPOSAL  (route: /harrisburg-proposal)

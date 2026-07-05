@@ -1,5 +1,8 @@
+// WhoWeHelpLawFirms — build: 2026-07-05 v1
 import { Scale } from 'lucide-react';
 import WhoWeHelpPage from '../components/WhoWeHelpPage';
+
+console.log("WhoWeHelpLawFirms build: 2026-07-05 v1 ✅");
 
 export default function WhoWeHelpLawFirms() {
   return (

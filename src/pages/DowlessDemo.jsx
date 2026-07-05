@@ -1,4 +1,7 @@
+// DowlessDemo — build: 2026-07-05 v1
 import { useEffect } from "react";
+
+console.log("DowlessDemo build: 2026-07-05 v1 ✅");
 
 // ════════════════════════════════════════════════════════════════
 //  DOWLESS LAW — SAMPLE WEBSITE (route: /dowless-demo)

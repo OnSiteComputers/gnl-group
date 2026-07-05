@@ -1,4 +1,7 @@
+// ForLinda — build: 2026-07-05 v1
 import { useEffect, useState } from "react";
+
+console.log("ForLinda build: 2026-07-05 v1 ✅");
 
 // ════════════════════════════════════════════════════════════════
 //  FOR LINDA  (route: /linda)

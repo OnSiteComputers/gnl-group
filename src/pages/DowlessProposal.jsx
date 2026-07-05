@@ -1,4 +1,7 @@
+// DowlessProposal — build: 2026-07-05 v1
 import { useEffect } from "react";
+
+console.log("DowlessProposal build: 2026-07-05 v1 ✅");
 
 // ════════════════════════════════════════════════════════════════
 //  DOWLESS LAW FIRM — PROPOSAL PAGE  (route: /dowless)

@@ -1,8 +1,11 @@
+// About — build: 2026-07-05 v1
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Phone, Award, Users, Target, ArrowRight } from 'lucide-react';
 import GNLNavbar from '../components/GNLNavbar';
 import Footer from '../components/Footer';
+
+console.log("About build: 2026-07-05 v1 ✅");
 
 const VALUES = [
   { icon: Award, title: "Proven Expertise", desc: "25+ years in technology, 16 years serving the same community. We're not going anywhere." },

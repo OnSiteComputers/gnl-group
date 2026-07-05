@@ -1,8 +1,11 @@
+// SmallBusiness — build: 2026-07-05 v1
 import { Phone, BarChart3, Users, Globe, Star, TrendingUp, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+
+console.log("SmallBusiness build: 2026-07-05 v1 ✅");
 
 const HERO_BG = 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1920&q=80';
 

@@ -1,5 +1,8 @@
+// GNLProposal — build: 2026-07-05 v1
 import React, { useState, useEffect, useRef } from "react";
 import GNLHeader from "../components/GNLHeader";
+
+console.log("GNLProposal build: 2026-07-05 v1 ✅");
 
 // ============================================================================
 //  GNL DIGITAL GROUP — Proposal / Pricing  (route: /gnl-proposal)

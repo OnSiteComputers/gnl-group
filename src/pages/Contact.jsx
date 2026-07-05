@@ -1,9 +1,11 @@
+// Contact — build: 2026-07-05 v1
 import { useState, useEffect } from 'react';
-import { base44 } from '@/api/base44Client';
 import { Phone, Mail, MapPin, CheckCircle, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+
+console.log("Contact build: 2026-07-05 v1 ✅");
 
 const PRACTICE_AREAS = ['Personal Injury', 'Criminal Defense', 'Family Law', 'Immigration', 'Estate Planning', 'Business Law', 'Real Estate', 'Employment Law', 'Other'];
 const SERVICES_INTEREST = ['Local SEO Strategy', 'Local Map Pack', 'Content Authority', 'Reputation Management', 'Performance Analytics', 'Website Optimization', 'All-In-One Web Package', 'Other'];
@@ -26,8 +28,25 @@ export default function Contact() {
     e.preventDefault();
     setLoading(true);
     try {
-      await base44.entities.ContactSubmission.create({ ...form, status: 'new' });
-      setSubmitted(true);
+      const res = await fetch('https://formspree.io/f/mojorlpr', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firm_name: form.firm_name,
+          contact_name: form.contact_name,
+          email: form.email,
+          phone: form.phone,
+          practice_area: form.practice_area,
+          service_interest: form.service_interest,
+          growth_goal: form.growth_goal,
+          _subject: `GNL strategy session request — ${form.firm_name || form.contact_name}`,
+        }),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        console.error('Submission error:', await res.text());
+      }
     } catch (error) {
       console.error('Submission error:', error);
     } finally {
