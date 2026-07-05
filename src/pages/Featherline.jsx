@@ -2,9 +2,12 @@ import React, { useState, useEffect } from "react";
 
 // ============================================================
 // FEATHERLINE — Esthetics Studio, Tucson AZ
-// Design draft v2 — full esthetician menu
-// Naming: "Featherline", tagline widened to full-scope esthetics.
+// Client preview page — routed at /featherline in the GNL app.
+// Self-contained (inline <style>) — no shadcn/Tailwind deps.
+// Draft v2 — full esthetician menu.
 // [PHOTO] = placeholder image slot. Prices are PLACEHOLDER ranges.
+// TODO before launch: real name + photos, real prices, booking link,
+//   then split into its own repo + domain.
 // ============================================================
 
 export default function Featherline() {

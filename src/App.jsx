@@ -35,6 +35,9 @@ import CanesLive from './pages/CanesLive';
 import HarrisburgProposal from './pages/HarrisburgProposal';
 import HarrisburgDemo from './pages/HarrisburgDemo';
 
+// -- Client sites --
+import Featherline from './pages/Featherline';
+
 function App() {
   return (
     <QueryClientProvider client={queryClientInstance}>
@@ -71,6 +74,9 @@ function App() {
           <Route path="/canes-live" element={<CanesLive />} />
           <Route path="/harrisburg-proposal" element={<HarrisburgProposal />} />
           <Route path="/harrisburg-demo" element={<HarrisburgDemo />} />
+
+          {/* Client sites */}
+          <Route path="/featherline" element={<Featherline />} />
 
           <Route path="*" element={<PageNotFound />} />
         </Routes>
