@@ -1,6 +1,6 @@
-// WarrenProposal — build: 2026-07-05 v1
-
-console.log("WarrenProposal build: 2026-07-05 v1 ✅");
+// WarrenProposal.jsx — GNL Digital Group — Warren Family Law proposal
+// build: 2026-07-06 v2 ✅  (resynced to v4 agreement: 3-mo minimum then month-to-month,
+//   tiered $3,328/$3,500, phones-with-early-cancel, pay link removed, unconditional card bonus)
 const GNL_PHONE = '704-594-5826';
 const GNL_PHONE_HREF = 'tel:+17045945826';
 const GNL_EMAIL = 'greg@gnldigitalgroup.com';
@@ -8,6 +8,8 @@ const WARREN_EMAIL = 'james@warrenfamilylaw.net';
 const DEMO_PATH = '/warren-demo';
 const WARREN_LOGO = '/warren-logo-full.png';
 const WARREN_CARD = '/warren-business-card.png';
+const WARREN_CARD_FRONT = '/warren-card-front.png';
+const WARREN_CARD_BACK = '/warren-card-back.png';
 
 
 // ── PER-CLIENT SETTINGS ── edit these for each client, then republish ──
@@ -382,14 +384,23 @@ export default function WarrenProposal() {
       </section>
 
       <section id="cards" style={{ padding: '72px 24px', background: `linear-gradient(135deg, ${palette.navy2}, ${palette.navy3})`, color: palette.text, borderTop: '1px solid rgba(58,58,55,.10)', borderBottom: '1px solid rgba(58,58,55,.10)' }}>
-        <div style={{ maxWidth: 880, margin: '0 auto', display: 'flex', gap: 30, alignItems: 'center', flexWrap: 'wrap' }}>
-          <img src={WARREN_CARD} alt="Warren Family Law business card" style={{ flexShrink: 0, width: 'min(340px, 100%)', height: 'auto', borderRadius: 14, boxShadow: '0 16px 40px rgba(95,111,88,.20)' }} />
-          <div style={{ flex: 1, minWidth: 280 }}>
-            <div style={{ color: palette.gold2, letterSpacing: '3px', textTransform: 'uppercase', fontSize: 12, fontWeight: 900, marginBottom: 10 }}>12-Month Term Bonus</div>
-            <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.text, fontSize: 'clamp(28px, 3.5vw, 40px)', lineHeight: 1.08, margin: '0 0 12px', fontWeight: 700 }}>1,000 new business cards, on us.</h3>
-            <p style={{ color: palette.muted, fontSize: 17, lineHeight: 1.7, margin: 0 }}>
-              Choose the optional 12-month term and Greg includes <strong style={{ color: palette.text }}>1,000 professional business cards</strong>, each with a <strong style={{ color: palette.text }}>QR code that links straight to your new website</strong>. Hand one to a client and they can open your site &mdash; and book a consultation &mdash; with a single tap of their phone. A simple, modern way to turn every handshake into a lead.
+        <div style={{ maxWidth: 920, margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: 34 }}>
+            <div style={{ color: palette.gold2, letterSpacing: '3px', textTransform: 'uppercase', fontSize: 12, fontWeight: 900, marginBottom: 10 }}>A Signing Thank-You</div>
+            <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.text, fontSize: 'clamp(28px, 3.5vw, 40px)', lineHeight: 1.08, margin: '0 auto 14px', fontWeight: 700, maxWidth: 620 }}>1,000 custom QR business cards &mdash; yours to keep.</h3>
+            <p style={{ color: palette.muted, fontSize: 17, lineHeight: 1.7, margin: '0 auto', maxWidth: 660 }}>
+              As soon as you sign, Greg submits your order for <strong style={{ color: palette.text }}>1,000 premium business cards</strong>, each with your firm&rsquo;s branding and a <strong style={{ color: palette.text }}>QR code that links straight to your website</strong>. Hand one to a client and they can open your site &mdash; and book a consultation &mdash; with a single tap. They&rsquo;re printed and shipped directly to your office, and they&rsquo;re <strong style={{ color: palette.text }}>yours to keep, no matter how long we work together</strong>.
             </p>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 26, maxWidth: 820, margin: '0 auto' }}>
+            <div style={{ textAlign: 'center' }}>
+              <img src={WARREN_CARD_FRONT} alt="Warren Family Law business card — front" style={{ width: '100%', height: 'auto', borderRadius: 14, boxShadow: '0 16px 40px rgba(95,111,88,.20)' }} />
+              <div style={{ color: palette.muted, fontSize: 13, fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase', marginTop: 10 }}>Front</div>
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <img src={WARREN_CARD_BACK} alt="Warren Family Law business card — back" style={{ width: '100%', height: 'auto', borderRadius: 14, boxShadow: '0 16px 40px rgba(95,111,88,.20)' }} />
+              <div style={{ color: palette.muted, fontSize: 13, fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase', marginTop: 10 }}>Back</div>
+            </div>
           </div>
         </div>
       </section>
@@ -399,18 +410,18 @@ export default function WarrenProposal() {
           <div style={{ color: '#f0ead9', letterSpacing: '4px', textTransform: 'uppercase', fontSize: 12, fontWeight: 900, marginBottom: 14 }}>Ready When You Are</div>
           <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(34px, 4.5vw, 54px)', lineHeight: 1.04, margin: '0 0 16px', fontWeight: 700, color: '#fff' }}>Make it official.</h2>
           <p style={{ color: 'rgba(255,255,255,.9)', fontSize: 18, lineHeight: 1.7, margin: '0 auto 28px', maxWidth: 640 }}>
-            Two simple steps, whenever you're ready: review and sign the 12-month agreement, then take care of your first month. One flat monthly fee &mdash; everything included.
+            Two simple steps, whenever you're ready: review and sign the agreement, then your first payment comes due only once your website is live. One flat monthly fee &mdash; everything included.
           </p>
 
           <div style={{ maxWidth: 680, margin: '0 auto 36px', background: 'rgba(255,255,255,.12)', border: `1px solid ${palette.gold}`, borderRadius: 14, padding: '22px 26px', textAlign: 'left' }}>
             <div style={{ color: palette.gold, letterSpacing: '2px', textTransform: 'uppercase', fontSize: 12, fontWeight: 900, marginBottom: 12 }}>Your Terms, In Writing</div>
             <div style={{ display: 'grid', gap: 10, color: 'rgba(255,255,255,.92)', fontSize: 15.5, lineHeight: 1.6 }}>
-              <div>&bull; <strong style={{ color: '#fff' }}>{MONTHLY_FEE}/month</strong> for your first six months (July through December).</div>
-              <div>&bull; <strong style={{ color: '#fff' }}>{STEPUP_FEE}/month</strong> beginning January 1, 2027.</div>
-              <div>&bull; <strong style={{ color: '#fff' }}>12-month term</strong>, starting July 1.</div>
-              <div>&bull; <strong style={{ color: '#fff' }}>Nothing due at signing.</strong> Your first invoice is sent once the site is live, due on receipt.</div>
-              <div>&bull; <strong style={{ color: '#fff' }}>No upfront build fee</strong> &mdash; waived, with your $2,000 already credited.</div>
-              <div>&bull; <strong style={{ color: '#fff' }}>Two Grandstream GRP2636 phones &amp; a full year of VoIP</strong> included &mdash; yours to keep.</div>
+              <div>&bull; <strong style={{ color: '#fff' }}>{MONTHLY_FEE}/month</strong> for your first three months.</div>
+              <div>&bull; <strong style={{ color: '#fff' }}>{STEPUP_FEE}/month</strong> after that, on a month-to-month basis.</div>
+              <div>&bull; <strong style={{ color: '#fff' }}>Three-month minimum</strong>, then month-to-month &mdash; cancel anytime after with 30 days&rsquo; notice.</div>
+              <div>&bull; <strong style={{ color: '#fff' }}>Nothing due at signing.</strong> Your first payment is due only once the site is live, due on receipt.</div>
+              <div>&bull; <strong style={{ color: '#fff' }}>No upfront build fee</strong> &mdash; the $5,000 initial build has been knocked off in full.</div>
+              <div>&bull; <strong style={{ color: '#fff' }}>Two Grandstream GRP2636 phones &amp; complimentary VoIP</strong> included while active &mdash; the phones are yours to keep after your first year.</div>
             </div>
           </div>
 
@@ -418,18 +429,17 @@ export default function WarrenProposal() {
             <img src="/grandstream-grp2636.png" alt="Grandstream GRP2636 IP desk phone"
                  style={{ width: 150, maxWidth: '100%', borderRadius: 10, background: '#fff', padding: 8, flexShrink: 0 }} />
             <div style={{ flex: 1, minWidth: 240 }}>
-              <div style={{ color: palette.gold, letterSpacing: '2px', textTransform: 'uppercase', fontSize: 12, fontWeight: 900, marginBottom: 6 }}>Included With Your 12-Month Agreement</div>
-              <div style={{ color: '#fff', fontWeight: 800, fontSize: 17, marginBottom: 6 }}>Your phones &amp; a full year of phone service &mdash; on us.</div>
+              <div style={{ color: palette.gold, letterSpacing: '2px', textTransform: 'uppercase', fontSize: 12, fontWeight: 900, marginBottom: 6 }}>Included With Your Agreement</div>
+              <div style={{ color: '#fff', fontWeight: 800, fontSize: 17, marginBottom: 6 }}>Your phones &amp; phone service &mdash; included while we work together.</div>
               <p style={{ color: 'rgba(255,255,255,.85)', fontSize: 14, lineHeight: 1.6, margin: 0 }}>
-                Your 12-month agreement includes <strong style={{ color: '#fff' }}>two Grandstream GRP2636 IP phones &mdash; yours to keep</strong> (one for the office, one for Candace working from home), plus <strong style={{ color: '#fff' }}>VoIP phone service for the full year</strong>. That means no separate phone bill for the next twelve months. Professional setup included, and the phones are yours to keep even if you don&rsquo;t continue after the term.
+                Your agreement includes <strong style={{ color: '#fff' }}>two Grandstream GRP2636 IP phones</strong> (one for the office, one for Candace working from home), plus <strong style={{ color: '#fff' }}>complimentary VoIP phone service while your agreement is active</strong> &mdash; no separate phone bill to worry about. Professional setup is included. Stay with us through your first year and <strong style={{ color: '#fff' }}>the two phones are yours to keep, free and clear</strong>. If you decide to part ways before the first year is up, you simply cover the two phones ($479.98) and take over the phone account from there.
               </p>
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 20, maxWidth: 760, margin: '0 auto', textAlign: 'left' }}>
+          <div style={{ maxWidth: 480, margin: '0 auto', textAlign: 'left' }}>
             {/* Sign card */}
             <div style={{ background: '#fff', borderRadius: 16, padding: 28, boxShadow: '0 20px 50px rgba(0,0,0,.18)' }}>
-              <div style={{ color: palette.sage2, letterSpacing: '2px', textTransform: 'uppercase', fontSize: 12, fontWeight: 800, marginBottom: 8 }}>Step 1</div>
               <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.text, fontSize: 26, margin: '0 0 10px', fontWeight: 700 }}>Sign the Agreement</h3>
               <p style={{ color: palette.muted, lineHeight: 1.6, fontSize: 15, margin: '0 0 16px' }}>
                 Two easy ways to sign &mdash; whichever you prefer:
@@ -443,24 +453,12 @@ export default function WarrenProposal() {
                 Sign Digitally &rarr;
               </a>
               <p style={{ color: palette.muted, lineHeight: 1.6, fontSize: 13, margin: '14px 0 0' }}>
-                <strong style={{ color: palette.text }}>Print &amp; Mail:</strong> open the agreement, print it, sign, and mail it with your check (payable to <strong style={{ color: palette.text }}>{CHECK_PAYABLE_TO}</strong>) to {MAIL_TO_ADDRESS}.<br /><br />
+                <strong style={{ color: palette.text }}>Print &amp; Mail:</strong> open the agreement, print it, sign, and mail it to {MAIL_TO_ADDRESS}.<br /><br />
                 <strong style={{ color: palette.text }}>Sign Digitally:</strong> review and sign securely online in a few clicks. Once signed, Greg countersigns and you&rsquo;ll both receive a completed copy by email.
               </p>
-            </div>
-
-            {/* Pay card */}
-            <div style={{ background: '#fff', borderRadius: 16, padding: 28, boxShadow: '0 20px 50px rgba(0,0,0,.18)' }}>
-              <div style={{ color: palette.sage2, letterSpacing: '2px', textTransform: 'uppercase', fontSize: 12, fontWeight: 800, marginBottom: 8 }}>Step 2</div>
-              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.text, fontSize: 26, margin: '0 0 4px', fontWeight: 700 }}>First Invoice</h3>
-              <div style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.gold, fontSize: 40, fontWeight: 700, lineHeight: 1, margin: '0 0 12px' }}>{MONTHLY_FEE}<span style={{ fontSize: 18, color: palette.muted }}> / month</span></div>
-              <div style={{ display: 'inline-block', background: 'rgba(95,111,88,.10)', color: palette.sage2, fontWeight: 800, fontSize: 13, letterSpacing: '.5px', padding: '6px 12px', borderRadius: 6, marginBottom: 14 }}>Nothing due at signing</div>
-              <p style={{ color: palette.muted, lineHeight: 1.6, fontSize: 15, margin: '0 0 18px' }}>
-                Your first invoice is <strong style={{ color: palette.text }}>{MONTHLY_FEE}</strong>, sent once your website is live &mdash; nothing is due the day you sign, and no invoice goes out until the site is up and approved. When it&rsquo;s live, that first month is due on receipt, and you can pay right from the link below. Each month after bills the same way. Paying by debit card avoids the small card-processing fee.
-              </p>
-              <a className="btn" href={PAY_URL} target="_blank" rel="noopener noreferrer"
-                 style={{ display: 'block', textAlign: 'center', padding: '15px 20px', borderRadius: 8, fontWeight: 800, textDecoration: 'none', color: palette.text, background: `linear-gradient(135deg, ${palette.gold2}, ${palette.gold})` }}>
-                Pay First Invoice &rarr;
-              </a>
+              <div style={{ marginTop: 18, paddingTop: 16, borderTop: '1px solid rgba(58,58,55,.12)', color: palette.muted, lineHeight: 1.6, fontSize: 13 }}>
+                <strong style={{ color: palette.text }}>Billing:</strong> nothing is due the day you sign. Your first invoice ({MONTHLY_FEE}) is sent once your website is live and approved, and Greg will send you a secure payment link at that time. Each month after bills the same way. Paying by debit card avoids the small card-processing fee.
+              </div>
             </div>
           </div>
 
@@ -491,7 +489,7 @@ export default function WarrenProposal() {
           <p style={{ color: '#48596e', fontSize: 18, lineHeight: 1.72, margin: '0 auto 30px', maxWidth: 650 }}>
             No pressure and no complicated process. James can review the agreement Greg left behind, open the demo site, and call or email Greg directly with any questions.
           </p>
-          <p style={{ color: '#314258', fontWeight: 900, margin: '0 0 30px' }}>One flat monthly fee, everything included. A 12-month partnership with the person doing the work.</p>
+          <p style={{ color: '#314258', fontWeight: 900, margin: '0 0 30px' }}>One flat monthly fee, everything included. A real partnership with the person doing the work.</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14, justifyContent: 'center' }}>
             <Button href={GNL_PHONE_HREF}>📞 Call Greg — {GNL_PHONE}</Button>
             <Button href={`mailto:${GNL_EMAIL}`} variant="outline">{GNL_EMAIL}</Button>
