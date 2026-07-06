@@ -1,9 +1,10 @@
 // WJHomesProposal.jsx
 // GNL Digital Group — W.J. Homes, LLC barter proposal page
-// Build: 2026-07-06 v03 ✅
+// Build: 2026-07-06 v04 ✅
 // Route: /wj-homes-proposal
 // Design system: "Quiet Authority" — INK #0B0B0C · GOLD #C8A85A · BONE #F5F3EE
 //
+// v04: added two links to the live demo site (www.gnldigitalgroup.com/wj-homes-demo) — hero + pre-sign CTA.
 // DEAL (v03 — corrected pricing):
 //   Greg's side: full managed web service (website + SEO + GBP + support + VoIP, all-in monthly)
 //                + 2x GRP2636 phones.
@@ -85,6 +86,32 @@ export default function WJHomesProposal() {
           no reviews. This fixes that. And since I need framing done, we do it as a
           straight trade — your build for mine.
         </p>
+
+        <a
+          href="https://www.gnldigitalgroup.com/wj-homes-demo"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 10,
+            marginTop: 26,
+            background: GOLD,
+            color: INK,
+            textDecoration: "none",
+            fontWeight: 700,
+            fontSize: 15,
+            letterSpacing: "0.02em",
+            padding: "15px 28px",
+            borderRadius: 4,
+            boxShadow: "0 4px 20px rgba(200,168,90,.22)",
+          }}
+        >
+          See your sample website →
+        </a>
+        <div style={{ fontSize: 12.5, color: MUTED, marginTop: 10 }}>
+          Take a look at a live one-page site built with your name and your work.
+        </div>
 
         <div style={{ marginTop: 34, display: "flex", gap: 28, flexWrap: "wrap", fontSize: 13, color: MUTED }}>
           <span>Prepared for <strong style={{ color: BONE }}>Wesley Joyner Jr.</strong></span>
@@ -230,6 +257,53 @@ export default function WJHomesProposal() {
           <TermRow label="Phones" value="Purchased by Greg, included in the deal, Wesley's to keep" />
         </ul>
       </Section>
+
+      {/* ============ SEE THE DEMO (before signing) ============ */}
+      <section style={{ maxWidth: 960, margin: "0 auto", padding: "10px 28px 0" }}>
+        <div
+          style={{
+            border: `1px solid ${INK_SOFT}`,
+            borderRadius: 6,
+            background: "#111113",
+            padding: "28px 30px",
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 18,
+          }}
+        >
+          <div>
+            <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 20, color: BONE, fontWeight: 700 }}>
+              Want to see it first?
+            </div>
+            <div style={{ fontSize: 14.5, color: "#CBC8BF", marginTop: 4 }}>
+              Here's a live sample site built with your name and one of your homes.
+            </div>
+          </div>
+          <a
+            href="https://www.gnldigitalgroup.com/wj-homes-demo"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 10,
+              background: GOLD,
+              color: INK,
+              textDecoration: "none",
+              fontWeight: 700,
+              fontSize: 15,
+              letterSpacing: "0.02em",
+              padding: "14px 26px",
+              borderRadius: 4,
+              whiteSpace: "nowrap",
+            }}
+          >
+            View your sample site →
+          </a>
+        </div>
+      </section>
 
       {/* ============ SIGN ============ */}
       <section
