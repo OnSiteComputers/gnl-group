@@ -1,15 +1,18 @@
 // WJHomesProposal.jsx
 // GNL Digital Group — W.J. Homes, LLC barter proposal page
-// Build: 2026-07-06 v02 ✅
+// Build: 2026-07-06 v03 ✅
 // Route: /wj-homes-proposal
 // Design system: "Quiet Authority" — INK #0B0B0C · GOLD #C8A85A · BONE #F5F3EE
 //
-// DEAL (v02 — corrected):
-//   Greg's side: full web package — $5,000 startup + $3,500/mo (12 months included) + 2x GRP2636 phones.
-//                Real first-year value: $47,000.
+// DEAL (v03 — corrected pricing):
+//   Greg's side: full managed web service (website + SEO + GBP + support + VoIP, all-in monthly)
+//                + 2x GRP2636 phones.
+//                - $5,000 startup: WAIVED (covered by trade)
+//                - First 12 months of service: FREE (covered by trade)
+//                - After year one: $2,500/mo friend rate (normal rate $3,500/mo)
 //   Wesley's side: framing labor + ALL materials (lumber, LVL, slider, basement material) —
 //                  EXCEPT the two windows, which Greg supplies.
-//   After 12 months: rolls to standard $3,500/mo.
+//   NOTE: $3,500/mo is the ALL-IN managed service (VoIP is one component, NOT a standalone $42k line).
 
 import React from "react";
 
@@ -128,36 +131,44 @@ export default function WJHomesProposal() {
             body="Professional VoIP handsets for the home office where your wife works. I buy them, set them up, and they're yours to keep."
           />
           <LineItem
-            head="12 months of VoIP phone service"
-            body="A full year of business phone service included in the trade. After that, it continues at standard service if you want to keep it."
+            head="Full managed service — first year free"
+            body="Everything handled together: hosting, SEO upkeep, updates, support, and your VoIP phone service — one all-in service, not a stack of separate bills. The first 12 months are covered by the trade; after that it's $2,500/mo (my normal is $3,500)."
           />
         </ul>
       </Section>
 
       {/* ============ THE VALUE ============ */}
-      <Section n="03" title="What that's worth">
+      <Section n="03" title="What you're getting — and saving">
         <p style={pStyle}>
-          Straight numbers, no games. This is what I charge everyone else for the same
-          package:
+          Straight numbers, no games. Here's my normal pricing, and here's what this trade
+          knocks off it:
         </p>
         <div
           style={{
             border: `1px solid ${INK_SOFT}`,
             borderRadius: 6,
             overflow: "hidden",
-            maxWidth: 560,
+            maxWidth: 600,
             marginTop: 8,
           }}
         >
-          <PriceRow label="Website + SEO + Google Profile — startup" value="$5,000" />
-          <PriceRow label="VoIP service — $3,500/mo × 12 months" value="$42,000" />
+          <PriceRow label="Startup — build, SEO, Google Profile setup" value="$5,000" strike note="waived" />
+          <PriceRow label="First 12 months of managed service" value="$3,500/mo" strike note="free — 1 year" />
           <PriceRow label="Two GRP2636 phones" value="included" />
-          <PriceRow label="First-year value" value="$47,000" total />
+          <PriceRow label="After year one — your rate" value="$2,500/mo" note="normally $3,500" />
+          <PriceRow label="Your first-year savings" value="$47,000" total />
         </div>
         <p style={{ ...pStyle, marginTop: 22 }}>
-          That's the real number. You're not getting a stripped-down "friend version" —
-          you're getting the exact package I put in front of law firms and medical offices,
-          startup waived and a full year of service covered.
+          The <strong style={{ color: BONE }}>$3,500/mo is the all-in service</strong> —
+          website hosting, SEO, updates, support, and your VoIP phone service, all together.
+          Not a phone bill. It's the whole thing handled.
+        </p>
+        <p style={pStyle}>
+          So the trade covers your <strong style={{ color: BONE }}>$5,000 startup</strong>{" "}
+          and a <strong style={{ color: BONE }}>full free year</strong> — that's{" "}
+          <strong style={{ color: GOLD }}>$47,000</strong> off. After the free year, you stay
+          on at <strong style={{ color: BONE }}>$2,500/mo</strong> instead of my usual $3,500 —
+          a grand a month less, for as long as you're with me.
         </p>
       </Section>
 
@@ -195,10 +206,10 @@ export default function WJHomesProposal() {
           }}
         >
           <p style={{ ...pStyle, marginTop: 0 }}>
-            I'm putting $47,000 of first-year value on the table. You're putting your crew,
-            your craftsmanship, and the materials on the table. That's two businesses making
-            a real trade — not me doing you a favor, and not you doing me one. Both sides
-            bring something that costs them.
+            I'm covering your $5,000 startup and a full free year — $47,000 off my normal
+            pricing. You're putting your crew, your craftsmanship, and the materials on the
+            table. That's two businesses making a real trade — not me doing you a favor, and
+            not you doing me one. Both sides bring something that costs them.
           </p>
           <p style={{ ...pStyle, marginBottom: 0 }}>
             After 11 years of you keeping my house standing and me keeping your computers
@@ -210,9 +221,10 @@ export default function WJHomesProposal() {
       {/* ============ TERMS ============ */}
       <Section n="06" title="The terms, plain">
         <ul style={ulStyle}>
-          <TermRow label="Web package" value="Website + local SEO + Google Business Profile + 2× GRP2636 + 12 months VoIP service" />
-          <TermRow label="First-year value" value="$47,000 ($5,000 startup + $42,000 service), covered in the trade" />
-          <TermRow label="After year one" value="Continues at standard $3,500/mo if kept" />
+          <TermRow label="Web package" value="Website + local SEO + Google Business Profile + 2× GRP2636 + full managed service (hosting, support, VoIP all-in)" />
+          <TermRow label="Startup" value="$5,000 — waived, covered by the trade" />
+          <TermRow label="First year" value="Free — 12 months of managed service covered by the trade" />
+          <TermRow label="After year one" value="$2,500/mo friend rate (normally $3,500/mo)" />
           <TermRow label="Framing" value="Rear addition/deck (dried-in) + basement framing — labor by Wesley" />
           <TermRow label="Materials" value="Wesley supplies ALL materials incl. the LVL — except the two windows, which Greg supplies" />
           <TermRow label="Phones" value="Purchased by Greg, included in the deal, Wesley's to keep" />
@@ -326,7 +338,7 @@ function LineItem({ head, body }) {
   );
 }
 
-function PriceRow({ label, value, total }) {
+function PriceRow({ label, value, total, strike, note }) {
   return (
     <div
       style={{
@@ -342,16 +354,35 @@ function PriceRow({ label, value, total }) {
       <span style={{ color: total ? BONE : "#CBC8BF", fontSize: 15, fontWeight: total ? 700 : 400 }}>
         {label}
       </span>
-      <span
-        style={{
-          color: total ? GOLD : "#D2CFC6",
-          fontSize: total ? 20 : 15.5,
-          fontWeight: 700,
-          fontFamily: total ? "'Playfair Display', Georgia, serif" : "inherit",
-          whiteSpace: "nowrap",
-        }}
-      >
-        {value}
+      <span style={{ display: "flex", alignItems: "center", gap: 10, whiteSpace: "nowrap" }}>
+        <span
+          style={{
+            color: total ? GOLD : "#D2CFC6",
+            fontSize: total ? 20 : 15.5,
+            fontWeight: 700,
+            fontFamily: total ? "'Playfair Display', Georgia, serif" : "inherit",
+            textDecoration: strike ? "line-through" : "none",
+            opacity: strike ? 0.55 : 1,
+          }}
+        >
+          {value}
+        </span>
+        {note && (
+          <span
+            style={{
+              fontSize: 11.5,
+              fontWeight: 700,
+              letterSpacing: "0.04em",
+              textTransform: "uppercase",
+              color: total ? INK : "#15130E",
+              background: GOLD,
+              padding: "3px 9px",
+              borderRadius: 3,
+            }}
+          >
+            {note}
+          </span>
+        )}
       </span>
     </div>
   );
