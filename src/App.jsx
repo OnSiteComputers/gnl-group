@@ -34,6 +34,8 @@ import DowlessProposal from './pages/DowlessProposal';
 import CanesLive from './pages/CanesLive';
 import HarrisburgProposal from './pages/HarrisburgProposal';
 import HarrisburgDemo from './pages/HarrisburgDemo';
+import WJHomesProposal from './pages/WJHomesProposal';
+import WJHomesDemo from './pages/WJHomesDemo';
 
 // -- Client sites --
 import Featherline from './pages/Featherline';
@@ -74,6 +76,8 @@ function App() {
           <Route path="/canes-live" element={<CanesLive />} />
           <Route path="/harrisburg-proposal" element={<HarrisburgProposal />} />
           <Route path="/harrisburg-demo" element={<HarrisburgDemo />} />
+          <Route path="/wj-homes-proposal" element={<WJHomesProposal />} />
+          <Route path="/wj-homes-demo" element={<WJHomesDemo />} />
 
           {/* Client sites */}
           <Route path="/featherline" element={<Featherline />} />
