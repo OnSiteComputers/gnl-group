@@ -1,7 +1,7 @@
-// WarrenProposal.jsx — GNL Digital Group — Warren Family Law proposal
-// build: 2026-07-06 v4 ✅  (resynced to v4 agreement: 3-mo minimum then month-to-month,
+// WarrenProposal.jsx Ã¢â‚¬â€ GNL Digital Group Ã¢â‚¬â€ Warren Family Law proposal
+// build: 2026-07-07 v7 Ã¢Å“â€¦  (resynced to v4 agreement: 3-mo minimum then month-to-month,
 //   tiered $3,328/$3,500, phones-with-early-cancel, pay link removed, unconditional card bonus,
-//   corrected JotForm Sign link for v4 agreement)
+//   corrected JotForm Sign link; clarified Jim/Candace control booking availability)
 const GNL_PHONE = '704-594-5826';
 const GNL_PHONE_HREF = 'tel:+17045945826';
 const GNL_EMAIL = 'greg@gnldigitalgroup.com';
@@ -13,7 +13,7 @@ const WARREN_CARD_FRONT = '/warren-card-front.png';
 const WARREN_CARD_BACK = '/warren-card-back.png';
 
 
-// ── PER-CLIENT SETTINGS ── edit these for each client, then republish ──
+// Ã¢â€â‚¬Ã¢â€â‚¬ PER-CLIENT SETTINGS Ã¢â€â‚¬Ã¢â€â‚¬ edit these for each client, then republish Ã¢â€â‚¬Ã¢â€â‚¬
 // 1) SIGN_PDF_URL: path to the printable contract PDF (uploaded to /public).
 // 2) SIGN_DIGITAL_URL: paste the Jotform Sign signing link (James signs, then you countersign).
 // 3) PAY_URL:  paste the hosted payment-page link from your merchant account.
@@ -46,49 +46,49 @@ const palette = {
 
 const deliverables = [
   {
-    icon: '🌐',
+    icon: 'Ã°Å¸Å’Â',
     title: 'New Website',
     eyebrow: 'Modern, mobile-first, built to convert',
     desc: 'A professional family-law website with clear practice-area sections, strong consultation calls-to-action, and a polished design that gives visitors confidence before they call.',
   },
   {
-    icon: '📅',
+    icon: 'Ã°Å¸â€œâ€¦',
     title: 'Paid Consultation Booking',
     eyebrow: 'Zoom consults, paid up front',
-    desc: 'A booking link clients use to schedule a Zoom consultation and pay the consultation fee at the same time. The meeting link is created automatically, and the fee is collected before the call — no chasing payment, no unpaid no-shows.',
+    desc: 'A booking link clients use to schedule a Zoom consultation and pay the consultation fee at the same time. The meeting link is created automatically, and the fee is collected before the call Ã¢â‚¬â€ no chasing payment, no unpaid no-shows.',
   },
   {
-    icon: '📍',
+    icon: 'Ã°Å¸â€œÂ',
     title: 'Local SEO Foundation',
     eyebrow: 'Charlotte-area visibility',
     desc: 'Pages and structure focused on the local searches that matter, including family law, divorce, custody, support, alimony, property division, and related services.',
   },
   {
-    icon: '⭐',
+    icon: 'Ã¢Â­Â',
     title: 'Review Growth System',
     eyebrow: 'Build trust before the call',
     desc: 'A simple approval-based process to request reviews from past clients and make your reputation match the decades of experience behind the firm.',
   },
   {
-    icon: '📈',
+    icon: 'Ã°Å¸â€œË†',
     title: 'Your Google Dashboard',
     eyebrow: 'Watch your progress in real time',
-    desc: 'Your own live view of your Google Business Profile — calls, clicks, searches, and direction requests, tracked over time. Full transparency: you see exactly how your visibility grows month over month, on your own screen, whenever you want.',
+    desc: 'Your own live view of your Google Business Profile Ã¢â‚¬â€ calls, clicks, searches, and direction requests, tracked over time. Full transparency: you see exactly how your visibility grows month over month, on your own screen, whenever you want.',
   },
   {
-    icon: '📧',
+    icon: 'Ã°Å¸â€œÂ§',
     title: 'Professional Email',
     eyebrow: WARREN_EMAIL,
     desc: 'Move away from consumer email and present a professional domain email. Mail can still be forwarded or configured so the day-to-day workflow stays familiar.',
   },
   {
-    icon: '📋',
+    icon: 'Ã°Å¸â€œâ€¹',
     title: 'Lead Routing',
     eyebrow: 'Secretary filters the noise',
     desc: 'Website forms can route to the right person first so real potential clients get attention and junk does not interrupt James unnecessarily.',
   },
   {
-    icon: '📞',
+    icon: 'Ã°Å¸â€œÅ¾',
     title: 'VoIP Phone System',
     eyebrow: 'Office workflow from anywhere',
     desc: 'A modern phone setup that lets calls be answered, screened, and transferred professionally whether the secretary is in the office or working remotely.',
@@ -169,7 +169,7 @@ export default function WarrenProposal() {
       `}</style>
 
       <div style={{ background: 'rgba(224,170,63,.12)', borderBottom: '1px solid rgba(224,170,63,.24)', padding: '11px 22px', textAlign: 'center', color: palette.gold2, letterSpacing: '3px', textTransform: 'uppercase', fontSize: 12, fontWeight: 800 }}>
-        Private Proposal — Prepared Exclusively for Warren Family Law
+        Private Proposal Ã¢â‚¬â€ Prepared Exclusively for Warren Family Law
       </div>
 
       <section style={{ position: 'relative', overflow: 'hidden', padding: '34px 24px 76px', borderBottom: '1px solid rgba(58,58,55,.10)' }}>
@@ -194,7 +194,7 @@ export default function WarrenProposal() {
 
         <div className="hero-grid" style={{ position: 'relative', maxWidth: 1180, margin: '0 auto', display: 'grid', gap: 44, alignItems: 'center' }}>
           <div>
-            <div className="fade-up" style={{ color: palette.gold2, letterSpacing: '4px', textTransform: 'uppercase', fontSize: 13, fontWeight: 800, marginBottom: 18 }}>Website • SEO • Email • Phones</div>
+            <div className="fade-up" style={{ color: palette.gold2, letterSpacing: '4px', textTransform: 'uppercase', fontSize: 13, fontWeight: 800, marginBottom: 18 }}>Website Ã¢â‚¬Â¢ SEO Ã¢â‚¬Â¢ Email Ã¢â‚¬Â¢ Phones</div>
             <h1 className="fade-up d2" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(44px, 6vw, 78px)', lineHeight: .98, color: palette.text, fontWeight: 700, margin: '0 0 22px' }}>
               A stronger digital presence for <span style={{ color: palette.gold2 }}>Warren Family Law.</span>
             </h1>
@@ -202,8 +202,8 @@ export default function WarrenProposal() {
               James, this is the practical plan we discussed: modernize the website, improve local search visibility, move to a professional email address, and simplify the phone workflow so the firm looks as established online as it is in person.
             </p>
             <div className="fade-up d4" style={{ display: 'flex', flexWrap: 'wrap', gap: 14 }}>
-              <Button href={DEMO_PATH} target="_blank">👁 View Warren Demo Site</Button>
-              <Button href={GNL_PHONE_HREF} variant="outline">📞 Call Greg — {GNL_PHONE}</Button>
+              <Button href={DEMO_PATH} target="_blank">Ã°Å¸â€˜Â View Warren Demo Site</Button>
+              <Button href={GNL_PHONE_HREF} variant="outline">Ã°Å¸â€œÅ¾ Call Greg Ã¢â‚¬â€ {GNL_PHONE}</Button>
             </div>
           </div>
 
@@ -261,8 +261,8 @@ export default function WarrenProposal() {
               The Warren demo page gives James a real feel for the final product: attorney-focused design, family-law service sections, consultation buttons, review trust signals, and mobile-first presentation.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14 }}>
-              <Button href={DEMO_PATH} target="_blank">Open Demo Site →</Button>
-              <Button href="https://gnldigitalgroup.com" target="_blank" variant="outline">View GNL Digital Group →</Button>
+              <Button href={DEMO_PATH} target="_blank">Open Demo Site Ã¢â€ â€™</Button>
+              <Button href="https://gnldigitalgroup.com" target="_blank" variant="outline">View GNL Digital Group Ã¢â€ â€™</Button>
             </div>
           </div>
 
@@ -276,7 +276,7 @@ export default function WarrenProposal() {
             </div>
             {['Strong hero message and consultation CTA', 'Family law service cards', 'Google review trust section', 'Mobile layout matching the mockup'].map((line) => (
               <div key={line} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '11px 0', color: '#243247', fontWeight: 700 }}>
-                <span style={{ color: palette.gold, fontSize: 20 }}>✓</span>{line}
+                <span style={{ color: palette.gold, fontSize: 20 }}>Ã¢Å“â€œ</span>{line}
               </div>
             ))}
           </div>
@@ -313,21 +313,21 @@ export default function WarrenProposal() {
 
       <section id="booking" style={{ padding: '82px 24px', background: palette.cream, color: palette.text, borderTop: '1px solid rgba(58,58,55,.10)' }}>
         <div style={{ maxWidth: 1080, margin: '0 auto' }}>
-          <SectionHeader eyebrow="Your Consultation Booking, Explained" title="How clients book and pay — in plain English">
+          <SectionHeader eyebrow="Your Consultation Booking, Explained" title="How clients book and pay Ã¢â‚¬â€ in plain English">
             This is the paid consultation system we set up for you. You won&rsquo;t touch a single setting &mdash; we build it, connect it to your calendar and Zoom, and show you and Candace exactly how to use it.
           </SectionHeader>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 20 }}>
             <div className="card" style={{ flex: '0 1 320px', maxWidth: 340, background: '#ffffff', border: '1px solid rgba(58,58,55,.12)', borderRadius: 14, padding: 28 }}>
-              <div style={{ fontSize: 30, marginBottom: 14 }}>📅</div>
+              <div style={{ fontSize: 30, marginBottom: 14 }}>Ã°Å¸â€œâ€¦</div>
               <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.text, fontSize: 26, lineHeight: 1.1, margin: '0 0 12px', fontWeight: 700 }}>What your clients do</h3>
               <p style={{ color: palette.muted, lineHeight: 1.7, fontSize: 16, margin: 0 }}>
-                A potential client clicks &ldquo;Schedule a Consultation&rdquo; on your website. They see your open time slots, pick one that works, and pay the <strong style={{ color: palette.text }}>{CONSULT_FEE} consultation fee</strong> right then. A Zoom link is created automatically and emailed to both of you. No phone tag, and no unpaid no-shows &mdash; the fee is collected before the call.
+                A potential client clicks &ldquo;Schedule a Consultation&rdquo; on your website. They see the time slots you and Candace have opened, pick one that works, and pay the <strong style={{ color: palette.text }}>{CONSULT_FEE} consultation fee</strong> right then. A Zoom link is created automatically and emailed to both of you. No phone tag, and no unpaid no-shows &mdash; the fee is collected before the call.
               </p>
             </div>
 
             <div className="card" style={{ flex: '0 1 320px', maxWidth: 340, background: '#ffffff', border: '1px solid rgba(58,58,55,.12)', borderRadius: 14, padding: 28 }}>
-              <div style={{ fontSize: 30, marginBottom: 14 }}>🔒</div>
+              <div style={{ fontSize: 30, marginBottom: 14 }}>Ã°Å¸â€â€™</div>
               <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.text, fontSize: 26, lineHeight: 1.1, margin: '0 0 12px', fontWeight: 700 }}>Your calendar stays private</h3>
               <p style={{ color: palette.muted, lineHeight: 1.7, fontSize: 16, margin: 0 }}>
                 This is important: the booking page shows <strong style={{ color: palette.text }}>only the times you&rsquo;ve marked as available</strong>. Clients never see who else you&rsquo;re meeting, when, or any other detail from your calendar &mdash; just the open windows. Your other appointments stay completely private.
@@ -335,7 +335,7 @@ export default function WarrenProposal() {
             </div>
 
             <div className="card" style={{ flex: '0 1 320px', maxWidth: 340, background: '#ffffff', border: '1px solid rgba(58,58,55,.12)', borderRadius: 14, padding: 28 }}>
-              <div style={{ fontSize: 30, marginBottom: 14 }}>👤</div>
+              <div style={{ fontSize: 30, marginBottom: 14 }}>Ã°Å¸â€˜Â¤</div>
               <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.text, fontSize: 26, lineHeight: 1.1, margin: '0 0 12px', fontWeight: 700 }}>You and Candace each get a login</h3>
               <p style={{ color: palette.muted, lineHeight: 1.7, fontSize: 16, margin: 0 }}>
                 You get your own login. <strong style={{ color: palette.text }}>Candace gets her own separate login</strong> &mdash; no shared passwords. From home, she can view the calendar, book, reschedule, and cancel consultations on your behalf. You both always see the same up-to-date schedule.
@@ -343,7 +343,7 @@ export default function WarrenProposal() {
             </div>
 
             <div className="card" style={{ flex: '0 1 320px', maxWidth: 340, background: '#ffffff', border: '1px solid rgba(58,58,55,.12)', borderRadius: 14, padding: 28 }}>
-              <div style={{ fontSize: 30, marginBottom: 14 }}>📱</div>
+              <div style={{ fontSize: 30, marginBottom: 14 }}>Ã°Å¸â€œÂ±</div>
               <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.text, fontSize: 26, lineHeight: 1.1, margin: '0 0 12px', fontWeight: 700 }}>Manage it from your phone</h3>
               <p style={{ color: palette.muted, lineHeight: 1.7, fontSize: 16, margin: 0 }}>
                 There&rsquo;s a free app for both <strong style={{ color: palette.text }}>iPhone and Android</strong>. You can see your day, get a notification the moment a consultation is booked, join the Zoom call, or reschedule &mdash; all with a couple of taps, whether you&rsquo;re at the office, at home, or between hearings.
@@ -351,7 +351,7 @@ export default function WarrenProposal() {
             </div>
 
             <div className="card" style={{ flex: '0 1 320px', maxWidth: 340, background: '#ffffff', border: '1px solid rgba(58,58,55,.12)', borderRadius: 14, padding: 28 }}>
-              <div style={{ fontSize: 30, marginBottom: 14 }}>🛠️</div>
+              <div style={{ fontSize: 30, marginBottom: 14 }}>Ã°Å¸â€ºÂ Ã¯Â¸Â</div>
               <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.text, fontSize: 26, lineHeight: 1.1, margin: '0 0 12px', fontWeight: 700 }}>You stay in control</h3>
               <p style={{ color: palette.muted, lineHeight: 1.7, fontSize: 16, margin: 0 }}>
                 Clients can only pick from the slots <strong style={{ color: palette.text }}>you open</strong> &mdash; they can&rsquo;t create their own Zoom meeting or set their own time. The <strong style={{ color: palette.text }}>{CONSULT_FEE} consultation fee is collected up front</strong> before any consultation is booked, the same as you charge now &mdash; and it works for both Zoom and in-person appointments. You set your hours; the system handles the rest.
@@ -395,11 +395,11 @@ export default function WarrenProposal() {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 26, maxWidth: 820, margin: '0 auto' }}>
             <div style={{ textAlign: 'center' }}>
-              <img src={WARREN_CARD_FRONT} alt="Warren Family Law business card — front" style={{ width: '100%', height: 'auto', borderRadius: 14, boxShadow: '0 16px 40px rgba(95,111,88,.20)' }} />
+              <img src={WARREN_CARD_FRONT} alt="Warren Family Law business card Ã¢â‚¬â€ front" style={{ width: '100%', height: 'auto', borderRadius: 14, boxShadow: '0 16px 40px rgba(95,111,88,.20)' }} />
               <div style={{ color: palette.muted, fontSize: 13, fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase', marginTop: 10 }}>Front</div>
             </div>
             <div style={{ textAlign: 'center' }}>
-              <img src={WARREN_CARD_BACK} alt="Warren Family Law business card — back" style={{ width: '100%', height: 'auto', borderRadius: 14, boxShadow: '0 16px 40px rgba(95,111,88,.20)' }} />
+              <img src={WARREN_CARD_BACK} alt="Warren Family Law business card Ã¢â‚¬â€ back" style={{ width: '100%', height: 'auto', borderRadius: 14, boxShadow: '0 16px 40px rgba(95,111,88,.20)' }} />
               <div style={{ color: palette.muted, fontSize: 13, fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase', marginTop: 10 }}>Back</div>
             </div>
           </div>
@@ -466,7 +466,7 @@ export default function WarrenProposal() {
           <div style={{ marginTop: 26, padding: '20px 24px', background: 'rgba(255,255,255,.12)', border: '1px solid rgba(255,255,255,.25)', borderRadius: 14, maxWidth: 620, marginLeft: 'auto', marginRight: 'auto' }}>
             <div style={{ fontWeight: 800, fontSize: 16, marginBottom: 6 }}>Preview the paid consultation booking</div>
             <p style={{ color: 'rgba(255,255,255,.9)', fontSize: 14, lineHeight: 1.6, margin: '0 0 14px' }}>
-              Take a look at the booking experience your clients would use &mdash; they pick a time, pay the {CONSULT_FEE} consultation fee, and the Zoom link is created automatically. Your private appointments stay private; clients only ever see open slots.
+              Take a look at the booking experience your clients would use &mdash; they pick from the times you&rsquo;ve made available, pay the {CONSULT_FEE} consultation fee, and the Zoom link is created automatically. You and Candace decide exactly which days and time slots are open for booking &mdash; clients only ever see the slots you&rsquo;ve opened, and the rest of your calendar stays private.
             </p>
             <a className="btn" href={CONSULT_URL} target="_blank" rel="noopener noreferrer"
                style={{ display: 'inline-block', padding: '13px 26px', borderRadius: 8, fontWeight: 800, textDecoration: 'none', color: '#fff', background: 'rgba(255,255,255,.16)', border: '1px solid rgba(255,255,255,.5)' }}>
@@ -492,14 +492,14 @@ export default function WarrenProposal() {
           </p>
           <p style={{ color: '#314258', fontWeight: 900, margin: '0 0 30px' }}>One flat monthly fee, everything included. A real partnership with the person doing the work.</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14, justifyContent: 'center' }}>
-            <Button href={GNL_PHONE_HREF}>📞 Call Greg — {GNL_PHONE}</Button>
+            <Button href={GNL_PHONE_HREF}>Ã°Å¸â€œÅ¾ Call Greg Ã¢â‚¬â€ {GNL_PHONE}</Button>
             <Button href={`mailto:${GNL_EMAIL}`} variant="outline">{GNL_EMAIL}</Button>
           </div>
         </div>
       </section>
 
       <footer style={{ padding: '28px 24px', color: '#64758a', textAlign: 'center', fontSize: 13, borderTop: '1px solid rgba(58,58,55,.10)' }}>
-        © 2026 GNL Digital Group — Private proposal for Warren Family Law. Not for public distribution.
+        Ã‚Â© 2026 GNL Digital Group Ã¢â‚¬â€ Private proposal for Warren Family Law. Not for public distribution.
       </footer>
     </div>
   );
