@@ -1,19 +1,3 @@
-// ─────────────────────────────────────────────────────────────
-// COHEN CONSTRUCTION — add these to your existing App.jsx
-// ─────────────────────────────────────────────────────────────
-
-// 1) At the top, with your other imports:
-import CohenProposal from "./pages/CohenProposal";
-import CohenDemo from "./pages/CohenDemo";
-
-// 2) Inside your <Routes>, with the other <Route> lines:
-<Route path="/cohen-proposal" element={<CohenProposal />} />
-<Route path="/cohen-demo" element={<CohenDemo />} />
-
-// ─────────────────────────────────────────────────────────────
-// ASSET: place cohen-logo.png in your public/ folder
-//   → referenced by both pages as /cohen-logo.png
-// ─────────────────────────────────────────────────────────────
 import { Toaster } from "@/components/ui/toaster"
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
@@ -52,6 +36,8 @@ import HarrisburgProposal from './pages/HarrisburgProposal';
 import HarrisburgDemo from './pages/HarrisburgDemo';
 import WJHomesProposal from './pages/WJHomesProposal';
 import WJHomesDemo from './pages/WJHomesDemo';
+import CohenProposal from './pages/CohenProposal';
+import CohenDemo from './pages/CohenDemo';
 
 // -- Client sites --
 import Featherline from './pages/Featherline';
@@ -94,6 +80,8 @@ function App() {
           <Route path="/harrisburg-demo" element={<HarrisburgDemo />} />
           <Route path="/wj-homes-proposal" element={<WJHomesProposal />} />
           <Route path="/wj-homes-demo" element={<WJHomesDemo />} />
+          <Route path="/cohen-proposal" element={<CohenProposal />} />
+          <Route path="/cohen-demo" element={<CohenDemo />} />
 
           {/* Client sites */}
           <Route path="/featherline" element={<Featherline />} />
