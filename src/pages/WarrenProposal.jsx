@@ -1,6 +1,7 @@
 // WarrenProposal.jsx — GNL Digital Group — Warren Family Law proposal
-// build: 2026-07-06 v2 ✅  (resynced to v4 agreement: 3-mo minimum then month-to-month,
-//   tiered $3,328/$3,500, phones-with-early-cancel, pay link removed, unconditional card bonus)
+// build: 2026-07-06 v4 ✅  (resynced to v4 agreement: 3-mo minimum then month-to-month,
+//   tiered $3,328/$3,500, phones-with-early-cancel, pay link removed, unconditional card bonus,
+//   corrected JotForm Sign link for v4 agreement)
 const GNL_PHONE = '704-594-5826';
 const GNL_PHONE_HREF = 'tel:+17045945826';
 const GNL_EMAIL = 'greg@gnldigitalgroup.com';
@@ -21,7 +22,7 @@ const WARREN_CARD_BACK = '/warren-card-back.png';
 //    collects the consult fee AND creates the Zoom link automatically.
 // 6) CONSULT_FEE: the consultation price shown on the page.
 const SIGN_PDF_URL = '/GNL-Agreement-Warren.pdf';
-const SIGN_DIGITAL_URL = 'https://www.jotform.com/sign/261821511397053/invite/01kwgy9c1rc2d3480a54de94e3';
+const SIGN_DIGITAL_URL = 'https://www.jotform.com/sign/261868623965069/invite/01kwxfbpq50cbe96d9ad9d2e53';
 const MAIL_TO_ADDRESS = '53 Cabarrus Ave W, Concord, NC 28025';
 const CHECK_PAYABLE_TO = 'GNL Digital Group';
 const PAY_URL = 'https://securelink-prod.valorpaytech.com:4430/?redirect=1&uid=88352a64-75f1-11f1-8d9b-128462456e49';
