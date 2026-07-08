@@ -1,4 +1,4 @@
-// WarrenDemo — build: 2026-07-05 v1
+// WarrenDemo build: 2026-07-05 v1
 import React, { useState, useEffect } from 'react';
 import {
   Phone,
@@ -13,9 +13,6 @@ import {
   Star,
   ChevronRight
 } from 'lucide-react';
-
-console.log("WarrenDemo build: 2026-07-05 v1 ✅");
-
 const PHONE = '704-741-1763';
 const PHONE_HREF = 'tel:+17047411763';
 const EMAIL = 'james@warrenfamilylaw.net';
@@ -89,6 +86,8 @@ const services = [
 ];
 
 export default function WarrenDemo() {
+  useEffect(() => { console.log("WarrenDemo build: 2026-07-05 v1"); }, []);
+
   const [reviewIndex, setReviewIndex] = useState(0);
   const [paOpen, setPaOpen] = useState(false);
   useEffect(() => {
@@ -894,7 +893,7 @@ export default function WarrenDemo() {
                 onClick={(e) => { e.preventDefault(); setPaOpen((v) => !v); }}
                 aria-expanded={paOpen}
               >
-                PRACTICE AREAS <span style={{ fontSize: 11 }}>{paOpen ? '\u25B2' : '\u25BC'}</span>
+                PRACTICE AREAS <span style={{ fontSize: 11 }}>{paOpen ? '=' : '='}</span>
               </a>
               <div className="pa-menu" style={{ display: paOpen ? 'block' : 'none' }}>
                 {['Divorce', 'Child Custody', 'Child Support', 'Spousal Support / Alimony', 'Property Division', 'Legal Separation'].map((area) => (
@@ -968,15 +967,15 @@ export default function WarrenDemo() {
             <div className="stars" aria-label="4.5 star rating">
               {[1, 2, 3, 4, 5].map((star) => <Star key={star} />)}
             </div>
-            <p>4.5 ★ on Google · 15 reviews</p>
+            <p>4.5 &#9733; on Google &#183; 15 reviews</p>
             <a className="review-button" href="#reviews">READ ALL REVIEWS</a>
           </div>
 
           <div className="quote-box">
-            <div className="quote-mark">“</div>
+            <div className="quote-mark">&ldquo;</div>
             <div key={reviewIndex} className="review-fade">
               <blockquote>{review.text}</blockquote>
-              <cite>– {review.cite}</cite>
+              <cite>&ndash; {review.cite}</cite>
             </div>
           </div>
 
@@ -1041,8 +1040,8 @@ export default function WarrenDemo() {
 
         <section className="mobile-reviews">
           <div className="google-dot"><span>G</span></div>
-          <div className="mobile-stars">★★★★½</div>
-          <div>4.5 ★ on Google · 15 Reviews</div>
+          <div className="mobile-stars">&#9733;&#9733;&#9733;&#9733;12</div>
+          <div>4.5 &#9733; on Google &#183; 15 Reviews</div>
           <a href="#reviews">READ OUR REVIEWS</a>
         </section>
       </div>

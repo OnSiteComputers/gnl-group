@@ -1,9 +1,10 @@
-// CohenProposal.jsx — GNL Digital Group proposal for Cohen Construction Inc.
+// CohenProposal build: 2026-07-07 v1
+// CohenProposal.jsx &mdash; GNL Digital Group proposal for Cohen Construction Inc.
 // Route: /cohen-proposal
-// Palette: Navy + brushed silver + white (matched to Cohen logo) — light & airy, lakefront-appropriate
+// Palette: Navy + brushed silver + white (matched to Cohen logo) &mdash; light & airy, lakefront-appropriate
 // Logo: /cohen-logo.png (place the provided PNG in public/)
-// Version: v03 — 2026-07-07 (logo centered)
-import React from "react";
+// Version: v03 &mdash; 2026-07-07 (logo centered)
+import React, { useEffect } from "react";
 
 const NAVY = "#12233A";
 const NAVY_D = "#0C1A2E";
@@ -89,6 +90,8 @@ function PriceRow({ label, value, note }) {
 }
 
 export default function CohenProposal() {
+  useEffect(() => { console.log("CohenProposal build: 2026-07-07 v1"); }, []);
+
   return (
     <div style={wrap}>
       {/* HERO */}

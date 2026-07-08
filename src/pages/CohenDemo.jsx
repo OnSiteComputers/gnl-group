@@ -1,10 +1,11 @@
-// CohenDemo.jsx — Live preview / sample site for Cohen Construction Inc.
+// CohenDemo build: 2026-07-07 v1
+// CohenDemo.jsx &mdash; Live preview / sample site for Cohen Construction Inc.
 // Route: /cohen-demo
-// Palette: Navy + brushed silver + white (matched to Cohen logo) — light, airy, lakefront
+// Palette: Navy + brushed silver + white (matched to Cohen logo) &mdash; light, airy, lakefront
 // Logo: /cohen-logo.png (place provided PNG in public/)
 // Featured feature: Request a Consultation / Lot Inquiry (Web3Forms, points to Greg for testing)
-// Version: v03 — 2026-07-07 (logo centered)
-import React, { useState } from "react";
+// Version: v03 &mdash; 2026-07-07 (logo centered)
+import React, { useEffect, useState } from "react";
 
 const WEB3FORMS_KEY = "3d89122b-0437-4179-bc13-c6ac794da038";
 
@@ -29,7 +30,7 @@ const COMMUNITIES = [
   "Swift Island Plantation",
   "Uwharrie Cabin Village",
   "Ken's Landing",
-  "Not sure yet — help me choose",
+  "Not sure yet \u2014 help me choose",
 ];
 
 const LOT_TYPES = ["Waterfront", "Water view", "Interior lot", "Covered boat slip", "Not sure yet"];
@@ -59,6 +60,8 @@ const label = {
 };
 
 export default function CohenDemo() {
+  useEffect(() => { console.log("CohenDemo build: 2026-07-07 v1"); }, []);
+
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -86,7 +89,7 @@ export default function CohenDemo() {
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
-          subject: "Cohen Construction — Lot Inquiry (DEMO)",
+          subject: "Cohen Construction &mdash; Lot Inquiry (DEMO)",
           from_name: "Cohen Construction Demo Site",
           name: form.name,
           email: form.email,
@@ -337,7 +340,7 @@ export default function CohenDemo() {
                   style={{ ...field, minHeight: 110, resize: "vertical" }}
                   value={form.message}
                   onChange={upd("message")}
-                  placeholder="Timeline, budget range, must-haves, or anything you'd like us to know…"
+                  placeholder="Timeline, budget range, must-haves, or anything you'd like us to know&hellip;"
                 />
               </div>
 
@@ -362,7 +365,7 @@ export default function CohenDemo() {
                   ...sans,
                 }}
               >
-                {busy ? "Sending…" : "Send My Inquiry →"}
+                {busy ? "Sending&hellip;" : "Send My Inquiry &rarr;"}
               </button>
             </div>
           )}

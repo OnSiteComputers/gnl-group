@@ -1,12 +1,9 @@
-// Contact — build: 2026-07-05 v1
+// Contact build: 2026-07-05 v1
 import { useState, useEffect } from 'react';
 import { Phone, Mail, MapPin, CheckCircle, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-
-console.log("Contact build: 2026-07-05 v1 ✅");
-
 const PRACTICE_AREAS = ['Personal Injury', 'Criminal Defense', 'Family Law', 'Immigration', 'Estate Planning', 'Business Law', 'Real Estate', 'Employment Law', 'Other'];
 const SERVICES_INTEREST = ['Local SEO Strategy', 'Local Map Pack', 'Content Authority', 'Reputation Management', 'Performance Analytics', 'Website Optimization', 'All-In-One Web Package', 'Other'];
 
@@ -18,6 +15,8 @@ const lbl = { display: 'block', color: '#aaa', fontSize: 11, fontWeight: 700, le
 const sel = { ...inp, cursor: 'pointer', appearance: 'none', WebkitAppearance: 'none' };
 
 export default function Contact() {
+  useEffect(() => { console.log("Contact build: 2026-07-05 v1"); }, []);
+
   const [form, setForm] = useState({ firm_name: '', contact_name: '', email: '', phone: '', practice_area: '', service_interest: '', growth_goal: '' });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -39,7 +38,7 @@ export default function Contact() {
           practice_area: form.practice_area,
           service_interest: form.service_interest,
           growth_goal: form.growth_goal,
-          _subject: `GNL strategy session request — ${form.firm_name || form.contact_name}`,
+          _subject: `GNL strategy session request &mdash; ${form.firm_name || form.contact_name}`,
         }),
       });
       if (res.ok) {
@@ -62,7 +61,7 @@ export default function Contact() {
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(320px,1fr))', gap: 64, alignItems: 'start' }}>
 
-            {/* Left — Info */}
+            {/* Left &mdash; Info */}
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20 }}>
                 <div style={{ height: 1, width: 48, background: '#D4A84B' }} />
@@ -95,7 +94,7 @@ export default function Contact() {
               </div>
             </motion.div>
 
-            {/* Right — Form */}
+            {/* Right &mdash; Form */}
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
               style={{ background: 'linear-gradient(145deg,#111,#0D0D0D)', border: '1px solid rgba(212,168,75,.2)', padding: '40px 36px', borderRadius: 4 }}>
               {submitted ? (

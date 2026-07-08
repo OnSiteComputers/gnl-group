@@ -1,24 +1,23 @@
-// DowlessDemo — build: 2026-07-05 v1
+// DowlessDemo build: 2026-07-05 v1
 import { useEffect } from "react";
-
-console.log("DowlessDemo build: 2026-07-05 v1 ✅");
-
-// ════════════════════════════════════════════════════════════════
-//  DOWLESS LAW — SAMPLE WEBSITE (route: /dowless-demo)
+// ====================
+//  DOWLESS LAW &mdash; SAMPLE WEBSITE (route: /dowless-demo)
 //
 //  Add to your router:
 //    <Route path="/dowless-demo" element={<DowlessDemo />} />
 //
 //  Design rule: clients facing debt are already in a dark place.
-//  The site is the daylight — warm, calm, unhurried. "Halcyon."
+//  The site is the daylight &mdash; warm, calm, unhurried. "Halcyon."
 //  All buttons are inert (demo only) except tel:/sms: links.
-// ════════════════════════════════════════════════════════════════
+// ====================
 
 const PHONE = "704-782-7529";
 
 export default function DowlessDemo() {
+  useEffect(() => { console.log("DowlessDemo build: 2026-07-05 v1"); }, []);
+
   useEffect(() => {
-    document.title = "Dowless Law Firm — Bankruptcy & Wills, Concord NC";
+    document.title = "Dowless Law Firm &mdash; Bankruptcy & Wills, Concord NC";
   }, []);
 
   const inert = (e) => e.preventDefault();
@@ -27,7 +26,7 @@ export default function DowlessDemo() {
     <div className="dd">
       <style>{css}</style>
 
-      {/* ── NAV ── */}
+      {/* ==================== NAV ==================== */}
       <nav className="dd-nav">
         <div className="dd-nav-inner">
           <span className="dd-logo">Dowless <em>Law Firm</em></span>
@@ -40,14 +39,14 @@ export default function DowlessDemo() {
         </div>
       </nav>
 
-      {/* ── HERO ── */}
+      {/* ==================== HERO ==================== */}
       <header className="dd-hero">
         <div className="dd-hero-inner">
-          <p className="dd-kicker">Concord, North Carolina · Since 1995</p>
+          <p className="dd-kicker">Concord, North Carolina &#183; Since 1995</p>
           <h1>The calls can stop.<br />The worry can stop.<br /><span>There is a way through this.</span></h1>
           <p className="dd-lede">
             If you&rsquo;re behind on bills, facing foreclosure, or being chased by
-            creditors — you are not the first person to sit in that chair, and you
+            creditors &mdash; you are not the first person to sit in that chair, and you
             won&rsquo;t be the last we help out of it. Bankruptcy law exists to give
             people a fresh start. Let&rsquo;s talk about yours. The first conversation
             is free.
@@ -56,12 +55,12 @@ export default function DowlessDemo() {
             <a className="dd-btn dd-btn-gold" href={`tel:${PHONE.replace(/-/g, "")}`}>Call {PHONE}</a>
             <a className="dd-btn dd-btn-quiet" href="mailto:kathy@dowlesslaw.com">Or email the office</a>
           </div>
-          <p className="dd-hero-note">Free consultation · Evening appointments available</p>
+          <p className="dd-hero-note">Free consultation &#183; Evening appointments available</p>
         </div>
         <div className="dd-sun" aria-hidden="true" />
       </header>
 
-      {/* ── REASSURANCE STRIP ── */}
+      {/* ==================== REASSURANCE STRIP ==================== */}
       <section className="dd-strip">
         <div className="dd-strip-inner">
           <div><strong>30 years</strong><span>practicing law for our neighbors</span></div>
@@ -71,14 +70,14 @@ export default function DowlessDemo() {
         </div>
       </section>
 
-      {/* ── BANKRUPTCY ── */}
+      {/* ==================== BANKRUPTCY ==================== */}
       <section className="dd-section" id="bankruptcy">
         <div className="dd-two">
           <div>
-            <p className="dd-kicker">Bankruptcy — Chapter 7 &amp; Chapter 13</p>
+            <p className="dd-kicker">Bankruptcy &mdash; Chapter 7 &amp; Chapter 13</p>
             <h2>Debt has rules. So does getting out of it.</h2>
             <p>
-              Filing bankruptcy isn&rsquo;t giving up — it&rsquo;s using the legal
+              Filing bankruptcy isn&rsquo;t giving up &mdash; it&rsquo;s using the legal
               protection Congress built for exactly the situation you&rsquo;re in.
               The moment your case is filed, federal law requires the collection
               calls, wage garnishments, and foreclosure proceedings to stop.
@@ -86,14 +85,14 @@ export default function DowlessDemo() {
             <p>
               Whether Chapter 7 (a clean slate) or Chapter 13 (a structured plan
               that can save your home) fits your situation, we&rsquo;ll walk through
-              it in plain English — what you keep, what it costs, and what your
+              it in plain English &mdash; what you keep, what it costs, and what your
               life looks like on the other side.
             </p>
           </div>
           <div className="dd-cardstack">
             <div className="dd-mini">
               <h3>Chapter 7</h3>
-              <p>A fresh start. Most unsecured debt — credit cards, medical bills, personal loans — discharged.</p>
+              <p>A fresh start. Most unsecured debt &mdash; credit cards, medical bills, personal loans &mdash; discharged.</p>
             </div>
             <div className="dd-mini">
               <h3>Chapter 13</h3>
@@ -101,13 +100,13 @@ export default function DowlessDemo() {
             </div>
             <div className="dd-mini dd-mini-urgent">
               <h3>Facing foreclosure now?</h3>
-              <p>Time matters more than anything. Call today — <a href={`tel:${PHONE.replace(/-/g, "")}`}>{PHONE}</a>.</p>
+              <p>Time matters more than anything. Call today &mdash; <a href={`tel:${PHONE.replace(/-/g, "")}`}>{PHONE}</a>.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── HOW IT WORKS ── */}
+      {/* ==================== HOW IT WORKS ==================== */}
       <section className="dd-section dd-steps-wrap">
         <p className="dd-kicker dd-center">What happens when you call</p>
         <h2 className="dd-center">Three steps. The first one is the hardest.</h2>
@@ -115,12 +114,12 @@ export default function DowlessDemo() {
           <div className="dd-step">
             <span className="dd-step-n">1</span>
             <h3>You call or text</h3>
-            <p>Kathy answers. You tell her a little about what&rsquo;s going on. No judgment — we&rsquo;ve heard it all, and helped through all of it.</p>
+            <p>Kathy answers. You tell her a little about what&rsquo;s going on. No judgment &mdash; we&rsquo;ve heard it all, and helped through all of it.</p>
           </div>
           <div className="dd-step">
             <span className="dd-step-n">2</span>
             <h3>We sit down, free</h3>
-            <p>You meet with Ann-Charlotte. She lays out your real options — sometimes bankruptcy, sometimes something simpler.</p>
+            <p>You meet with Ann-Charlotte. She lays out your real options &mdash; sometimes bankruptcy, sometimes something simpler.</p>
           </div>
           <div className="dd-step">
             <span className="dd-step-n">3</span>
@@ -130,13 +129,13 @@ export default function DowlessDemo() {
         </div>
       </section>
 
-      {/* ── WILLS ── */}
+      {/* ==================== WILLS ==================== */}
       <section className="dd-section" id="wills">
         <div className="dd-two dd-two-rev">
           <div className="dd-cardstack">
             <div className="dd-mini">
               <h3>Simple wills</h3>
-              <p>Your wishes, in writing, done right — usually in a single visit.</p>
+              <p>Your wishes, in writing, done right &mdash; usually in a single visit.</p>
             </div>
             <div className="dd-mini">
               <h3>Powers of attorney</h3>
@@ -151,7 +150,7 @@ export default function DowlessDemo() {
             <p className="dd-kicker">Wills &amp; Estate Planning</p>
             <h2>The kindest paperwork you&rsquo;ll ever do.</h2>
             <p>
-              A will isn&rsquo;t about you — it&rsquo;s about the people you love not
+              A will isn&rsquo;t about you &mdash; it&rsquo;s about the people you love not
               having to guess, argue, or go to court while they&rsquo;re grieving.
               It&rsquo;s an afternoon of paperwork that saves your family months of
               trouble.
@@ -164,7 +163,7 @@ export default function DowlessDemo() {
         </div>
       </section>
 
-      {/* ── ABOUT ── */}
+      {/* ==================== ABOUT ==================== */}
       <section className="dd-section dd-about" id="about">
         <div className="dd-two">
           <div>
@@ -178,7 +177,7 @@ export default function DowlessDemo() {
             </p>
             <p>
               Thirty years of practice, the last twenty-five of them right here in
-              Concord at Halcyon Square — helping neighbors through bankruptcies,
+              Concord at Halcyon Square &mdash; helping neighbors through bankruptcies,
               foreclosure defense, and estate planning with straight answers and
               steady hands.
             </p>
@@ -189,21 +188,21 @@ export default function DowlessDemo() {
         </div>
       </section>
 
-      {/* ── FINAL CTA ── */}
+      {/* ==================== FINAL CTA ==================== */}
       <section className="dd-final">
         <h2>The hardest part is the first call.<br />Make it today.</h2>
         <div className="dd-hero-ctas">
           <a className="dd-btn dd-btn-gold" href={`tel:${PHONE.replace(/-/g, "")}`}>Call {PHONE}</a>
           <a className="dd-btn dd-btn-quiet2" href="mailto:kathy@dowlesslaw.com">Email the office</a>
         </div>
-        <p className="dd-final-addr">Dowless Law Firm · 51 Cabarrus Ave W, Halcyon Square · Concord, NC 28025</p>
+        <p className="dd-final-addr">Dowless Law Firm &#183; 51 Cabarrus Ave W, Halcyon Square &#183; Concord, NC 28025</p>
       </section>
 
-      {/* ── FOOTER w/ required disclosure ── */}
+      {/* ==================== FOOTER w/ required disclosure ==================== */}
       <footer className="dd-footer">
         <p>&ldquo;We are a debt relief agency. We help people file for bankruptcy under the United States Bankruptcy Code.&rdquo;</p>
-        <p>© {new Date().getFullYear()} Dowless Law Firm · Concord, NC · <a href="#top" onClick={inert}>Privacy</a> · <a href="#top" onClick={inert}>Disclaimer</a></p>
-        <p className="dd-demo-tag">SAMPLE SITE — prepared by GNL Digital Group for review</p>
+        <p>&copy; {new Date().getFullYear()} Dowless Law Firm \u00B7 Concord, NC \u00B7 <a href="#top" onClick={inert}>Privacy</a> &#183; <a href="#top" onClick={inert}>Disclaimer</a></p>
+        <p className="dd-demo-tag">SAMPLE SITE &mdash; prepared by GNL Digital Group for review</p>
       </footer>
     </div>
   );

@@ -1,15 +1,13 @@
-// About — build: 2026-07-05 v1
+// About build: 2026-07-05 v1
+import { useEffect } from "react";
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Phone, Award, Users, Target, ArrowRight } from 'lucide-react';
 import GNLNavbar from '../components/GNLNavbar';
 import Footer from '../components/Footer';
-
-console.log("About build: 2026-07-05 v1 ✅");
-
 const VALUES = [
   { icon: Award, title: "Proven Expertise", desc: "25+ years in technology, 16 years serving the same community. We're not going anywhere." },
-  { icon: Users, title: "Personal Service", desc: "You'll work directly with Greg and Linda — no account managers, no runaround." },
+  { icon: Users, title: "Personal Service", desc: "You'll work directly with Greg and Linda &mdash; no account managers, no runaround." },
   { icon: Phone, title: "Always Available", desc: "Real people answer the phone. If you get voicemail, we'll call you back the same day." },
   { icon: Target, title: "Real Results", desc: "We focus on what matters: getting your firm found by people who need you most." },
 ];
@@ -31,6 +29,8 @@ const S = {
 };
 
 export default function About() {
+  useEffect(() => { console.log("About build: 2026-07-05 v1"); }, []);
+
   return (
     <div style={S.page}>
       <GNLNavbar />
@@ -45,7 +45,7 @@ export default function About() {
             </div>
             <h1 style={S.h1}>GNL Digital Group</h1>
             <p style={{ color: '#ccc', fontSize: 20, fontStyle: 'italic', fontFamily: "'Playfair Display',serif" }}>
-              Greg &amp; Linda — Helping Charlotte-Area Businesses Dominate Search Results
+              Greg &amp; Linda &mdash; Helping Charlotte-Area Businesses Dominate Search Results
             </p>
           </motion.div>
         </div>
@@ -61,8 +61,8 @@ export default function About() {
             <h2 style={{ ...S.h2, marginBottom: 36 }}>How GNL Started</h2>
             <div style={{ textAlign: 'left', maxWidth: 720, margin: '0 auto' }}>
               {[
-                "It all happened on a Saturday morning in a mall parking lot. Greg was delivering an iMac back to a lawyer customer — someone who'd been trusting On-Site Computer Service for years.",
-                "Greg mentioned he'd just redesigned his own website. The attorney replied that he'd been paying a big marketing agency to manage his website and SEO — and wasn't happy with the results. Then the lawyer asked Greg, \"What do you know about SEO?\"",
+                "It all happened on a Saturday morning in a mall parking lot. Greg was delivering an iMac back to a lawyer customer \u2014 someone who'd been trusting On-Site Computer Service for years.",
+                "Greg mentioned he'd just redesigned his own website. The attorney replied that he'd been paying a big marketing agency to manage his website and SEO \u2014 and wasn't happy with the results. Then the lawyer asked Greg, \"What do you know about SEO?\"",
                 "Greg's response was simple: \"I've been in business for 25+ years and have 170+ 5-star Google reviews. What does that tell you?\"",
                 null, // special paragraph
                 null, // special paragraph 2
@@ -73,7 +73,7 @@ export default function About() {
                 After taking a look at what the attorney was getting, Greg realized the agency wasn't delivering results. That moment sparked something: <strong style={{ color: '#D4A84B' }}>local businesses were being underserved</strong> by big marketing agencies.
               </p>
               <p style={{ ...S.body, marginBottom: 0 }}>
-                GNL Digital Group was born from that conversation. Greg and Linda decided to offer what those agencies don't: <strong style={{ color: '#D4A84B' }}>personalized service, real expertise, and honest pricing</strong> — right here in the Charlotte area.
+                GNL Digital Group was born from that conversation. Greg and Linda decided to offer what those agencies don't: <strong style={{ color: '#D4A84B' }}>personalized service, real expertise, and honest pricing</strong> &mdash; right here in the Charlotte area.
               </p>
             </div>
 

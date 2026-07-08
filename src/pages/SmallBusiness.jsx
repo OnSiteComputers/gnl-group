@@ -1,12 +1,10 @@
-// SmallBusiness — build: 2026-07-05 v1
+// SmallBusiness build: 2026-07-05 v1
+import { useEffect } from "react";
 import { Phone, BarChart3, Users, Globe, Star, TrendingUp, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-
-console.log("SmallBusiness build: 2026-07-05 v1 ✅");
-
 const HERO_BG = 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1920&q=80';
 
 const SERVICES = [
@@ -24,6 +22,8 @@ const svcCard = {
 };
 
 export default function SmallBusiness() {
+  useEffect(() => { console.log("SmallBusiness build: 2026-07-05 v1"); }, []);
+
   return (
     <div style={{ background: '#080808', color: '#fff', fontFamily: "'Inter',sans-serif", minHeight: '100vh' }}>
       <Navbar />

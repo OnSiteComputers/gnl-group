@@ -1,20 +1,17 @@
-// CanesLive — build: 2026-07-05 v1
+// CanesLive build: 2026-07-05 v1
 import { useState, useEffect, useCallback, useMemo, useRef } from "react";
-
-console.log("CanesLive build: 2026-07-05 v1 ✅");
-
 // ============================================================
-//  CANES LIVE v2 — private family board for route /canes
+//  CANES LIVE v2 &mdash; private family board for route /canes
 //
 //  WHAT CHANGED vs v1:
 //   - Series record now comes from the Worker (live NHL feed).
-//     SERIES_OVERRIDE is gone — never manually update it again.
+//     SERIES_OVERRIDE is gone &mdash; never manually update it again.
 //   - Countdown now targets the real next game from the Worker.
 //     NEXT_GAME is gone too.
 //   - Removed the direct browser fetch to api-web.nhle.com that
 //     was getting CORS-blocked (the reason the series card froze).
 //   - If the Canes clinch, the countdown card flips to a
-//     STANLEY CUP CHAMPIONS banner. 🏆
+//     STANLEY CUP CHAMPIONS banner. \u{1F3C6}
 //
 //  REQUIRES: the v2 Cloudflare Worker (canes-worker-v2.js)
 //  deployed at WORKER_URL below.
@@ -60,6 +57,8 @@ function getCountdown(iso) {
 }
 
 export default function CanesLive() {
+  useEffect(() => { console.log("CanesLive build: 2026-07-05 v1"); }, []);
+
   const [game, setGame] = useState(MANUAL_DEFAULT);
   const [liveFeed] = useState(true);
   const [lastUpdated, setLastUpdated] = useState(null);
@@ -75,7 +74,7 @@ export default function CanesLive() {
   const hornReadyRef = useRef(false);
   const previousCanesScoreRef = useRef(null);
 
-  // Countdown ticker — always aimed at the real next game from the feed.
+  // Countdown ticker &mdash; always aimed at the real next game from the feed.
   useEffect(() => {
     if (!nextGameInfo?.startTimeUTC) {
       setCountdown(null);
@@ -251,7 +250,7 @@ export default function CanesLive() {
     return null;
   }, [game, seriesFeed, status.isFinal]);
 
-  // Countdown label, e.g. "GAME 6 · AT VGK · T-Mobile Arena"
+  // Countdown label, e.g. "GAME 6 \u00B7 AT VGK \u00B7 T-Mobile Arena"
   const nextGameLabel = useMemo(() => {
     if (!nextGameInfo) return "";
     const parts = [];
@@ -259,7 +258,7 @@ export default function CanesLive() {
     const opp = nextGameInfo.oppAbbrev || nextGameInfo.oppName;
     if (opp) parts.push(`${nextGameInfo.canesAreHome ? "VS" : "AT"} ${opp}`);
     if (nextGameInfo.venue) parts.push(nextGameInfo.venue);
-    return parts.join(" · ");
+    return parts.join(" \u00B7 ");
   }, [nextGameInfo]);
 
   const periodLabel = () => {
@@ -291,7 +290,7 @@ export default function CanesLive() {
 
       <header style={styles.header}>
         <StormFlag />
-        <div style={styles.eyebrow}>PRIVATE FAMILY BOARD · TAKE WARNING</div>
+        <div style={styles.eyebrow}>PRIVATE FAMILY BOARD &#183; TAKE WARNING</div>
         <h1 style={styles.wordmark}>
           <span style={{ color: RED }}>CAROLINA</span>{" "}
           <span style={{ color: BONE }}>HURRICANES</span>
@@ -355,19 +354,19 @@ export default function CanesLive() {
             />
           </div>
 
-          {status.isFinal && status.canesWinning && <div style={styles.winBanner}>CANES WIN 🚨</div>}
+          {status.isFinal && status.canesWinning && <div style={styles.winBanner}>CANES WIN &#128680;</div>}
           {status.isLiveGame && status.canesWinning && <div style={styles.leadBanner}>CANES LEAD</div>}
           {status.canesLost && <div style={styles.lossBanner}>On to the next one.</div>}
         </section>
 
         <section style={styles.grid}>
           <div style={styles.card}>
-            <div style={styles.cardTitle}>SERIES · BEST OF 7</div>
+            <div style={styles.cardTitle}>SERIES &#183; BEST OF 7</div>
             {seriesFeed ? (
               <>
                 <div style={styles.seriesRow}>
                   <SeriesTeam label="CANES" wins={seriesFeed.canes} accent={RED} neededToWin={seriesFeed.neededToWin} />
-                  <div style={styles.seriesDash}>—</div>
+                  <div style={styles.seriesDash}>&mdash;</div>
                   <SeriesTeam label={seriesFeed.oppName} wins={seriesFeed.opp} accent={SILVER} neededToWin={seriesFeed.neededToWin} />
                 </div>
                 <div style={styles.seriesNote}>
@@ -385,9 +384,9 @@ export default function CanesLive() {
 
           <div style={styles.card}>
             {cupWon ? (
-              <div style={styles.cupBanner}>🏆 STANLEY CUP CHAMPIONS 🏆</div>
+              <div style={styles.cupBanner}>&#127942; STANLEY CUP CHAMPIONS &#127942;</div>
             ) : status.isLiveGame || (countdown && countdown.live) ? (
-              <div style={styles.cdLive}>🚨 GAME TIME 🚨</div>
+              <div style={styles.cdLive}>&#128680; GAME TIME &#128680;</div>
             ) : nextGameInfo && countdown ? (
               <>
                 <div style={styles.cardTitle}>NEXT PUCK DROP</div>
@@ -436,8 +435,8 @@ export default function CanesLive() {
           <div style={styles.hornStatus}>
             {hornReady
               ? hornPlaying
-                ? "GOAL HORN PLAYING · plays one time"
-                : "Goal horn armed — it will sound one time when the Canes score."
+                ? "GOAL HORN PLAYING \u00B7 plays one time"
+                : "Goal horn armed &mdash; it will sound one time when the Canes score."
               : ""}
           </div>
 
@@ -448,8 +447,8 @@ export default function CanesLive() {
       </main>
 
       <footer style={styles.footer}>
-        <div>GNL · private board</div>
-        <div style={styles.footerSlogan}>BUNCH OF JERKS 🚨</div>
+        <div>GNL &#183; private board</div>
+        <div style={styles.footerSlogan}>BUNCH OF JERKS &#128680;</div>
       </footer>
     </div>
   );
@@ -466,7 +465,7 @@ function TeamScore({ hero = false, label, score, sog, live, accent, winning = fa
           textShadow: winning ? `0 0 36px rgba(204, 0, 0, 0.72)` : "none",
         }}
       >
-        {score ?? "–"}
+        {score ?? "&ndash;"}
       </div>
       {live && <div style={hero ? styles.sog : styles.sogOpp}>{sog ?? 0} SOG</div>}
     </div>

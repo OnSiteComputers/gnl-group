@@ -1,3 +1,5 @@
+// WarrenProposal build: 2026-07-07 v10
+import { useEffect } from "react";
 // WarrenProposal.jsx &mdash; GNL Digital Group &mdash; Warren Family Law proposal
 // build: 2026-07-07 v10 [OK]  (resynced to v4 agreement: 3-mo minimum then month-to-month,
 //   tiered $3,328/$3,500, phones-with-early-cancel, pay link removed, unconditional card bonus,
@@ -149,6 +151,8 @@ function SectionHeader({ eyebrow, title, children, wide }) {
 }
 
 export default function WarrenProposal() {
+  useEffect(() => { console.log("WarrenProposal build: 2026-07-07 v10"); }, []);
+
   return (
     <div style={{ minHeight: '100vh', background: palette.navy, color: palette.text, fontFamily: "'Source Sans 3', system-ui, -apple-system, Segoe UI, sans-serif" }}>
       <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700;800&display=swap" rel="stylesheet" />

@@ -1,12 +1,13 @@
+// WJHomesDemo build: 2026-07-07 v1
 // WJHomesDemo.jsx
-// W.J. Homes, LLC — one-page sample website (demo for Wesley Joyner Jr.)
-// Build: 2026-07-06 v01 ✅
+// W.J. Homes, LLC &mdash; one-page sample website (demo for Wesley Joyner Jr.)
+// Build: 2026-07-06 v01 \u2705
 // Route suggestion: /wj-homes-demo
-// NOTE: This is Wesley's *own brand* look — warm, clean, photo-forward. Not the GNL black/gold system.
+// NOTE: This is Wesley's *own brand* look &mdash; warm, clean, photo-forward. Not the GNL black/gold system.
 // Hero image: /wj-hero.jpg  (place in the repo's public/ folder, or swap the path to wherever assets live)
-// Gallery currently reuses the hero as placeholder tiles — replace GALLERY paths with more of Wesley's home photos.
+// Gallery currently reuses the hero as placeholder tiles &mdash; replace GALLERY paths with more of Wesley's home photos.
 
-import React from "react";
+import React, { useEffect } from "react";
 
 // ---- brand tokens (builder aesthetic) ----
 const CHARCOAL = "#22262B";   // dark roof/stone tone from the house
@@ -26,6 +27,8 @@ const PHONE = "704.791.5127";
 const PHONE_TEL = "7047915127";
 
 export default function WJHomesDemo() {
+  useEffect(() => { console.log("WJHomesDemo build: 2026-07-07 v1"); }, []);
+
   return (
     <div style={{ fontFamily: "'Inter','Helvetica Neue',Arial,sans-serif", color: TEXT, background: CREAM, WebkitFontSmoothing: "antialiased" }}>
 
@@ -57,13 +60,13 @@ export default function WJHomesDemo() {
 
         <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: "0 clamp(20px,5vw,56px) clamp(40px,7vh,74px)" }}>
           <div style={{ color: WARM, fontSize: 13, fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase", marginBottom: 16, textShadow: "0 1px 10px rgba(0,0,0,.5)" }}>
-            Custom Homes · Charlotte Metro · Est. 1998
+            Custom Homes &#183; Charlotte Metro &#183; Est. 1998
           </div>
           <h1 style={{ margin: 0, color: CREAM, fontFamily: "'Playfair Display',Georgia,serif", fontWeight: 700, fontSize: "clamp(34px,6.6vw,72px)", lineHeight: 1.02, maxWidth: 900, textShadow: "0 2px 24px rgba(0,0,0,.5)" }}>
             Homes built to be lived in for generations.
           </h1>
           <p style={{ color: "#EDE9E2", fontSize: "clamp(15px,2vw,19px)", lineHeight: 1.55, maxWidth: 560, marginTop: 20, textShadow: "0 1px 14px rgba(0,0,0,.55)" }}>
-            Twenty-five years of custom homebuilding across the Charlotte metro —
+            Twenty-five years of custom homebuilding across the Charlotte metro &mdash;
             craftsmanship you can stand on.
           </p>
           <div style={{ marginTop: 30, display: "flex", gap: 14, flexWrap: "wrap" }}>
@@ -83,13 +86,13 @@ export default function WJHomesDemo() {
           <div>
             <p style={pBody}>
               Wesley Joyner started framing homes and never stopped raising the bar. Today,
-              W.J. Homes builds complete custom homes across the Charlotte metro — the kind
+              W.J. Homes builds complete custom homes across the Charlotte metro &mdash; the kind
               of work that gets passed down by word of mouth because the craftsmanship
               speaks for itself.
             </p>
             <p style={pBody}>
               Licensed general contractor. Twenty-five-plus years in the trade. Every home
-              built like it's going to stand for the next hundred years — because it is.
+              built like it's going to stand for the next hundred years &mdash; because it is.
             </p>
           </div>
         </div>
@@ -109,7 +112,7 @@ export default function WJHomesDemo() {
           <div style={{ ...eyebrow, color: WARM }}>Selected work</div>
           <h2 style={{ ...h2, color: CREAM, maxWidth: 640 }}>Craftsmanship that shows up in the details.</h2>
           <p style={{ ...pBody, color: "#C9CBCF", maxWidth: 560, marginTop: 8 }}>
-            A look at the homes we build — stone, siding, and finish work done right.
+            A look at the homes we build &mdash; stone, siding, and finish work done right.
           </p>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px,1fr))", gap: 16, marginTop: 40 }}>
@@ -120,7 +123,7 @@ export default function WJHomesDemo() {
             ))}
           </div>
           <p style={{ color: "#8A8D93", fontSize: 12.5, marginTop: 18, fontStyle: "italic" }}>
-            Sample layout — swap in more photos of Wesley's homes to fill the gallery.
+            Sample layout &mdash; swap in more photos of Wesley's homes to fill the gallery.
           </p>
         </div>
       </section>
@@ -130,9 +133,9 @@ export default function WJHomesDemo() {
         <div style={eyebrow}>What we build</div>
         <h2 style={{ ...h2, maxWidth: 620 }}>From the foundation to the final trim.</h2>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px,1fr))", gap: 2, marginTop: 44, border: `1px solid ${LINE}`, borderRadius: 8, overflow: "hidden", background: LINE }}>
-          <Service title="Custom Homes" body="Built from your plans or ours — start to finish, on your lot." />
+          <Service title="Custom Homes" body="Built from your plans or ours &mdash; start to finish, on your lot." />
           <Service title="Additions" body="Seamless additions that look like they were always part of the home." />
-          <Service title="Framing & Structure" body="Where it all started — framing done right is a home that lasts." />
+          <Service title="Framing & Structure" body="Where it all started &mdash; framing done right is a home that lasts." />
           <Service title="Finish Work" body="Stone, siding, trim, and the details that separate good from great." />
         </div>
       </section>
@@ -143,7 +146,7 @@ export default function WJHomesDemo() {
           <div style={eyebrow}>Let's build</div>
           <h2 style={{ ...h2, fontSize: "clamp(28px,4.6vw,44px)" }}>Ready to talk about your home?</h2>
           <p style={{ ...pBody, maxWidth: 480, margin: "14px auto 0" }}>
-            Give Wesley a call. No pressure, no sales pitch — just an honest conversation
+            Give Wesley a call. No pressure, no sales pitch &mdash; just an honest conversation
             about what you want to build.
           </p>
           <a href={`tel:${PHONE_TEL}`} style={{ display: "inline-block", marginTop: 30, fontFamily: "'Playfair Display',Georgia,serif", fontSize: "clamp(26px,4vw,40px)", color: CHARCOAL, textDecoration: "none", fontWeight: 700, letterSpacing: "0.01em" }}>
@@ -160,9 +163,9 @@ export default function WJHomesDemo() {
         <div style={{ color: CREAM, fontFamily: "'Playfair Display',Georgia,serif", fontWeight: 700, fontSize: 18, marginBottom: 8 }}>
           W.J. Homes, LLC<span style={{ color: WARM }}>.</span>
         </div>
-        <div>Custom Homes · Charlotte Metro · Est. 1998 · {PHONE}</div>
+        <div>Custom Homes &#183; Charlotte Metro &#183; Est. 1998 &#183; {PHONE}</div>
         <div style={{ marginTop: 14, fontSize: 11.5, color: "#71757B" }}>
-          Sample website by GNL Digital Group · demo only
+          Sample website by GNL Digital Group &#183; demo only
         </div>
       </footer>
     </div>

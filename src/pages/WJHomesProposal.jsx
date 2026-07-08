@@ -1,21 +1,22 @@
+// WJHomesProposal build: 2026-07-07 v1
 // WJHomesProposal.jsx
-// GNL Digital Group — W.J. Homes, LLC barter proposal page
-// Build: 2026-07-06 v04 ✅
+// GNL Digital Group &mdash; W.J. Homes, LLC barter proposal page
+// Build: 2026-07-06 v04 \u2705
 // Route: /wj-homes-proposal
-// Design system: "Quiet Authority" — INK #0B0B0C · GOLD #C8A85A · BONE #F5F3EE
+// Design system: "Quiet Authority" &mdash; INK #0B0B0C \u00B7 GOLD #C8A85A \u00B7 BONE #F5F3EE
 //
-// v04: added two links to the live demo site (www.gnldigitalgroup.com/wj-homes-demo) — hero + pre-sign CTA.
-// DEAL (v03 — corrected pricing):
+// v04: added two links to the live demo site (www.gnldigitalgroup.com/wj-homes-demo) &mdash; hero + pre-sign CTA.
+// DEAL (v03 &mdash; corrected pricing):
 //   Greg's side: full managed web service (website + SEO + GBP + support + VoIP, all-in monthly)
 //                + 2x GRP2636 phones.
 //                - $5,000 startup: WAIVED (covered by trade)
 //                - First 12 months of service: FREE (covered by trade)
 //                - After year one: $2,500/mo friend rate (normal rate $3,500/mo)
-//   Wesley's side: framing labor + ALL materials (lumber, LVL, slider, basement material) —
+//   Wesley's side: framing labor + ALL materials (lumber, LVL, slider, basement material) &mdash;
 //                  EXCEPT the two windows, which Greg supplies.
 //   NOTE: $3,500/mo is the ALL-IN managed service (VoIP is one component, NOT a standalone $42k line).
 
-import React from "react";
+import React, { useEffect } from "react";
 
 const INK = "#0B0B0C";
 const GOLD = "#C8A85A";
@@ -24,6 +25,8 @@ const INK_SOFT = "#1A1A1C";
 const MUTED = "#8C8A82";
 
 export default function WJHomesProposal() {
+  useEffect(() => { console.log("WJHomesProposal build: 2026-07-07 v1"); }, []);
+
   return (
     <div
       style={{
@@ -53,7 +56,7 @@ export default function WJHomesProposal() {
             fontWeight: 600,
           }}
         >
-          GNL Digital Group · Proposal
+          GNL Digital Group &#183; Proposal
         </div>
 
         <h1
@@ -68,7 +71,7 @@ export default function WJHomesProposal() {
         >
           W.J. Homes, LLC
           <span style={{ display: "block", color: GOLD, fontStyle: "italic", fontSize: "0.7em", marginTop: 10 }}>
-            built since 1998 — now built to be found
+            built since 1998 &mdash; now built to be found
           </span>
         </h1>
 
@@ -81,10 +84,10 @@ export default function WJHomesProposal() {
             margin: "0 0 8px",
           }}
         >
-          Wesley — you build custom homes people brag about. But when someone gets your
+          Wesley &mdash; you build custom homes people brag about. But when someone gets your
           name and searches for it, there's nothing there. No website, no Google listing,
           no reviews. This fixes that. And since I need framing done, we do it as a
-          straight trade — your build for mine.
+          straight trade &mdash; your build for mine.
         </p>
 
         <a
@@ -107,7 +110,7 @@ export default function WJHomesProposal() {
             boxShadow: "0 4px 20px rgba(200,168,90,.22)",
           }}
         >
-          See your sample website →
+          See your sample website &rarr;
         </a>
         <div style={{ fontSize: 12.5, color: MUTED, marginTop: 10 }}>
           Take a look at a live one-page site built with your name and your work.
@@ -115,7 +118,7 @@ export default function WJHomesProposal() {
 
         <div style={{ marginTop: 34, display: "flex", gap: 28, flexWrap: "wrap", fontSize: 13, color: MUTED }}>
           <span>Prepared for <strong style={{ color: BONE }}>Wesley Joyner Jr.</strong></span>
-          <span>From <strong style={{ color: BONE }}>Greg Blair · GNL Digital Group</strong></span>
+          <span>From <strong style={{ color: BONE }}>Greg Blair &#183; GNL Digital Group</strong></span>
           <span>704.594.5826</span>
         </div>
       </header>
@@ -126,7 +129,7 @@ export default function WJHomesProposal() {
           A custom-home builder with 25+ years in the Charlotte metro and{" "}
           <em style={{ color: BONE }}>zero</em> web presence is leaving real work on the
           table. Here's what happens today: someone gets referred to you, they pull out
-          their phone, they search "W.J. Homes Charlotte" or "Wesley Joyner builder" — and
+          their phone, they search "W.J. Homes Charlotte" or "Wesley Joyner builder" &mdash; and
           they find nothing. To a client about to spend hundreds of thousands on a home,
           invisible online reads as small-time, even when the work is the best in the area.
         </p>
@@ -134,7 +137,7 @@ export default function WJHomesProposal() {
           The Google Business Profile is the piece most builders sleep on. It's what puts
           you on the map, lets past clients leave reviews, and makes you show up when
           somebody searches "custom home builder near me." That's lead flow you're already
-          earning through referrals — you're just not catching it.
+          earning through referrals &mdash; you're just not catching it.
         </p>
       </Section>
 
@@ -143,11 +146,11 @@ export default function WJHomesProposal() {
         <ul style={ulStyle}>
           <LineItem
             head="Custom website"
-            body="A clean, professional site built from the ground up — your work, your homes, your reputation, front and center. Fast, mobile-first, no template look."
+            body="A clean, professional site built from the ground up &mdash; your work, your homes, your reputation, front and center. Fast, mobile-first, no template look."
           />
           <LineItem
             head="Local SEO"
-            body="Optimized so you rank when people in the metro search for custom home builders — not buried on page four."
+            body="Optimized so you rank when people in the metro search for custom home builders &mdash; not buried on page four."
           />
           <LineItem
             head="Google Business Profile"
@@ -158,14 +161,14 @@ export default function WJHomesProposal() {
             body="Professional VoIP handsets for the home office where your wife works. I buy them, set them up, and they're yours to keep."
           />
           <LineItem
-            head="Full managed service — first year free"
-            body="Everything handled together: hosting, SEO upkeep, updates, support, and your VoIP phone service — one all-in service, not a stack of separate bills. The first 12 months are covered by the trade; after that it's $2,500/mo (my normal is $3,500)."
+            head="Full managed service &mdash; first year free"
+            body="Everything handled together: hosting, SEO upkeep, updates, support, and your VoIP phone service &mdash; one all-in service, not a stack of separate bills. The first 12 months are covered by the trade; after that it's $2,500/mo (my normal is $3,500)."
           />
         </ul>
       </Section>
 
       {/* ============ THE VALUE ============ */}
-      <Section n="03" title="What you're getting — and saving">
+      <Section n="03" title="What you're getting &mdash; and saving">
         <p style={pStyle}>
           Straight numbers, no games. Here's my normal pricing, and here's what this trade
           knocks off it:
@@ -179,22 +182,22 @@ export default function WJHomesProposal() {
             marginTop: 8,
           }}
         >
-          <PriceRow label="Startup — build, SEO, Google Profile setup" value="$5,000" strike note="waived" />
-          <PriceRow label="First 12 months of managed service" value="$3,500/mo" strike note="free — 1 year" />
+          <PriceRow label="Startup &mdash; build, SEO, Google Profile setup" value="$5,000" strike note="waived" />
+          <PriceRow label="First 12 months of managed service" value="$3,500/mo" strike note="free &mdash; 1 year" />
           <PriceRow label="Two GRP2636 phones" value="included" />
-          <PriceRow label="After year one — your rate" value="$2,500/mo" note="normally $3,500" />
+          <PriceRow label="After year one &mdash; your rate" value="$2,500/mo" note="normally $3,500" />
           <PriceRow label="Your first-year savings" value="$47,000" total />
         </div>
         <p style={{ ...pStyle, marginTop: 22 }}>
-          The <strong style={{ color: BONE }}>$3,500/mo is the all-in service</strong> —
+          The <strong style={{ color: BONE }}>$3,500/mo is the all-in service</strong> &mdash;
           website hosting, SEO, updates, support, and your VoIP phone service, all together.
           Not a phone bill. It's the whole thing handled.
         </p>
         <p style={pStyle}>
           So the trade covers your <strong style={{ color: BONE }}>$5,000 startup</strong>{" "}
-          and a <strong style={{ color: BONE }}>full free year</strong> — that's{" "}
+          and a <strong style={{ color: BONE }}>full free year</strong> &mdash; that's{" "}
           <strong style={{ color: GOLD }}>$47,000</strong> off. After the free year, you stay
-          on at <strong style={{ color: BONE }}>$2,500/mo</strong> instead of my usual $3,500 —
+          on at <strong style={{ color: BONE }}>$2,500/mo</strong> instead of my usual $3,500 &mdash;
           a grand a month less, for as long as you're with me.
         </p>
       </Section>
@@ -202,21 +205,21 @@ export default function WJHomesProposal() {
       {/* ============ WHAT WESLEY PROVIDES ============ */}
       <Section n="04" title="What you'll build for me">
         <p style={pStyle}>
-          The framing on my rear addition and basement — and you carry the materials.
+          The framing on my rear addition and basement &mdash; and you carry the materials.
           Here's the split, plain:
         </p>
         <ul style={ulStyle}>
           <LineItem
             head="Rear addition + deck (dried-in)"
-            body="Enclose the new room off the back, frame the elevated deck cantilevered off the existing beam, roof over the room, dried-in with paper on. No new posts in the yard — it works off the two 6×6s already in the ground and the LVL."
+            body="Enclose the new room off the back, frame the elevated deck cantilevered off the existing beam, roof over the room, dried-in with paper on. No new posts in the yard &mdash; it works off the two 6\u00D76s already in the ground and the LVL."
           />
           <LineItem
             head="Basement framing"
             body="Frame the bathroom, closets, and partition walls per the plan."
           />
           <LineItem
-            head="Materials — on you"
-            body="All of it: framing lumber, the structural LVL, the slider, basement material — you supply and buy. The only thing I provide is the two windows."
+            head="Materials &mdash; on you"
+            body="All of it: framing lumber, the structural LVL, the slider, basement material &mdash; you supply and buy. The only thing I provide is the two windows."
           />
         </ul>
       </Section>
@@ -233,9 +236,9 @@ export default function WJHomesProposal() {
           }}
         >
           <p style={{ ...pStyle, marginTop: 0 }}>
-            I'm covering your $5,000 startup and a full free year — $47,000 off my normal
+            I'm covering your $5,000 startup and a full free year &mdash; $47,000 off my normal
             pricing. You're putting your crew, your craftsmanship, and the materials on the
-            table. That's two businesses making a real trade — not me doing you a favor, and
+            table. That's two businesses making a real trade &mdash; not me doing you a favor, and
             not you doing me one. Both sides bring something that costs them.
           </p>
           <p style={{ ...pStyle, marginBottom: 0 }}>
@@ -248,12 +251,12 @@ export default function WJHomesProposal() {
       {/* ============ TERMS ============ */}
       <Section n="06" title="The terms, plain">
         <ul style={ulStyle}>
-          <TermRow label="Web package" value="Website + local SEO + Google Business Profile + 2× GRP2636 + full managed service (hosting, support, VoIP all-in)" />
-          <TermRow label="Startup" value="$5,000 — waived, covered by the trade" />
-          <TermRow label="First year" value="Free — 12 months of managed service covered by the trade" />
+          <TermRow label="Web package" value="Website + local SEO + Google Business Profile + 2\u00D7 GRP2636 + full managed service (hosting, support, VoIP all-in)" />
+          <TermRow label="Startup" value="$5,000 &mdash; waived, covered by the trade" />
+          <TermRow label="First year" value="Free &mdash; 12 months of managed service covered by the trade" />
           <TermRow label="After year one" value="$2,500/mo friend rate (normally $3,500/mo)" />
-          <TermRow label="Framing" value="Rear addition/deck (dried-in) + basement framing — labor by Wesley" />
-          <TermRow label="Materials" value="Wesley supplies ALL materials incl. the LVL — except the two windows, which Greg supplies" />
+          <TermRow label="Framing" value="Rear addition/deck (dried-in) + basement framing &mdash; labor by Wesley" />
+          <TermRow label="Materials" value="Wesley supplies ALL materials incl. the LVL &mdash; except the two windows, which Greg supplies" />
           <TermRow label="Phones" value="Purchased by Greg, included in the deal, Wesley's to keep" />
         </ul>
       </Section>
@@ -300,7 +303,7 @@ export default function WJHomesProposal() {
               whiteSpace: "nowrap",
             }}
           >
-            View your sample site →
+            View your sample site &rarr;
           </a>
         </div>
       </section>
@@ -322,12 +325,12 @@ export default function WJHomesProposal() {
             borderTop: `1px solid ${INK_SOFT}`,
           }}
         >
-          <SignBlock who="Wesley Joyner Jr. — W.J. Homes, LLC" />
-          <SignBlock who="Greg Blair — GNL Digital Group" />
+          <SignBlock who="Wesley Joyner Jr. &mdash; W.J. Homes, LLC" />
+          <SignBlock who="Greg Blair &mdash; GNL Digital Group" />
         </div>
 
         <p style={{ fontSize: 12, color: MUTED, marginTop: 48, lineHeight: 1.6 }}>
-          GNL Digital Group · Concord, NC · 704.594.5826 · gnldigitalgroup.com
+          GNL Digital Group &#183; Concord, NC &#183; 704.594.5826 &#183; gnldigitalgroup.com
           <br />
           This is a good-faith proposal between friends, not a formal contract. Scope and
           timing to be confirmed together.

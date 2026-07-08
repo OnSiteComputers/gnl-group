@@ -1,18 +1,17 @@
-// ForLinda — build: 2026-07-05 v1
+// ForLinda build: 2026-07-05 v1
 import { useEffect, useState } from "react";
-
-console.log("ForLinda build: 2026-07-05 v1 ✅");
-
-// ════════════════════════════════════════════════════════════════
+// ====================
 //  FOR LINDA  (route: /linda)
 //
 //  Add to your router:
 //    <Route path="/linda" element={<ForLinda />} />
 //
 //  A private page. Built fast, meant forever.
-// ════════════════════════════════════════════════════════════════
+// ====================
 
 export default function ForLinda() {
+  useEffect(() => { console.log("ForLinda build: 2026-07-05 v1"); }, []);
+
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -30,7 +29,7 @@ export default function ForLinda() {
       </div>
 
       <main className={`fl-wrap ${show ? "in" : ""}`}>
-        <p className="fl-eyebrow">FROM GREG &nbsp;·&nbsp; TO MY WIFE</p>
+        <p className="fl-eyebrow">FROM GREG &nbsp;&#183;&nbsp; TO MY WIFE</p>
 
         <h1>
           Linda,<br />

@@ -1,16 +1,16 @@
-// WhoWeHelpRealtors — build: 2026-07-05 v1
+// WhoWeHelpRealtors build: 2026-07-05 v1
+import { useEffect } from "react";
 import { Home } from 'lucide-react';
 import WhoWeHelpPage from '../components/WhoWeHelpPage';
-
-console.log("WhoWeHelpRealtors build: 2026-07-05 v1 ✅");
-
 export default function WhoWeHelpRealtors() {
+  useEffect(() => { console.log("WhoWeHelpRealtors build: 2026-07-05 v1"); }, []);
+
   return (
     <WhoWeHelpPage
       icon={Home}
       headline="Digital Marketing for Realtors"
-      subheadline="Get in front of buyers and sellers searching for agents — in Charlotte and across the Carolinas."
-      intro="In real estate, visibility is everything. GNL Digital Group helps realtors and real estate teams dominate local search results, build a standout online reputation, and turn website visitors into signed clients — so you can focus on closing deals."
+      subheadline="Get in front of buyers and sellers searching for agents &mdash; in Charlotte and across the Carolinas."
+      intro="In real estate, visibility is everything. GNL Digital Group helps realtors and real estate teams dominate local search results, build a standout online reputation, and turn website visitors into signed clients &mdash; so you can focus on closing deals."
       benefits={[
         { title: 'Local SEO That Generates Leads', desc: 'We rank your listings and agent profile at the top of Google when buyers and sellers search locally.' },
         { title: 'Reputation That Wins Listings', desc: 'More 5-star reviews mean more trust at the door. We help you earn and showcase them consistently.' },
@@ -24,7 +24,7 @@ export default function WhoWeHelpRealtors() {
         { title: 'Website Design', desc: 'Realtor websites built for credibility, lead capture, and mobile performance.' },
         { title: 'Review Management', desc: 'Systematic approach to growing your Google review count and responding professionally.' },
         { title: 'Content Marketing', desc: 'Neighborhood guides and landing pages that rank and establish your local authority.' },
-        { title: 'All-In-One Web Package', desc: 'Complete website rebuild, domain registration, and hosting with ongoing management — one simple monthly fee.' },
+        { title: 'All-In-One Web Package', desc: 'Complete website rebuild, domain registration, and hosting with ongoing management &mdash; one simple monthly fee.' },
         { title: 'Analytics & Reporting', desc: "Monthly reports showing exactly where your leads come from and what's working." },
       ]}
       cta="Ready to Grow Your Real Estate Business?"

@@ -1,23 +1,20 @@
-// DowlessProposal — build: 2026-07-05 v1
+// DowlessProposal build: 2026-07-05 v1
 import { useEffect } from "react";
-
-console.log("DowlessProposal build: 2026-07-05 v1 ✅");
-
-// ════════════════════════════════════════════════════════════════
-//  DOWLESS LAW FIRM — PROPOSAL PAGE  (route: /dowless)
+// ====================
+//  DOWLESS LAW FIRM &mdash; PROPOSAL PAGE  (route: /dowless)
 //
 //  Add to your router:
 //    <Route path="/dowless" element={<DowlessProposal />} />
 //
-//  ── PER-CLIENT SETTINGS ── edit these, then republish ──
-//  Pricing below is SUGGESTED — change the numbers before sending.
+//  ==================== PER-CLIENT SETTINGS ==================== edit these, then republish ====================
+//  Pricing below is SUGGESTED &mdash; change the numbers before sending.
 //  When Ann-Charlotte says yes, paste real links into SIGN/PAY.
-// ════════════════════════════════════════════════════════════════
-const FIRM_NAME = "Dowless Law Firm, P.C.";      // site says P.C. — confirm vs LLC
+// ====================
+const FIRM_NAME = "Dowless Law Firm, P.C.";      // site says P.C. \u2014 confirm vs LLC
 const CLIENT_FIRST = "Ann-Charlotte";
-const SITE_PRICE = "$2,950";                      // SUGGESTED — one-time, new website build
-const CARE_MONTHLY = "$200";                      // /mo — hosting + domain + email + change requests, 12-mo term
-const OFFICE_PLAN = "$400";                       // /mo after year one — phones + 2 hrs computer work + VPN + support
+const SITE_PRICE = "$2,950";                      // SUGGESTED \u2014 one-time, new website build
+const CARE_MONTHLY = "$200";                      // /mo \u2014 hosting + domain + email + change requests, 12-mo term
+const OFFICE_PLAN = "$400";                       // /mo after year one \u2014 phones + 2 hrs computer work + VPN + support
 const ONSITE_HOURS = "2 hours";                   // monthly On-Site computer work included
 const PHONE_COUNT = "4";
 const PHONE_MODEL = "Grandstream GRP2636 IP desk phones";
@@ -27,28 +24,30 @@ const SIGN_URL = "PASTE_SIGNING_LINK_WHEN_READY";
 const PAY_URL = "PASTE_PAYMENT_LINK_WHEN_READY";
 
 export default function DowlessProposal() {
+  useEffect(() => { console.log("DowlessProposal build: 2026-07-05 v1"); }, []);
+
   useEffect(() => {
-    document.title = "A proposal for Dowless Law Firm — GNL Digital Group";
+    document.title = "A proposal for Dowless Law Firm &mdash; GNL Digital Group";
   }, []);
 
   return (
     <div className="dlp">
       <style>{css}</style>
 
-      {/* ── HERO — the letter from next door ── */}
+      {/* ==================== HERO &mdash; the letter from next door ==================== */}
       <header className="dlp-hero">
         <div className="dlp-doors" aria-hidden="true">
           <span className="dlp-door">51</span>
           <span className="dlp-wall" />
           <span className="dlp-door">53</span>
         </div>
-        <p className="dlp-eyebrow">FROM 53 CABARRUS AVE W &nbsp;·&nbsp; TO 51 CABARRUS AVE W &nbsp;·&nbsp; HALCYON SQUARE, CONCORD</p>
+        <p className="dlp-eyebrow">FROM 53 CABARRUS AVE W &nbsp;&#183;&nbsp; TO 51 CABARRUS AVE W &nbsp;&#183;&nbsp; HALCYON SQUARE, CONCORD</p>
         <h1>
           Fifteen years of sharing a wall.<br />
           <em>Let&rsquo;s finally fix the website.</em>
         </h1>
         <p className="dlp-lede">
-          {CLIENT_FIRST} — you&rsquo;ve trusted me with your computers since you moved in
+          {CLIENT_FIRST} &mdash; you&rsquo;ve trusted me with your computers since you moved in
           next door. This is a straightforward quote for two things your office needs:
           a website that looks like the firm you actually are, and a phone system
           built for four people instead of two copper lines. Nothing else. No upsell.
@@ -59,7 +58,7 @@ export default function DowlessProposal() {
         </div>
       </header>
 
-      {/* ── THE HONEST AUDIT ── */}
+      {/* ==================== THE HONEST AUDIT ==================== */}
       <section className="dlp-section dlp-audit">
         <p className="dlp-eyebrow">WHAT YOUR CURRENT SITE TELLS PEOPLE</p>
         <h2>Your work is current. Your website is from another decade.</h2>
@@ -70,11 +69,11 @@ export default function DowlessProposal() {
           </div>
           <div className="dlp-audit-card">
             <span className="dlp-audit-flag">AOL address in the code</span>
-            <p>An old <strong>@aol.com</strong> address still lives in the site&rsquo;s hidden description — the text Google shows when someone searches your name. Your office runs on @dowlesslaw.com; the site should say so.</p>
+            <p>An old <strong>@aol.com</strong> address still lives in the site&rsquo;s hidden description &mdash; the text Google shows when someone searches your name. Your office runs on @dowlesslaw.com; the site should say so.</p>
           </div>
           <div className="dlp-audit-card">
             <span className="dlp-audit-flag">Built for 2005 screens</span>
-            <p>Hand-coded pages, desktop-only layout. Most people who look you up do it from a phone — where the site is genuinely hard to read and use.</p>
+            <p>Hand-coded pages, desktop-only layout. Most people who look you up do it from a phone &mdash; where the site is genuinely hard to read and use.</p>
           </div>
           <div className="dlp-audit-card">
             <span className="dlp-audit-flag">Strong story, buried</span>
@@ -83,117 +82,117 @@ export default function DowlessProposal() {
         </div>
         <p className="dlp-note">
           To be clear: none of this reflects on the firm. It reflects on the website.
-          People in foreclosure are scared and checking whether they can trust you —
+          People in foreclosure are scared and checking whether they can trust you &mdash;
           the site&rsquo;s only job is to say <em>yes, you can</em>, before they ever call.
         </p>
       </section>
 
-      {/* ── SCOPE: TWO THINGS ── */}
+      {/* ==================== SCOPE: TWO THINGS ==================== */}
       <section className="dlp-section" id="quote">
-        <p className="dlp-eyebrow">THE QUOTE — ONE AGREEMENT, ONE BONUS</p>
+        <p className="dlp-eyebrow">THE QUOTE &mdash; ONE AGREEMENT, ONE BONUS</p>
         <h2>A year of website service. The phone system rides along free.</h2>
 
         <div className="dlp-scope">
-          {/* WEBSITE — the agreement */}
+          {/* WEBSITE &mdash; the agreement */}
           <div className="dlp-card">
-            <h3>01 — A website worthy of the firm</h3>
+            <h3>01 &mdash; A website worthy of the firm</h3>
             <ul>
               <li>Clean, modern site that works perfectly on phones</li>
               <li>Built around what you actually do: <strong>Chapter 7 &amp; 13 Bankruptcy</strong> and <strong>Wills</strong>, with your other practice areas covered</li>
               <li>Your credentials and 25+ years presented properly</li>
               <li>Free-consultation contact that goes straight to your inbox</li>
-              <li>Every change you want for a full year — included. New wording, new photo, a new page: just ask</li>
-              <li><strong>One bill covers your whole web presence:</strong> hosting, your domain, and your email service — all paid and managed by me. You will never see another renewal notice, hosting invoice, or email bill</li>
-              <li>Your @dowlesslaw.com email — Ann-Charlotte, Kathy, Dodie, Heidi — keeps working untouched. I handle the technical move so nothing breaks for a single minute</li>
+              <li>Every change you want for a full year &mdash; included. New wording, new photo, a new page: just ask</li>
+              <li><strong>One bill covers your whole web presence:</strong> hosting, your domain, and your email service &mdash; all paid and managed by me. You will never see another renewal notice, hosting invoice, or email bill</li>
+              <li>Your @dowlesslaw.com email &mdash; Ann-Charlotte, Kathy, Dodie, Heidi &mdash; keeps working untouched. I handle the technical move so nothing breaks for a single minute</li>
               <li>Secure, fast hosting on modern infrastructure</li>
             </ul>
             <div className="dlp-price">
               <div><span className="dlp-amount">{SITE_PRICE}</span><span className="dlp-per">one-time build</span></div>
-              <div><span className="dlp-amount">{CARE_MONTHLY}</span><span className="dlp-per">/month — hosting, domain, email &amp; unlimited change requests, 12-month agreement</span></div>
+              <div><span className="dlp-amount">{CARE_MONTHLY}</span><span className="dlp-per">/month &mdash; hosting, domain, email &amp; unlimited change requests, 12-month agreement</span></div>
             </div>
           </div>
 
-          {/* PHONES — the signing bonus */}
+          {/* PHONES &mdash; the signing bonus */}
           <div className="dlp-card dlp-bonus">
-            <h3>02 — Sign for the year, and the phones are on me</h3>
+            <h3>02 &mdash; Sign for the year, and the phones are on me</h3>
             <p className="dlp-bonus-line">When you sign the 12-month website agreement, your office gets a complete new phone system as the signing bonus:</p>
             <ul>
-              <li><strong>{PHONE_COUNT} {PHONE_MODEL} — free.</strong> One on every desk: yours, Kathy&rsquo;s, Dodie&rsquo;s, Heidi&rsquo;s</li>
-              <li><strong>I pay your phone bill for the entire first year.</strong> Not a discount — paid</li>
-              <li>Your number (704-782-7529) stays exactly the same — callers notice nothing</li>
-              <li><strong>Fax, your way:</strong> send a 60-page filing from email or the portal in seconds — no more standing at the machine — and faxes arrive in your inbox as PDFs, confirmed and archived</li>
-              <li><strong>Want to keep your fax machine too?</strong> A small adapter keeps it working exactly like today. Both ways run side by side — your office chooses</li>
-              <li><strong>I train Kathy, Dodie, and Heidi in person</strong> on the new system — and I&rsquo;m next door whenever a question comes up</li>
-              <li><strong>{ONSITE_HOURS} of On-Site computer work, free, every month.</strong> Slow PC, printer acting up, new machine setup — covered, all year</li>
-              <li><strong>Secure work-from-home for you and Kathy:</strong> a modern VPN so you can reach the office from your house safely. The old exposed remote-desktop setup goes away — set up while I&rsquo;m installing the phones</li>
-              <li><strong>Your cell number comes OFF the public website.</strong> The current site shows a personal cell for texting — the new site won&rsquo;t. For a small add-on, I can set up a dedicated business text line: client texts land in their own office mailbox — like text@dowlesslaw.com. Open it, hit Reply, and your answer goes right back to their phone as a text</li>
+              <li><strong>{PHONE_COUNT} {PHONE_MODEL} &mdash; free.</strong> One on every desk: yours, Kathy&rsquo;s, Dodie&rsquo;s, Heidi&rsquo;s</li>
+              <li><strong>I pay your phone bill for the entire first year.</strong> Not a discount &mdash; paid</li>
+              <li>Your number (704-782-7529) stays exactly the same &mdash; callers notice nothing</li>
+              <li><strong>Fax, your way:</strong> send a 60-page filing from email or the portal in seconds &mdash; no more standing at the machine &mdash; and faxes arrive in your inbox as PDFs, confirmed and archived</li>
+              <li><strong>Want to keep your fax machine too?</strong> A small adapter keeps it working exactly like today. Both ways run side by side &mdash; your office chooses</li>
+              <li><strong>I train Kathy, Dodie, and Heidi in person</strong> on the new system &mdash; and I&rsquo;m next door whenever a question comes up</li>
+              <li><strong>{ONSITE_HOURS} of On-Site computer work, free, every month.</strong> Slow PC, printer acting up, new machine setup &mdash; covered, all year</li>
+              <li><strong>Secure work-from-home for you and Kathy:</strong> a modern VPN so you can reach the office from your house safely. The old exposed remote-desktop setup goes away &mdash; set up while I&rsquo;m installing the phones</li>
+              <li><strong>Your cell number comes OFF the public website.</strong> The current site shows a personal cell for texting &mdash; the new site won&rsquo;t. For a small add-on, I can set up a dedicated business text line: client texts land in their own office mailbox &mdash; like text@dowlesslaw.com. Open it, hit Reply, and your answer goes right back to their phone as a text</li>
               <li><strong>Installed in one afternoon, by me, from next door.</strong></li>
             </ul>
             <div className="dlp-price">
-              <div><span className="dlp-amount">$0</span><span className="dlp-per">first year — phones, install, service, VPN &amp; {ONSITE_HOURS} monthly computer work included</span></div>
-              <div><span className="dlp-amount">{OFFICE_PLAN}</span><span className="dlp-per">/month after year one — the GNL Office Plan: all four lines + fax, {ONSITE_HOURS} of On-Site computer work every month, VPN &amp; network upkeep, and priority next-door support. Cancel anytime</span></div>
+              <div><span className="dlp-amount">$0</span><span className="dlp-per">first year &mdash; phones, install, service, VPN &amp; {ONSITE_HOURS} monthly computer work included</span></div>
+              <div><span className="dlp-amount">{OFFICE_PLAN}</span><span className="dlp-per">/month after year one &mdash; the GNL Office Plan: all four lines + fax, {ONSITE_HOURS} of On-Site computer work every month, VPN &amp; network upkeep, and priority next-door support. Cancel anytime</span></div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── NEIGHBOR TIP: INTERNET BILL ── */}
+      {/* ==================== NEIGHBOR TIP: INTERNET BILL ==================== */}
       <section className="dlp-section dlp-tip">
-        <p className="dlp-eyebrow">NOT PART OF THE QUOTE — JUST A NEIGHBOR TIP</p>
+        <p className="dlp-eyebrow">NOT PART OF THE QUOTE &mdash; JUST A NEIGHBOR TIP</p>
         <h2>While we&rsquo;re at it: that Spectrum bill.</h2>
         <p>
-          I run T-Mobile Business Internet in my office next door — about $70 a month.
+          I run T-Mobile Business Internet in my office next door &mdash; about $70 a month.
           If you&rsquo;re paying Spectrum $100-something for the same job, that&rsquo;s real money
           every month for nothing. You&rsquo;d order it under your own account (no middleman,
-          no markup, it&rsquo;s yours) — and <strong>I&rsquo;ll set the whole thing up for you, free.</strong> Takes
+          no markup, it&rsquo;s yours) &mdash; and <strong>I&rsquo;ll set the whole thing up for you, free.</strong> Takes
           me an afternoon, saves you several hundred dollars a year, and the new phones
           run great on it.
         </p>
       </section>
 
-      {/* ── THE NO-SEO PROMISE ── */}
+      {/* ==================== THE NO-SEO PROMISE ==================== */}
       <section className="dlp-section dlp-promise">
         <p className="dlp-eyebrow">WHAT I&rsquo;M NOT SELLING YOU</p>
-        <h2>No marketing pitch. You said you have more work than you can do — I believe you.</h2>
+        <h2>No marketing pitch. You said you have more work than you can do &mdash; I believe you.</h2>
         <p>
           My agency does SEO and marketing for firms that want more clients.
           You don&rsquo;t, so it&rsquo;s not in this quote and I won&rsquo;t bring it up again.
-          If that ever changes — when you bring someone on, or when it&rsquo;s time to
-          think about what the practice looks like down the road — it&rsquo;s one
+          If that ever changes &mdash; when you bring someone on, or when it&rsquo;s time to
+          think about what the practice looks like down the road &mdash; it&rsquo;s one
           conversation away. Until then: a proper website and phones that work. That&rsquo;s the whole proposal.
         </p>
       </section>
 
-      {/* ── WHY ME ── */}
+      {/* ==================== WHY ME ==================== */}
       <section className="dlp-section dlp-neighbor">
         <p className="dlp-eyebrow">WHY THIS IS EASY</p>
         <h2>Your IT guy is twenty feet away. He has been for fifteen years.</h2>
         <p>
-          You already know how I work — I&rsquo;ve been keeping your office computers
+          You already know how I work &mdash; I&rsquo;ve been keeping your office computers
           running since you moved into Halcyon Square. Same person, same standards,
           one door over. When something needs attention, you don&rsquo;t file a ticket
           with a stranger. You knock on the wall.
         </p>
       </section>
 
-      {/* ── NEXT STEPS ── */}
+      {/* ==================== NEXT STEPS ==================== */}
       <section className="dlp-section dlp-next">
         <p className="dlp-eyebrow">NEXT STEPS</p>
         <h2>Walk over, call, or email. Pick what&rsquo;s easiest.</h2>
         <div className="dlp-contact">
-          <a className="dlp-btn dlp-btn-primary" href={`tel:${CONTACT_PHONE.replace(/-/g, "")}`}>Call Greg — {CONTACT_PHONE}</a>
+          <a className="dlp-btn dlp-btn-primary" href={`tel:${CONTACT_PHONE.replace(/-/g, "")}`}>Call Greg &mdash; {CONTACT_PHONE}</a>
           <a className="dlp-btn" href={`mailto:${CONTACT_EMAIL}?subject=Dowless%20Law%20proposal`}>Email {CONTACT_EMAIL}</a>
         </div>
         <p className="dlp-note">
           Say yes and I&rsquo;ll have a one-page agreement ready the same day.
           The website takes shape in about two weeks; phones install in an afternoon
-          — I&rsquo;ll schedule it so your office never misses a call.
+          &mdash; I&rsquo;ll schedule it so your office never misses a call.
         </p>
       </section>
 
       <footer className="dlp-footer">
-        <span>Prepared for {FIRM_NAME} · {CLIENT_FIRST} Dowless, Attorney at Law</span>
-        <span>GNL Digital Group · 53 Cabarrus Ave W, Concord, NC · gnldigitalgroup.com</span>
+        <span>Prepared for {FIRM_NAME} \u00B7 {CLIENT_FIRST} Dowless, Attorney at Law</span>
+        <span>GNL Digital Group &#183; 53 Cabarrus Ave W, Concord, NC &#183; gnldigitalgroup.com</span>
       </footer>
     </div>
   );

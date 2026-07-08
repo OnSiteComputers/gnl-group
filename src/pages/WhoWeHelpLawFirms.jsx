@@ -1,16 +1,16 @@
-// WhoWeHelpLawFirms — build: 2026-07-05 v1
+// WhoWeHelpLawFirms build: 2026-07-05 v1
+import { useEffect } from "react";
 import { Scale } from 'lucide-react';
 import WhoWeHelpPage from '../components/WhoWeHelpPage';
-
-console.log("WhoWeHelpLawFirms build: 2026-07-05 v1 ✅");
-
 export default function WhoWeHelpLawFirms() {
+  useEffect(() => { console.log("WhoWeHelpLawFirms build: 2026-07-05 v1"); }, []);
+
   return (
     <WhoWeHelpPage
       icon={Scale}
       headline="Digital Marketing for Law Firms"
-      subheadline="Get found by clients who need you — in Charlotte and across the Carolinas."
-      intro="Attorneys work hard to build their reputation. Your digital presence should do the same. GNL Digital Group specializes in helping law firms attract the right clients online through local SEO, authoritative websites, and reputation management — so you can focus on winning cases."
+      subheadline="Get found by clients who need you &mdash; in Charlotte and across the Carolinas."
+      intro="Attorneys work hard to build their reputation. Your digital presence should do the same. GNL Digital Group specializes in helping law firms attract the right clients online through local SEO, authoritative websites, and reputation management &mdash; so you can focus on winning cases."
       benefits={[
         { title: 'Local SEO That Drives Calls', desc: 'We rank your firm at the top of Google when local clients search for your practice area.' },
         { title: 'Reputation That Builds Trust', desc: 'More 5-star Google reviews mean more consultations. We help you earn and showcase them.' },
@@ -24,7 +24,7 @@ export default function WhoWeHelpLawFirms() {
         { title: 'Website Design', desc: 'Attorney websites built for credibility, speed, and mobile performance.' },
         { title: 'Review Management', desc: 'Systematic approach to growing your Google review count and responding professionally.' },
         { title: 'Content Marketing', desc: 'Legal blog posts and landing pages that rank and establish your authority.' },
-        { title: 'All-In-One Web Package', desc: 'Complete website rebuild, domain registration, and hosting with ongoing management—one simple monthly fee.' },
+        { title: 'All-In-One Web Package', desc: 'Complete website rebuild, domain registration, and hosting with ongoing management&mdash;one simple monthly fee.' },
         { title: 'Analytics & Reporting', desc: "Monthly reports showing exactly where your leads come from and what's working." },
       ]}
       cta="Ready to Grow Your Practice?"

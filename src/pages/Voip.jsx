@@ -1,3 +1,5 @@
+// Voip build: 2026-07-07 v1
+import { useEffect } from "react";
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -20,6 +22,8 @@ const FITS = [
 ];
 
 export default function Voip() {
+  useEffect(() => { console.log("Voip build: 2026-07-07 v1"); }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
@@ -52,7 +56,7 @@ export default function Voip() {
             <div className="max-w-3xl">
               <span className="text-sm font-bold uppercase tracking-[0.22em] text-secondary">One accountable partner</span>
               <h2 className="mt-3 font-heading text-4xl font-bold text-primary">Stop juggling a website vendor, SEO vendor, and phone vendor.</h2>
-              <p className="mt-4 text-muted-foreground">Every quote is built around the client’s exact setup. No posted packages, no generic per-seat pitch, and no paying for features the office will never use.</p>
+              <p className="mt-4 text-muted-foreground">Every quote is built around the client&rsquo;s exact setup. No posted packages, no generic per-seat pitch, and no paying for features the office will never use.</p>
             </div>
             <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
               {FEATURES.map(([title, desc, Icon]) => (

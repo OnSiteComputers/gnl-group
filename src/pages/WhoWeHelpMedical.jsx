@@ -1,15 +1,15 @@
-// WhoWeHelpMedical — build: 2026-07-05 v1
+// WhoWeHelpMedical build: 2026-07-05 v1
+import { useEffect } from "react";
 import { Stethoscope } from 'lucide-react';
 import WhoWeHelpPage from '../components/WhoWeHelpPage';
-
-console.log("WhoWeHelpMedical build: 2026-07-05 v1 ✅");
-
 export default function WhoWeHelpMedical() {
+  useEffect(() => { console.log("WhoWeHelpMedical build: 2026-07-05 v1"); }, []);
+
   return (
     <WhoWeHelpPage
       icon={Stethoscope}
       headline="Digital Marketing for Medical & Healthcare"
-      subheadline="Help patients find your practice — and choose you with confidence."
+      subheadline="Help patients find your practice &mdash; and choose you with confidence."
       intro="Patients today search online before they ever pick up the phone. Whether you run a private practice, dental office, chiropractic clinic, or specialty group, GNL Digital Group helps you show up where it matters, build trust through reviews, and convert searchers into scheduled appointments."
       benefits={[
         { title: 'Patient-Focused SEO', desc: 'We rank your practice for the services patients in your area are actively searching for.' },
@@ -25,7 +25,7 @@ export default function WhoWeHelpMedical() {
         { title: 'Review Management', desc: 'Build a 5-star reputation that sets you apart from competing practices.' },
         { title: 'Google Business Profile', desc: 'Fully optimized profiles that drive calls, directions, and appointment requests.' },
         { title: 'Content & Blogging', desc: 'Patient education content that ranks and builds credibility for your specialty.' },
-        { title: 'All-In-One Web Package', desc: 'Complete website rebuild, domain registration, and hosting with ongoing management—one simple monthly fee.' },
+        { title: 'All-In-One Web Package', desc: 'Complete website rebuild, domain registration, and hosting with ongoing management&mdash;one simple monthly fee.' },
       ]}
       cta="Ready to Attract More Patients?"
       introAlign="left"

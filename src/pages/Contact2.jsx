@@ -1,5 +1,6 @@
-// Contact2 — build: 2026-07-05 v1
+// Contact2 build: 2026-07-05 v1
+import { useEffect } from "react";
 import Contact from './Contact';
-
-console.log("Contact2 build: 2026-07-05 v1 ✅");
-export default function Contact2() { return <Contact />; }
+export default function Contact2() {
+  useEffect(() => { console.log("Contact2 build: 2026-07-05 v1"); }, []);
+ return <Contact />; }

@@ -1,16 +1,19 @@
+// Featherline build: 2026-07-07 v1
 import React, { useState, useEffect } from "react";
 
 // ============================================================
-// FEATHERLINE — Esthetics Studio, Tucson AZ
-// Client preview page — routed at /featherline in the GNL app.
-// Self-contained (inline <style>) — no shadcn/Tailwind deps.
-// Draft v2 — full esthetician menu.
+// FEATHERLINE &mdash; Esthetics Studio, Tucson AZ
+// Client preview page &mdash; routed at /featherline in the GNL app.
+// Self-contained (inline <style>) &mdash; no shadcn/Tailwind deps.
+// Draft v2 &mdash; full esthetician menu.
 // [PHOTO] = placeholder image slot. Prices are PLACEHOLDER ranges.
 // TODO before launch: real name + photos, real prices, booking link,
 //   then split into its own repo + domain.
 // ============================================================
 
 export default function Featherline() {
+  useEffect(() => { console.log("Featherline build: 2026-07-07 v1"); }, []);
+
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -36,11 +39,11 @@ export default function Featherline() {
       cat: "Lashes",
       blurb: "From a soft daily look to full, feather-light volume.",
       items: [
-        { name: "Classic Lashes — Full Set", desc: "One extension per natural lash for a natural, mascara finish.", price: "$110" },
-        { name: "Hybrid Lashes — Full Set", desc: "A blend of classic and volume for texture and fullness.", price: "$135" },
-        { name: "Volume Lashes — Full Set", desc: "Handmade fans for a dense, dramatic set.", price: "$160" },
-        { name: "Lash Fill (2–3 wks)", desc: "Maintenance to keep any set full between appointments.", price: "from $55" },
-        { name: "Lash Lift & Tint", desc: "Lifts and darkens your own lashes — no extensions needed.", price: "$85" },
+        { name: "Classic Lashes &mdash; Full Set", desc: "One extension per natural lash for a natural, mascara finish.", price: "$110" },
+        { name: "Hybrid Lashes &mdash; Full Set", desc: "A blend of classic and volume for texture and fullness.", price: "$135" },
+        { name: "Volume Lashes &mdash; Full Set", desc: "Handmade fans for a dense, dramatic set.", price: "$160" },
+        { name: "Lash Fill (2&ndash;3 wks)", desc: "Maintenance to keep any set full between appointments.", price: "from $55" },
+        { name: "Lash Lift & Tint", desc: "Lifts and darkens your own lashes &mdash; no extensions needed.", price: "$85" },
       ],
     },
     {
@@ -95,15 +98,15 @@ export default function Featherline() {
       {/* HERO */}
       <section id="top" className="fl-hero">
         <div className="fl-hero__text">
-          <p className="fl-eyebrow">Esthetics Studio — Tucson, Arizona</p>
+          <p className="fl-eyebrow">Esthetics Studio &mdash; Tucson, Arizona</p>
           <h1 className="fl-hero__title">
             Skin, lashes,
             <br />
-            <span className="fl-underline">brows — refined.</span>
+            <span className="fl-underline">brows &mdash; refined.</span>
           </h1>
           <p className="fl-hero__sub">
             A full-service esthetics studio kept calm and private. Custom facials,
-            expert lashes, and brows shaped to frame you — all by a licensed
+            expert lashes, and brows shaped to frame you &mdash; all by a licensed
             esthetician.
           </p>
           <div className="fl-hero__actions">
@@ -113,7 +116,7 @@ export default function Featherline() {
         </div>
         <div className="fl-hero__media">
           <div className="fl-photo fl-photo--hero">
-            <span className="fl-photo__tag">[ PHOTO — hero portrait / treatment ]</span>
+            <span className="fl-photo__tag">[ PHOTO &mdash; hero portrait / treatment ]</span>
           </div>
         </div>
       </section>
@@ -147,7 +150,7 @@ export default function Featherline() {
         ))}
 
         <p className="fl-note">
-          Prices are a starting guide — final pricing is confirmed at your consult,
+          Prices are a starting guide &mdash; final pricing is confirmed at your consult,
           where every service is shaped to you. New to the studio? Mention it when
           you book and we&apos;ll walk you through the options.
         </p>
@@ -156,14 +159,14 @@ export default function Featherline() {
       {/* ABOUT */}
       <section id="about" className="fl-about">
         <div className="fl-photo fl-photo--about">
-          <span className="fl-photo__tag">[ PHOTO — headshot, added later ]</span>
+          <span className="fl-photo__tag">[ PHOTO &mdash; headshot, added later ]</span>
         </div>
         <div className="fl-about__text">
           <p className="fl-eyebrow">The artist</p>
           <h2 className="fl-h2 fl-h2--light">Licensed &amp; detail-led<span className="fl-feather fl-feather--light" /></h2>
           <p className="fl-about__body">
             Featherline is a solo studio run by a licensed esthetician who believes
-            your face is already the design — the work is only to sharpen it.
+            your face is already the design &mdash; the work is only to sharpen it.
             Facials, lashes, and brows, each mapped and applied with patience in a
             space kept quiet on purpose.
           </p>
@@ -187,7 +190,7 @@ export default function Featherline() {
           </div>
           <div className="fl-studio__col">
             <h3 className="fl-studio__label">Hours</h3>
-            <p className="fl-studio__val">Tue – Sat<br />By appointment</p>
+            <p className="fl-studio__val">Tue &ndash; Sat<br />By appointment</p>
           </div>
           <div className="fl-studio__col">
             <h3 className="fl-studio__label">Contact</h3>
@@ -207,7 +210,7 @@ export default function Featherline() {
       {/* FOOTER */}
       <footer className="fl-footer">
         <span className="fl-logo__text fl-logo__text--foot">Featherline</span>
-        <span className="fl-footer__meta">Esthetics Studio · Tucson, AZ</span>
+        <span className="fl-footer__meta">Esthetics Studio &#183; Tucson, AZ</span>
       </footer>
     </div>
   );
