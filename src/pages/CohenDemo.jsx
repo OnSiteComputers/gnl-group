@@ -3,7 +3,7 @@
 // Palette: Navy + brushed silver + white (matched to Cohen logo) — light, airy, lakefront
 // Logo: /cohen-logo.png (place provided PNG in public/)
 // Featured feature: Request a Consultation / Lot Inquiry (Web3Forms, points to Greg for testing)
-// Version: v02 — 2026-07-07
+// Version: v03 — 2026-07-07 (logo centered)
 import React, { useState } from "react";
 
 const WEB3FORMS_KEY = "3d89122b-0437-4179-bc13-c6ac794da038";
@@ -137,7 +137,7 @@ export default function CohenDemo() {
         <img
           src={LOGO}
           alt="Cohen Construction Inc."
-          style={{ width: "min(360px, 80%)", height: "auto", marginBottom: 26 }}
+          style={{ display: "block", width: "min(360px, 80%)", height: "auto", margin: "0 auto 26px" }}
         />
         <h1
           style={{
@@ -381,7 +381,7 @@ export default function CohenDemo() {
         <img
           src={LOGO}
           alt="Cohen Construction Inc."
-          style={{ width: 220, height: "auto", marginBottom: 14, filter: "brightness(1.15)" }}
+          style={{ display: "block", width: 220, height: "auto", margin: "0 auto 14px", filter: "brightness(1.15)" }}
         />
         <div style={{ fontSize: 14.5, lineHeight: 1.8 }}>
           121 N Main St, Norwood, NC 28128
@@ -398,7 +398,7 @@ export default function CohenDemo() {
             color: SILVER,
           }}
         >
-          &#9671; Sample preview by GNL Digital Group &middot; v02 &middot; 2026
+          &#9671; Sample preview by GNL Digital Group &middot; v03 &middot; 2026
         </div>
       </div>
     </div>

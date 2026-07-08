@@ -2,7 +2,7 @@
 // Route: /cohen-proposal
 // Palette: Navy + brushed silver + white (matched to Cohen logo) — light & airy, lakefront-appropriate
 // Logo: /cohen-logo.png (place the provided PNG in public/)
-// Version: v02 — 2026-07-07
+// Version: v03 — 2026-07-07 (logo centered)
 import React from "react";
 
 const NAVY = "#12233A";
@@ -104,7 +104,7 @@ export default function CohenProposal() {
           <img
             src={LOGO}
             alt="Cohen Construction Inc."
-            style={{ width: "min(380px, 78%)", height: "auto", marginBottom: 8 }}
+            style={{ display: "block", width: "min(380px, 78%)", height: "auto", margin: "0 auto 8px" }}
           />
           <div style={{ ...kicker, marginTop: 18 }}>A Proposal Prepared by GNL Digital Group</div>
           <h1
@@ -319,7 +319,7 @@ export default function CohenProposal() {
       {/* FOOTER */}
       <div style={{ background: NAVY_D, padding: "26px 0", textAlign: "center" }}>
         <div style={{ fontSize: 12, color: SILVER, letterSpacing: "0.04em" }}>
-          GNL Digital Group &middot; Concord, North Carolina &middot; Proposal v02 &middot; 2026
+          GNL Digital Group &middot; Concord, North Carolina &middot; Proposal v03 &middot; 2026
         </div>
       </div>
     </div>

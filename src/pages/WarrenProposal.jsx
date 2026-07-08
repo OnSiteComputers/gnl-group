@@ -1,7 +1,7 @@
 // WarrenProposal.jsx &mdash; GNL Digital Group &mdash; Warren Family Law proposal
-// build: 2026-07-07 v9 [OK]  (resynced to v4 agreement: 3-mo minimum then month-to-month,
+// build: 2026-07-07 v10 [OK]  (resynced to v4 agreement: 3-mo minimum then month-to-month,
 //   tiered $3,328/$3,500, phones-with-early-cancel, pay link removed, unconditional card bonus,
-//   corrected JotForm Sign link; clarified Jim/Candace control booking availability; v8: removed last raw emoji from comment - file is now 100% pure ASCII, zero bytes >127, cannot corrupt)
+//   corrected JotForm Sign link; clarified Jim/Candace control booking availability; v9: emoji now use JS \\u escapes (render correctly AND stay pure ASCII); &mdash; kept only in JSX text)
 const GNL_PHONE = '704-594-5826';
 const GNL_PHONE_HREF = 'tel:+17045945826';
 const GNL_EMAIL = 'greg@gnldigitalgroup.com';
@@ -46,49 +46,49 @@ const palette = {
 
 const deliverables = [
   {
-    icon: '&#127760;',
+    icon: '\u{1F310}',
     title: 'New Website',
     eyebrow: 'Modern, mobile-first, built to convert',
     desc: 'A professional family-law website with clear practice-area sections, strong consultation calls-to-action, and a polished design that gives visitors confidence before they call.',
   },
   {
-    icon: '&#128197;',
+    icon: '\u{1F4C5}',
     title: 'Paid Consultation Booking',
     eyebrow: 'Zoom consults, paid up front',
-    desc: 'A booking link clients use to schedule a Zoom consultation and pay the consultation fee at the same time. The meeting link is created automatically, and the fee is collected before the call &mdash; no chasing payment, no unpaid no-shows.',
+    desc: 'A booking link clients use to schedule a Zoom consultation and pay the consultation fee at the same time. The meeting link is created automatically, and the fee is collected before the call \u2014 no chasing payment, no unpaid no-shows.',
   },
   {
-    icon: '&#128205;',
+    icon: '\u{1F4CD}',
     title: 'Local SEO Foundation',
     eyebrow: 'Charlotte-area visibility',
     desc: 'Pages and structure focused on the local searches that matter, including family law, divorce, custody, support, alimony, property division, and related services.',
   },
   {
-    icon: '&#11088;',
+    icon: '\u2B50',
     title: 'Review Growth System',
     eyebrow: 'Build trust before the call',
     desc: 'A simple approval-based process to request reviews from past clients and make your reputation match the decades of experience behind the firm.',
   },
   {
-    icon: '&#128200;',
+    icon: '\u{1F4C8}',
     title: 'Your Google Dashboard',
     eyebrow: 'Watch your progress in real time',
-    desc: 'Your own live view of your Google Business Profile &mdash; calls, clicks, searches, and direction requests, tracked over time. Full transparency: you see exactly how your visibility grows month over month, on your own screen, whenever you want.',
+    desc: 'Your own live view of your Google Business Profile \u2014 calls, clicks, searches, and direction requests, tracked over time. Full transparency: you see exactly how your visibility grows month over month, on your own screen, whenever you want.',
   },
   {
-    icon: '&#128231;',
+    icon: '\u{1F4E7}',
     title: 'Professional Email',
     eyebrow: WARREN_EMAIL,
     desc: 'Move away from consumer email and present a professional domain email. Mail can still be forwarded or configured so the day-to-day workflow stays familiar.',
   },
   {
-    icon: '&#128203;',
+    icon: '\u{1F4CB}',
     title: 'Lead Routing',
     eyebrow: 'Secretary filters the noise',
     desc: 'Website forms can route to the right person first so real potential clients get attention and junk does not interrupt James unnecessarily.',
   },
   {
-    icon: '&#128222;',
+    icon: '\u{1F4DE}',
     title: 'VoIP Phone System',
     eyebrow: 'Office workflow from anywhere',
     desc: 'A modern phone setup that lets calls be answered, screened, and transferred professionally whether the secretary is in the office or working remotely.',
@@ -319,7 +319,7 @@ export default function WarrenProposal() {
 
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 20 }}>
             <div className="card" style={{ flex: '0 1 320px', maxWidth: 340, background: '#ffffff', border: '1px solid rgba(58,58,55,.12)', borderRadius: 14, padding: 28 }}>
-              <div style={{ fontSize: 30, marginBottom: 14 }}>&#128197;</div>
+              <div style={{ fontSize: 30, marginBottom: 14 }}>{'\u{1F4C5}'}</div>
               <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.text, fontSize: 26, lineHeight: 1.1, margin: '0 0 12px', fontWeight: 700 }}>What your clients do</h3>
               <p style={{ color: palette.muted, lineHeight: 1.7, fontSize: 16, margin: 0 }}>
                 A potential client clicks &ldquo;Schedule a Consultation&rdquo; on your website. They see the time slots you and Candace have opened, pick one that works, and pay the <strong style={{ color: palette.text }}>{CONSULT_FEE} consultation fee</strong> right then. A Zoom link is created automatically and emailed to both of you. No phone tag, and no unpaid no-shows &mdash; the fee is collected before the call.
@@ -327,7 +327,7 @@ export default function WarrenProposal() {
             </div>
 
             <div className="card" style={{ flex: '0 1 320px', maxWidth: 340, background: '#ffffff', border: '1px solid rgba(58,58,55,.12)', borderRadius: 14, padding: 28 }}>
-              <div style={{ fontSize: 30, marginBottom: 14 }}>&#128274;</div>
+              <div style={{ fontSize: 30, marginBottom: 14 }}>{'\u{1F512}'}</div>
               <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.text, fontSize: 26, lineHeight: 1.1, margin: '0 0 12px', fontWeight: 700 }}>Your calendar stays private</h3>
               <p style={{ color: palette.muted, lineHeight: 1.7, fontSize: 16, margin: 0 }}>
                 This is important: the booking page shows <strong style={{ color: palette.text }}>only the times you&rsquo;ve marked as available</strong>. Clients never see who else you&rsquo;re meeting, when, or any other detail from your calendar &mdash; just the open windows. Your other appointments stay completely private.
@@ -335,7 +335,7 @@ export default function WarrenProposal() {
             </div>
 
             <div className="card" style={{ flex: '0 1 320px', maxWidth: 340, background: '#ffffff', border: '1px solid rgba(58,58,55,.12)', borderRadius: 14, padding: 28 }}>
-              <div style={{ fontSize: 30, marginBottom: 14 }}>&#128100;</div>
+              <div style={{ fontSize: 30, marginBottom: 14 }}>{'\u{1F464}'}</div>
               <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.text, fontSize: 26, lineHeight: 1.1, margin: '0 0 12px', fontWeight: 700 }}>You and Candace each get a login</h3>
               <p style={{ color: palette.muted, lineHeight: 1.7, fontSize: 16, margin: 0 }}>
                 You get your own login. <strong style={{ color: palette.text }}>Candace gets her own separate login</strong> &mdash; no shared passwords. From home, she can view the calendar, book, reschedule, and cancel consultations on your behalf. You both always see the same up-to-date schedule.
@@ -343,7 +343,7 @@ export default function WarrenProposal() {
             </div>
 
             <div className="card" style={{ flex: '0 1 320px', maxWidth: 340, background: '#ffffff', border: '1px solid rgba(58,58,55,.12)', borderRadius: 14, padding: 28 }}>
-              <div style={{ fontSize: 30, marginBottom: 14 }}>&#128241;</div>
+              <div style={{ fontSize: 30, marginBottom: 14 }}>{'\u{1F4F1}'}</div>
               <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.text, fontSize: 26, lineHeight: 1.1, margin: '0 0 12px', fontWeight: 700 }}>Manage it from your phone</h3>
               <p style={{ color: palette.muted, lineHeight: 1.7, fontSize: 16, margin: 0 }}>
                 There&rsquo;s a free app for both <strong style={{ color: palette.text }}>iPhone and Android</strong>. You can see your day, get a notification the moment a consultation is booked, join the Zoom call, or reschedule &mdash; all with a couple of taps, whether you&rsquo;re at the office, at home, or between hearings.
@@ -351,7 +351,7 @@ export default function WarrenProposal() {
             </div>
 
             <div className="card" style={{ flex: '0 1 320px', maxWidth: 340, background: '#ffffff', border: '1px solid rgba(58,58,55,.12)', borderRadius: 14, padding: 28 }}>
-              <div style={{ fontSize: 30, marginBottom: 14 }}>&#128736;</div>
+              <div style={{ fontSize: 30, marginBottom: 14 }}>{'\u{1F6E0}'}</div>
               <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.text, fontSize: 26, lineHeight: 1.1, margin: '0 0 12px', fontWeight: 700 }}>You stay in control</h3>
               <p style={{ color: palette.muted, lineHeight: 1.7, fontSize: 16, margin: 0 }}>
                 Clients can only pick from the slots <strong style={{ color: palette.text }}>you open</strong> &mdash; they can&rsquo;t create their own Zoom meeting or set their own time. The <strong style={{ color: palette.text }}>{CONSULT_FEE} consultation fee is collected up front</strong> before any consultation is booked, the same as you charge now &mdash; and it works for both Zoom and in-person appointments. You set your hours; the system handles the rest.
@@ -366,10 +366,10 @@ export default function WarrenProposal() {
           <div style={{ marginTop: 40, background: '#ffffff', border: '1px solid rgba(58,58,55,.12)', borderRadius: 16, padding: '32px 30px', maxWidth: 880, marginLeft: 'auto', marginRight: 'auto' }}>
             <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: palette.text, fontSize: 28, margin: '0 0 20px', fontWeight: 700, textAlign: 'center' }}>Step by step, start to finish</h3>
             {[
-              ['A client finds you online', 'Someone searching for a family-law attorney lands on your new website and clicks &ldquo;Schedule a Consultation.&rdquo;'],
-              ['They pick a time that works', 'They see only the days and time blocks you&rsquo;ve made available. Your other commitments stay private &mdash; they never see them. They choose an open slot.'],
-              ['They pay the fee up front', 'Before the booking is confirmed, they pay the consultation fee. No fee, no booking &mdash; which means no unpaid no-shows and no awkward conversations about payment.'],
-              ['Everything is created automatically', 'The Zoom meeting link is generated and emailed to both of you. The appointment lands on your calendar &mdash; and on Candace&rsquo;s, since she shares the view. Reminder emails go out on their own.'],
+              ['A client finds you online', 'Someone searching for a family-law attorney lands on your new website and clicks \u201CSchedule a Consultation.\u201D'],
+              ['They pick a time that works', 'They see only the days and time blocks you\u2019ve made available. Your other commitments stay private \u2014 they never see them. They choose an open slot.'],
+              ['They pay the fee up front', 'Before the booking is confirmed, they pay the consultation fee. No fee, no booking \u2014 which means no unpaid no-shows and no awkward conversations about payment.'],
+              ['Everything is created automatically', 'The Zoom meeting link is generated and emailed to both of you. The appointment lands on your calendar \u2014 and on Candace\u2019s, since she shares the view. Reminder emails go out on their own.'],
               ['You or Candace manage it from anywhere', 'From the office, from home, or from your phone, either of you can reschedule, cancel, or adjust availability. The calendar always stays in sync.'],
             ].map(([title, desc], i) => (
               <div key={title} style={{ display: 'flex', gap: 18, alignItems: 'flex-start', padding: '14px 0', borderTop: i === 0 ? 'none' : '1px solid rgba(58,58,55,.10)' }}>
