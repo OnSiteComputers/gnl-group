@@ -1,10 +1,10 @@
-// CohenProposal build: 2026-07-09 v9
+// CohenProposal build: 2026-07-09 v10
 // CohenProposal.jsx &mdash; GNL Digital Group proposal for Cohen Construction Inc.
 // Route: /cohen-proposal
 // Palette: Navy + brushed silver + white (matched to Cohen logo) &mdash; light & airy, lakefront-appropriate
 // Logo: /cohen-logo.png (place the provided PNG in public/)
 // Phone image: /yeahlink-t43u.png (place the provided PNG in public/)
-// Version: v08 &mdash; 2026-07-09 (phone image filename -> yeahlink-t43u.png to match asset)
+// Version: v09 &mdash; 2026-07-09 (expanded Phones section with real-world call scenarios; Robbie's cell as extension)
 import React, { useEffect } from "react";
 
 const NAVY = "#12233A";
@@ -99,7 +99,7 @@ function PriceRow({ label, value, note }) {
 }
 
 export default function CohenProposal() {
-  useEffect(() => { console.log("CohenProposal build: 2026-07-09 v9 âœ…"); }, []);
+  useEffect(() => { console.log("CohenProposal build: 2026-07-09 v10 âœ…"); }, []);
 
   return (
     <div style={wrap}>
@@ -292,10 +292,48 @@ export default function CohenProposal() {
               </Check>
             </ul>
           </div>
+
+          {/* Real-world scenarios */}
+          <div style={{ marginTop: 40 }}>
+            <div style={{ ...kicker, marginBottom: 14 }}>What this looks like on a normal day</div>
+            <p style={{ fontSize: 16, color: STEEL, maxWidth: 720, margin: "0 0 8px" }}>
+              You&rsquo;ve never had a phone system like this, so here&rsquo;s what it
+              actually does for you &mdash; no technical setup on your end, it just works
+              this way from day one:
+            </p>
+            <ul style={{ padding: 0, margin: "18px 0 0" }}>
+              <Check>
+                <strong>&ldquo;Hold on, let me grab Robbie.&rdquo;</strong> A customer&rsquo;s on
+                the line with a question only Robbie can answer. Roxanne puts them on a
+                brief hold, rings Robbie on his cell right from her desk, gets the answer,
+                and comes back to the caller &mdash; no callbacks, no voicemail tag.
+              </Check>
+              <Check>
+                <strong>&ldquo;I&rsquo;ll put you right through to him.&rdquo;</strong> When a
+                caller needs Robbie directly, Roxanne transfers them straight to his
+                cell with one button. Robbie&rsquo;s phone rings wherever he is &mdash; the
+                office, a job site, the truck &mdash; and he picks up as if he were at his desk.
+              </Check>
+              <Check>
+                <strong>Robbie&rsquo;s cell, only for who he wants.</strong> The callers Robbie
+                approves ring his cell directly. Everyone else is routed back to the
+                office, so Roxanne catches them &mdash; Robbie isn&rsquo;t interrupted on site
+                by calls that don&rsquo;t need him, and nothing ever slips through.
+              </Check>
+              <Check>
+                <strong>Adding someone is effortless.</strong> Want a new client or sub to
+                reach Robbie&rsquo;s cell directly? Send Greg a quick message with the name
+                and number and it&rsquo;s done &mdash; no apps to learn, no settings to dig through.
+              </Check>
+              <Check>
+                <strong>Whoever&rsquo;s free picks up.</strong> Both desk phones ring together
+                on your business line. If one of you is already on a call, the other
+                still catches it &mdash; the office never misses.
+              </Check>
+            </ul>
+          </div>
         </Section>
       </div>
-
-      {/* INVESTMENT */}
       <Section id="investment">
         <div style={kicker}>04 &mdash; Investment</div>
         <h2 style={{ ...serif, fontSize: 30, margin: "16px 0 8px", fontWeight: 600, color: NAVY }}>
@@ -463,7 +501,7 @@ export default function CohenProposal() {
       {/* FOOTER */}
       <div style={{ background: NAVY_D, padding: "26px 0", textAlign: "center" }}>
         <div style={{ fontSize: 12, color: SILVER, letterSpacing: "0.04em" }}>
-          GNL Digital Group &middot; Concord, North Carolina &middot; Proposal v08 &middot; 2026
+          GNL Digital Group &middot; Concord, North Carolina &middot; Proposal v09 &middot; 2026
         </div>
       </div>
     </div>
