@@ -33,8 +33,6 @@ import Dowless from './pages/Dowless';
 import DowlessDemo from './pages/DowlessDemo';
 import DowlessProposal from './pages/DowlessProposal';
 import CanesLive from './pages/CanesLive';
-import HarrisburgProposal from './pages/HarrisburgProposal';
-import HarrisburgDemo from './pages/HarrisburgDemo';
 import WJHomesProposal from './pages/WJHomesProposal';
 import WJHomesDemo from './pages/WJHomesDemo';
 import CohenProposal from './pages/CohenProposal';
@@ -81,8 +79,6 @@ function App() {
           <Route path="/dowless-demo" element={<DowlessDemo />} />
           <Route path="/dowless-proposal" element={<DowlessProposal />} />
           <Route path="/canes-live" element={<CanesLive />} />
-          <Route path="/harrisburg-proposal" element={<HarrisburgProposal />} />
-          <Route path="/harrisburg-demo" element={<HarrisburgDemo />} />
           <Route path="/wj-homes-proposal" element={<WJHomesProposal />} />
           <Route path="/wj-homes-demo" element={<WJHomesDemo />} />
           <Route path="/cohen-proposal" element={<CohenProposal />} />
