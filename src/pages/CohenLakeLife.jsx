@@ -1,7 +1,7 @@
-// CohenLakeLife — build: 2026-07-08 v2
+// CohenLakeLife — build: 2026-07-08 v3
 import { useEffect } from "react";
 
-console.log("CohenLakeLife build: 2026-07-08 v2 ✅");
+console.log("CohenLakeLife build: 2026-07-08 v3 ✅");
 
 // ─────────────────────────────────────────────────────────
 //  Cohen Construction — Life on Lake Tillery
@@ -45,7 +45,7 @@ export default function CohenLakeLife() {
       </div></section>
       
       <section className="ll-section" id="life">
-      <div className="ll-center" style="max-width:620px;margin:0 auto 44px;"><p className="ll-kicker">The lake life</p><h2>It's not a house. It's a way to live.</h2></div>
+      <div className="ll-center" style={{ maxWidth: "620px", margin: "0 auto 44px" }}><p className="ll-kicker">The lake life</p><h2>It's not a house. It's a way to live.</h2></div>
       <div className="ll-life-grid"><div className="ll-life"><div className="ll-life-photo" style={{ backgroundImage: "url('/cohen/home2.jpg')" }} /><h3>Wake to the water</h3><p>Mornings on the dock, coffee on the porch, the lake still as glass. This is the everyday, not the vacation.</p></div>
       <div className="ll-life"><div className="ll-life-photo" style={{ backgroundImage: "url('/cohen/home5.jpg')" }} /><h3>Your slip is waiting</h3><p>A private 20-slip marina means your boat is steps from your door — not a trailer, not a public ramp.</p></div>
       <div className="ll-life"><div className="ll-life-photo" style={{ backgroundImage: "url('/cohen/home3.jpg')" }} /><h3>Built for gathering</h3><p>Open homes designed for family, friends, and long evenings that spill onto the deck and down to the shore.</p></div></div>
@@ -57,7 +57,7 @@ export default function CohenLakeLife() {
       </div></section>
       
       <section className="ll-comm-wrap"><div className="ll-section">
-      <div className="ll-center" style="max-width:640px;margin:0 auto 40px;"><p className="ll-kicker">Where we build</p><h2>Nine communities. One remarkable lake.</h2><p style="color:var(--slate);font-size:16px;">Gated lake communities and shoreline lots across Stanly and Montgomery counties. Waterfront is finite — the best lots don't last.</p></div>
+      <div className="ll-center" style={{ maxWidth: "640px", margin: "0 auto 40px" }}><p className="ll-kicker">Where we build</p><h2>Nine communities. One remarkable lake.</h2><p style={{ color: "var(--slate)", fontSize: "16px" }}>Gated lake communities and shoreline lots across Stanly and Montgomery counties. Waterfront is finite — the best lots don't last.</p></div>
       <div className="ll-comm-grid"><a href="#inquiry" className="ll-comm">Uwharrie Landing<span>&rarr;</span></a>
       <a href="#inquiry" className="ll-comm">Bay Shore on Lake Tillery<span>&rarr;</span></a>
       <a href="#inquiry" className="ll-comm">Eagle Pointe<span>&rarr;</span></a>
@@ -69,7 +69,7 @@ export default function CohenLakeLife() {
       <a href="#inquiry" className="ll-comm">Ken's Landing<span>&rarr;</span></a></div>
       </div></section>
       
-      <section className="ll-section" id="marina" style="padding-left:0;padding-right:0;">
+      <section className="ll-section" id="marina" style={{ paddingLeft: 0, paddingRight: 0 }}>
       <div className="ll-marina"><div className="ll-marina-glow" aria-hidden="true"></div><div className="ll-marina-inner">
       <div><p className="ll-kicker light">The 20-slip marina</p><h2>Your boat, steps from your back door.</h2><p>Cohen's private marina is the difference between owning a lake house and living a lake life. No ramps, no trailers, no waiting — just walk down and go.</p></div>
       <a className="ll-btn ll-btn-sun" href="#inquiry">Ask About Slip Availability</a>
@@ -89,7 +89,7 @@ export default function CohenLakeLife() {
       </div></section>
       
       <footer className="ll-footer"><div className="ll-footer-inner">
-      <div><span className="ll-mark-name" style="color:#fff;">Cohen</span> <span className="ll-mark-sub" style="color:var(--sun);">Construction</span><p className="ll-footer-addr">121 N Main St · Norwood, NC 28128<br />704-474-3518</p></div>
+      <div><span className="ll-mark-name" style={{ color: "#fff" }}>Cohen</span> <span className="ll-mark-sub" style={{ color: "var(--sun)" }}>Construction</span><p className="ll-footer-addr">121 N Main St · Norwood, NC 28128<br />704-474-3518</p></div>
       <p className="ll-footer-tag">Life on Lake Tillery · Since 2001</p>
       </div></footer>
       

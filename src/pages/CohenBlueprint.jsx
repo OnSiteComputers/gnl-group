@@ -1,7 +1,7 @@
-// CohenBlueprint — build: 2026-07-08 v2
+// CohenBlueprint — build: 2026-07-08 v3
 import { useEffect } from "react";
 
-console.log("CohenBlueprint build: 2026-07-08 v2 ✅");
+console.log("CohenBlueprint build: 2026-07-08 v3 ✅");
 
 // ─────────────────────────────────────────────────────────
 //  Cohen Construction — Custom Lakefront Homebuilder, Lake Tillery NC
@@ -42,7 +42,7 @@ export default function CohenBlueprint() {
       </header>
       
       <section className="bp-process" id="process"><div className="bp-proc-inner">
-      <div className="bp-head"><p className="bp-kicker">How we build</p><h2>A process engineered for certainty.</h2><p style="color:rgba(255,255,255,.7);">A custom home is the biggest thing most people ever build. Ours is a process designed so you always know exactly where you stand.</p></div>
+      <div className="bp-head"><p className="bp-kicker">How we build</p><h2>A process engineered for certainty.</h2><p style={{ color: "rgba(255,255,255,.7)" }}>A custom home is the biggest thing most people ever build. Ours is a process designed so you always know exactly where you stand.</p></div>
       <div className="bp-steps"><div className="bp-step"><span className="bp-step-n">STEP 01</span><h3>Consultation</h3><p>We sit down, walk the lot, and understand exactly how you want to live on the water.</p></div>
       <div className="bp-step"><span className="bp-step-n">STEP 02</span><h3>Design</h3><p>Custom plans drawn to your site and your life — reviewed with you until every line is right.</p></div>
       <div className="bp-step"><span className="bp-step-n">STEP 03</span><h3>Build</h3><p>Twenty-five years of craftsmanship, tight project management, and materials that last.</p></div>
@@ -68,7 +68,7 @@ export default function CohenBlueprint() {
       </div></section>
       
       <section className="bp-band"><div className="bp-band-inner">
-      <div><p className="bp-kicker nobar" style="color:rgba(255,255,255,.85);">On the water</p><h2>Waterfront lots are finite. The best ones go first.</h2><p>A limited number of true waterfront lots remain across Cohen's communities. When you're ready to build on the water, timing is everything.</p></div>
+      <div><p className="bp-kicker nobar" style={{ color: "rgba(255,255,255,.85)" }}>On the water</p><h2>Waterfront lots are finite. The best ones go first.</h2><p>A limited number of true waterfront lots remain across Cohen's communities. When you're ready to build on the water, timing is everything.</p></div>
       <a className="bp-btn bp-btn-line" href="#inquiry">Check Lot Availability</a>
       </div></section>
       
