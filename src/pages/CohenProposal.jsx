@@ -293,7 +293,7 @@ export default function CohenProposal() {
           <p style={{ fontSize: 16, color: FADE, maxWidth: 560, margin: "0 auto" }}>
             We built several live directions so you can feel the difference, not
             just imagine it. Click any one to open the full page &mdash; each is real,
-            with Cohen&rsquo;s own drone photography built in.
+            with Robbie&rsquo;s own drone photography built in.
           </p>
         </div>
         <div
@@ -377,7 +377,7 @@ export default function CohenProposal() {
       {/* FOOTER */}
       <div style={{ background: NAVY_D, padding: "26px 0", textAlign: "center" }}>
         <div style={{ fontSize: 12, color: SILVER, letterSpacing: "0.04em" }}>
-          GNL Digital Group &middot; Concord, North Carolina &middot; Proposal v04 &middot; 2026
+          GNL Digital Group &middot; Concord, North Carolina &middot; Proposal v05 &middot; 2026
         </div>
       </div>
     </div>
