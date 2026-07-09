@@ -16,7 +16,14 @@ const MIST = "#F5F8FB";
 const FADE = "#6B7783";
 
 const LOGO = "/cohen-logo.png";
-const DEMO_URL = "/cohen-demo";
+const DEMO_URL = "/cohen-still-water"; // primary/hero button -> our favorite
+
+const DEMOS = [
+  { slug: "/cohen-still-water", name: "Still Water", tag: "Elegant & serene", note: "Editorial calm — big water, quiet type. Our favorite." },
+  { slug: "/cohen-lake-life",   name: "Lake Life",   tag: "Warm & lifestyle", note: "Sunlit and inviting — the lake-life feeling, dock to door." },
+  { slug: "/cohen-blueprint",   name: "Blueprint",   tag: "Bold & architectural", note: "Confident and structured — craftsmanship up front." },
+  { slug: "/cohen-demo",        name: "Original Demo", tag: "The first concept", note: "Where we started — the original working sample." },
+];
 
 const wrap = {
   background: WHITE,
@@ -277,6 +284,54 @@ export default function CohenProposal() {
       </div>
 
       {/* CLOSE */}
+      <Section id="directions">
+        <div style={{ textAlign: "center", marginBottom: 34 }}>
+          <div style={kicker}>Four directions to explore</div>
+          <h2 style={{ ...serif, fontSize: 30, margin: "14px 0 12px", fontWeight: 600, color: NAVY }}>
+            One brand. Four ways to tell it.
+          </h2>
+          <p style={{ fontSize: 16, color: FADE, maxWidth: 560, margin: "0 auto" }}>
+            We built several live directions so you can feel the difference, not
+            just imagine it. Click any one to open the full page &mdash; each is real,
+            with Cohen&rsquo;s own drone photography built in.
+          </p>
+        </div>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+            gap: 18,
+          }}
+        >
+          {DEMOS.map((d) => (
+            <a
+              key={d.slug}
+              href={d.slug}
+              style={{
+                textDecoration: "none",
+                color: NAVY,
+                border: "1px solid #E0E7EE",
+                borderRadius: 6,
+                padding: "26px 24px",
+                background: "linear-gradient(180deg, #FFFFFF 0%, #F5F8FB 100%)",
+                display: "block",
+              }}
+            >
+              <div style={{ ...kicker, marginBottom: 10 }}>{d.tag}</div>
+              <div style={{ ...serif, fontSize: 22, fontWeight: 600, color: NAVY, marginBottom: 8 }}>
+                {d.name}
+              </div>
+              <p style={{ fontSize: 14.5, color: FADE, margin: "0 0 16px", lineHeight: 1.5 }}>
+                {d.note}
+              </p>
+              <span style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.04em", color: NAVY }}>
+                VIEW THIS DIRECTION &rarr;
+              </span>
+            </a>
+          ))}
+        </div>
+      </Section>
+
       <Section id="close">
         <div
           style={{
@@ -322,7 +377,7 @@ export default function CohenProposal() {
       {/* FOOTER */}
       <div style={{ background: NAVY_D, padding: "26px 0", textAlign: "center" }}>
         <div style={{ fontSize: 12, color: SILVER, letterSpacing: "0.04em" }}>
-          GNL Digital Group &middot; Concord, North Carolina &middot; Proposal v03 &middot; 2026
+          GNL Digital Group &middot; Concord, North Carolina &middot; Proposal v04 &middot; 2026
         </div>
       </div>
     </div>
