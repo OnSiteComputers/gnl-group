@@ -1,9 +1,10 @@
-// CohenProposal build: 2026-07-08 v05
+// CohenProposal build: 2026-07-09 v9
 // CohenProposal.jsx &mdash; GNL Digital Group proposal for Cohen Construction Inc.
 // Route: /cohen-proposal
 // Palette: Navy + brushed silver + white (matched to Cohen logo) &mdash; light & airy, lakefront-appropriate
 // Logo: /cohen-logo.png (place the provided PNG in public/)
-// Version: v03 &mdash; 2026-07-07 (logo centered)
+// Phone image: /yeahlink-t43u.png (place the provided PNG in public/)
+// Version: v08 &mdash; 2026-07-09 (phone image filename -> yeahlink-t43u.png to match asset)
 import React, { useEffect } from "react";
 
 const NAVY = "#12233A";
@@ -16,13 +17,14 @@ const MIST = "#F5F8FB";
 const FADE = "#6B7783";
 
 const LOGO = "/cohen-logo.png";
+const PHONE_IMG = "/yeahlink-t43u.png";
 const DEMO_URL = "/cohen-still-water"; // primary/hero button -> our favorite
 
 const DEMOS = [
-  { slug: "/cohen-still-water", name: "Still Water", tag: "Elegant & serene", note: "Editorial calm — big water, quiet type. Our favorite." },
-  { slug: "/cohen-lake-life",   name: "Lake Life",   tag: "Warm & lifestyle", note: "Sunlit and inviting — the lake-life feeling, dock to door." },
-  { slug: "/cohen-blueprint",   name: "Blueprint",   tag: "Bold & architectural", note: "Confident and structured — craftsmanship up front." },
-  { slug: "/cohen-demo",        name: "Original Demo", tag: "The first concept", note: "Where we started — the original working sample." },
+  { slug: "/cohen-still-water", name: "Still Water", tag: "Elegant & serene", note: "Editorial calm â€” big water, quiet type. Our favorite." },
+  { slug: "/cohen-lake-life",   name: "Lake Life",   tag: "Warm & lifestyle", note: "Sunlit and inviting â€” the lake-life feeling, dock to door." },
+  { slug: "/cohen-blueprint",   name: "Blueprint",   tag: "Bold & architectural", note: "Confident and structured â€” craftsmanship up front." },
+  { slug: "/cohen-demo",        name: "Original Demo", tag: "The first concept", note: "Where we started â€” the original working sample." },
 ];
 
 const wrap = {
@@ -97,7 +99,7 @@ function PriceRow({ label, value, note }) {
 }
 
 export default function CohenProposal() {
-  useEffect(() => { console.log("CohenProposal build: 2026-07-08 v05 ✅"); }, []);
+  useEffect(() => { console.log("CohenProposal build: 2026-07-09 v9 âœ…"); }, []);
 
   return (
     <div style={wrap}>
@@ -228,9 +230,74 @@ export default function CohenProposal() {
         </Section>
       </div>
 
+      {/* PHONES & FAX */}
+      <div style={{ background: MIST, borderTop: `1px solid #E6ECF2`, borderBottom: `1px solid #E6ECF2` }}>
+        <Section id="phones">
+          <div style={kicker}>03 &mdash; Phones &amp; fax, handled too</div>
+          <h2 style={{ ...serif, fontSize: 30, margin: "16px 0 22px", fontWeight: 600, color: NAVY }}>
+            Your office phone, brought up to date.
+          </h2>
+          <p style={{ fontSize: 16.5, color: STEEL, maxWidth: 720, marginTop: 0 }}>
+            While we&rsquo;re modernizing everything else, your phone line comes with
+            it &mdash; on the same account, managed by the same hands. You keep both of
+            your existing numbers; nothing changes for anyone who already calls you.
+          </p>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+              gap: 34,
+              alignItems: "center",
+              marginTop: 26,
+            }}
+          >
+            <div
+              style={{
+                background: WHITE,
+                border: `1px solid #E0E7EE`,
+                borderRadius: 8,
+                padding: "26px 22px",
+                textAlign: "center",
+              }}
+            >
+              <img
+                src={PHONE_IMG}
+                alt="Yealink T43U desk phone"
+                style={{ display: "block", width: "100%", maxWidth: 340, height: "auto", margin: "0 auto" }}
+              />
+              <div style={{ ...kicker, marginTop: 16 }}>Yealink T43U</div>
+              <div style={{ fontSize: 13.5, color: FADE, marginTop: 6 }}>
+                Professional HD desk phone &middot; two included
+              </div>
+            </div>
+            <ul style={{ padding: 0, margin: 0 }}>
+              <Check>
+                <strong>Two Yealink T43U desk phones</strong> &mdash; professional,
+                hardwired handsets included with your build. Both ring on your business
+                line, so whoever&rsquo;s free picks up.
+              </Check>
+              <Check>
+                <strong>Your voice number, ported over.</strong> Your existing business
+                line moves to the new system exactly as-is &mdash; same number on your
+                cards, your signs, and your trucks.
+              </Check>
+              <Check>
+                <strong>Your fax line becomes email fax &mdash; an upgrade.</strong> Incoming
+                faxes arrive as clean PDFs in your inbox. Send a fax from any browser.
+                Nothing to jam, no toner, no paper &mdash; and your fax number stays the same.
+              </Check>
+              <Check>
+                <strong>One account, one point of contact.</strong> Phones, fax, website,
+                and email all managed together. One call to Greg fixes anything.
+              </Check>
+            </ul>
+          </div>
+        </Section>
+      </div>
+
       {/* INVESTMENT */}
       <Section id="investment">
-        <div style={kicker}>03 &mdash; Investment</div>
+        <div style={kicker}>04 &mdash; Investment</div>
         <h2 style={{ ...serif, fontSize: 30, margin: "16px 0 8px", fontWeight: 600, color: NAVY }}>
           Straightforward, all-inclusive.
         </h2>
@@ -251,14 +318,33 @@ export default function CohenProposal() {
           <PriceRow
             label="Initial build"
             value="$5,000"
-            note="One-time. Design, SEO foundation, community pages, GBP setup, migration."
+            note="One-time. Design, SEO foundation, community pages, GBP setup, migration &mdash; and two Yealink T43U desk phones included."
           />
           <PriceRow
-            label="Managed service"
+            label="Managed website &amp; SEO"
             value="$3,500 / mo"
             note="Hosting, domain, SSL, email, SEO, updates, and full management."
           />
-          <div style={{ paddingTop: 18, fontSize: 14.5, color: FADE }}>
+          <PriceRow
+            label="Phone &amp; fax service"
+            value="$150 / mo"
+            note="Your business line on both desk phones, plus email-based fax. Both numbers ported."
+          />
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "baseline",
+              gap: 20,
+              padding: "22px 0 6px",
+            }}
+          >
+            <div style={{ fontSize: 17, fontWeight: 800, color: NAVY }}>Monthly total</div>
+            <div style={{ ...serif, fontSize: 28, color: WATER, whiteSpace: "nowrap", fontWeight: 700 }}>
+              $3,650 / mo
+            </div>
+          </div>
+          <div style={{ paddingTop: 12, fontSize: 14.5, color: FADE }}>
             Three-month minimum, then month-to-month with 30 days&rsquo; notice.
             Nothing is due at signing &mdash; we start building immediately, and the
             first payment is due when your new site goes live.
@@ -269,7 +355,7 @@ export default function CohenProposal() {
       {/* WHY GNL (mist band) */}
       <div style={{ background: MIST, borderTop: `1px solid #E6ECF2`, borderBottom: `1px solid #E6ECF2` }}>
         <Section id="why">
-          <div style={kicker}>04 &mdash; Why us</div>
+          <div style={kicker}>05 &mdash; Why us</div>
           <h2 style={{ ...serif, fontSize: 30, margin: "16px 0 18px", fontWeight: 600, color: NAVY }}>
             Twenty-five years of trust.
           </h2>
@@ -377,7 +463,7 @@ export default function CohenProposal() {
       {/* FOOTER */}
       <div style={{ background: NAVY_D, padding: "26px 0", textAlign: "center" }}>
         <div style={{ fontSize: 12, color: SILVER, letterSpacing: "0.04em" }}>
-          GNL Digital Group &middot; Concord, North Carolina &middot; Proposal v05 &middot; 2026
+          GNL Digital Group &middot; Concord, North Carolina &middot; Proposal v08 &middot; 2026
         </div>
       </div>
     </div>
