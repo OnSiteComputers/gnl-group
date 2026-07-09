@@ -1,7 +1,8 @@
 // WarrenProposal.jsx &mdash; GNL Digital Group &mdash; Warren Family Law proposal
-// build: 2026-07-07 v9 [OK]  (resynced to v4 agreement: 3-mo minimum then month-to-month,
+// build: 2026-07-09 v11 [OK]  (resynced to v4 agreement: 3-mo minimum then month-to-month,
 //   tiered $3,328/$3,500, phones-with-early-cancel, pay link removed, unconditional card bonus,
-//   corrected JotForm Sign link; clarified Jim/Candace control booking availability; v9: emoji now use JS \\u escapes (render correctly AND stay pure ASCII); &mdash; kept only in JSX text)
+//   corrected JotForm Sign link; clarified Jim/Candace control booking availability; v9: emoji now use JS \\u escapes (render correctly AND stay pure ASCII); &mdash; kept only in JSX text;
+//   v10: added "What This Looks Like Day To Day" phone-scenarios card &mdash; Candace-remote, transfer-to-cell, hold-and-reach, filtered cell (approved callers ring cell, rest to office), easy add-a-contact)
 const GNL_PHONE = '704-594-5826';
 const GNL_PHONE_HREF = 'tel:+17045945826';
 const GNL_EMAIL = 'greg@gnldigitalgroup.com';
@@ -435,6 +436,18 @@ export default function WarrenProposal() {
               <p style={{ color: 'rgba(255,255,255,.85)', fontSize: 14, lineHeight: 1.6, margin: 0 }}>
                 Your agreement includes <strong style={{ color: '#fff' }}>two Grandstream GRP2636 IP phones</strong> (one for the office, one for Candace working from home), plus <strong style={{ color: '#fff' }}>complimentary VoIP phone service while your agreement is active</strong> &mdash; no separate phone bill to worry about. Professional setup is included. Stay with us through your first year and <strong style={{ color: '#fff' }}>the two phones are yours to keep, free and clear</strong>. If you decide to part ways before the first year is up, you simply cover the two phones ($479.98) and take over the phone account from there.
               </p>
+            </div>
+          </div>
+
+          <div style={{ maxWidth: 680, margin: '0 auto 36px', background: 'rgba(255,255,255,.12)', border: `1px solid ${palette.gold}`, borderRadius: 14, padding: '22px 26px', textAlign: 'left' }}>
+            <div style={{ color: palette.gold, letterSpacing: '2px', textTransform: 'uppercase', fontSize: 12, fontWeight: 900, marginBottom: 6 }}>What This Looks Like Day To Day</div>
+            <div style={{ color: '#fff', fontWeight: 800, fontSize: 17, marginBottom: 14 }}>A phone system that works the way a law firm actually runs.</div>
+            <div style={{ display: 'grid', gap: 14, color: 'rgba(255,255,255,.9)', fontSize: 14.5, lineHeight: 1.6 }}>
+              <div>&bull; <strong style={{ color: '#fff' }}>Candace answers from home exactly like she&rsquo;s at the office.</strong> Calls to the firm ring her phone wherever she is. Callers never know the difference, and there&rsquo;s no separate cell number to hand out.</div>
+              <div>&bull; <strong style={{ color: '#fff' }}>&ldquo;Let me put you through to Mr. Warren.&rdquo;</strong> Candace can transfer a caller straight to you with one button &mdash; to your desk, or to your cell when you&rsquo;re at the courthouse or between hearings. You pick up as if you were sitting at your desk.</div>
+              <div>&bull; <strong style={{ color: '#fff' }}>&ldquo;Hold one moment while I reach him.&rdquo;</strong> A client&rsquo;s on the line with a question only you can answer. Candace puts them on a brief hold, reaches you on your cell, gets the answer, and comes back &mdash; no callbacks, no phone tag.</div>
+              <div>&bull; <strong style={{ color: '#fff' }}>Your cell rings only for who you want.</strong> The callers you approve reach your cell directly. Everyone else is routed to the office, so Candace catches them &mdash; you&rsquo;re not interrupted in a hearing by calls that don&rsquo;t need you, and nothing slips through.</div>
+              <div>&bull; <strong style={{ color: '#fff' }}>Adding someone is as easy as a text.</strong> Want a client or referring attorney to reach your cell directly? Send Greg a quick message with the name and number and it&rsquo;s done &mdash; no apps to learn, no settings to dig through.</div>
             </div>
           </div>
 

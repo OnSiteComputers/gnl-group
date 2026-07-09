@@ -1,10 +1,10 @@
-// CohenProposal build: 2026-07-09 v10
+// CohenProposal build: 2026-07-09 v11
 // CohenProposal.jsx &mdash; GNL Digital Group proposal for Cohen Construction Inc.
 // Route: /cohen-proposal
 // Palette: Navy + brushed silver + white (matched to Cohen logo) &mdash; light & airy, lakefront-appropriate
 // Logo: /cohen-logo.png (place the provided PNG in public/)
 // Phone image: /yeahlink-t43u.png (place the provided PNG in public/)
-// Version: v09 &mdash; 2026-07-09 (expanded Phones section with real-world call scenarios; Robbie's cell as extension)
+// Version: v10 &mdash; 2026-07-09 (corrected: two secretaries Roxane &amp; Yuli at desk phones, Robbie always out of office; fixed Roxane spelling)
 import React, { useEffect } from "react";
 
 const NAVY = "#12233A";
@@ -99,7 +99,7 @@ function PriceRow({ label, value, note }) {
 }
 
 export default function CohenProposal() {
-  useEffect(() => { console.log("CohenProposal build: 2026-07-09 v10 âœ…"); }, []);
+  useEffect(() => { console.log("CohenProposal build: 2026-07-09 v11 âœ…"); }, []);
 
   return (
     <div style={wrap}>
@@ -273,8 +273,8 @@ export default function CohenProposal() {
             <ul style={{ padding: 0, margin: 0 }}>
               <Check>
                 <strong>Two Yealink T43U desk phones</strong> &mdash; professional,
-                hardwired handsets included with your build. Both ring on your business
-                line, so whoever&rsquo;s free picks up.
+                hardwired handsets included with your build &mdash; one for Roxane, one
+                for Yuli. Both ring on your business line, so whoever&rsquo;s free picks up.
               </Check>
               <Check>
                 <strong>Your voice number, ported over.</strong> Your existing business
@@ -304,21 +304,21 @@ export default function CohenProposal() {
             <ul style={{ padding: 0, margin: "18px 0 0" }}>
               <Check>
                 <strong>&ldquo;Hold on, let me grab Robbie.&rdquo;</strong> A customer&rsquo;s on
-                the line with a question only Robbie can answer. Roxanne puts them on a
-                brief hold, rings Robbie on his cell right from her desk, gets the answer,
-                and comes back to the caller &mdash; no callbacks, no voicemail tag.
+                the line with a question only Robbie can answer. Roxane or Yuli puts them
+                on a brief hold, rings Robbie on his cell right from the desk, gets the
+                answer, and comes back to the caller &mdash; no callbacks, no voicemail tag.
               </Check>
               <Check>
                 <strong>&ldquo;I&rsquo;ll put you right through to him.&rdquo;</strong> When a
-                caller needs Robbie directly, Roxanne transfers them straight to his
-                cell with one button. Robbie&rsquo;s phone rings wherever he is &mdash; the
-                office, a job site, the truck &mdash; and he picks up as if he were at his desk.
+                caller needs Robbie directly, Roxane or Yuli transfers them straight to
+                his cell with one button. Robbie&rsquo;s phone rings wherever he is &mdash; a
+                job site, the truck, out with a client &mdash; and he picks up as if he were at a desk.
               </Check>
               <Check>
                 <strong>Robbie&rsquo;s cell, only for who he wants.</strong> The callers Robbie
                 approves ring his cell directly. Everyone else is routed back to the
-                office, so Roxanne catches them &mdash; Robbie isn&rsquo;t interrupted on site
-                by calls that don&rsquo;t need him, and nothing ever slips through.
+                office, so Roxane and Yuli catch them &mdash; Robbie isn&rsquo;t interrupted on
+                site by calls that don&rsquo;t need him, and nothing ever slips through.
               </Check>
               <Check>
                 <strong>Adding someone is effortless.</strong> Want a new client or sub to
@@ -327,8 +327,8 @@ export default function CohenProposal() {
               </Check>
               <Check>
                 <strong>Whoever&rsquo;s free picks up.</strong> Both desk phones ring together
-                on your business line. If one of you is already on a call, the other
-                still catches it &mdash; the office never misses.
+                on your business line. If Roxane&rsquo;s already on a call, Yuli catches it &mdash;
+                the office never misses.
               </Check>
             </ul>
           </div>
@@ -501,7 +501,7 @@ export default function CohenProposal() {
       {/* FOOTER */}
       <div style={{ background: NAVY_D, padding: "26px 0", textAlign: "center" }}>
         <div style={{ fontSize: 12, color: SILVER, letterSpacing: "0.04em" }}>
-          GNL Digital Group &middot; Concord, North Carolina &middot; Proposal v09 &middot; 2026
+          GNL Digital Group &middot; Concord, North Carolina &middot; Proposal v10 &middot; 2026
         </div>
       </div>
     </div>
