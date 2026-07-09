@@ -1,7 +1,6 @@
 // CohenStillWater — build: 2026-07-08 v3
 import { useEffect } from "react";
 
-console.log("CohenStillWater build: 2026-07-08 v3 ✅");
 
 // ─────────────────────────────────────────────────────────
 //  COHEN CONSTRUCTION — DEMO 1 "STILL WATER" (route: /cohen-still-water)
@@ -27,6 +26,7 @@ const COMMUNITIES = [
 
 export default function CohenStillWater() {
   useEffect(() => {
+    console.log("CohenStillWater build: 2026-07-08 v3 ✅");
     document.title = "Cohen Construction — Lakefront Custom Homes on Lake Tillery";
   }, []);
 

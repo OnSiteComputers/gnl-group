@@ -1,7 +1,6 @@
 // CohenBlueprint — build: 2026-07-08 v3
 import { useEffect } from "react";
 
-console.log("CohenBlueprint build: 2026-07-08 v3 ✅");
 
 // ─────────────────────────────────────────────────────────
 //  Cohen Construction — Custom Lakefront Homebuilder, Lake Tillery NC
@@ -12,6 +11,7 @@ console.log("CohenBlueprint build: 2026-07-08 v3 ✅");
 
 export default function CohenBlueprint() {
   useEffect(() => {
+    console.log("CohenBlueprint build: 2026-07-08 v3 ✅");
     document.title = "Cohen Construction — Custom Lakefront Homebuilder, Lake Tillery NC";
   }, []);
 

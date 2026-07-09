@@ -1,7 +1,6 @@
 // CohenLakeLife — build: 2026-07-08 v3
 import { useEffect } from "react";
 
-console.log("CohenLakeLife build: 2026-07-08 v3 ✅");
 
 // ─────────────────────────────────────────────────────────
 //  Cohen Construction — Life on Lake Tillery
@@ -12,6 +11,7 @@ console.log("CohenLakeLife build: 2026-07-08 v3 ✅");
 
 export default function CohenLakeLife() {
   useEffect(() => {
+    console.log("CohenLakeLife build: 2026-07-08 v3 ✅");
     document.title = "Cohen Construction — Life on Lake Tillery";
   }, []);
 
