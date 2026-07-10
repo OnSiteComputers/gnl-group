@@ -23,7 +23,7 @@ const WARREN_CARD_BACK = '/warren-card-back.png';
 //    collects the consult fee AND creates the Zoom link automatically.
 // 6) CONSULT_FEE: the consultation price shown on the page.
 const SIGN_PDF_URL = '/GNL-Agreement-Warren.pdf';
-const SIGN_DIGITAL_URL = 'https://www.jotform.com/sign/261899098185073/invite/01kx502vsa2eae614bb6bc89b2';
+const SIGN_DIGITAL_URL = 'https://www.jotform.com/sign/261899098185073/invite/01kx53mzxs9894ded78e1d92d2';
 const MAIL_TO_ADDRESS = '53 Cabarrus Ave W, Concord, NC 28025';
 const CHECK_PAYABLE_TO = 'GNL Digital Group';
 const PAY_URL = 'https://securelink-prod.valorpaytech.com:4430/?redirect=1&uid=88352a64-75f1-11f1-8d9b-128462456e49';
