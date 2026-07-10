@@ -1,5 +1,5 @@
 // WarrenProposal.jsx &mdash; GNL Digital Group &mdash; Warren Family Law proposal
-// build: 2026-07-09 v11 [OK]  (resynced to v4 agreement: 3-mo minimum then month-to-month,
+// build: 2026-07-10 v12 [OK]  (resynced to v4 agreement: 3-mo minimum then month-to-month,
 //   tiered $3,328/$3,500, phones-with-early-cancel, pay link removed, unconditional card bonus,
 //   corrected JotForm Sign link; clarified Jim/Candace control booking availability; v9: emoji now use JS \\u escapes (render correctly AND stay pure ASCII); &mdash; kept only in JSX text;
 //   v10: added "What This Looks Like Day To Day" phone-scenarios card &mdash; Candace-remote, transfer-to-cell, hold-and-reach, filtered cell (approved callers ring cell, rest to office), easy add-a-contact)
@@ -23,7 +23,7 @@ const WARREN_CARD_BACK = '/warren-card-back.png';
 //    collects the consult fee AND creates the Zoom link automatically.
 // 6) CONSULT_FEE: the consultation price shown on the page.
 const SIGN_PDF_URL = '/GNL-Agreement-Warren.pdf';
-const SIGN_DIGITAL_URL = 'https://www.jotform.com/sign/261868623965069/invite/01kwxfbpq50cbe96d9ad9d2e53';
+const SIGN_DIGITAL_URL = 'https://www.jotform.com/sign/261899098185073/invite/01kx502vsa2eae614bb6bc89b2';
 const MAIL_TO_ADDRESS = '53 Cabarrus Ave W, Concord, NC 28025';
 const CHECK_PAYABLE_TO = 'GNL Digital Group';
 const PAY_URL = 'https://securelink-prod.valorpaytech.com:4430/?redirect=1&uid=88352a64-75f1-11f1-8d9b-128462456e49';
