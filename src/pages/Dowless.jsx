@@ -1,4 +1,4 @@
-// Dowless build: 2026-07-07 v3
+// Dowless build: 2026-07-10 v5
 import { useEffect } from "react";
 // a&bull;==========
 //  DOWLESS LAW &mdash; WEBSITE (route: /dowless)
@@ -14,7 +14,7 @@ import { useEffect } from "react";
 const PHONE = "704-782-7529";
 
 export default function Dowless() {
-  useEffect(() => { console.log("Dowless build: 2026-07-07 v3"); }, []);
+  useEffect(() => { console.log("Dowless build: 2026-07-10 v5"); }, []);
 
   useEffect(() => {
     document.title = "Dowless Law Firm &mdash; Bankruptcy & Wills, Concord NC";
@@ -41,7 +41,8 @@ export default function Dowless() {
 
       {/* ========== HERO ========== */}
       <header className="dd-hero">
-        <div className="dd-hero-inner">
+        <div className="dd-hero-inner dd-hero-grid">
+          <div className="dd-hero-copy">
           <p className="dd-kicker">Concord, North Carolina &#183; Since 1995</p>
           <h1>The calls can stop.<br />The worry can stop.<br /><span>There is a way through this.</span></h1>
           <p className="dd-lede">
@@ -56,6 +57,18 @@ export default function Dowless() {
             <a className="dd-btn dd-btn-quiet" href="mailto:kathy@dowlesslaw.com">Or email the office</a>
           </div>
           <p className="dd-hero-note">Free consultation &#183; Evening appointments available</p>
+          </div>
+
+          <div className="dd-hero-photo">
+            <div className="dd-photo-frame">
+              <div className="dd-photo-placeholder">
+                <strong>Professional Portrait</strong><br/>
+                Ann-Charlotte Dowless
+              </div>
+              <div className="dd-badge">30+ Years Experience</div>
+              <div className="dd-badge dd-badge2">Free Consultation</div>
+            </div>
+          </div>
         </div>
         <div className="dd-sun" aria-hidden="true" />
       </header>
@@ -163,6 +176,31 @@ export default function Dowless() {
         </div>
       </section>
 
+
+{/* ========== REVIEWS ========== */}
+<section className="dd-section">
+  <p className="dd-kicker dd-center">Client Reviews</p>
+  <h2 className="dd-center">What Clients Are Saying</h2>
+  <div className="dd-steps">
+    <div className="dd-step"><h3>Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦</h3><p><em>Google Review Placeholder</em></p></div>
+    <div className="dd-step"><h3>Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦</h3><p><em>Google Review Placeholder</em></p></div>
+    <div className="dd-step"><h3>Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦Ã¢Ëœâ€¦</h3><p><em>Google Review Placeholder</em></p></div>
+  </div>
+</section>
+
+{/* ========== WHY CHOOSE US ========== */}
+<section className="dd-section">
+  <p className="dd-kicker dd-center">Why Choose Dowless Law</p>
+  <div className="dd-steps">
+    <div className="dd-step"><h3>30+ Years</h3><p>Experienced legal guidance.</p></div>
+    <div className="dd-step"><h3>Local</h3><p>Serving Concord families.</p></div>
+    <div className="dd-step"><h3>Compassion</h3><p>No judgment. Just solutions.</p></div>
+    <div className="dd-step"><h3>Chapter 7 & 13</h3><p>Bankruptcy options explained clearly.</p></div>
+    <div className="dd-step"><h3>Estate Planning</h3><p>Protect the people you love.</p></div>
+    <div className="dd-step"><h3>Free Consultation</h3><p>Let's discuss your options.</p></div>
+  </div>
+</section>
+
       {/* ========== ABOUT ========== */}
       <section className="dd-section dd-about" id="about">
         <div className="dd-two">
@@ -187,6 +225,28 @@ export default function Dowless() {
           </div>
         </div>
       </section>
+
+
+<section className="dd-section">
+<p className="dd-kicker dd-center">Our Office</p>
+<h2 className="dd-center">Photo Gallery</h2>
+<div className="dd-steps">
+<div className="dd-photo">Exterior Photo</div>
+<div className="dd-photo">Reception Photo</div>
+<div className="dd-photo">Conference Room</div>
+<div className="dd-photo">Attorney Office</div>
+</div>
+</section>
+
+<section className="dd-section">
+<p className="dd-kicker dd-center">Frequently Asked Questions</p>
+<div className="dd-cardstack">
+<div className="dd-mini"><h3>Will I lose my house?</h3><p>FAQ Placeholder</p></div>
+<div className="dd-mini"><h3>Can bankruptcy stop foreclosure?</h3><p>FAQ Placeholder</p></div>
+<div className="dd-mini"><h3>Can I keep my car?</h3><p>FAQ Placeholder</p></div>
+<div className="dd-mini"><h3>How much does bankruptcy cost?</h3><p>FAQ Placeholder</p></div>
+</div>
+</section>
 
       {/* ========== FINAL CTA ========== */}
       <section className="dd-final">
@@ -312,3 +372,13 @@ const css = `
 
 @media (prefers-reduced-motion: reduce) { .dd-btn { transition: none; } }
 `;
+
+
+.dd-hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center;max-width:1150px}
+.dd-hero-copy{text-align:left}
+.dd-hero-photo{display:flex;justify-content:center}
+.dd-photo-frame{position:relative;width:360px;height:460px;border-radius:24px;background:#fff;padding:12px;box-shadow:0 20px 50px rgba(0,0,0,.12)}
+.dd-photo-placeholder{height:100%;border:2px dashed #c89b5a;border-radius:18px;display:flex;align-items:center;justify-content:center;text-align:center;color:#5b7c99;font-size:22px}
+.dd-badge{position:absolute;left:-12px;top:20px;background:#c89b5a;color:#fff;padding:10px 16px;border-radius:999px;font-weight:700}
+.dd-badge2{top:auto;bottom:20px;background:#5b7c99}
+@media(max-width:900px){.dd-hero-grid{grid-template-columns:1fr}.dd-hero-copy{text-align:center}}
