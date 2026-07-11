@@ -1,16 +1,16 @@
 // Dowless build: 2026-07-10 v2
 import { useEffect } from "react";
 // ====================
-//  DOWLESS LAW â€” LIVE SITE (route: /dowless)
+//  DOWLESS LAW — LIVE SITE (route: /dowless)
 //
 //  Router:
 //    <Route path="/dowless" element={<Dowless />} />
 //
 //  Navy / gold "calm authority" design (from approved mockup).
 //  Nav + CTAs smooth-scroll to on-page sections. FAQ / Resources are inert
-//  placeholders (no section exists yet â€” do not fabricate legal content).
+//  placeholders (no section exists yet — do not fabricate legal content).
 //  Phone (tel:) and email (mailto:) links are LIVE everywhere.
-//  Photos are CSS placeholders â€” swap in real images later.
+//  Photos are CSS placeholders — swap in real images later.
 // ====================
 
 const PHONE = "704-782-7529";
@@ -22,7 +22,7 @@ export default function Dowless() {
   useEffect(() => { console.log("Dowless build: 2026-07-10 v2"); }, []);
 
   useEffect(() => {
-    document.title = "Dowless Law Firm â€” Bankruptcy & Wills, Concord NC";
+    document.title = "Dowless Law Firm — Bankruptcy & Wills, Concord NC";
   }, []);
 
   const go = (id) => (e) => {
@@ -40,11 +40,11 @@ export default function Dowless() {
       <div className="dl-topbar">
         <div className="dl-topbar-in">
           <span className="dl-tb-left">
-            <span className="dl-pin">â—ˆ</span> Serving Concord, Charlotte &amp; Surrounding Areas
+            <span className="dl-pin">◈</span> Serving Concord, Charlotte &amp; Surrounding Areas
           </span>
           <span className="dl-tb-right">
-            <a href={PHONE_HREF} className="dl-tb-link"><span className="dl-ic">âœ†</span> {PHONE}</a>
-            <a href={EMAIL_HREF} className="dl-tb-link"><span className="dl-ic">âœ‰</span> {EMAIL}</a>
+            <a href={PHONE_HREF} className="dl-tb-link"><span className="dl-ic">✆</span> {PHONE}</a>
+            <a href={EMAIL_HREF} className="dl-tb-link"><span className="dl-ic">✉</span> {EMAIL}</a>
           </span>
         </div>
       </div>
@@ -53,7 +53,7 @@ export default function Dowless() {
       <header className="dl-nav" id="top">
         <div className="dl-nav-in">
           <a href="#top" onClick={go("top")} className="dl-brand">
-            <span className="dl-crest">âš–</span>
+            <span className="dl-crest">⚖</span>
             <span className="dl-brand-txt">
               <span className="dl-brand-name">DOWLESS</span>
               <span className="dl-brand-sub">LAW FIRM</span>
@@ -65,7 +65,7 @@ export default function Dowless() {
             <a href="#about" onClick={go("about")} className="dl-link">ABOUT</a>
             <div className="dl-drop">
               <a href="#help" onClick={go("help")} className="dl-link dl-link-caret">
-                BANKRUPTCY <span className="dl-caret">â–¾</span>
+                BANKRUPTCY <span className="dl-caret">▾</span>
               </a>
               <div className="dl-drop-menu">
                 <a href="#help" onClick={go("help")}>Chapter 7 Bankruptcy</a>
@@ -94,11 +94,11 @@ export default function Dowless() {
               to help you move forward with confidence.
             </p>
             <div className="dl-hero-btns">
-              <a href={PHONE_HREF} className="dl-btn dl-btn-navy"><span className="dl-ic">âœ†</span> CALL {PHONE}</a>
-              <a href="#contact" onClick={go("contact")} className="dl-btn dl-btn-ghost"><span className="dl-ic">â–¤</span> SCHEDULE A CONSULTATION</a>
+              <a href={PHONE_HREF} className="dl-btn dl-btn-navy"><span className="dl-ic">✆</span> CALL {PHONE}</a>
+              <a href="#contact" onClick={go("contact")} className="dl-btn dl-btn-ghost"><span className="dl-ic">▤</span> SCHEDULE A CONSULTATION</a>
             </div>
             <div className="dl-hero-trust">
-              <span className="dl-badge">â—ˆ</span>
+              <span className="dl-badge">◈</span>
               <span><strong>Over 30 Years of Experience</strong></span>
               <span className="dl-divider">|</span>
               <span>Local. Trusted. Focused on You.</span>
@@ -116,16 +116,16 @@ export default function Dowless() {
         <div className="dl-rule dl-rule-center" />
         <div className="dl-cards">
           {[
-            { icon: "ðŸ›¡", title: "Chapter 7 Bankruptcy", body: "Eliminate unsecured debt and get a fresh start. We'll guide you through every step." },
-            { icon: "âŒ‚", title: "Chapter 13 Bankruptcy", body: "Keep your property and catch up on what you owe through a manageable repayment plan." },
-            { icon: "ï¼„", title: "Stop Foreclosure", body: "Bankruptcy may help you stop foreclosure and protect your home. Let us help you explore your options." },
-            { icon: "â–­", title: "Stop Wage Garnishment", body: "Put an end to wage garnishments and creditor harassment. We're here to help." },
+            { icon: "🛡", title: "Chapter 7 Bankruptcy", body: "Eliminate unsecured debt and get a fresh start. We'll guide you through every step." },
+            { icon: "⌂", title: "Chapter 13 Bankruptcy", body: "Keep your property and catch up on what you owe through a manageable repayment plan." },
+            { icon: "＄", title: "Stop Foreclosure", body: "Bankruptcy may help you stop foreclosure and protect your home. Let us help you explore your options." },
+            { icon: "▭", title: "Stop Wage Garnishment", body: "Put an end to wage garnishments and creditor harassment. We're here to help." },
           ].map((c) => (
             <div className="dl-card" key={c.title}>
               <div className="dl-card-ic">{c.icon}</div>
               <h3 className="dl-card-title">{c.title}</h3>
               <p className="dl-card-body">{c.body}</p>
-              <a href="#contact" onClick={go("contact")} className="dl-learn">LEARN MORE â†’</a>
+              <a href="#contact" onClick={go("contact")} className="dl-learn">LEARN MORE →</a>
             </div>
           ))}
         </div>
@@ -147,11 +147,11 @@ export default function Dowless() {
           </div>
           <div className="dl-about-right">
             <ul className="dl-checks">
-              <li><span className="dl-chk">âœ“</span> Over 30 Years of Legal Experience</li>
-              <li><span className="dl-chk">âœ“</span> Focused Exclusively on Bankruptcy Law</li>
-              <li><span className="dl-chk">âœ“</span> Personalized Attention to Every Case</li>
-              <li><span className="dl-chk">âœ“</span> Convenient Location in Concord, NC</li>
-              <li><span className="dl-chk">âœ“</span> Helping Clients Throughout Cabarrus County &amp; Surrounding Areas</li>
+              <li><span className="dl-chk">✓</span> Over 30 Years of Legal Experience</li>
+              <li><span className="dl-chk">✓</span> Focused Exclusively on Bankruptcy Law</li>
+              <li><span className="dl-chk">✓</span> Personalized Attention to Every Case</li>
+              <li><span className="dl-chk">✓</span> Convenient Location in Concord, NC</li>
+              <li><span className="dl-chk">✓</span> Helping Clients Throughout Cabarrus County &amp; Surrounding Areas</li>
             </ul>
             <a href="#about" onClick={inert} className="dl-btn dl-btn-navy dl-about-btn">ABOUT ANN-CHARLOTTE DOWLESS</a>
           </div>
@@ -164,11 +164,11 @@ export default function Dowless() {
         <div className="dl-rule dl-rule-center" />
         <div className="dl-trust-row">
           <div className="dl-trust-col">
-            <span className="dl-trust-ic">ðŸ‘¥</span>
+            <span className="dl-trust-ic">👥</span>
             <p><strong>Thousands of Clients</strong><br />Helped Get a Fresh Start</p>
           </div>
           <div className="dl-trust-col dl-trust-quote">
-            <div className="dl-stars">â˜…â˜…â˜…â˜…â˜…</div>
+            <div className="dl-stars">★★★★★</div>
             <p className="dl-quote">
               &ldquo;Mrs. Dowless and her staff were absolutely wonderful.&rdquo;<br />
               &ldquo;They made a very stressful situation much easier.&rdquo;
@@ -176,7 +176,7 @@ export default function Dowless() {
             <p className="dl-quote-attr">&ndash; Client Review</p>
           </div>
           <div className="dl-trust-col">
-            <span className="dl-trust-ic">ðŸ¤</span>
+            <span className="dl-trust-ic">🤝</span>
             <p><strong>Compassionate Guidance.</strong><br />Proven Results.</p>
           </div>
         </div>
@@ -186,7 +186,7 @@ export default function Dowless() {
       <footer className="dl-footer" id="contact">
         <div className="dl-footer-in">
           <div className="dl-foot-brand">
-            <span className="dl-crest dl-crest-gold">âš–</span>
+            <span className="dl-crest dl-crest-gold">⚖</span>
             <span className="dl-brand-txt">
               <span className="dl-brand-name dl-brand-name-light">DOWLESS</span>
               <span className="dl-brand-sub dl-brand-sub-light">LAW FIRM</span>
@@ -194,9 +194,9 @@ export default function Dowless() {
           </div>
           <p className="dl-foot-tag">A Fresh Start Is Possible.</p>
           <div className="dl-foot-contact">
-            <a href={PHONE_HREF} className="dl-foot-link"><span className="dl-ic">âœ†</span> {PHONE}</a>
-            <a href={EMAIL_HREF} className="dl-foot-link"><span className="dl-ic">âœ‰</span> {EMAIL}</a>
-            <span className="dl-foot-link"><span className="dl-ic">â—ˆ</span> Concord, NC &amp; Surrounding Areas</span>
+            <a href={PHONE_HREF} className="dl-foot-link"><span className="dl-ic">✆</span> {PHONE}</a>
+            <a href={EMAIL_HREF} className="dl-foot-link"><span className="dl-ic">✉</span> {EMAIL}</a>
+            <span className="dl-foot-link"><span className="dl-ic">◈</span> Concord, NC &amp; Surrounding Areas</span>
           </div>
           <p className="dl-foot-legal">
             We are a debt relief agency. We help people file for bankruptcy under the United States Bankruptcy Code.
