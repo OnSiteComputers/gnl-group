@@ -289,11 +289,14 @@ function Header({ live, loading }) {
           <div className="pod-name pf">Piedmont Hardwood Lumber Co.</div>
           <div className="pod-sub">Order Desk</div>
         </div>
-        <div style={{ textAlign: "right" }}>
-          <div className="pod-est">Mt. Pleasant, NC · Est. 1960</div>
-          <div className={"pod-mode " + (loading ? "wait" : live ? "on" : "off")}>
-            <span className="dot" />
-            {loading ? "Connecting…" : live ? "Live database" : "Demo data"}
+        <div style={{ display: "flex", alignItems: "center", gap: 18, flexWrap: "wrap" }}>
+          <a className="pod-home" href="/piedmont-home">← Home</a>
+          <div style={{ textAlign: "right" }}>
+            <div className="pod-est">Mt. Pleasant, NC · Est. 1960</div>
+            <div className={"pod-mode " + (loading ? "wait" : live ? "on" : "off")}>
+              <span className="dot" />
+              {loading ? "Connecting…" : live ? "Live database" : "Demo data"}
+            </div>
           </div>
         </div>
       </div>
@@ -697,6 +700,9 @@ function StyleTag() {
 
 .pod-top{background:${C.bark};color:${C.sawdust};padding:22px 0;border-bottom:4px solid ${C.amber};}
 .pod-topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.pod-home{display:inline-block;color:${C.sawdust};text-decoration:none;font-weight:700;font-size:14px;
+  border:1.5px solid rgba(245,240,229,.55);border-radius:7px;padding:9px 18px;transition:.15s;}
+.pod-home:hover{background:rgba(245,240,229,.14);}
 .pod-brand{display:flex;flex-direction:column;}
 .pod-name{font-size:26px;font-weight:800;letter-spacing:.3px;}
 .pod-sub{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:${C.plank};margin-top:2px;}
