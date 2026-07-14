@@ -253,9 +253,14 @@ export default function PiedmontOrderDesk() {
       <Header live={live} loading={loading} />
 
       <div className="pod-tabs">
-        <TabBtn id="order" tab={tab} setTab={setTab}>New Order</TabBtn>
+        <TabBtn id="order" tab={tab} setTab={setTab} badge="Office">New Order</TabBtn>
         <TabBtn id="stock" tab={tab} setTab={setTab}>Yard Stock</TabBtn>
-        <TabBtn id="report" tab={tab} setTab={setTab}>Reports</TabBtn>
+        <TabBtn id="report" tab={tab} setTab={setTab} badge="Office">Reports</TabBtn>
+      </div>
+
+      {/* who-sees-what note */}
+      <div className="pod-note">
+        Customers on the website see <b>Yard Stock</b> only. <b>New Order</b> and <b>Reports</b> are the office side — Sherry's view.
       </div>
 
       <div className="pod-wrap">
@@ -297,10 +302,11 @@ function Header({ live, loading }) {
 }
 
 /* ======================= Tabs ============================================ */
-function TabBtn({ id, tab, setTab, children }) {
+function TabBtn({ id, tab, setTab, badge, children }) {
   return (
     <button className={"pod-tab" + (tab === id ? " on" : "")} onClick={() => setTab(id)}>
       {children}
+      {badge && <span className="pod-tab-badge">{badge}</span>}
     </button>
   );
 }
@@ -711,6 +717,11 @@ function StyleTag() {
   border-bottom:3px solid transparent;transition:.15s;font-family:inherit;}
 .pod-tab:hover{color:#fff;background:rgba(255,255,255,.06);}
 .pod-tab.on{background:${C.sawdust};color:${C.bark};border-bottom-color:${C.amber};}
+.pod-tab-badge{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:20px;
+  background:${C.amber};color:#fff;font-size:10.5px;font-weight:700;letter-spacing:1px;
+  text-transform:uppercase;vertical-align:middle;}
+.pod-note{background:${C.plank};color:${C.bark};text-align:center;font-size:13.5px;
+  padding:8px 16px;border-bottom:1px solid ${C.line};}
 
 .pod-wrap{padding-top:26px;padding-bottom:60px;}
 .pod-sec{font-size:22px;margin:0 0 4px;font-weight:800;}

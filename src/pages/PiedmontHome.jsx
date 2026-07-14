@@ -38,6 +38,7 @@ export default function PiedmontHome() {
         .btn-ghost{background:transparent;color:${C.sawdust};border:1.5px solid rgba(245,240,229,.6);} .btn-ghost:hover{background:rgba(245,240,229,.12);}
         .eyebrow{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:${C.pine};font-weight:700;}
         .card{background:${C.paper};border:1px solid ${C.line};border-radius:12px;}
+        section[id]{scroll-margin-top:84px;} /* sticky nav clearance for #lumber / #timber / #about jumps */
         @media(max-width:760px){.gridcat{grid-template-columns:1fr!important;} .split{grid-template-columns:1fr!important;} .h1{font-size:40px!important;} .navlinks{display:none!important;}}
       `}</style>
 
