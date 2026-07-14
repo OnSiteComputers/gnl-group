@@ -39,6 +39,9 @@ import CohenDemo from './pages/CohenDemo';
 import CohenStillWater from './pages/CohenStillWater';
 import CohenLakeLife from './pages/CohenLakeLife';
 import CohenBlueprint from './pages/CohenBlueprint';
+import PiedmontOrderDesk from './pages/PiedmontOrderDesk';
+import PiedmontProposal from './pages/PiedmontProposal';
+import PiedmontHome from './pages/PiedmontHome';
 
 // -- Client sites --
 import Featherline from './pages/Featherline';
@@ -84,6 +87,9 @@ function App() {
           <Route path="/cohen-still-water" element={<CohenStillWater />} />
           <Route path="/cohen-lake-life" element={<CohenLakeLife />} />
           <Route path="/cohen-blueprint" element={<CohenBlueprint />} />
+          <Route path="/piedmont-order-desk" element={<PiedmontOrderDesk />} />
+          <Route path="/piedmont-proposal" element={<PiedmontProposal />} />
+          <Route path="/piedmont-home" element={<PiedmontHome />} />
 
           {/* Client sites */}
           <Route path="/featherline" element={<Featherline />} />
