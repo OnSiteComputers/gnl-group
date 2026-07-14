@@ -44,7 +44,7 @@ const C = {
   paper: "#FBF8F1",
 };
 
-const PUBLIC = "/piedmont"; // image folder in public/ ; files: loader.jpg, stacks.jpg, warehouse.jpg, sign.jpg, boards.jpg
+const PUBLIC = "/piedmont"; // flat public/ folder, piedmont- prefixed: piedmont-loader.jpg etc.
 
 export default function PiedmontProposal() {
   return (
@@ -69,7 +69,7 @@ export default function PiedmontProposal() {
 
       {/* ============ HERO ============ */}
       <header style={{position:"relative", minHeight:420, overflow:"hidden", borderBottom:`5px solid ${C.bark}`}}>
-        <img src={`${PUBLIC}/loader.jpg`} alt="Piedmont Hardwood Lumber yard"
+        <img src={`${PUBLIC}-loader.jpg`} alt="Piedmont Hardwood Lumber yard"
              style={{position:"absolute", inset:0, width:"100%", height:"100%", objectFit:"cover", objectPosition:"center 42%"}}/>
         <div style={{position:"absolute", inset:0, background:`linear-gradient(90deg, rgba(43,29,18,.90) 0%, rgba(43,29,18,.74) 48%, rgba(43,29,18,.42) 100%)`}}/>
         <div style={{position:"relative"}} className="wrap">
@@ -152,7 +152,7 @@ export default function PiedmontProposal() {
             <a className="btn btn-gold" href={CLIENT.demoUrl}>See It Working →</a>
           </div>
           <div style={{borderRadius:12, overflow:"hidden", border:`1px solid ${C.line}`, boxShadow:"0 3px 0 rgba(0,0,0,.3)"}}>
-            <img src={`${PUBLIC}/stacks.jpg`} alt="Sorted, tagged pine ready to sell" style={{width:"100%", display:"block"}}/>
+            <img src={`${PUBLIC}-stacks.jpg`} alt="Sorted, tagged pine ready to sell" style={{width:"100%", display:"block"}}/>
           </div>
         </div>
       </section>
@@ -265,9 +265,9 @@ export default function PiedmontProposal() {
           <div className="eyebrow" style={{marginBottom:12}}>The Phones You'll Have</div>
           <div style={{display:"grid", gridTemplateColumns:"1fr 1fr 1fr", gap:16}} className="stepgrid">
             {[
-              {q:"2×", t:"Yealink AX83H", img:`${PUBLIC}/phone-cordless.jpg`, alt:"Yealink cordless handset in charging cradle",
+              {q:"2×", t:"Yealink AX83H", img:`${PUBLIC}-phone-cordless.jpg`, alt:"Yealink cordless handset in charging cradle",
                d:"Cordless handsets. Carry them anywhere — the counter, the office, out front. Wi-Fi, so no wires."},
-              {q:"1×", t:"Yealink T34W", img:`${PUBLIC}/phone-desk.jpg`, alt:"Yealink desk phone with one-touch buttons",
+              {q:"1×", t:"Yealink T34W", img:`${PUBLIC}-phone-desk.jpg`, alt:"Yealink desk phone with one-touch buttons",
                d:"A desk phone for the front counter — Sherry's home base, with one-touch buttons for the yard and for Lynn."},
               {q:"—", t:"Your number, kept", img:null, alt:"",
                d:"We move your current number over. Nothing changes for the folks who already call you. And you stop renting phones by the month."},

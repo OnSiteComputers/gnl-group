@@ -23,7 +23,7 @@ const C = {
   steel:"#2F6B7A", steelDk:"#204A54", ink:"#2A1D12", line:"#D8C4A4",
   green:"#3E7C4F", amber:"#C6801E", paper:"#FBF8F1",
 };
-const PUBLIC = "/piedmont"; // loader.jpg, stacks.jpg, warehouse.jpg, sign.jpg, boards.jpg
+const PUBLIC = "/piedmont"; // flat public/ folder, piedmont- prefixed: piedmont-loader.jpg etc.
 
 export default function PiedmontHome() {
   return (
@@ -66,7 +66,7 @@ export default function PiedmontHome() {
 
       {/* ===== HERO ===== */}
       <header style={{position:"relative", minHeight:520, overflow:"hidden", borderBottom:`5px solid ${C.bark}`}}>
-        <img src={`${PUBLIC}/loader.jpg`} alt="Piedmont Hardwood Lumber yard"
+        <img src={`${PUBLIC}-loader.jpg`} alt="Piedmont Hardwood Lumber yard"
              style={{position:"absolute", inset:0, width:"100%", height:"100%", objectFit:"cover", objectPosition:"center 40%"}}/>
         <div style={{position:"absolute", inset:0, background:`linear-gradient(90deg, rgba(43,29,18,.88) 0%, rgba(43,29,18,.66) 50%, rgba(43,29,18,.34) 100%)`}}/>
         <div className="wrap" style={{position:"relative"}}>
@@ -138,7 +138,7 @@ export default function PiedmontHome() {
             </div>
           </div>
           <div style={{borderRadius:10, overflow:"hidden", border:`1px solid ${C.line}`}}>
-            <img src={`${PUBLIC}/warehouse.jpg`} alt="Stacked pine timbers under cover" style={{width:"100%", display:"block"}}/>
+            <img src={`${PUBLIC}-warehouse.jpg`} alt="Stacked pine timbers under cover" style={{width:"100%", display:"block"}}/>
           </div>
         </div>
       </section>
@@ -161,7 +161,7 @@ export default function PiedmontHome() {
 
       {/* ===== WE BUY TIMBER ===== */}
       <section id="timber" style={{marginTop:40, position:"relative", overflow:"hidden", borderTop:`5px solid ${C.bark}`, borderBottom:`5px solid ${C.bark}`}}>
-        <img src={`${PUBLIC}/boards.jpg`} alt="Fresh sawn pine" style={{position:"absolute", inset:0, width:"100%", height:"100%", objectFit:"cover"}}/>
+        <img src={`${PUBLIC}-boards.jpg`} alt="Fresh sawn pine" style={{position:"absolute", inset:0, width:"100%", height:"100%", objectFit:"cover"}}/>
         <div style={{position:"absolute", inset:0, background:`linear-gradient(90deg, rgba(43,29,18,.92) 0%, rgba(43,29,18,.72) 100%)`}}/>
         <div className="wrap" style={{position:"relative", padding:"54px 22px"}}>
           <div style={{maxWidth:600}}>
@@ -182,7 +182,7 @@ export default function PiedmontHome() {
       <section id="about" className="wrap" style={{padding:"56px 22px 20px"}}>
         <div style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:36, alignItems:"center"}} className="split">
           <div style={{borderRadius:12, overflow:"hidden", border:`1px solid ${C.line}`, boxShadow:`0 3px 0 ${C.plank}`}}>
-            <img src={`${PUBLIC}/sign.jpg`} alt="Piedmont Hardwood Lumber sign" style={{width:"100%", display:"block"}}/>
+            <img src={`${PUBLIC}-sign.jpg`} alt="Piedmont Hardwood Lumber sign" style={{width:"100%", display:"block"}}/>
           </div>
           <div>
             <div className="eyebrow">Since {SITE.est}</div>
