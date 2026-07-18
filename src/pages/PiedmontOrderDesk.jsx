@@ -7,15 +7,48 @@ import { createClient } from "@supabase/supabase-js";
    GNL Digital Group build. React + Supabase.
 
    HOW IT WORKS
-   - On mount it tries to load from Supabase (customers, inventory, orders).
+   - On mount it tries to load from Supabase (customers, inventory, orders,
+     and — best-effort — production history).
    - If Supabase is unreachable OR the tables are empty, it silently falls back
      to a built-in in-memory seed so the app ALWAYS renders working data.
-     -> This is deliberate: the Thursday demo cannot fail live. If the office
+     -> This is deliberate: a client walkthrough cannot fail live. If the office
         wifi drops or the project is asleep, it runs on seed data and nobody
         can tell the difference in a walkthrough.
-   - When live, logging an order writes to Supabase and re-reads, so refresh
-     persists. When on fallback, state lives in memory and resets on refresh
-     (which is fine — the seed re-runs the demo cleanly every time).
+   - When live, logging an order OR logging production writes to Supabase and
+     re-reads, so refresh persists. When on fallback, state lives in memory and
+     resets on refresh (which is fine — the seed re-runs the demo cleanly).
+
+   NEW — "Add Stock" (production logging)
+   - Piedmont makes all their own lumber, so stock should go UP the moment a run
+     comes off the mill, not only when someone hand-edits a table.
+   - The Add Stock tab logs a milling run: pick or type a size + grade, enter the
+     quantity, done. It raises the on-hand count for that size/grade (creating a
+     brand-new size/grade row if it's a cut you've never stocked before) and
+     records a dated entry in the production log so you can see what was milled
+     and when. That's what keeps the yard count accurate.
+
+   Supabase tables used when live:
+     customers(name)
+     inventory(size, grade, onhand)          <- production raises onhand; a new
+                                                 size/grade inserts a fresh row
+     orders(id, customer, po, date_ordered, date_promised)
+     order_lines(order_id, size, grade, qty)
+     production(id, date_produced, note)               <- NEW (optional)
+     production_lines(production_id, size, grade, qty)  <- NEW (optional)
+
+   SQL to add the two production tables (run once in Supabase; the app works on
+   in-memory data until these exist, so nothing breaks in the meantime):
+     create table production (
+       id bigint generated always as identity primary key,
+       date_produced date,
+       note text,
+       created_at timestamptz default now()
+     );
+     create table production_lines (
+       id bigint generated always as identity primary key,
+       production_id bigint references production(id) on delete cascade,
+       size text, grade text, qty int
+     );
 
    The banner in the header shows which mode you're in (green = Live database,
    amber = Demo data). For a client walkthrough you want green.
@@ -34,7 +67,8 @@ try {
 
 /* ---- Static reference data ---------------------------------------------- */
 // Clean Southern Yellow Pine grades (swap to Piedmont's real names on sign —
-// 2-minute find-and-replace once Sherry confirms them).
+// 2-minute find-and-replace once Sherry confirms them). These are the common
+// picks; the Add Stock tab can also introduce a brand-new size or grade.
 const GRADES = ["Select Structural", "#1", "#2", "#3", "Prime", "D Grade"];
 const SIZES = ["1X6-6", "1X6-8", "1X6-10", "1X6-12", "1X6-14", "1X6-16", "1X8-8", "1X8-12"];
 
@@ -104,6 +138,27 @@ const seedOrders = () => [
   },
 ];
 
+// A little production history so the log isn't empty in a walkthrough. These are
+// PAST runs already reflected in the on-hand counts above — the log is a record.
+// New runs logged live during the demo DO raise on-hand.
+const seedProduction = () => [
+  {
+    id: 2,
+    date: shiftISO(0),
+    note: "Off the green chain — morning run",
+    lines: [
+      { size: "1X6-8", grade: "#1", qty: 60 },
+      { size: "1X6-10", grade: "#2", qty: 40 },
+    ],
+  },
+  {
+    id: 1,
+    date: shiftISO(-1),
+    note: "Kiln pulled — dried stock",
+    lines: [{ size: "1X8-8", grade: "#2", qty: 24 }],
+  },
+];
+
 /* ---- Palette (carried from the Piedmont marketing site) ------------------ */
 const C = {
   bark: "#3B2A1E",
@@ -120,6 +175,42 @@ const C = {
   paper: "#FBF8F1",
 };
 
+/* ---- Small shared helpers (exported so they can be unit-tested) ---------- */
+// Natural compare: "1X6-8" sorts before "1X6-10".
+const naturalCmp = (a, b) =>
+  String(a).localeCompare(String(b), undefined, { numeric: true, sensitivity: "base" });
+
+// Snap a typed value to an existing one if it matches case-insensitively, so
+// "prime" becomes "Prime" and "1x6-8" becomes "1X6-8" instead of a duplicate.
+export function canonicalValue(value, known, upper) {
+  const trimmed = String(value == null ? "" : value).trim();
+  if (!trimmed) return "";
+  const hit = (known || []).find((k) => k.toLowerCase() === trimmed.toLowerCase());
+  if (hit) return hit;
+  return upper ? trimmed.toUpperCase() : trimmed;
+}
+
+// Merge a milling run into inventory: raise on-hand for an existing size+grade,
+// or insert a brand-new row placed next to its size group. Pure -> testable.
+export function applyProduction(inventory, lines) {
+  const next = (inventory || []).map((r) => ({ ...r }));
+  for (const l of lines || []) {
+    const qty = Number(l.qty) || 0;
+    if (!l.size || !l.grade || qty <= 0) continue;
+    const idx = next.findIndex((r) => r.size === l.size && r.grade === l.grade);
+    if (idx >= 0) {
+      next[idx] = { ...next[idx], onhand: (Number(next[idx].onhand) || 0) + qty };
+    } else {
+      let insertAt = -1;
+      for (let k = 0; k < next.length; k++) if (next[k].size === l.size) insertAt = k;
+      const row = { size: l.size, grade: l.grade, onhand: qty };
+      if (insertAt >= 0) next.splice(insertAt + 1, 0, row);
+      else next.push(row);
+    }
+  }
+  return next;
+}
+
 /* ========================================================================== */
 
 export default function PiedmontOrderDesk() {
@@ -130,6 +221,7 @@ export default function PiedmontOrderDesk() {
   const [customers, setCustomers] = useState([]);
   const [inventory, setInventory] = useState([]);
   const [orders, setOrders] = useState([]);
+  const [production, setProduction] = useState([]);
 
   /* ---- Load: try Supabase, fall back to seed --------------------------- */
   const loadAll = useCallback(async () => {
@@ -168,6 +260,38 @@ export default function PiedmontOrderDesk() {
             }))
           );
           setLive(true);
+
+          // Production history is best-effort and OPTIONAL: if those tables
+          // don't exist yet, we keep live mode and just show seed history.
+          try {
+            const [pRes, plRes] = await Promise.all([
+              supabase.from("production").select("*").order("id", { ascending: false }),
+              supabase.from("production_lines").select("*"),
+            ]);
+            if (!pRes.error && !plRes.error && pRes.data) {
+              const plByProd = {};
+              (plRes.data || []).forEach((l) => {
+                (plByProd[l.production_id] = plByProd[l.production_id] || []).push({
+                  size: l.size,
+                  grade: l.grade,
+                  qty: l.qty,
+                });
+              });
+              setProduction(
+                pRes.data.map((p) => ({
+                  id: p.id,
+                  date: p.date_produced,
+                  note: p.note,
+                  lines: plByProd[p.id] || [],
+                }))
+              );
+            } else {
+              setProduction(seedProduction());
+            }
+          } catch (e) {
+            setProduction(seedProduction());
+          }
+
           setLoading(false);
           return;
         }
@@ -179,6 +303,7 @@ export default function PiedmontOrderDesk() {
     setCustomers([...SEED_CUSTOMERS]);
     setInventory(SEED_INVENTORY.map((r) => ({ ...r })));
     setOrders(seedOrders());
+    setProduction(seedProduction());
     setLive(false);
     setLoading(false);
   }, []);
@@ -186,6 +311,22 @@ export default function PiedmontOrderDesk() {
   useEffect(() => {
     loadAll();
   }, [loadAll]);
+
+  /* ---- Sizes/grades the pickers offer: the common list + anything we've
+          actually milled or stocked (so a new cut shows up everywhere). ---- */
+  const allSizes = useMemo(() => {
+    const s = new Set(SIZES);
+    inventory.forEach((r) => s.add(r.size));
+    return [...s].sort(naturalCmp);
+  }, [inventory]);
+
+  const allGrades = useMemo(() => {
+    const g = [...GRADES];
+    inventory.forEach((r) => {
+      if (!g.includes(r.grade)) g.push(r.grade);
+    });
+    return g;
+  }, [inventory]);
 
   /* ---- Committed = sum of open-order line qty per size+grade ------------ */
   const committedFor = useCallback(
@@ -246,6 +387,69 @@ export default function PiedmontOrderDesk() {
     [live, customers, loadAll]
   );
 
+  /* ---- Log a milling run: raise on-hand + record the run --------------- */
+  const saveProduction = useCallback(
+    async (entry) => {
+      // entry: { date, note, lines:[{size,grade,qty}] }  (lines already cleaned)
+      if (live && supabase) {
+        try {
+          const { data: ins, error } = await supabase
+            .from("production")
+            .insert({ date_produced: entry.date || null, note: entry.note || null })
+            .select()
+            .single();
+          if (error) throw error;
+          const pid = ins.id;
+          const lineRows = entry.lines.map((l) => ({
+            production_id: pid,
+            size: l.size,
+            grade: l.grade,
+            qty: l.qty,
+          }));
+          const { error: lErr } = await supabase.from("production_lines").insert(lineRows);
+          if (lErr) throw lErr;
+
+          // Raise on-hand for each board: bump an existing row, or insert a new cut.
+          for (const l of entry.lines) {
+            const { data: existing, error: selErr } = await supabase
+              .from("inventory")
+              .select("onhand")
+              .eq("size", l.size)
+              .eq("grade", l.grade)
+              .maybeSingle();
+            if (selErr) throw selErr;
+            if (existing) {
+              const { error: uErr } = await supabase
+                .from("inventory")
+                .update({ onhand: (Number(existing.onhand) || 0) + l.qty })
+                .eq("size", l.size)
+                .eq("grade", l.grade);
+              if (uErr) throw uErr;
+            } else {
+              const { error: iErr } = await supabase
+                .from("inventory")
+                .insert({ size: l.size, grade: l.grade, onhand: l.qty });
+              if (iErr) throw iErr;
+            }
+          }
+          await loadAll();
+          return true;
+        } catch (e) {
+          // Degrade to in-memory so the yard can still log the run.
+          setLive(false);
+        }
+      }
+      // In-memory path
+      setInventory((prev) => applyProduction(prev, entry.lines));
+      setProduction((prev) => {
+        const nextId = prev.reduce((m, p) => Math.max(m, p.id), 0) + 1;
+        return [{ id: nextId, date: entry.date, note: entry.note, lines: entry.lines }, ...prev];
+      });
+      return true;
+    },
+    [live, loadAll]
+  );
+
   /* ---------------------------------------------------------------------- */
   return (
     <div style={{ background: C.sawdust, color: C.ink, minHeight: "100vh", fontFamily: FONT }}>
@@ -254,18 +458,22 @@ export default function PiedmontOrderDesk() {
 
       <div className="pod-tabs">
         <TabBtn id="order" tab={tab} setTab={setTab} badge="Office">New Order</TabBtn>
+        <TabBtn id="produce" tab={tab} setTab={setTab} badge="Office">Add Stock</TabBtn>
         <TabBtn id="stock" tab={tab} setTab={setTab}>Yard Stock</TabBtn>
         <TabBtn id="report" tab={tab} setTab={setTab} badge="Office">Reports</TabBtn>
       </div>
 
       {/* who-sees-what note */}
       <div className="pod-note">
-        Customers on the website see <b>Yard Stock</b> only. <b>New Order</b> and <b>Reports</b> are the office side — Sherry's view.
+        Customers on the website see <b>Yard Stock</b> only. <b>New Order</b>, <b>Add Stock</b>, and <b>Reports</b> are the office side — Sherry's view.
       </div>
 
       <div className="pod-wrap">
         {tab === "order" && (
-          <OrderForm customers={customers} onSave={saveOrder} />
+          <OrderForm customers={customers} sizes={allSizes} grades={allGrades} onSave={saveOrder} />
+        )}
+        {tab === "produce" && (
+          <ProduceForm sizes={allSizes} grades={allGrades} onSave={saveProduction} recent={production} />
         )}
         {tab === "stock" && (
           <StockView inventory={inventory} committedFor={committedFor} />
@@ -315,16 +523,16 @@ function TabBtn({ id, tab, setTab, badge, children }) {
 }
 
 /* ======================= Order Form ====================================== */
-function OrderForm({ customers, onSave }) {
+function OrderForm({ customers, sizes, grades, onSave }) {
   const [cust, setCust] = useState("");
   const [po, setPo] = useState("");
   const [dOrdered, setDOrdered] = useState(todayISO());
   const [dPromised, setDPromised] = useState("");
-  const [lines, setLines] = useState([{ size: SIZES[0], grade: GRADES[0], qty: "" }]);
+  const [lines, setLines] = useState([{ size: sizes[0], grade: grades[0], qty: "" }]);
   const [saved, setSaved] = useState(false);
   const [err, setErr] = useState("");
 
-  const addLine = () => setLines((L) => [...L, { size: SIZES[0], grade: GRADES[0], qty: "" }]);
+  const addLine = () => setLines((L) => [...L, { size: sizes[0], grade: grades[0], qty: "" }]);
   const delLine = (i) => setLines((L) => (L.length === 1 ? L : L.filter((_, k) => k !== i)));
   const setLine = (i, key, val) =>
     setLines((L) => L.map((ln, k) => (k === i ? { ...ln, [key]: val } : ln)));
@@ -334,7 +542,7 @@ function OrderForm({ customers, onSave }) {
     setPo("");
     setDOrdered(todayISO());
     setDPromised("");
-    setLines([{ size: SIZES[0], grade: GRADES[0], qty: "" }]);
+    setLines([{ size: sizes[0], grade: grades[0], qty: "" }]);
   };
 
   const submit = async () => {
@@ -420,12 +628,12 @@ function OrderForm({ customers, onSave }) {
           {lines.map((ln, i) => (
             <div className="pod-linerow" key={i}>
               <select value={ln.size} onChange={(e) => setLine(i, "size", e.target.value)}>
-                {SIZES.map((s) => (
+                {sizes.map((s) => (
                   <option key={s}>{s}</option>
                 ))}
               </select>
               <select value={ln.grade} onChange={(e) => setLine(i, "grade", e.target.value)}>
-                {GRADES.map((g) => (
+                {grades.map((g) => (
                   <option key={g}>{g}</option>
                 ))}
               </select>
@@ -457,6 +665,177 @@ function OrderForm({ customers, onSave }) {
           {err && <span className="pod-err">{err}</span>}
         </div>
       </div>
+    </>
+  );
+}
+
+/* ======================= Add Stock (production) ========================== */
+function ProduceForm({ sizes, grades, onSave, recent }) {
+  const [date, setDate] = useState(todayISO());
+  const [note, setNote] = useState("");
+  const [lines, setLines] = useState([{ size: sizes[0] || "", grade: grades[0] || "", qty: "" }]);
+  const [saved, setSaved] = useState("");
+  const [err, setErr] = useState("");
+
+  const addLine = () =>
+    setLines((L) => [...L, { size: sizes[0] || "", grade: grades[0] || "", qty: "" }]);
+  const delLine = (i) => setLines((L) => (L.length === 1 ? L : L.filter((_, k) => k !== i)));
+  const setLine = (i, key, val) =>
+    setLines((L) => L.map((ln, k) => (k === i ? { ...ln, [key]: val } : ln)));
+
+  const reset = () => {
+    setDate(todayISO());
+    setNote("");
+    setLines([{ size: sizes[0] || "", grade: grades[0] || "", qty: "" }]);
+  };
+
+  const submit = async () => {
+    setErr("");
+    const clean = lines
+      .map((l) => ({
+        size: canonicalValue(l.size, sizes, true),
+        grade: canonicalValue(l.grade, grades, false),
+        qty: Number(l.qty) || 0,
+      }))
+      .filter((l) => l.size && l.grade && l.qty > 0);
+    if (!clean.length) {
+      setErr("Add at least one board with a size, grade, and quantity.");
+      return;
+    }
+    const total = clean.reduce((n, l) => n + l.qty, 0);
+    const ok = await onSave({ date, note: note.trim(), lines: clean });
+    if (ok) {
+      setSaved(`Added ${total} board${total === 1 ? "" : "s"} to the yard.`);
+      setTimeout(() => setSaved(""), 2800);
+      reset();
+    }
+  };
+
+  return (
+    <>
+      <h2 className="pod-sec pf">Add milled stock</h2>
+      <p className="pod-lede">
+        Just came off the mill? Log it here and the yard count goes up right away — that's what keeps
+        the numbers honest. Pick a size &amp; grade, or type a new cut you haven't stocked before.
+      </p>
+
+      <div className="pod-card">
+        <div className="pod-grid2">
+          <div className="pod-field">
+            <label>Date milled</label>
+            <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+            <span className="pod-hint">Defaults to today.</span>
+          </div>
+          <div className="pod-field">
+            <label>Note (optional)</label>
+            <input
+              value={note}
+              onChange={(e) => setNote(e.target.value)}
+              placeholder="e.g. off the green chain, or which logs"
+              autoComplete="off"
+            />
+            <span className="pod-hint">Anything worth remembering about this run.</span>
+          </div>
+        </div>
+
+        <label className="pod-boardlabel">Boards milled</label>
+        <div className="pod-lines">
+          <div className="pod-linehead">
+            <div>Size</div>
+            <div>Grade</div>
+            <div>Quantity</div>
+            <div />
+          </div>
+          {lines.map((ln, i) => (
+            <div className="pod-linerow" key={i}>
+              <input
+                list="pod-sizelist"
+                value={ln.size}
+                onChange={(e) => setLine(i, "size", e.target.value)}
+                placeholder="Size (e.g. 1X6-8)"
+                autoComplete="off"
+              />
+              <input
+                list="pod-gradelist"
+                value={ln.grade}
+                onChange={(e) => setLine(i, "grade", e.target.value)}
+                placeholder="Grade (e.g. #1)"
+                autoComplete="off"
+              />
+              <input
+                type="number"
+                min="1"
+                placeholder="0"
+                value={ln.qty}
+                onChange={(e) => setLine(i, "qty", e.target.value)}
+              />
+              <button className="pod-del" title="Remove" onClick={() => delLine(i)}>
+                ×
+              </button>
+            </div>
+          ))}
+        </div>
+        <datalist id="pod-sizelist">
+          {sizes.map((s) => (
+            <option key={s} value={s} />
+          ))}
+        </datalist>
+        <datalist id="pod-gradelist">
+          {grades.map((g) => (
+            <option key={g} value={g} />
+          ))}
+        </datalist>
+
+        <button className="pod-addline" onClick={addLine}>
+          + Add another board
+        </button>
+
+        <div className="pod-actions">
+          <button className="pod-btn primary" onClick={submit}>
+            Add to stock
+          </button>
+          <button className="pod-btn ghost" onClick={reset}>
+            Clear
+          </button>
+          <span className={"pod-saved" + (saved ? " show" : "")}>{saved || "Added to the yard."}</span>
+          {err && <span className="pod-err">{err}</span>}
+        </div>
+        <p className="pod-microhint">
+          New size or grade? Type it in — it's added to the yard and shows up on orders and stock from now on.
+        </p>
+      </div>
+
+      {recent && recent.length > 0 && (
+        <div className="pod-card" style={{ marginTop: 18 }}>
+          <div className="pod-recenthead">Recent production</div>
+          <table className="pod-table">
+            <thead>
+              <tr>
+                <th style={{ width: "22%" }}>Date milled</th>
+                <th>Boards added</th>
+                <th style={{ width: "26%" }}>Note</th>
+              </tr>
+            </thead>
+            <tbody>
+              {recent.slice(0, 8).map((p) => (
+                <tr key={p.id}>
+                  <td>
+                    <b>{fmtDate(p.date)}</b>
+                  </td>
+                  <td>
+                    {p.lines.map((l, k) => (
+                      <span className="pod-prodchip" key={k}>
+                        {l.size} {l.grade} <b>+{l.qty}</b>
+                      </span>
+                    ))}
+                  </td>
+                  <td style={{ color: C.pine }}>{p.note || "—"}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </>
   );
 }
@@ -750,11 +1129,13 @@ function StyleTag() {
 .pod-linehead{font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:${C.pine};padding:0 2px 6px;}
 .pod-linerow{margin-bottom:8px;}
 .pod-linerow select,.pod-linerow input{padding:9px 10px;border:1px solid ${C.line};border-radius:7px;font-size:14px;font-family:inherit;background:#fff;}
+.pod-linerow input:focus,.pod-linerow select:focus{outline:none;border-color:${C.steel};box-shadow:0 0 0 3px rgba(47,107,122,.15);}
 .pod-del{border:none;background:transparent;color:${C.red};font-size:20px;cursor:pointer;line-height:1;padding:4px;}
 .pod-del:hover{color:#7a2c1f;}
 .pod-addline{margin-top:4px;background:transparent;border:1px dashed ${C.pine};color:${C.pine};
   padding:9px 14px;border-radius:7px;font-weight:600;cursor:pointer;font-size:13px;font-family:inherit;}
 .pod-addline:hover{background:${C.plank};}
+.pod-microhint{font-size:12px;color:${C.pine};opacity:.8;margin:14px 0 0;}
 
 .pod-actions{margin-top:22px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
 .pod-btn{padding:12px 22px;border:none;border-radius:8px;font-weight:700;font-size:15px;cursor:pointer;letter-spacing:.3px;font-family:inherit;}
@@ -766,6 +1147,11 @@ function StyleTag() {
 .pod-saved.show{opacity:1;}
 .pod-err{color:${C.red};font-weight:600;font-size:14px;}
 
+.pod-recenthead{font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:${C.pine};margin-bottom:12px;}
+.pod-prodchip{display:inline-block;background:#E4F0E6;color:${C.green};border-radius:6px;
+  padding:2px 8px;margin:0 6px 6px 0;font-size:12.5px;font-weight:600;}
+.pod-prodchip b{font-weight:800;}
+
 .pod-stockhead{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:14px;flex-wrap:wrap;gap:12px;}
 .pod-toggle{display:inline-flex;border:1px solid ${C.line};border-radius:8px;overflow:hidden;}
 .pod-toggle button{border:none;background:#fff;padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer;color:${C.pine};font-family:inherit;}
@@ -774,7 +1160,7 @@ function StyleTag() {
 .pod-table{width:100%;border-collapse:collapse;font-size:14px;}
 .pod-table th{text-align:left;font-size:11px;letter-spacing:.6px;text-transform:uppercase;color:${C.pine};
   padding:8px 10px;border-bottom:2px solid ${C.line};}
-.pod-table td{padding:10px;border-bottom:1px solid #EDE2CC;}
+.pod-table td{padding:10px;border-bottom:1px solid #EDE2CC;vertical-align:top;}
 .pod-table tr:last-child td{border-bottom:none;}
 .pod-table .r{text-align:right;}
 .num{font-variant-numeric:tabular-nums;font-weight:700;}
@@ -794,6 +1180,7 @@ function StyleTag() {
 @media(max-width:720px){
   .pod-grid2{grid-template-columns:1fr;}
   .pod-linehead,.pod-linerow{grid-template-columns:1.3fr 1.3fr .7fr 34px;}
+  .pod-tab-badge{display:none;}
 }
 `}</style>
   );
