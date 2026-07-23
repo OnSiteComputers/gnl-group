@@ -128,11 +128,11 @@ export const CSS = `
 .wfl .btn-outline-light:hover { background: rgba(194,151,78,.18); color: white !important; }
 .wfl .eyebrow { color: #a87f3d; font-weight: 800; letter-spacing: .24em; text-transform: uppercase; }
 .wfl .rule { width: 62px; height: 2px; background: #c2974e; }
-.wfl .hero { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px,1fr)); background: linear-gradient(135deg,#f7f3ec 0%,#f3ecea 100%); overflow: hidden; }
+.wfl .hero { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px,100%),1fr)); background: linear-gradient(135deg,#f7f3ec 0%,#f3ecea 100%); overflow: hidden; }
 .wfl .hero-photo { position: relative; min-height: 480px; }
 .wfl .hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .wfl .services { background: #f7f3ec; padding: 56px 44px 60px; text-align: center; border-top: 1px solid rgba(0,0,0,.05); }
-.wfl .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); }
+.wfl .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px,100%),1fr)); }
 .wfl .service-grid article { padding: 8px 30px 4px; display: flex; flex-direction: column; align-items: center; border-right: 1px solid rgba(58,58,55,.12); }
 .wfl .service-grid article:last-child { border-right: none; }
 .wfl .learn { display: inline-flex; align-items: center; gap: 5px; color: #a87f3d !important; text-decoration: none; font-size: 12px; font-weight: 800; letter-spacing: .08em; margin-top: auto; }
@@ -330,7 +330,7 @@ function ContactForm() {
 function Footer() {
   return (
     <footer className="main">
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px,1fr))', gap: 36, alignItems: 'start' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px,100%),1fr))', gap: 36, alignItems: 'start' }}>
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 14, margin: '0 0 14px' }}>
             <BrandLockup variant="footer" showTagline={false} />
@@ -447,7 +447,7 @@ export default function WarrenSite() {
           </div>
         </section>
 
-        <section id="about" style={{ background: '#fdfbf7', padding: 'clamp(48px,5vw,76px) clamp(28px,5vw,64px)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px,1fr))', gap: 'clamp(32px,4vw,64px)', alignItems: 'center' }}>
+        <section id="about" style={{ background: '#fdfbf7', padding: 'clamp(48px,5vw,76px) clamp(28px,5vw,64px)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(340px,100%),1fr))', gap: 'clamp(32px,4vw,64px)', alignItems: 'center' }}>
           <div style={{ justifySelf: 'center' }}>
             <img src={ABOUT_PHOTO} alt="James Warren" style={{ width: 'min(440px,100%)', height: 420, objectFit: 'cover', borderRadius: 6 }} />
           </div>
