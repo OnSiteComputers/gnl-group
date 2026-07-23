@@ -29,6 +29,8 @@ import WhoWeHelpRealtors from './pages/WhoWeHelpRealtors';
 // -- Client demos & proposals --
 import WarrenDemo from './pages/WarrenDemo';
 import WarrenProposal from './pages/WarrenProposal';
+import WarrenSite from './pages/WarrenSite';
+import WarrenPracticeArea from './pages/WarrenPracticeArea';
 import Dowless from './pages/dowless';
 import DowlessProposal from './pages/DowlessProposal';
 import CanesLive from './pages/CanesLive';
@@ -76,6 +78,8 @@ function App() {
 
           {/* Client demos & proposals */}
           <Route path="/warren-demo" element={<WarrenDemo />} />
+          <Route path="/warren-demo-v2" element={<WarrenSite />} />
+          <Route path="/warren-demo-v2/practice-areas" element={<WarrenPracticeArea />} />
           <Route path="/warren-proposal" element={<WarrenProposal />} />
           <Route path="/dowless" element={<Dowless />} />
           <Route path="/dowless-proposal" element={<DowlessProposal />} />
