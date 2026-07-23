@@ -477,7 +477,7 @@ export default function WarrenSite() {
           <div style={{ flex: '1 1 340px', maxWidth: 480 }}>
             <h2 className="serif" style={{ fontSize: 'clamp(32px,3vw,44px)', fontWeight: 600, lineHeight: 1.05, margin: '0 0 14px' }}>Ready to Talk About Your Case?</h2>
             <p className="serif" style={{ fontStyle: 'italic', color: '#dcb573', fontSize: 21, lineHeight: 1.5, margin: '0 0 16px', textWrap: 'pretty' }}>
-              We will be your champion &mdash; through the good times and the bad, fighting for you at each step of the process.
+              We will be your champion &mdash; through the good times and the bad, fighting for you at every step of the process.
             </p>
             <p style={{ color: 'rgba(255,255,255,.88)', fontSize: 17, lineHeight: 1.6, margin: '0 0 28px', textWrap: 'pretty' }}>
               Consultations are confidential. Call, or send us a message with the form &mdash; we&rsquo;ll respond within one business day.
