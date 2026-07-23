@@ -46,8 +46,6 @@ export const PRACTICE_AREAS = [
   { slug: 'modifications-enforcement', label: 'Modifications & Enforcement' }
 ];
 
-const FOOTER_PRACTICE_AREAS = PRACTICE_AREAS.slice(0, 6);
-
 const CLIENT_OPTIONS = [
   'Yes, I am a potential new client',
   'No, I am a current/existing client',
@@ -360,7 +358,7 @@ function Footer() {
         <div>
           <div style={{ fontWeight: 800, fontSize: 12, letterSpacing: '.18em', color: '#dcb573', marginBottom: 14 }}>PRACTICE AREAS</div>
           <div style={{ display: 'grid', gap: 8, fontSize: 14 }}>
-            {FOOTER_PRACTICE_AREAS.map(a => <a key={a.slug} href={areaHref(a.slug)}>{a.label}</a>)}
+            {PRACTICE_AREAS.map(a => <a key={a.slug} href={areaHref(a.slug)}>{a.label}</a>)}
           </div>
         </div>
       </div>
