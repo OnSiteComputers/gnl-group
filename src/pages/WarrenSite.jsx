@@ -17,10 +17,8 @@ export const PHONE_HREF = 'tel:+17047411763';
 export const EMAIL = 'james@warrenfamilylaw.net';
 
 const CREST = '/warren-crest.png';
-// The design's distinct landscape hero (uploads/hero.png) exceeded the design
-// tool's 256 KiB fetch cap, so we reuse the firm's portrait here (matching the
-// original demo). Drop a wide hero into /public and point HERO_PHOTO at it to swap.
-const HERO_PHOTO = '/James.Warren.jpg';
+// Hero from the design's uploads/hero.png (recompressed to webp).
+const HERO_PHOTO = '/warren-hero.webp';
 const ABOUT_PHOTO = '/James.Warren.jpg';
 const CHARLOTTE_PHOTO = '/warren-charlotte.webp';
 
@@ -134,7 +132,7 @@ export const CSS = `
 .wfl .rule { width: 62px; height: 2px; background: #c2974e; }
 .wfl .hero { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px,1fr)); background: linear-gradient(135deg,#f7f3ec 0%,#f3ecea 100%); overflow: hidden; }
 .wfl .hero-photo { position: relative; min-height: 480px; }
-.wfl .hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.wfl .hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .wfl .services { background: #f7f3ec; padding: 56px 44px 60px; text-align: center; border-top: 1px solid rgba(0,0,0,.05); }
 .wfl .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); }
 .wfl .service-grid article { padding: 8px 30px 4px; display: flex; flex-direction: column; align-items: center; border-right: 1px solid rgba(58,58,55,.12); }
@@ -410,7 +408,7 @@ export default function WarrenSite() {
             </div>
           </div>
           <div className="hero-photo">
-            <img src={HERO_PHOTO} alt="James Warren, family law attorney" />
+            <img src={HERO_PHOTO} alt="Parents walking with their child at sunset" />
           </div>
         </section>
 
