@@ -1,6 +1,9 @@
-// WarrenSite build: 2026-07-23 v1 — imported from Claude Design "Warren Family Law.dc.html"
+// WarrenSite build: 2026-07-23 v2 — imported from Claude Design "Warren Family Law.dc.html"
 // Burgundy/gold rebuild of the Warren Family Law demo homepage.
 // Route: /warren-demo-v2 (leaves the original /warren-demo untouched).
+// v2: practice-area links now point at the real practice-area page
+//     (/warren-demo-v2/practice-areas?area=slug — see WarrenPracticeArea.jsx);
+//     shared header/footer/brand/CSS exported for reuse by that page.
 //
 // Contact form posts to Web3Forms with the access key below; if the key is
 // cleared it falls back to a mailto: to INTAKE_EMAIL.
@@ -9,9 +12,9 @@ import React, { useState, useEffect } from 'react';
 const WEB3FORMS_ACCESS_KEY = 'd2219353-a730-4625-a866-5de269abafb3';
 const INTAKE_EMAIL = 'intake@warrenfamilylaw.net';
 
-const PHONE_DISPLAY = '(704) 741-1763';
-const PHONE_HREF = 'tel:+17047411763';
-const EMAIL = 'james@warrenfamilylaw.net';
+export const PHONE_DISPLAY = '(704) 741-1763';
+export const PHONE_HREF = 'tel:+17047411763';
+export const EMAIL = 'james@warrenfamilylaw.net';
 
 const CREST = '/warren-crest.png';
 // The design's distinct landscape hero (uploads/hero.png) exceeded the design
@@ -24,14 +27,25 @@ const CHARLOTTE_PHOTO = '/warren-charlotte.webp';
 const LINKEDIN_URL = 'https://www.linkedin.com/company/james-a-warren-jr/';
 const FACEBOOK_URL = 'https://www.facebook.com/WarrenFamilyLaw/';
 
-// Practice-area links target the contact section on this single-page demo.
-const CONTACT_HREF = '#contact';
+// Base paths for this demo. Plain anchors (not router Links) so hash
+// scrolling between the two pages just works.
+export const HOME_PATH = '/warren-demo-v2';
+export const AREA_PATH = '/warren-demo-v2/practice-areas';
+export const areaHref = (slug) => `${AREA_PATH}?area=${slug}`;
 
-const PRACTICE_AREAS = [
-  'Divorce', 'Uncontested Divorce', 'Military Divorce',
-  'Child Custody', 'Child Support', "Grandparents' Rights",
-  'Spousal Support / Alimony', 'Property Division', 'Legal Separation',
-  'Adoption', 'Domestic Violence', 'Modifications & Enforcement'
+export const PRACTICE_AREAS = [
+  { slug: 'divorce', label: 'Divorce' },
+  { slug: 'uncontested-divorce', label: 'Uncontested Divorce' },
+  { slug: 'military-divorce', label: 'Military Divorce' },
+  { slug: 'child-custody', label: 'Child Custody' },
+  { slug: 'child-support', label: 'Child Support' },
+  { slug: 'grandparents-rights', label: "Grandparents' Rights" },
+  { slug: 'alimony', label: 'Spousal Support / Alimony' },
+  { slug: 'property-division', label: 'Property Division' },
+  { slug: 'legal-separation', label: 'Legal Separation' },
+  { slug: 'adoption', label: 'Adoption' },
+  { slug: 'domestic-violence', label: 'Domestic Violence' },
+  { slug: 'modifications-enforcement', label: 'Modifications & Enforcement' }
 ];
 
 const FOOTER_PRACTICE_AREAS = PRACTICE_AREAS.slice(0, 6);
@@ -76,10 +90,10 @@ const ICONS = {
 };
 
 const SERVICES = [
-  { icon: ICONS.users, title: 'Divorce & Separation', text: 'Compassionate representation to help you move forward.' },
-  { icon: ICONS.heart, title: 'Child Custody & Support', text: 'Protecting your children and your parental rights.' },
-  { icon: ICONS.home, title: 'Alimony & Property Division', text: 'Fair and equitable solutions for your future.' },
-  { icon: ICONS.file, title: 'Prenuptial & Postnuptial Agreements', text: 'Plan today for tomorrow.' }
+  { icon: ICONS.users, title: 'Divorce & Separation', text: 'Compassionate representation to help you move forward.', href: areaHref('divorce') },
+  { icon: ICONS.heart, title: 'Child Custody & Support', text: 'Protecting your children and your parental rights.', href: areaHref('child-custody') },
+  { icon: ICONS.home, title: 'Alimony & Property Division', text: 'Fair and equitable solutions for your future.', href: areaHref('alimony') },
+  { icon: ICONS.file, title: 'Prenuptial & Postnuptial Agreements', text: 'Plan today for tomorrow.', href: '#contact' }
 ];
 
 const TRUST = [
@@ -88,7 +102,7 @@ const TRUST = [
   { icon: ICONS.users, label: <>Personalized Attention<br />Every Step of the Way</> }
 ];
 
-const CSS = `
+export const CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700;800&display=swap');
 .wfl { min-height: 100vh; background: #e7e2d7; color: #3a3a37; font-family: Inter, system-ui, sans-serif; padding-bottom: 48px; -webkit-font-smoothing: antialiased; }
 .wfl a { color: #55252d; }
@@ -131,7 +145,7 @@ const CSS = `
 `;
 
 /* ---------- brand lockup (crest + wordmark) ---------- */
-function BrandLockup({ crestHeight = 78, wordSize = 34, tagSize = 15, showTagline = true }) {
+export function BrandLockup({ crestHeight = 78, wordSize = 34, tagSize = 15, showTagline = true }) {
   return (
     <span style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
       <img src={CREST} alt="" style={{ height: crestHeight, width: 'auto', display: 'block' }} />
@@ -146,31 +160,35 @@ function BrandLockup({ crestHeight = 78, wordSize = 34, tagSize = 15, showTaglin
   );
 }
 
-/* ---------- header ---------- */
-function TopBar() {
+/* ---------- header (shared by home + practice-area pages) ---------- */
+export function TopBar({ onHome = true }) {
   const [paOpen, setPaOpen] = useState(false);
+  // On the home page, section links are plain hash anchors; on the
+  // practice-area page they navigate back to the home route first.
+  const home = onHome ? '#top' : HOME_PATH;
+  const section = (id) => (onHome ? `#${id}` : `${HOME_PATH}#${id}`);
   return (
     <header className="topbar">
-      <a href="#top" aria-label="Warren Family Law" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+      <a href={home} aria-label="Warren Family Law" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
         <BrandLockup />
       </a>
       <nav aria-label="Main navigation">
-        <a href="#top">HOME</a>
+        <a href={home}>HOME</a>
         <div style={{ position: 'relative', display: 'inline-flex' }}
           onMouseEnter={() => setPaOpen(true)} onMouseLeave={() => setPaOpen(false)}>
-          <a className="pa-toggle" href={CONTACT_HREF} onClick={(e) => { e.preventDefault(); setPaOpen(v => !v); }}
+          <a className="pa-toggle" href={section('services')} onClick={(e) => { e.preventDefault(); setPaOpen(v => !v); }}
             aria-expanded={paOpen} style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
             PRACTICE AREAS <span style={{ fontSize: 9, transform: 'translateY(1px)' }}>&#9662;</span>
           </a>
           {paOpen && (
             <div className="pa-menu">
-              {PRACTICE_AREAS.map(a => <a key={a} href={CONTACT_HREF} onClick={() => setPaOpen(false)}>{a}</a>)}
+              {PRACTICE_AREAS.map(a => <a key={a.slug} href={areaHref(a.slug)} onClick={() => setPaOpen(false)}>{a.label}</a>)}
             </div>
           )}
         </div>
-        <a href="#about">ABOUT</a>
-        <a href="#reviews">REVIEWS</a>
-        <a href="#contact">CONTACT</a>
+        <a href={section('about')}>ABOUT</a>
+        <a href={section('reviews')}>REVIEWS</a>
+        <a href={section('contact')}>CONTACT</a>
       </nav>
       <a className="btn-primary" href={PHONE_HREF} style={{ height: 54, padding: '0 26px', fontSize: 19, letterSpacing: '.01em' }}>
         <Icon d={ICONS.phone} size={20} fill="white" stroke="white" sw={1} /> {PHONE_DISPLAY}
@@ -302,7 +320,7 @@ function Footer() {
         <div>
           <div style={{ fontWeight: 800, fontSize: 12, letterSpacing: '.18em', color: '#dcb573', marginBottom: 14 }}>PRACTICE AREAS</div>
           <div style={{ display: 'grid', gap: 8, fontSize: 14 }}>
-            {FOOTER_PRACTICE_AREAS.map(a => <a key={a} href={CONTACT_HREF}>{a}</a>)}
+            {FOOTER_PRACTICE_AREAS.map(a => <a key={a.slug} href={areaHref(a.slug)}>{a.label}</a>)}
           </div>
         </div>
       </div>
@@ -364,7 +382,7 @@ export default function WarrenSite() {
                 <Icon d={s.icon} size={46} stroke="#6f333d" style={{ marginBottom: 16 }} />
                 <h3 className="serif" style={{ fontSize: 23, lineHeight: 1.1, margin: '0 0 10px', fontWeight: 700, color: '#33372f' }}>{s.title}</h3>
                 <p style={{ color: '#6f6c66', fontSize: 14, lineHeight: 1.5, margin: '0 0 14px', textWrap: 'pretty' }}>{s.text}</p>
-                <a className="learn" href={CONTACT_HREF}>LEARN MORE <span style={{ fontSize: 14 }}>&#8250;</span></a>
+                <a className="learn" href={s.href}>LEARN MORE <span style={{ fontSize: 14 }}>&#8250;</span></a>
               </article>
             ))}
           </div>
