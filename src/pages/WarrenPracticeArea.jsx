@@ -223,7 +223,7 @@ export default function WarrenPracticeArea() {
         </section>
 
         <footer style={{ background: '#3b1d22', color: 'rgba(255,255,255,.85)', padding: '32px clamp(28px,5vw,64px)', display: 'flex', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap', alignItems: 'center' }}>
-          <BrandLockup crestHeight={56} wordSize={24} tagSize={11} showTagline={false} />
+          <BrandLockup variant="compact" showTagline={false} />
           <div style={{ fontSize: 12, lineHeight: 1.6, color: 'rgba(255,255,255,.45)', textAlign: 'right' }}>
             <div>&copy; 2026 Warren Family Law. All rights reserved.</div>
             <div>Attorney advertising. Prior results do not guarantee a similar outcome.</div>

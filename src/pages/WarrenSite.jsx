@@ -113,6 +113,17 @@ export const CSS = `
 .wfl .topbar nav { display: flex; align-items: center; gap: clamp(16px,2.4vw,36px); flex-wrap: wrap; }
 .wfl .topbar nav > a, .wfl .pa-toggle { color: white; text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: .09em; }
 .wfl .topbar nav > a:hover, .wfl .pa-toggle:hover { color: white; }
+.wfl .brand { display: flex; align-items: center; gap: 16px; }
+.wfl .brand .crest { width: auto; display: block; }
+.wfl .brand .stack { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.wfl .brand .word { font-weight: 600; line-height: 1; letter-spacing: .14em; white-space: nowrap; color: white; }
+.wfl .brand .sub { font-weight: 500; line-height: 1; letter-spacing: .42em; color: #d9b878; margin-right: -.42em; white-space: nowrap; }
+.wfl .brand .tag { color: rgba(255,255,255,.85); font-size: 8.5px; font-weight: 600; letter-spacing: .22em; white-space: nowrap; margin-top: 3px; }
+.wfl .brand-header .crest { height: 78px; } .wfl .brand-header .word { font-size: 34px; } .wfl .brand-header .sub { font-size: 15px; }
+.wfl .brand-footer .crest { height: 64px; } .wfl .brand-footer .word { font-size: 27px; } .wfl .brand-footer .sub { font-size: 12px; }
+.wfl .brand-compact .crest { height: 56px; } .wfl .brand-compact .word { font-size: 24px; } .wfl .brand-compact .sub { font-size: 11px; }
+.wfl .phone-cta { height: 54px; padding: 0 26px; font-size: 19px; letter-spacing: .01em; }
+.wfl .pa-wrap { position: relative; display: inline-flex; }
 .wfl .pa-menu { position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%); background: #fdfbf7; border: 1px solid rgba(111,51,61,.25); border-radius: 10px; box-shadow: 0 18px 44px rgba(58,58,55,.25); padding: 8px; min-width: 480px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 8px; z-index: 50; }
 .wfl .pa-menu a { display: block; color: #55252d; font-size: 14px; font-weight: 600; padding: 10px 14px; border-radius: 7px; text-decoration: none; }
 .wfl .pa-menu a:hover { background: #f1e5e4; color: #a87f3d; }
@@ -142,18 +153,38 @@ export const CSS = `
 .wfl footer.main { background: #3b1d22; color: rgba(255,255,255,.85); padding: 44px clamp(28px,5vw,64px) 30px; }
 .wfl footer.main a { color: rgba(255,255,255,.85); text-decoration: none; }
 .wfl footer.main a:hover { color: #dcb573; }
+/* ---------- mobile ---------- */
+@media (max-width: 860px) {
+  .wfl header.topbar { position: relative; top: auto; min-height: 0; padding: 14px 16px 16px; justify-content: center; text-align: center; gap: 10px 20px; }
+  .wfl .brand-header .crest { height: 48px; }
+  .wfl .brand-header .word { font-size: 23px; }
+  .wfl .brand-header .sub { font-size: 10px; }
+  .wfl .brand-header .tag { display: none; }
+  .wfl .topbar nav { justify-content: center; gap: 12px 18px; }
+  .wfl .topbar nav > a, .wfl .pa-toggle { font-size: 12px; }
+  .wfl .phone-cta { height: 44px; padding: 0 18px; font-size: 15px; }
+  /* Full-width dropdown anchored to the header instead of the toggle */
+  .wfl .pa-wrap { position: static; }
+  .wfl .pa-menu { top: 100%; left: 12px; right: 12px; transform: none; min-width: 0; max-height: 60vh; overflow-y: auto; }
+  .wfl .hero-photo { min-height: 340px; }
+}
+@media (max-width: 420px) {
+  .wfl .pa-menu { grid-template-columns: 1fr; }
+}
 `;
 
-/* ---------- brand lockup (crest + wordmark) ---------- */
-export function BrandLockup({ crestHeight = 78, wordSize = 34, tagSize = 15, showTagline = true }) {
+/* ---------- brand lockup (crest + wordmark) ----------
+   Sizes live in CSS (.brand-header / .brand-footer / .brand-compact) so
+   media queries can shrink the header lockup on phones. */
+export function BrandLockup({ variant = 'header', showTagline = true }) {
   return (
-    <span style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-      <img src={CREST} alt="" style={{ height: crestHeight, width: 'auto', display: 'block' }} />
-      <span style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3 }}>
-        <span className="serif" style={{ fontWeight: 600, fontSize: wordSize, lineHeight: 1, letterSpacing: '.14em', whiteSpace: 'nowrap', color: 'white' }}>WARREN</span>
-        <span className="serif" style={{ fontWeight: 500, fontSize: tagSize, lineHeight: 1, letterSpacing: '.42em', color: '#d9b878', marginRight: '-.42em', whiteSpace: 'nowrap' }}>FAMILY LAW</span>
+    <span className={`brand brand-${variant}`}>
+      <img className="crest" src={CREST} alt="" />
+      <span className="stack">
+        <span className="serif word">WARREN</span>
+        <span className="serif sub">FAMILY LAW</span>
         {showTagline && (
-          <span style={{ color: 'rgba(255,255,255,.85)', fontSize: 8.5, fontWeight: 600, letterSpacing: '.22em', whiteSpace: 'nowrap', marginTop: 3 }}>COMPASSIONATE &middot; EXPERIENCED &middot; DEDICATED</span>
+          <span className="tag">COMPASSIONATE &middot; EXPERIENCED &middot; DEDICATED</span>
         )}
       </span>
     </span>
@@ -163,6 +194,10 @@ export function BrandLockup({ crestHeight = 78, wordSize = 34, tagSize = 15, sho
 /* ---------- header (shared by home + practice-area pages) ---------- */
 export function TopBar({ onHome = true }) {
   const [paOpen, setPaOpen] = useState(false);
+  // On touch devices a tap fires mouseenter (opens the menu) immediately
+  // before click (which would toggle it straight back closed). Remember when
+  // hover opened it and let a click within that window keep it open.
+  const hoverOpenedAt = React.useRef(0);
   // On the home page, section links are plain hash anchors; on the
   // practice-area page they navigate back to the home route first.
   const home = onHome ? '#top' : HOME_PATH;
@@ -174,9 +209,16 @@ export function TopBar({ onHome = true }) {
       </a>
       <nav aria-label="Main navigation">
         <a href={home}>HOME</a>
-        <div style={{ position: 'relative', display: 'inline-flex' }}
-          onMouseEnter={() => setPaOpen(true)} onMouseLeave={() => setPaOpen(false)}>
-          <a className="pa-toggle" href={section('services')} onClick={(e) => { e.preventDefault(); setPaOpen(v => !v); }}
+        <div className="pa-wrap"
+          onMouseEnter={() => { setPaOpen(true); hoverOpenedAt.current = Date.now(); }}
+          onMouseLeave={() => setPaOpen(false)}>
+          <a className="pa-toggle" href={section('services')}
+            onClick={(e) => {
+              e.preventDefault();
+              // Functional update: the click can arrive before the render from
+              // the tap-synthesized mouseenter, so read the live value here.
+              setPaOpen(v => (v && Date.now() - hoverOpenedAt.current < 500) ? v : !v);
+            }}
             aria-expanded={paOpen} style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
             PRACTICE AREAS <span style={{ fontSize: 9, transform: 'translateY(1px)' }}>&#9662;</span>
           </a>
@@ -190,7 +232,7 @@ export function TopBar({ onHome = true }) {
         <a href={section('reviews')}>REVIEWS</a>
         <a href={section('contact')}>CONTACT</a>
       </nav>
-      <a className="btn-primary" href={PHONE_HREF} style={{ height: 54, padding: '0 26px', fontSize: 19, letterSpacing: '.01em' }}>
+      <a className="btn-primary phone-cta" href={PHONE_HREF}>
         <Icon d={ICONS.phone} size={20} fill="white" stroke="white" sw={1} /> {PHONE_DISPLAY}
       </a>
     </header>
@@ -295,7 +337,7 @@ function Footer() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px,1fr))', gap: 36, alignItems: 'start' }}>
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 14, margin: '0 0 14px' }}>
-            <BrandLockup crestHeight={64} wordSize={27} tagSize={12} showTagline={false} />
+            <BrandLockup variant="footer" showTagline={false} />
           </div>
           <p style={{ fontSize: 13, lineHeight: 1.6, margin: 0, color: 'rgba(255,255,255,.6)', maxWidth: 300 }}>
             Family law representation in Charlotte, NC for over 42 years.
