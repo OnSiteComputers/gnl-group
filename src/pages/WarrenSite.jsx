@@ -10,11 +10,11 @@
 import React, { useState, useEffect } from 'react';
 
 const WEB3FORMS_ACCESS_KEY = 'd2219353-a730-4625-a866-5de269abafb3';
-const INTAKE_EMAIL = 'intake@warrenfamilylaw.net';
+const INTAKE_EMAIL = 'info@warrenfamilylaw.net';
 
 export const PHONE_DISPLAY = '(704) 333-7770';
 export const PHONE_HREF = 'tel:+17043337770';
-export const EMAIL = 'intake@warrenfamilylaw.net';
+export const EMAIL = 'info@warrenfamilylaw.net';
 
 const CREST = '/warren-crest.png';
 // Hero from the design's uploads/hero.png (recompressed to webp).
