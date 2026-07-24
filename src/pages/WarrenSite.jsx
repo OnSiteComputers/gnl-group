@@ -12,8 +12,8 @@ import React, { useState, useEffect } from 'react';
 const WEB3FORMS_ACCESS_KEY = 'd2219353-a730-4625-a866-5de269abafb3';
 const INTAKE_EMAIL = 'intake@warrenfamilylaw.net';
 
-export const PHONE_DISPLAY = '(704) 741-1763';
-export const PHONE_HREF = 'tel:+17047411763';
+export const PHONE_DISPLAY = '(704) 333-7770';
+export const PHONE_HREF = 'tel:+17043337770';
 export const EMAIL = 'james@warrenfamilylaw.net';
 
 const CREST = '/warren-crest.png';
