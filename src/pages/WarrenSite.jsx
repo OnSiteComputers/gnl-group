@@ -121,6 +121,7 @@ export const CSS = `
 .wfl .phone-cta { height: 54px; padding: 0 26px; font-size: 19px; letter-spacing: .01em; }
 .wfl .pa-wrap { position: relative; display: inline-flex; }
 .wfl .pa-menu { position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%); background: #fdfbf7; border: 1px solid rgba(111,51,61,.25); border-radius: 10px; box-shadow: 0 18px 44px rgba(58,58,55,.25); padding: 8px; min-width: 480px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 8px; z-index: 50; }
+.wfl .pa-menu::before { content: ''; position: absolute; top: -14px; left: 0; right: 0; height: 14px; }
 .wfl .pa-menu a { display: block; color: #55252d; font-size: 14px; font-weight: 600; padding: 10px 14px; border-radius: 7px; text-decoration: none; }
 .wfl .pa-menu a:hover { background: #f1e5e4; color: #a87f3d; }
 .wfl .btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: linear-gradient(180deg,#6f333d 0%,#471e25 100%); border: 2px solid #c19a4f; box-shadow: inset 0 0 0 2px #471e25, inset 0 0 0 3px rgba(217,184,120,.75); color: white !important; text-decoration: none; border-radius: 4px; font-weight: 800; cursor: pointer; font-family: Inter, sans-serif; }
@@ -194,6 +195,19 @@ export function TopBar({ onHome = true }) {
   // before click (which would toggle it straight back closed). Remember when
   // hover opened it and let a click within that window keep it open.
   const hoverOpenedAt = React.useRef(0);
+  // The menu floats 12px below the toggle; crossing that gap fires
+  // mouseleave, so close on a short delay and cancel it on re-enter.
+  const closeTimer = React.useRef(null);
+  useEffect(() => () => clearTimeout(closeTimer.current), []);
+  const openMenu = () => {
+    clearTimeout(closeTimer.current);
+    setPaOpen(true);
+    hoverOpenedAt.current = Date.now();
+  };
+  const closeMenuSoon = () => {
+    clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setPaOpen(false), 350);
+  };
   // On the home page, section links are plain hash anchors; on the
   // practice-area page they navigate back to the home route first.
   const home = onHome ? '#top' : HOME_PATH;
@@ -206,8 +220,8 @@ export function TopBar({ onHome = true }) {
       <nav aria-label="Main navigation">
         <a href={home}>HOME</a>
         <div className="pa-wrap"
-          onMouseEnter={() => { setPaOpen(true); hoverOpenedAt.current = Date.now(); }}
-          onMouseLeave={() => setPaOpen(false)}>
+          onMouseEnter={openMenu}
+          onMouseLeave={closeMenuSoon}>
           <a className="pa-toggle" href={section('services')}
             onClick={(e) => {
               e.preventDefault();
