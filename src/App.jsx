@@ -17,7 +17,6 @@ import Contact from './pages/Contact';
 import Contact2 from './pages/Contact2';
 import SmallBusiness from './pages/SmallBusiness';
 import ForLinda from './pages/ForLinda';
-import Greg from './pages/Greg';
 
 // -- Who We Help --
 import WhoWeHelpMedical from './pages/WhoWeHelpMedical';
@@ -70,8 +69,7 @@ function App() {
           <Route path="/contact2" element={<Contact2 />} />
           <Route path="/small-business" element={<SmallBusiness />} />
           <Route path="/for-linda" element={<ForLinda />} />
-          <Route path="/greg" element={<Greg />} />
-
+          
           {/* Who We Help */}
           <Route path="/who-we-help/medical" element={<WhoWeHelpMedical />} />
           <Route path="/who-we-help/restaurants" element={<WhoWeHelpRestaurants />} />
