@@ -71,6 +71,39 @@ const VIP_INCLUDES = [
 export default function ScoresDemo() {
   useEffect(() => { console.log("ScoresDemo build: 2026-09-05 v1"); }, []);
 
+  // Content protection: block right-click, drag-save, text copy, and view-source / devtools shortcuts.
+  // Note: client-side deterrent only — it cannot truly hide source from a determined visitor.
+  useEffect(() => {
+    const block = (e) => { e.preventDefault(); return false; };
+    const keys = (e) => {
+      const k = (e.key || "").toLowerCase();
+      if (k === "f12") return block(e);
+      if (e.ctrlKey && (k === "u" || k === "s")) return block(e);
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && ["i", "j", "c"].includes(k)) return block(e);
+      if (e.metaKey && e.altKey && ["i", "j", "c", "u"].includes(k)) return block(e);
+      if (e.metaKey && k === "s") return block(e);
+    };
+    const handlers = [
+      ["contextmenu", block],
+      ["dragstart", block],
+      ["selectstart", block],
+      ["copy", block],
+      ["cut", block],
+      ["keydown", keys],
+    ];
+    handlers.forEach(([ev, fn]) => document.addEventListener(ev, fn, { capture: true }));
+    const prev = document.body.style.userSelect;
+    document.body.style.userSelect = "none";
+    document.body.style.webkitUserSelect = "none";
+    document.body.style.webkitTouchCallout = "none";
+    return () => {
+      handlers.forEach(([ev, fn]) => document.removeEventListener(ev, fn, { capture: true }));
+      document.body.style.userSelect = prev;
+      document.body.style.webkitUserSelect = "";
+      document.body.style.webkitTouchCallout = "";
+    };
+  }, []);
+
   return (
     <div style={{ fontFamily: BODY, color: TEXT, background: INK, WebkitFontSmoothing: "antialiased", overflowX: "hidden" }}>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
