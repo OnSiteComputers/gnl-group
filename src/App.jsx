@@ -17,6 +17,7 @@ import Contact from './pages/Contact';
 import Contact2 from './pages/Contact2';
 import SmallBusiness from './pages/SmallBusiness';
 import ForLinda from './pages/ForLinda';
+import Greg from './pages/Greg';
 
 // -- Who We Help --
 import WhoWeHelpMedical from './pages/WhoWeHelpMedical';
@@ -44,6 +45,8 @@ import CohenBlueprint from './pages/CohenBlueprint';
 import PiedmontOrderDesk from './pages/PiedmontOrderDesk';
 import PiedmontProposal from './pages/PiedmontProposal';
 import PiedmontHome from './pages/PiedmontHome';
+import ScoresDemo from './pages/ScoresDemo';
+import CheetahWestPalmBeach from './pages/CheetahWestPalmBeach';
 
 // -- Client sites --
 import Featherline from './pages/Featherline';
@@ -67,6 +70,7 @@ function App() {
           <Route path="/contact2" element={<Contact2 />} />
           <Route path="/small-business" element={<SmallBusiness />} />
           <Route path="/for-linda" element={<ForLinda />} />
+          <Route path="/greg" element={<Greg />} />
 
           {/* Who We Help */}
           <Route path="/who-we-help/medical" element={<WhoWeHelpMedical />} />
@@ -94,6 +98,8 @@ function App() {
           <Route path="/piedmont-order-desk" element={<PiedmontOrderDesk />} />
           <Route path="/piedmont-proposal" element={<PiedmontProposal />} />
           <Route path="/piedmont-home" element={<PiedmontHome />} />
+          <Route path="/scores-demo" element={<ScoresDemo />} />
+          <Route path="/cheetah-west-palm-beach" element={<CheetahWestPalmBeach />} />
 
           {/* Client sites */}
           <Route path="/featherline" element={<Featherline />} />
