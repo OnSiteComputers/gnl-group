@@ -24,105 +24,196 @@ padding: 24px 14px;
 
 .card {
 width: 100%;
-max-width: 520px;
+max-width: 560px;
 background: linear-gradient(180deg, #111111, #050505);
 border: 1px solid #3a3a3a;
 border-radius: 22px;
-padding: 28px 22px;
+padding: 30px 24px 0;
 box-shadow: 0 10px 40px rgba(0,0,0,.45);
-text-align: center;
+overflow: hidden;
 }
 
-.logo {
-font-size: 42px;
-font-weight: 900;
-letter-spacing: 2px;
-color: #d4af37;
-margin-bottom: 8px;
-}
-
-.company {
-font-size: 18px;
-font-weight: bold;
-color: #ffffff;
-margin-bottom: 4px;
+.logo-img {
+display: block;
+max-width: 260px;
+width: 80%;
+margin: 0 auto 6px;
 }
 
 .tagline {
+text-align: center;
 color: #d4af37;
-font-size: 14px;
+font-size: 13px;
 font-weight: bold;
-letter-spacing: 1px;
-margin-bottom: 26px;
+letter-spacing: 1.5px;
+margin-bottom: 22px;
 }
 
-h1 {
-font-size: 34px;
-margin: 0 0 4px;
+.tagline span {
+display: inline-block;
+margin: 0 10px;
+}
+
+hr.divider {
+border: none;
+border-top: 1px solid #333;
+margin: 0 0 22px;
+}
+
+.info-grid {
+display: grid;
+grid-template-columns: 1fr 1px 1fr;
+gap: 20px;
+text-align: left;
+}
+
+.info-left h1 {
+font-size: 26px;
+color: #d4af37;
+margin: 0 0 2px;
+letter-spacing: 1px;
+}
+
+.info-left .title {
+color: #cccccc;
+font-size: 12px;
+letter-spacing: .5px;
+margin-bottom: 14px;
+padding-bottom: 10px;
+border-bottom: 1px solid #333;
+}
+
+.contact-line {
+display: flex;
+align-items: center;
+gap: 10px;
+margin-bottom: 12px;
+font-size: 14px;
 color: #ffffff;
 }
 
-.title {
-color: #c8c8c8;
-font-size: 16px;
-margin-bottom: 24px;
-}
-
-.contact {
-text-align: left;
-margin: 18px 0 26px;
-padding: 18px;
-background: #101010;
-border-radius: 14px;
-line-height: 1.9;
-border: 1px solid #2c2c2c;
-}
-
-.contact a {
-color: white;
+.contact-line a {
+color: #ffffff;
 text-decoration: none;
 }
 
+.icon-badge {
+flex: none;
+width: 26px;
+height: 26px;
+border-radius: 50%;
+background: #d4af37;
+color: #000;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 13px;
+}
+
+.vline {
+background: #333;
+}
+
+.services-list .service-row {
+display: flex;
+align-items: center;
+gap: 10px;
+margin-bottom: 10px;
+padding-bottom: 10px;
+border-bottom: 1px solid #262626;
+font-size: 12px;
+letter-spacing: .3px;
+color: #eaeaea;
+}
+
+.services-list .service-row:last-child {
+border-bottom: none;
+}
+
+.services-list .icon-badge {
+background: transparent;
+border: 1px solid #d4af37;
+color: #d4af37;
+}
+
+.buttons {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+gap: 10px;
+margin: 26px 0 22px;
+}
+
 .button {
-display: block;
-width: 100%;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+gap: 4px;
 text-decoration: none;
 background: linear-gradient(180deg, #efd366, #cfa523);
 color: #000;
 font-weight: 800;
-font-size: 18px;
-padding: 16px 12px;
-margin: 12px 0;
+font-size: 11px;
+letter-spacing: .3px;
+padding: 14px 6px;
 border-radius: 12px;
+text-align: center;
 }
 
 .button.secondary {
 background: #181818;
 color: white;
-border: 1px solid #666;
+border: 1px solid #555;
 }
 
-.services {
-margin-top: 28px;
-padding-top: 20px;
-border-top: 1px solid #333;
-line-height: 1.8;
-color: #dddddd;
+.qr-wrap {
+text-align: center;
+margin-bottom: 24px;
 }
 
-.services strong {
+.qr-box {
+display: inline-block;
+padding: 10px;
+background: #ffffff;
+border: 2px solid #d4af37;
+border-radius: 14px;
+}
+
+.qr-box img {
 display: block;
-color: #d4af37;
-margin-bottom: 8px;
-font-size: 17px;
+width: 150px;
+height: 150px;
 }
 
-.footer {
-margin-top: 26px;
+.qr-caption {
+margin-top: 10px;
 color: #d4af37;
+font-size: 12px;
 font-weight: bold;
+letter-spacing: .5px;
+}
+
+.footer-banner {
+margin: 0 -24px;
+background: linear-gradient(180deg, #efd366, #cfa523);
+color: #000;
+font-weight: 800;
 font-size: 14px;
 letter-spacing: .5px;
+text-align: center;
+padding: 16px 10px;
+}
+
+@media (max-width: 420px) {
+.info-grid {
+grid-template-columns: 1fr;
+}
+.vline {
+display: none;
+}
+.buttons {
+grid-template-columns: 1fr 1fr;
+}
 }
 </style>
 </head>
@@ -131,75 +222,67 @@ letter-spacing: .5px;
 
 <div class="card">
 
-<div class="logo">GNL</div>
+<img class="logo-img" src="gnl-logo.png" alt="GNL Digital Group">
 
-<div class="company">GNL DIGITAL GROUP</div>
+<div class="tagline"><span>&mdash;</span>LOCAL DOMINANCE. REAL RESULTS.<span>&mdash;</span></div>
 
-<div class="tagline">
-LOCAL DOMINANCE. REAL RESULTS.
+<hr class="divider">
+
+<div class="info-grid">
+<div class="info-left">
+<h1>GREG BLAIR</h1>
+<div class="title">FOUNDER &amp; DIGITAL GROWTH DIRECTOR</div>
+
+<div class="contact-line">
+<span class="icon-badge">&#128222;</span>
+<a href="tel:+17045945826">704-594-5826</a>
 </div>
 
-<h1>Greg Blair</h1>
-
-<div class="title">
-Founder &amp; Digital Growth Director
+<div class="contact-line">
+<span class="icon-badge">&#9993;</span>
+<a href="mailto:greg@gnldigitalgroup.com">greg@gnldigitalgroup.com</a>
 </div>
 
-<div class="contact">
-📞 <a href="tel:+17045945826">704-594-5826</a><br>
-
-✉️ <a href="mailto:greg@gnldigitalgroup.com">
-greg@gnldigitalgroup.com</a><br>
-
-🌐 <a href="https://gnldigitalgroup.com">
-gnldigitalgroup.com</a><br>
-
-📍 53 Cabarrus Ave W<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Concord, NC 28025
+<div class="contact-line">
+<span class="icon-badge">&#127760;</span>
+<a href="https://gnldigitalgroup.com">gnldigitalgroup.com</a>
 </div>
 
-<a class="button" href="tel:+17045945826">
-📞 CALL ME
-</a>
-
-<a class="button" href="sms:+17045945826">
-💬 TEXT ME
-</a>
-
-<a class="button" href="mailto:greg@gnldigitalgroup.com">
-✉️ EMAIL ME
-</a>
-
-<a class="button secondary"
-href="https://gnldigitalgroup.com">
-🌐 VISIT WEBSITE
-</a>
-
-<a class="button secondary"
-href="https://www.google.com/maps/search/?api=1&query=53+Cabarrus+Ave+W+Concord+NC+28025">
-📍 GET DIRECTIONS
-</a>
-
-<a class="button secondary"
-href="greg-blair.vcf"
-download>
-➕ SAVE TO CONTACTS
-</a>
-
-<div class="services">
-<strong>OUR SERVICES</strong>
-
-SEO &amp; Local Search<br>
-Website Design &amp; Optimization<br>
-AI Automation Solutions<br>
-VoIP Phone Setup<br>
-Reputation Management<br>
-Lead Generation
+<div class="contact-line">
+<span class="icon-badge">&#128205;</span>
+<span>53 Cabarrus Ave W<br>Concord, NC 28025</span>
+</div>
 </div>
 
-<div class="footer">
-MORE VISIBILITY • MORE LEADS • MORE REVENUE
+<div class="vline"></div>
+
+<div class="services-list">
+<div class="service-row"><span class="icon-badge">&#128269;</span> SEO &amp; LOCAL SEARCH</div>
+<div class="service-row"><span class="icon-badge">&#128421;</span> WEBSITE DESIGN &amp; OPTIMIZATION</div>
+<div class="service-row"><span class="icon-badge">&#9881;</span> AI AUTOMATION SOLUTIONS</div>
+<div class="service-row"><span class="icon-badge">&#9742;</span> VoIP PHONE SETUP</div>
+<div class="service-row"><span class="icon-badge">&#11088;</span> REPUTATION MANAGEMENT</div>
+<div class="service-row"><span class="icon-badge">&#128101;</span> LEAD GENERATION</div>
 </div>
+</div>
+
+<div class="buttons">
+<a class="button" href="tel:+17045945826">&#128222; CALL ME</a>
+<a class="button" href="sms:+17045945826">&#128172; TEXT ME</a>
+<a class="button" href="mailto:greg@gnldigitalgroup.com">&#9993; EMAIL ME</a>
+<a class="button secondary" href="https://gnldigitalgroup.com">&#127760; VISIT WEBSITE</a>
+<a class="button secondary" href="https://www.google.com/maps/search/?api=1&query=53+Cabarrus+Ave+W+Concord+NC+28025">&#128205; GET DIRECTIONS</a>
+<a class="button secondary" href="greg-blair.vcf" download>&#10133; SAVE CONTACT</a>
+</div>
+
+<div class="qr-wrap">
+<div class="qr-box">
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://gnldigitalgroup.com" alt="QR code to gnldigitalgroup.com">
+</div>
+<div class="qr-caption">SCAN TO VISIT WEBSITE</div>
+</div>
+
+<div class="footer-banner">MORE VISIBILITY &bull; MORE LEADS &bull; MORE REVENUE</div>
 
 </div>
 
