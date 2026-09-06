@@ -132,7 +132,7 @@ export default function CheetahWestPalmBeach() {
 
         <div className="relative mx-auto w-full max-w-7xl px-5 pb-20 pt-32">
           <p className="eyebrow animate-rise">3342 Shawnee Ave · 21 &amp; over</p>
-          <h1 className="animate-rise mt-4 max-w-4xl text-6xl leading-[0.9] sm:text-8xl lg:text-9xl">
+          <h1 className="animate-rise mt-4 max-w-4xl text-6xl leading-[0.9] sm:text-8xl lg:text-9xl text-white">
             The Palm Beach
             <br />
             <span className="text-gold-gradient">night belongs here.</span>
