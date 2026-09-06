@@ -109,7 +109,7 @@ export default function CheetahWestPalmBeach() {
           <a
             href={`tel:${PHONE}`}
             className="inline-flex items-center gap-2 rounded-sm bg-primary px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-primary-foreground transition-all hover:brightness-125"
-            style={{ boxShadow: "var(--shadow-glow)", backgroundColor: "oklch(55% .25 305)", color: "oklch(99% 0 0)" }}
+            style={{ boxShadow: "var(--shadow-glow)" }}
           >
             <Phone className="size-3.5" />
             <span className="hidden sm:inline">{PHONE}</span>
@@ -137,7 +137,7 @@ export default function CheetahWestPalmBeach() {
             <br />
             <span className="text-gold-gradient">night belongs here.</span>
           </h1>
-          <p className="animate-rise mt-6 max-w-xl text-lg text-muted-foreground" style={{ color: "rgba(255,255,255,0.75)" }}>
+          <p className="animate-rise mt-6 max-w-xl text-lg text-muted-foreground">
             Three stages, a full kitchen, free gourmet lunch every afternoon and VIP service that
             makes an ordinary Tuesday feel like a bachelor party.
           </p>
@@ -145,13 +145,13 @@ export default function CheetahWestPalmBeach() {
             <a
               href={`tel:${PHONE}`}
               className="inline-flex items-center gap-2 rounded-sm bg-primary px-7 py-4 text-sm font-bold uppercase tracking-[0.2em] text-primary-foreground transition-all hover:brightness-125"
-              style={{ boxShadow: "var(--shadow-glow)" }}
+              style={{ boxShadow: "var(--shadow-glow)", backgroundColor: "oklch(55% .25 305)", color: "oklch(99% 0 0)" }}
             >
               Reserve a table <ChevronRight className="size-4" />
             </a>
             <a
               href="#kitchen"
-              className="inline-flex items-center gap-2 rounded-sm border border-gold/50 px-7 py-4 text-sm font-bold uppercase tracking-[0.2em] text-gold transition-colors hover:bg-gold/10" style={{ color: "oklch(82% .14 88)" }}
+              className="inline-flex items-center gap-2 rounded-sm border border-gold/50 px-7 py-4 text-sm font-bold uppercase tracking-[0.2em] text-gold transition-colors hover:bg-gold/10"
             >
               See the menus
             </a>
@@ -219,7 +219,7 @@ export default function CheetahWestPalmBeach() {
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">{e.tag}</p>
-                  <p className="mt-1 text-2xl text-white">{e.name}</p>
+                  <p className="mt-1 text-2xl">{e.name}</p>
                 </div>
               </div>
             ))}
@@ -352,7 +352,7 @@ export default function CheetahWestPalmBeach() {
             </p>
             <a
               href="https://maps.google.com/?q=3342+Shawnee+Ave+West+Palm+Beach+FL+33409"
-              className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-gold hover:underline" style={{ color: "oklch(82% .14 88)" }}
+              className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-gold hover:underline"
             >
               Get directions <ChevronRight className="size-3.5" />
             </a>
@@ -375,7 +375,7 @@ export default function CheetahWestPalmBeach() {
             </p>
             <a
               href="https://www.cheetahsofl.com/events/category/palm/list/"
-              className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-gold hover:underline" style={{ color: "oklch(82% .14 88)" }}
+              className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-gold hover:underline"
             >
               View calendar <ChevronRight className="size-3.5" />
             </a>
