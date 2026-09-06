@@ -1,6 +1,1 @@
-name = "gnl-group"
-compatibility_date = "2025-01-01"
-pages_build_output_dir = "dist"
-
-[assets]
-not_found_handling = "single-page-application"
+# Intentionally left without [assets]/not_found_handling config: Pages (git-connected) projects do not support the [assets] block in wrangler.toml. SPA fallback is handled via public/_redirects instead.
