@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Toaster } from "@/components/ui/toaster"
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
@@ -50,6 +51,16 @@ import CheetahWestPalmBeach from './pages/CheetahWestPalmBeach';
 // -- Client sites --
 import Featherline from './pages/Featherline';
 
+// -- Static digital-card microsites --
+// Cards like /yamil/ and /greg/ are plain HTML living in /public, served as
+// real files by Cloudflare ahead of this SPA. This just bounces the
+// no-trailing-slash path (/yamil) to the static page (/yamil/) so it never
+// falls through to PageNotFound. The card itself lives in public/yamil/.
+function StaticRedirect({ to }) {
+  useEffect(() => { window.location.replace(to); }, [to]);
+  return null;
+}
+
 function App() {
   return (
     <QueryClientProvider client={queryClientInstance}>
@@ -101,6 +112,9 @@ function App() {
 
           {/* Client sites */}
           <Route path="/featherline" element={<Featherline />} />
+
+          {/* Digital cards (static microsites in /public) */}
+          <Route path="/yamil" element={<StaticRedirect to="/yamil/" />} />
 
           <Route path="*" element={<PageNotFound />} />
         </Routes>
